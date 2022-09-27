@@ -1,0 +1,149 @@
+<!-- /*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<div class=" row login-background-img">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class=" row ">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+            
+          </div>
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 mt-5">
+            <div class="row ">
+            <div class="mycontainer col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+              <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+                <div class="mx-auto my-auto form-logo"></div>
+                  <!-- <img src="//assets/images/login/logo.png" alt="" title=""> -->
+                  <input type="text" placeholder="Email" name="uname" class="form-signup-input-filed login-form-input mt-2" [(ngModel)]='LoginFormDataComponent.login_details.UserName' #uname="ngModel" id="uname" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                  <div [hidden]="uname.valid || uname.untouched && loginSubmitted">
+                    <div class="error-msg-align error-msg-align-signin-margin" *ngIf="uname.errors && uname.errors['required']">
+                      <span class="alert alert-danger">
+                        <span class="formErrArrow"> </span>Enter an email
+                      </span>
+                    </div>
+                    <div class=" error-msg-align error-msg-align-signin-margin" *ngIf="uname.errors && uname.errors['pattern']">
+                        <span class="alert alert-danger">
+                            <span class="formErrArrow"> </span>Enter correct email
+                          </span>  
+                    </div>
+                  </div>
+                  <input type="password" placeholder="Password" name="pswd" class="form-signup-input-filed login-form-input mt-4 " [(ngModel)]='LoginFormDataComponent.login_details.Password' #pswd="ngModel" pattern="(?=^.{8,}$).*$" required>
+                    <div [hidden]="pswd.valid || pswd.untouched && submitted">
+                      <div class="error-msg-align error-msg-align-signin-margin" *ngIf="pswd?.errors?.['required']">
+                        <span class="alert alert-danger">
+                          <span class="formErrArrow"> </span>Enter Password
+                        </span>
+                      </div>
+                      <div class="error-msg-align error-msg-align-signin-margin" *ngIf="pswd?.errors?.['pattern']">
+                        <span class="alert alert-danger">
+                          <span class="formErrArrow"> </span>Minimun 8 chars            
+                        </span>
+                      </div>
+                    </div>
+                            
+                  <button type="submit" class="btn btn-success form-signup-btn-signup mt-4 " >Login</button>
+                  <br>
+                  <div class="login-forgot-password mt-4 pull-left " (click)="openModal(forgotPopUp)" >Forgot Password</div>   
+                  <div class="login-sign-up-link mt-4 pull-right" (click)="signUPLink()" >Sign up</div>
+                </form> 
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+<toaster-container [toasterconfig]="config1"></toaster-container>
+
+<ng-template #forgotPopUp>
+  <form (ngSubmit)="forgotPassword(forgotForm)" #forgotForm="ngForm">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Find Your Account</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="closeForgotModel(forgotForm)">
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <span>Please enter your email address to search for your account.</span>
+          <input type="text" placeholder="Enter email-address" name="useremail" class="login-form-input" [(ngModel)]='ForgotPasswordDetail.UserName' #useremail="ngModel" id="useremail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+          <div [hidden]="useremail.valid || useremail.untouched && forgotSubmitted">
+            <div class="error-msg-align-forgot" *ngIf="useremail.errors && useremail.errors['required']">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Enter an email
+              </span>
+            </div>
+            <div class=" error-msg-align-forgot" *ngIf="useremail.errors && useremail.errors['pattern']">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Enter correct email
+              </span>  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showOTP == true">
+        <div class="row" >
+          <div class="col-12">
+            <input type="text" placeholder="OTP" name="otp" id="otp" class="login-form-input" autocomplete="off" [(ngModel)]='ForgotPasswordDetail.OTP' #otp="ngModel" required />
+            <div [hidden]="otp.valid || otp.untouched && forgotSubmitted">
+              <div class="error-msg-align-forgot" *ngIf="otp?.errors?.['required']">
+                <span class="alert alert-danger">
+                  <span class="formErrArrow"> </span>Enter OTP
+                </span>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="col-12">
+            <input type="password" placeholder="Password" class="login-form-input" id="newpassword" name="newpassword" autocomplete="off" [(ngModel)]='ForgotPasswordDetail.Password' #newpassword="ngModel" required />
+            <div [hidden]="newpassword.valid || newpassword.untouched && forgotSubmitted">
+              <div class="error-msg-align-forgot" *ngIf="newpassword?.errors?.['required']">
+                <span class="alert alert-danger">
+                  <span class="formErrArrow"> </span>Enter Password
+                </span>
+              </div>
+              <div class="error-msg-align-forgot" *ngIf="newpassword?.errors?.['pattern']">
+                <span class="alert alert-danger">
+                  <span class="formErrArrow"> </span>UpperCase, LowerCase, Number/SpecialChar and min 8 Chars              
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-default" >Search</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-default" (click)="closeForgotModel(forgotForm)" >Cancel</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</ng-template>

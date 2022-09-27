@@ -1,0 +1,173 @@
+ /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */
+.dashboard-header {
+    background-image: url(src/assets/images/dashboard/dashboard-bg.png);
+    background-size: cover;
+    padding-bottom: 10px;
+}
+
+.fix-side-bar{
+    position: relative;
+    width: 100%;
+}
+
+.header-zindex{
+	z-index: 1;
+}
+
+
+.search-height{
+    height: 52px !important;
+    border-radius: 25px;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
+    font-size: 16px;
+}
+
+.search-icon{
+    font-size: 25px;
+    color: white;
+}
+
+.terms-header {
+    width: 100%;
+    height: 80px;;
+}
+@supports (-ms-ime-align:auto) {
+.terms-header {
+    width: 200%;
+    height: 80px;;
+}
+}
+.padding-R-0{
+    padding-right: 0px;
+ }
+
+.margin-R-0{
+    margin-right: 0px;
+}
+
+.position-img{
+    margin-top: -95px;
+}
+
+.image-margin-left{
+    margin-left: 70px;
+}
+
+.help-class{  
+      font-size: 20px;
+    font-weight: bold;}
+
+.help-ask-card-grey-articles{
+        border-radius: 5px;
+        background: #f4f5f5;
+        border: none;
+       
+    width: 100%;
+  
+    background: inherit;
+    background-color: rgba(50, 69, 86, 0.619607843137255);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    font-weight: 400;
+    /* cursor: pointer; */
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px #404040;
+    background-image: url(src/assets/images/needhelp/popular-articles.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+    .help-ask-card-grey{
+        border-radius: 5px;
+        background: #f4f5f5;
+        border: none;
+       
+    width: 100%;
+  
+    background: inherit;
+    background-color: rgba(50, 69, 86, 0.619607843137255);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    font-weight: 400;
+    /* cursor: pointer; */
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px #404040;
+    background-image: url(src/assets/images/needhelp/thinking.jpg);
+    }
+
+
+    .card-body-class{
+        
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    width: inherit;
+    height: 100%;
+    border-radius: 5px;
+    color: white;
+ 
+    }
+
+.contact-button{
+    width: 100%;
+    color: #fff !important;
+    border-color: transparent;
+    background-color: #31A38D;
+    transition: filter .2s ease;
+}
+
+.main-card-border {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+    cursor: pointer;
+}
+
+.img-width {
+    width: 55px;
+}
+
+.ref-deco{
+    color: black;
+    text-decoration: none;
+}
+
+.mobile-not-allowed{
+    color: gray;
+    /* cursor: not-allowed !important; */
+}
+
+.font-article-color{
+    color: white !important;
+}
+
+.mobile-hover :hover {
+    color: gray !important;
+}

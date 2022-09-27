@@ -1,0 +1,137 @@
+ /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */
+.main-container {
+  margin-top: 2%;
+  background-color: #ffffff;
+  
+}
+
+.padding-LR-0{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.background-col{
+  background-color: #fff;
+  position: absolute;
+}
+
+.background-img {
+  width: 100%;
+}
+
+.text-align-center {
+  text-align: center;
+}
+.headline-text {
+  color:rgb(107, 107, 107);
+  display:inline;
+  font-style:normal;  
+  height:auto;
+  line-height:normal;
+  text-rendering:optimizeLegibility;
+  width:auto;
+  word-wrap:break-word;
+}
+
+.headline-text h2 {
+  font-size:24px;
+  font-weight:700;
+  text-align:center;
+  margin-top: 1% !important;
+}
+
+.headline-text h3 {
+  font-size: 18px;
+  font-weight:400;
+  text-align:center;
+  margin-top: 1% !important;
+}
+
+.dashboard-panel-main {
+  margin-bottom: 2.7%;
+  width: 100%;
+  min-width: 1221px;
+}
+
+.dashboard-panel {
+  display: inline-block;
+  margin-right: 45px;
+  vertical-align: top;
+  margin-top: 40px;
+}
+
+.dashboard-panel:first-child {
+  margin-left: 2%;
+}
+
+.dashboard-panel:last-child {
+  margin-right: 0;
+}
+
+.dashboard-panel img {
+  width: 105px;
+  height: 100px;
+  display: block;
+}
+
+.dashboard-panel div {
+  margin-top: 10px;
+  font-size: 14.4px;
+  color: rgb(107, 107, 107) !important;
+  text-align: center;
+  word-wrap: break-word;
+  font-weight:400;
+  min-width: 104px;
+  max-width: 115px;
+}
+
+.dashboard-text {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.dashboard-text a, .dashboard-panel a {
+  color: rgb(107, 107, 107) !important;
+  text-decoration-line: none !important;
+}
+
+.position-right {
+  margin-left: 83%;
+  min-width: 104px;
+  max-width: 115px;
+}
+
+/* #university-panel {
+  position: relative;
+  top: 25px;
+}
+
+#human-r-panel {
+  position: relative;
+  top: 23px;
+} */
+
+.header-logo {
+  width: 30%;
+}

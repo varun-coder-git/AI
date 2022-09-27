@@ -1,0 +1,920 @@
+<!--/*************************************************************************
+  * 
+  * EQUATIONS WORK CONFIDENTIAL
+  * __________________
+  * 
+  *  [2018] - [2020] Equations Work IT Services Private Limited, India
+  *  All Rights Reserved.
+  * 
+  * NOTICE:  All information contained herein is, and remains
+  * the property of Equations Work IT Services Private Limited and its suppliers,
+  * if any.  The intellectual and technical concepts contained
+  * herein are proprietary to Equations Work IT Services Private Limited
+  * and may be covered by U.S. and Foreign Patents,
+  * patents in process, and are protected by trade secret or copyright law.
+  * Dissemination of this information or reproduction of this material
+  * is strictly forbidden unless prior written permission is obtained
+  * from Equations Work IT Services Private Limited.
+  *
+  * Copyright (C) Equations Work IT Services Pvt. Ltd.
+  * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+  * Proprietary and confidential
+  * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+  */ -->
+<div (click)="onSaveAsPopOverHidden()">
+    <div class="row createExperienceBg margin-LR-0">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="row">
+                        <div class="p-4 text-white heade-text ">
+                            <div>{{templateTitle}}:
+                                <span>
+                                     <!-- {{ (experienceTitle.length>50)? (experienceTitle | slice:0:50)+'..':(experienceTitle) }} -->
+                                     {{ (experienceTitleLength>50)? (experienceTitle | slice:0:50)+'..':(experienceTitle) }}
+                                     <img src="assets/images/create-experience/rename.png"
+                                        alt="Save" aria-hidden="true" *ngIf="showEditButton"
+                                        (click)="goToEditName(changeExperienceNameModel)" class="hand-pointer"
+                                        aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Edit this Experience Name.')" ngbTooltip="Rename"
+                                        placement="bottom" /></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row  vdivide">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3 ">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" (mouseleave)="mouseLeave()"
+                            (mouseenter)="mouseEnter('Save this Experience. Don\'t worry, saving this does not Publish the Experience so you can continue to edit it and Publish it once done.')"
+                            >
+                            <div class="card card-style mx-auto" ngbTooltip="Save" placement="top"
+                                [ngStyle]="isPreview && {'cursor':'not-allowed', 'opacity':'0.5'}" (click)="save()">
+                                <img class="card-img-top mt-2 mx-auto" src="assets/images/create-experience/save.png"
+                                    alt="Save">
+                                <div class="card-body card-body-content">
+                                    <p class="card-text">Save</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" (mouseleave)="mouseLeave()"
+                            (mouseenter)="mouseEnter('Save As helps you duplicate this Experience. Your original Experience does not get modified.')"
+                           >
+                            <div class="card card-style mx-auto"  ngbTooltip="Save As" placement="top"
+                                [ngStyle]="isPreview && {'cursor':'not-allowed', 'opacity':'0.5'}"
+                                (click)="saveAs(openSaveAsExperienceModal)">
+                                <img class="card-img-top mt-2 mx-auto" src="assets/images/create-experience/save-as.png"
+                                    alt="Save as">
+                                <div class="card-body card-body-content">
+                                    <p class="card-text">Save As</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" (mouseleave)="mouseLeave()"
+                            (mouseenter)="mouseEnter('Publish helps you make this Experience available for your Patrons or Public. Just remember to create/assign a Room for the published Experience through the Publish option on the right menu.')"
+                           >
+                            <div class="card card-style mx-auto"  ngbTooltip="Publish" placement="top"
+                                [ngStyle]="isPreview && {'cursor':'not-allowed', 'opacity':'0.5'}"
+                                (click)="publishConfirmation(publishExperiencePopUp)">
+                                <img class="card-img-top mt-2 mx-auto" src="assets/images/create-experience/publish.png"
+                                    alt="Publish">
+                                <div class="card-body card-body-content">
+                                    <p class="card-text">Publish</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" (mouseleave)="mouseLeave()"
+                            (mouseenter)="mouseEnter('Switch to the Authoring Mode. Using the Authoring mode you can Customize this Experience.')"
+                            >
+                            <div *ngIf="isCustomization" class="card card-style mx-auto" ngbTooltip="Close Preview" placement="top"
+                                [ngStyle]="isCustomization  && {'cursor':'not-allowed', 'opacity':'0.5'}"
+                                (click)="authoring()">
+                                <img class="card-img-top mt-2 mx-auto"
+                                    src="assets/images/create-experience/authoring.png" alt="close">
+                                <div class="card-body card-body-content">
+                                    <p class="card-text">Authoring</p>
+                                </div>
+                            </div>
+                            <div *ngIf="!isCustomization" class="card card-style mx-auto" ngbTooltip="Close Preview" placement="top"
+                                [ngStyle]="isPreviewLoaded ? null : {'cursor':'not-allowed', 'opacity':'0.5'}"
+                                (click)="authoring()">
+                                <img class="card-img-top mt-2 mx-auto" src="assets/images/create-experience/exit.png"
+                                    alt="close">
+                                <div class="card-body card-body-content">
+                                    <p class="card-text">Close</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" (mouseleave)="mouseLeave()"
+                            (mouseenter)="mouseEnter('Take a quick preview of the currently open Experience. Preview helps you visualize how the Experience will look once you Publish it. ')"
+                            >
+                            <div class="card card-style mx-auto" ngbTooltip="Preview" placement="top"
+                                [ngStyle]="isCustomizationLoaded ? null : {'cursor':'not-allowed', 'opacity':'0.5'}" (click)="preview()" >
+                                <img class="card-img-top mt-2 mx-auto" src="assets/images/create-experience/preview.png"
+                                    alt="Preview">
+                                <div class="card-body card-body-content">
+                                    <p class="card-text">Preview</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" (mouseleave)="mouseLeave()"
+                            (mouseenter)="mouseEnter('Open up the help options! You can discover all the help topics using this menu. ')"
+                            >
+                            <a routerLink="/needhelp" routerLinkActive="active" target="_blank"
+                                style="text-decoration: none;">
+                                <div class="card card-style mx-auto" ngbTooltip="Help" placement="top">
+                                    <img class="card-img-top mt-2 mx-auto"
+                                        src="assets/images/create-experience/help.png" alt="Help">
+                                    <div class="card-body card-body-content">
+                                        <p class="card-text">Help</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-3">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4" (mouseleave)="mouseLeave()"
+                            (mouseenter)="mouseEnter('Close this Experience to go back to the Home page of your application.')"
+                            >
+                            <div class="card card-style mx-auto " ngbTooltip="Exit" placement="top" (click)="exitToStudio()">
+                                <img class="card-img-top mt-2 mx-auto" src="assets/images/create-experience/out.png"
+                                    alt="Exit">
+                                <div class="card-body card-body-content">
+                                    <p class="card-text">Exit</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row iframe-body margin-LR-0">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 customization-column">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" [src]='experienceCustomizerURL' allowfullscreen id="customizerIframe"
+                (load)="passExperienceJSON(experienceJSON)" allow="geolocation; microphone; camera"></iframe>
+        </div>
+    </div>
+</div>
+<toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+<!-- <ng4-loading-spinner> </ng4-loading-spinner> -->
+<ng-template #helpPopUp>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Help</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis
+                natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed
+                rhoncus pronin sapien nunc accuan ege
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #settingsPopUp>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Settings</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida
+                dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor. Sociis
+                natoque penatibus et magnis dis parturient montes,
+                nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed
+                rhoncus pronin sapien nunc accuan ege
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #openSaveAsExperienceModal>
+    <form (ngSubmit)="experienceSaveAs(saveAsForm)" #saveAsForm='ngForm'>
+        <div class="modal-header">
+            <div class="modal-title pull-left  pl-3 popup-title">Save as</div>
+            <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+                (click)="modalRef.hide();onSaveAsPopOverHidden()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body pt-1">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="pt-2">
+                        <span>
+                            <input #experienceName="ngModel" [(ngModel)]="newExperienceName" name="experienceName"
+                                class="form-control" type="text" placeholder="Experience Name"
+                                pattern="^[a-zA-Z0-9:_@!&? -]*$" required>
+                            <!-- <div
+                                [hidden]="experienceName.valid || experienceName.untouched && changeExperienceNameFlag"> -->
+                                <div *ngIf="experienceName.invalid && (experienceName.dirty || experienceName.touched)">
+                                <div class="error-msg-align-forgot"
+                                    *ngIf="experienceName.errors && experienceName.errors['required']">
+                                    <span class="alert alert-danger">
+                                        <span class="formErrArrow"> </span>Enter experience name
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="error-msg-align-forgot" *ngIf="experienceName?.errors?.['pattern']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Special characters are not allowed.
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="experience-template-action">
+                        <!-- <button type="button" class="btn btn-color-green" (click)="experienceSaveAs()">OK</button> -->
+                        <button type="submit" class="btn btn-color-green" [disabled]="experienceName.invalid ">OK</button>
+                        <button type="button" class="btn btn-color-blue"
+                            (click)="modalRef.hide();onSaveAsPopOverHidden()">Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<ng-template #publishExperiencePopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Publish</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                Do you want to publish this experience?
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-color-green" (click)="publish()">Yes</button>
+                    <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+<canvas #canvas style="display: none;"></canvas>
+
+<ng-template #thirdModal>
+    <div class="modal-header">
+        <div id="dialog-nested-name2" class="modal-title pull-left pl-3 popup-title">Create Spherical</div>
+        <button type="button" class="close pull-right mt-3 pl-0 mr-0" aria-label="Close"
+            (click)="modalRef2.hide(); clearThird();">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <image-cropper [imageBase64]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="2 / 1"
+                format="jpeg" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+                (loadImageFailed)="loadImageFailed()"></image-cropper>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <label for="topPaddingCheck"><input type="checkbox" name="topPaddingCheck" [(ngModel)]="topPaddingCheck"
+                        (change)="addTopPadding()"> Add top and bottom padding</label>
+            </div>
+            <div class="col-6">
+                <label for="sidePaddingCheck"><input type="checkbox" (change)="addSidePadding()" name="sidePaddingCheck"
+                        [(ngModel)]="sidePaddingCheck"> Add side padding</label>
+            </div>
+        </div>
+        <div class="row pt-3">
+            <div class="col-1">
+                <span>Preview: </span>
+            </div>
+            <div class="col-11">
+                <img [src]="croppedImage" style="width: 140px;" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 m-3">
+                <button type="button" class="btn btn-color-green btn-width btn-shadow pull-right mr-3"
+                    (click)="uploadBase64(); clearThird();">OK</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<div class="modal fade mainAssetPopup" [config]="{ ignoreBackdropClick: true }" id="assetPopup" bsModal
+    #assetsPopup="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-nested-name1"
+    (onHide)="handler('onHide', $event)">
+    <div class="modal-dialog modal-lg modal-content-radius">
+        <div class="modal-content modal-width-800px">
+            <div class="modal-header pt-3">
+                <div id="dialog-nested-name1" class="modal-title pull-left pl-3 popup-title">Select
+                    {{typeAsset == 'Image' ? 'Image' : (typeAsset == 'Video' ? 'Video' : (typeAsset == 'Audio' ? 'Audio' : (typeAsset == '360Image' ? '360 Image' : (typeAsset == '360Video' ? '360 Video' : 'Asset'))))}}
+                </div>
+                <button type="button" class="close pull-right mr-3 mt-1 p-0" aria-label="Close"
+                    [disabled]="uploadingFileEXP" (click)="assetsPopup.hide();resetVariables();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pt-2">
+                <div class="spinner center"  id="loader">
+                    <div class="lds-roller">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12 mt-2 mb-2" id='newFolderDiv'>
+                            <tabset class="patron-tabset">
+                                <tab heading="User Asset"  (selectTab)="userAsset=true">
+                                        <i class="fa fa-list pull-right hand-pointer folder-icon-size-head copy-color"
+                                        aria-hidden="true" *ngIf="viewToggle" (click)="toggleView('icon')" ngbTooltip="Detail View"
+                                        placement="top"></i>
+                                    <i class="fa fa-th-large pull-right hand-pointer folder-icon-size-head copy-color"
+                                        aria-hidden="true" *ngIf="!viewToggle" (click)="toggleView('list')" ngbTooltip="Grid View"
+                                        placement="top"></i>
+                                    <div class="pull-right" [ngbPopover]="popOverNewFolder" [autoClose]="'outside'" popoverTitle="Create New Folder"
+                                        placement="left" (onHidden)="onPopOverHidden()" id="popoverClick">
+                                        <span class="fa-stack mr-2 hand-pointer" ngbTooltip="Create New Folder" placement="top">
+                                            <i class="fa fa-folder fa-stack-2x folder-icon-size-head folder-color"
+                                                aria-hidden="true"></i>
+                                            <i class="fa fa-plus fa-stack-1x folder-plus-color" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </tab>
+                                <tab heading="Experizer Asset"  (selectTab)="userAsset=false">
+                                        <i class="fa fa-list pull-right hand-pointer folder-icon-size-head copy-color"
+                                        aria-hidden="true" *ngIf="viewToggle" (click)="toggleView('icon')" ngbTooltip="Detail View"
+                                        placement="top"></i>
+                                    <i class="fa fa-th-large pull-right hand-pointer folder-icon-size-head copy-color"
+                                        aria-hidden="true" *ngIf="!viewToggle" (click)="toggleView('list')" ngbTooltip="Grid View"
+                                        placement="top"></i>
+                                </tab>
+                            </tabset>           
+                    </div>
+                    
+                    <div class="col-12" *ngIf="userAsset">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item" *ngFor="let crum of breadcrumArryPopup; let i = index"
+                                    [ngClass]="(i != breadcrumArryPopup.length-1)?'':'active'">
+                                    <a *ngIf="i != breadcrumArryPopup.length-1" (click)="breadcrumpopPopup(crum.index)">
+                                        {{crum.name}}
+                                    </a>
+                                    <span *ngIf="i == breadcrumArryPopup.length-1"> {{crum.name}}</span>
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="col-12" *ngIf="!userAsset">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item" *ngFor="let crum of breadcrumArryPopupCommon; let i = index"
+                                        [ngClass]="(i != breadcrumArryPopupCommon.length-1)?'':'active'">
+                                        <a *ngIf="i != breadcrumArryPopupCommon.length-1" (click)="breadcrumpopPopupCommon(crum.index)">
+                                            {{crum.name}}
+                                        </a>
+                                        <span *ngIf="i == breadcrumArryPopupCommon.length-1"> {{crum.name}}</span>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                </div>
+                <div *ngIf=userAsset>
+                        <div class="row assets-Popup-Overflow assets-Popup-border margin-LR-0" id="assetesPopupModel"
+                        #assetesPopup *ngIf="viewToggle">
+                        <div *ngFor="let data of assetsData  | assetsFilter : typeAsset; let i= index"
+                            class="col-4 mb-1 mt-1">
+                            <div (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)"
+                                [ngClass]="{'clicked': data.Id == assetsId}">
+                                <i class="fa fa-folder pr-2 folder-thumb-size folder-color hand-pointer"
+                                    (click)="getPopupAssetData(data.ParentFolder + '/' + data.FileName);breadcrumPushPopup(data.ParentFolder + '/' + data.FileName,data.FileName);"
+                                    *ngIf="data.AssetType == '4'" aria-hidden="true"></i>
+                                <img class="hand-pointer" *ngIf="data.AssetType == 1 || data.AssetType == 5"
+                                    id='{{"icon-"+i}}' [ngClass]="{'clicked': data.Id == assetsId}"
+                                    [src]="baseURL + data.FileUrl + width60"
+                                    (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)" />
+                                <video class="hand-pointer" [src]="baseURL + data.FileUrl + '#t=6,20'" id='{{"icon-"+i}}'
+                                    [ngClass]="{'clicked': data.Id == assetsId}"
+                                    (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)" (mouseenter)="enter($event)"
+                                    (mouseleave)="leave($event)" *ngIf="data.AssetType == 2 || data.AssetType == 6" muted
+                                    loop></video>
+                                <div class="hand-pointer" *ngIf="data.AssetType == 3" id='{{"icon-"+i}}'
+                                    [ngClass]="{'clicked': data.Id == assetsId}"
+                                    (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)">
+                                    <audio id='{{"icon-"+i}}' [src]="baseURL + data.FileUrl" style="width: 95%;" controls
+                                        [ngClass]="{'clicked': data.Id == assetsId}"
+                                        (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)"></audio>
+                                </div>
+                                <span class="noselect text-overflow  hand-pointer">{{data.FileName}} </span>
+                            </div>
+                            <div class="col-12 p-3" *ngIf="(assetsData | assetsFilter : typeAsset).length == 0">
+                                <b> No data found</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="!viewToggle">
+                        <div class="col-12 assets-Popup-Overflow">
+                            <div class="row font-weight-bold div-th pt-2 pb-2 m-0">
+                                <div class="fixed-th">Type</div>
+                                <div style="width: 60%;">Name</div>
+                                <div style="width: 16%;">Modified</div>
+                                <div style="width: 16%;">Size</div>
+                            </div>
+                            <div class="row div-td m-0 hand-pointer"
+                                *ngFor=" let tData of assetsData  | assetsFilter : typeAsset; let i = index  ">
+                                <div class="col-12 div-table pt-2 pb-2"
+                                    (click)="getPopupAssetData(tData.ParentFolder + '/' + tData.FileName);breadcrumPushPopup(tData.ParentFolder + '/' + tData.FileName,tData.FileName); "
+                                    *ngIf="tData.AssetType == '4'" id='{{"tr-"+i}}'>
+                                    <div class="fixed-th">
+                                        <i class="fa fa-folder fa-lg fas folder-color folder-icon-size"
+                                            aria-hidden="true"></i>
+                                    </div>
+                                    <div style="width: 60%;">
+                                        <span class="text-overflow noselect">{{tData.FileName}}</span>
+                                    </div>
+                                    <div class="noselect" style="width: 16%;">{{tData.CreatedOn | dateAgo}}</div>
+                                    <div class="noselect" style="width: 16%;"></div>
+                                </div>
+                                <div class="col-12 div-table pt-2 pb-2" [ngClass]="{'clicked-table': tData.Id == assetsId}"
+                                    (click)="setAssetsSrc($event,baseURL + tData.FileUrl, i)" *ngIf="tData.AssetType != '4'"
+                                    id='{{"tr-"+i}}'>
+                                    <div class="fixed-th">
+                                        <img src="./assets/images/dashboard/image.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '1'">
+                                        <img src="./assets/images/dashboard/360images.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '5'">
+                                        <img src="./assets/images/dashboard/audio.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '3'">
+                                        <img src="./assets/images/dashboard/video.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '2'">
+                                        <img src="./assets/images/dashboard/video360.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType ==  '6'">
+                                    </div>
+                                    <div style="width: 60%;">
+                                        <span class="text-overflow noselect">{{tData.FileName}}</span>
+                                    </div>
+                                    <div class="noselect" style="width: 16%;">{{tData.CreatedOn | dateAgo}}</div>
+                                    <div class="noselect" style="width: 16%;">{{tData.FileSize | fileSize}}</div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-3" *ngIf="(assetsData | assetsFilter : typeAsset).length == 0">
+                                <b> No data found</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <ngx-file-drop dropZoneLabel="Drop files here" [disableIf]="uploadingFileEXP || inputFileClick"
+                                (onFileDrop)="dropped($event, thirdModal, typeAsset)">
+                            </ngx-file-drop>
+                        </div>
+                        <div class="col-12 pt-2 progress-bars-height" id="fileNames">
+    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mt-3 col-3">
+                            <label class="btn btn-color-orange btn-width btn-shadow upload-btn"
+                                *ngIf=" typeAsset !== '360Image'" ngbTooltip="Upload New File" placement="top"
+                                (click)="focus()">
+                                <form #inputForm='ngForm' id="inputForm">
+                                    <input type="file" class="w-75" [disabled]="uploadingFileEXP" style="display: none;"
+                                        #uploadAssetsInput id="uploadAssetsInput"
+                                        accept="{{typeAsset == 'Image' ? '.jpg, .jpeg, .png, .gif' : (typeAsset == 'Video' ? '.mp4, .avi, .3gp' : (typeAsset == 'Audio' ? '.mp3, .ogg, .wav, .m4a' : (typeAsset == '360Image' ? '.jpg, .jpeg, .png, .gif' : (typeAsset == '360Video' ? '.mp4, .avi, .3gp' : ''))))}}"
+                                        (change)="uploadNewExpFile(uploadAssetsInput.files, thirdModal);" multiple>
+                                </form>
+                                Upload a new File
+                            </label>
+                            <label class="btn btn-color-orange btn-width btn-shadow upload-btn"
+                                *ngIf=" typeAsset === '360Image'" ngbTooltip="Upload New File" placement="top"
+                                (click)="focus()">
+                                <form #inputForm='ngForm' id="inputForm">
+                                    <input type="file" class="w-75" [disabled]="uploadingFileEXP" style="display: none;"
+                                        *ngIf="!isSperical" #uploadAssetsInput id="uploadAssetsInput"
+                                        accept="{{typeAsset == 'Image' ? '.jpg, .jpeg, .png, .gif' : (typeAsset == 'Video' ? '.mp4, .avi, .3gp' : (typeAsset == 'Audio' ? '.mp3, .ogg, .wav, .m4a' : (typeAsset == '360Image' ? '.jpg, .jpeg, .png, .gif' : (typeAsset == '360Video' ? '.mp4, .avi, .3gp' : ''))))}}"
+                                        (change)="uploadNewExpFile(uploadAssetsInput.files, thirdModal);" multiple>
+                                    <input type="file" class="w-75" [disabled]="uploadingFileEXP" style="display: none;"
+                                        *ngIf="isSperical" #uploadAssetsInput id="uploadAssetsInput"
+                                        accept="{{typeAsset == 'Image' ? '.jpg, .jpeg, .png, .gif' : (typeAsset == 'Video' ? '.mp4, .avi, .3gp' : (typeAsset == 'Audio' ? '.mp3, .ogg, .wav, .m4a' : (typeAsset == '360Image' ? '.jpg, .jpeg, .png, .gif' : (typeAsset == '360Video' ? '.mp4, .avi, .3gp' : ''))))}}"
+                                        (change)="uploadNewExpFile(uploadAssetsInput.files, thirdModal);">
+                                </form>
+                                Upload a new File
+                            </label>
+                        </div>
+                        <div class="col-5 mt-3">
+                            <div *ngIf=" typeAsset === '360Image' ">
+                                <input type="checkbox" value="" [checked]='isSperical' [disabled]="uploadingFileEXP"
+                                    (change)="isSperical = !isSperical;">
+                                <label class="pl-1"> Make my image spherical</label>
+                            </div>
+                        </div>
+                        <div class="col-2 mt-3 pr-0 mb-4">
+                            <button type="button" class="btn mr-2 btn-color-green btn-width btn-shadow pull-right pr-2"
+                                [disabled]="uploadingFileEXP" (click)="selectAsset(thirdModal);">OK</button>
+                        </div>
+                        <div class="col-2 mt-3 mb-4 pl-2">
+                            <button type="button" class="btn btn-color-blue btn-shadow btn-width pull-right"
+                                [disabled]="uploadingFileEXP" (click)="assetsPopup.hide();resetVariables();">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf=!userAsset>
+                    <div class="row assets-Popup-Overflow assets-Popup-border margin-LR-0" id="assetesPopupModel"
+                    #assetesPopup *ngIf="viewToggle">
+                    <div *ngFor="let data of assetsDataCommon  | assetsFilter : typeAsset; let i= index"
+                        class="col-4 mb-1 mt-1">
+                        <div (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)"
+                            [ngClass]="{'clicked': data.Id == assetsId}">
+                            <i class="fa fa-folder pr-2 folder-thumb-size folder-color hand-pointer"
+                                (click)="getPopupAssetDataCommon(data.ParentFolder + '/' + data.FileName);breadcrumPushPopupCommon(data.ParentFolder + '/' + data.FileName,data.FileName);"
+                                *ngIf="data.AssetType == '4'" aria-hidden="true"></i>
+                            <img class="hand-pointer" *ngIf="data.AssetType == 1 || data.AssetType == 5"
+                                id='{{"icon-"+i}}' [ngClass]="{'clicked': data.Id == assetsId}"
+                                [src]="baseURL + data.FileUrl + width60"
+                                (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)" />
+                            <video class="hand-pointer" [src]="baseURL + data.FileUrl + '#t=6,20'" id='{{"icon-"+i}}'
+                                [ngClass]="{'clicked': data.Id == assetsId}"
+                                (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)" (mouseenter)="enter($event)"
+                                (mouseleave)="leave($event)" *ngIf="data.AssetType == 2 || data.AssetType == 6" muted
+                                loop></video>
+                            <div class="hand-pointer" *ngIf="data.AssetType == 3" id='{{"icon-"+i}}'
+                                [ngClass]="{'clicked': data.Id == assetsId}"
+                                (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)">
+                                <audio id='{{"icon-"+i}}' [src]="baseURL + data.FileUrl" style="width: 95%;" controls
+                                    [ngClass]="{'clicked': data.Id == assetsId}"
+                                    (click)="setAssetsSrc($event,baseURL + data.FileUrl, i)"></audio>
+                            </div>
+                            <span class="noselect text-overflow  hand-pointer">{{data.FileName}} </span>
+                        </div>
+                        <div class="col-12 p-3" *ngIf="(assetsDataCommon | assetsFilter : typeAsset).length == 0">
+                            <b> No data found</b>
+                        </div>
+                    </div>
+                </div>
+                    <div class="row" *ngIf="!viewToggle">
+                        <div class="col-12 assets-Popup-Overflow">
+                            <div class="row font-weight-bold div-th pt-2 pb-2 m-0">
+                                <div class="fixed-th">Type</div>
+                                <div style="width: 60%;">Name</div>
+                                <div style="width: 16%;">Modified</div>
+                                <div style="width: 16%;">Size</div>
+                            </div>
+                            <div class="row div-td m-0 hand-pointer"
+                                *ngFor=" let tData of assetsDataCommon  | assetsFilter : typeAsset; let i = index  ">
+                                <div class="col-12 div-table pt-2 pb-2"
+                                    (click)="getPopupAssetDataCommon(tData.ParentFolder + '/' + tData.FileName);breadcrumPushPopupCommon(tData.ParentFolder + '/' + tData.FileName,tData.FileName); "
+                                    *ngIf="tData.AssetType == '4'" id='{{"tr-"+i}}'>
+                                    <div class="fixed-th">
+                                        <i class="fa fa-folder fa-lg fas folder-color folder-icon-size"
+                                            aria-hidden="true"></i>
+                                    </div>
+                                    <div style="width: 60%;">
+                                        <span class="text-overflow noselect">{{tData.FileName}}</span>
+                                    </div>
+                                    <div class="noselect" style="width: 16%;">{{tData.CreatedOn | dateAgo}}</div>
+                                    <div class="noselect" style="width: 16%;"></div>
+                                </div>
+                                <div class="col-12 div-table pt-2 pb-2" [ngClass]="{'clicked-table': tData.Id == assetsId}"
+                                    (click)="setAssetsSrc($event,baseURL + tData.FileUrl, i)" *ngIf="tData.AssetType != '4'"
+                                    id='{{"tr-"+i}}'>
+                                    <div class="fixed-th">
+                                        <img src="./assets/images/dashboard/image.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '1'">
+                                        <img src="./assets/images/dashboard/360images.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '5'">
+                                        <img src="./assets/images/dashboard/audio.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '3'">
+                                        <img src="./assets/images/dashboard/video.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType == '2'">
+                                        <img src="./assets/images/dashboard/video360.png" class="image-icon-size"
+                                            *ngIf="tData.AssetType ==  '6'">
+                                    </div>
+                                    <div style="width: 60%;">
+                                        <span class="text-overflow noselect">{{tData.FileName}}</span>
+                                    </div>
+                                    <div class="noselect" style="width: 16%;">{{tData.CreatedOn | dateAgo}}</div>
+                                    <div class="noselect" style="width: 16%;">{{tData.FileSize | fileSize}}</div>
+                                </div>
+                            </div>
+                            <div class="col-12 p-3" *ngIf="(assetsDataCommon | assetsFilter : typeAsset).length == 0">
+                                <b> No data found</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-12 pt-2 progress-bars-height" id="fileNames">
+    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <div class="col-2 mt-3 pr-0 mb-4">
+                            <button type="button" class="btn mr-2 btn-color-green btn-width btn-shadow pull-right pr-2"
+                                [disabled]="uploadingFileEXP" (click)="selectAsset(thirdModal);">OK</button>
+                        </div>
+                        <div class="col-2 mt-3 mb-4 pl-2">
+                            <button type="button" class="btn btn-color-blue btn-shadow btn-width pull-right"
+                                [disabled]="uploadingFileEXP" (click)="assetsPopup.hide();resetVariables();">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade mainThreeAssetPopup" [config]="{ ignoreBackdropClick: true }" id="threeAssetPopup" bsModal
+    #threeAssetPopup="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-nested-name1"
+    (onHide)="handler('onHide', $event)">
+    <div class="modal-dialog modal-lg modal-content-radius">
+        <div class="modal-content modal-width-800px">
+            <div class="modal-header pt-3">
+                <div id="dialog-nested-name1" class="modal-title pull-left pl-3 popup-title">Select 3D Model
+                        <tabset class="patron-tabset">
+                                <tab heading="User Asset" id="userAssetId" (selectTab)="userAssetId=true;bindThreeDData();" >
+
+                                </tab>
+                                <tab heading="Experizer Asset" id="ExperizerCommonAssetId" (selectTab)="userAssetId=false;bindThreeDData();">
+                                    
+                                </tab>
+                                </tabset>
+                </div>
+                <button type="button" class="close pull-right mr-3 mt-1 p-0" aria-label="Close"
+                    [disabled]="uploadingFileEXP" (click)="threeAssetPopup.hide(); previousClick();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pt-2">
+                <div class="spinner center"  id="loader-three-d">
+                    <div class="lds-roller">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="row" *ngIf="!nextClickFlag">
+                    <div class="col-12 assets-Popup-Overflow">
+                        <div *ngIf="tableData.length != 0">
+                            <div class="row font-weight-bold div-th pt-2 pb-2 m-0">
+                                <div class="fixed-th">Type</div>
+                                <div style="width: 60%;">Name</div>
+                                <!-- <div style="width: 16%;">Modified</div> -->
+                                <!-- <div style="width: 16%;">Size</div> -->
+                            </div>
+                            <div class="row div-td m-0 hand-pointer" *ngFor="let tData of tableData; let i = index">
+                                <div class="col-12 div-table pt-2 pb-2"
+                                    [ngClass]="{'clicked-table': tData.Id == assetsId}"
+                                    (click)="setThreeDAssetSrc(baseURL, tData.mtl, tData.obj, tData.gltf, tData.ParentFolder, i)"
+                                    id='{{"tr-3d-"+i}}'>
+                                    <div class="fixed-th">
+                                        <img src="./assets/images/dashboard/image.png" class="image-icon-size">
+                                    </div>
+                                    <div style="width: 60%;">
+                                        <span class="text-overflow noselect">{{tData.ParentFolder}}</span>
+                                    </div>
+                                    <!-- <div class="noselect" style="width: 16%;">{{tData.CreatedOn | timeAgo}}</div> -->
+                                    <!-- <div class="noselect" style="width: 16%;">{{tData.FileSize | fileSize}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 p-3" *ngIf="tableData.length == 0">
+                        <b> No data found</b>
+                    </div>
+                </div>  
+                <div class="row" *ngIf="nextClickFlag">  
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 customization-column">
+                        <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" [src]='modelPreviewUrl' allowfullscreen id="id_description_iframe"  (load)="loadModelPreview()"></iframe>
+                    </div>
+                   
+                </div>
+                <div>
+                    Note:   Set the entry angle and the size of your 3D object.
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-3">
+                    
+                    </div>
+                    <div class="col-12 pt-2 progress-bars-height" id="fileNames">
+
+                    </div>
+                </div>
+                
+              
+                <div class="row">
+                    <div  class="col-8 mt-2" *ngIf="nextClickFlag"></div>
+                    <div  class="col-9 mt-3" *ngIf="!nextClickFlag">
+                        <div  style="padding-left: 10px;" >
+                        Note:To upload a new 3D Model go to the 3D Assets Library on your landing page.
+                     </div>
+                    </div>
+                    <div class="col-4 mt-3 mb-4 pl-2" *ngIf="nextClickFlag ">
+                        <button type="button" class="btn  btn-color-green btn-width btn-shadow pull-right mr-2"
+                        (click)="selectThreeDAsset();">Save</button>
+                        <button type="button" class="btn  btn-color-green btn-width btn-shadow pull-right mr-2"
+                        (click)="previousClick();" >Previous</button>
+                      
+                    </div>
+                    <div class="col-3 mt-3 mb-4 pl-2"  *ngIf="!nextClickFlag" >
+                            <button type="button" class="btn  btn-color-green btn-width btn-shadow pull-right mr-2"
+                           (click)="nextClick();" [disabled]="modelSelected">Next</button>
+                    </div>
+                    <!-- <div class="col-2 mt-3 mb-4 pl-2">
+                         <button type="button" class="btn btn-color-blue btn-shadow btn-width pull-right"
+                            [disabled]="uploadingFileEXP"
+                            (click)="threeAssetPopup.hide();resetVariables();">Cancel</button> 
+                    </div> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--div class="modal fade" id="alertCreateExpPopup" bsModal #alertCreateExpPopup="bs-modal" tabindex="-1" role="dialog" aria-labelledby="dialog-nested-name1">
+  <div class="modal-dialog modal-lg modal-content-radius">
+    <div class="modal-content modal-width-800px">
+      <div class="modal-header">
+        
+        <div id="dialog-nested-name1" class="modal-title pull-left pl-3 popup-title">Select Asset</div>
+        <button type="button" class="close pull-right mr-3 mt-1 p-0" aria-label="Close" (click)="alertCreateExpPopup.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            Do you want to save your current experience?
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="experience-template-action">
+              <button type="button" class="btn btn-color-green" (click)="saveMyCurrentExperience()">Yes</button>
+              <button type="button" class="btn btn-color-blue" (click)="alertCreateExpPopup.hide()">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+      </div>
+    </div>
+  </div>
+</div-->
+<button id="save-btn" style="display:none;" (click)="redirectToNextPage('save')"></button>
+<button id="cancel-btn" style="display:none;" (click)="redirectToNextPage('cancel')"></button>
+
+<!-- <ng-template #newFolder>
+  <div class="modal-header">
+    <div class="modal-title pull-left  pl-3 popup-title">Add New Folder</div>
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="createNewFolder(newFolderForm);" #newFolderForm='ngForm'>
+    <div class="modal-body pt-4">
+      <div class="row">
+        <div class="col-12">
+          <input #newFolderName="ngModel" type="text" class="form-control" placeholder="Folder Name" name='newFolderName'
+          [(ngModel)]="newFolderNameModel" required>
+          <div [hidden]="newFolderName.valid || newFolderName.untouched && addNewFolderFlag">
+            <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors.required">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Enter name
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 padding-TB-1_5-per mt-3">
+          <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+  </form>
+</ng-template> -->
+
+<ng-template #popOverNewFolder>
+    <form (ngSubmit)="createNewFolder(newFolderForm);" #newFolderForm='ngForm'>
+        <div class="row">
+            <div class="col-12">
+                <input #newFolderName="ngModel" type="text" class="form-control" placeholder="Folder Name"
+                    maxlength="60" name='newFolderName' [(ngModel)]="newFolderNameModel" pattern="^[a-zA-Z0-9:_@!&? -]*$" (change)="newFolderNameModel=newFolderNameModel.trim()" required>
+                <!-- <div [hidden]="newFolderName.valid || newFolderName.untouched && addNewFolderFlag"> -->
+                    <div *ngIf="newFolderName.invalid && (newFolderName.dirty || newFolderName.touched)">
+                    <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors['required']">
+                        <span class="alert alert-danger">
+                            <span class="formErrArrow"> </span>Enter name
+                        </span>
+                    </div>
+                    <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors['pattern']">
+                        <span class="alert alert-danger">
+                            <span class="formErrArrow"> </span>Special characters are not allowed.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 padding-TB-1_5-per mt-3">
+                <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right" [disabled]="newFolderName.errors">Add</button>
+            </div>
+        </div>
+    </form>
+    <!-- <div> <input type="text" placeholder="Folder Name"></div> -->
+</ng-template>
+<ng-template #changeExperienceNameModel>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Edit Experience Name</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="changeNameForm" (ngSubmit)="onSaveNameSubmit()">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="form-group">
+                        <label>Experience Name</label>
+                        <input type="text" formControlName="ExperienceName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && change['ExperienceName']['errors'] }" required />
+                        <div *ngIf="submitted && change['ExperienceName']['errors']" class="invalid-feedback">
+                            <div *ngIf="change['ExperienceName'].errors['required']">Experience Name is required.</div>
+                            <div *ngIf="change['ExperienceName'].errors?.['pattern']">No special characters allowed.</div>
+                            <div *ngIf="change['ExperienceName'].errors?.['maxlength']">Name can be max 100 characters long.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="experience-template-action">
+                        <!-- <button type="button" class="btn btn-color-green" (click) = "EditExperienceName()">Yes</button> -->
+                        <button type="submit" class="btn btn-color-green">Save</button>
+                        <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>

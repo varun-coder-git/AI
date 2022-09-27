@@ -1,0 +1,177 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Experizer Experience</title>
+  <!-- For Google -->
+<meta name="description" content="360 degree walk-through for assisting the learner get acquainted with a place through a Virtual Tour. Encourages self exploration with the learner by giving him the liberty to discover a new place." />
+<meta name="keywords" content="" />
+
+<meta name="author" content="Virtual Tour" />
+<meta name="copyright" content="studio.experizer.com" />
+<meta name="application-name" content="Experizer" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Virtual Tour" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Walk-Around.jpg?0.7731936814058076" />
+<meta property="og:url" content="studio.experizer.com" />
+<meta property="og:description" content="360 degree walk-through for assisting the learner get acquainted with a place through a Virtual Tour. Encourages self exploration with the learner by giving him the liberty to discover a new place." />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Virtual Tour" />
+<meta name="twitter:description" content="360 degree walk-through for assisting the learner get acquainted with a place through a Virtual Tour. Encourages self exploration with the learner by giving him the liberty to discover a new place." />
+<meta name="twitter:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Walk-Around.jpg?0.7731936814058076" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../verbose/splash.css">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/aframe-v1.0.4.js"></script>
+  <script src="assets/js/aframe-click-drag-component.min.js"></script>
+  <script src="assets/js/aframe-look-at-component.min.js"></script>
+  <script src="../verbose/aframe-svgfile-component.js"></script>
+
+
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="loaderq" class="lds-roller lds-roller-pos-assets-popup" style="position: absolute; z-index: 9999">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div id="container" class="container">
+    <div class="info" id="info">
+      <div class="inner-overloy hidden-login" style="overflow-y: auto" id="innerInfo">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label id="titleText" class="titleheader">Loading..</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label id="titleDescription"></label>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="row">
+              <div class="col instruction-scroll">
+
+                <label id="instruction"></label>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 border-left">
+            <div class="row text-align-center logo-center-top" id="logoTop">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-2">
+                <img src="assets/images/experizerlogo_black.png" id="splashLogo" class="logo ">
+              </div>
+            </div>
+            <div class="row text-align-center button-center-top mt-2" id="buttonTop">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+                <label id="loading"><b>Loading...</b></label>
+                <button class="button disabled " id="start_experience">Enter</button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row text-align-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <!-- Page Content -->
+    <div id="content">
+      <a-scene id="scene">
+          <a-assets><a-sound id="audio-1"
+                       loop="true"
+                       position="1 1 0"></a-sound>
+              <a-sound id="audio-2"
+                       loop="true"
+                       position="1 1 10"></a-sound>
+              </a-assets>
+              <a-entity sound="src: #audio-1"></a-entity>
+         <a-sky id="skyImage" 
+         >
+        </a-sky>
+        <a-sky id="skyImage1" scale="-1.5 1.5 1.5" rotation="0 0 0" 
+        animation__fadein="startEvents: fadein; property: material.opacity; from: 0; to: 1; dur: 1000;"
+     animation__fadeout="startEvents: fadeout; property: material.opacity; from: 1; to: 0; dur: 1000;" >
+        </a-sky>
+        <a-entity id="rotation" animation="property: rotation; to: 0 -360 0; dur: 100000;easing:linear;fill:forwards;loop:0;repeat:;"
+        animation__one="property: rotation;to: 0 360 0; dur: 2000;easing:easeInOutCirc;fill:forwards;repeat:0.5;loop:0;enabled:false"
+           >
+           <a-entity id="CamEntity">
+              <a-entity id="cameraId"  camera look-controls="reverseTouchDrag:true">
+                
+              <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 1200"  raycaster="objects: .clickable" position="0 0 -1" sky scale="1 1 1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"	material="color: red; shader: flat">
+                <!-- <a-entity id="cursorImage" svgfile="svgFile:assets/images/viewfinder.svg; width:0.012;opacity:1; "   position="-0.054 0.044 -0.014" material="shader: flat;"  light="type:ambient;intensity:1.71" scale="1 1 1"></a-entity> -->
+                 </a-entity>	
+              </a-entity>
+            </a-entity>
+        </a-entity>
+        <!-- <a-entity id="infoBox" visible="false" data-brackets-id="6449" obj-model="obj:assets/images/moonlight.obj" material="src:assets/images/tvscreenplane.jpg;side:double"
+          position="-48.159 28.899 -82.059" look-at="src: #cameraId">
+          <a-text id="textBox" data-brackets-id="6450" text="align:center;width:75;" value="" position="0 0 0.2"></a-text>
+        </a-entity> -->
+      </a-scene>
+    </div>
+  </div>
+</body>
+
+<script src="../verbose/commonpreview.js"></script>
+<script src="assets/js/preview.js"></script>
+</html>

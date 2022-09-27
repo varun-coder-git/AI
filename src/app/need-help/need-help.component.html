@@ -1,0 +1,122 @@
+<div class="row margin-R-0" id="findMainDiv">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 dashboard-header padding-R-0" style="padding-bottom: 0px;">
+  <div class="fix-side-bar header-zindex my-5 ">
+    <img src="assets/images/login/experizerlogo_white.png"  alt="" class="logo-img image-margin-left" title="">   
+</div>
+<!-- <div class=" ml-5 mr-5">
+  <div class="card-body">
+    <div class="text-center ">
+  <h1 class="display-6">Welcome!! How can we help?</h1>
+  <form class="form-inline justify-content-center mt-3">
+     <input class="form-control form-control  w-50 search-height " type="text" placeholder="Search" aria-label="Search" autocomplete="off" [(ngModel)]="searchWordInput" name="searchWordInput" >
+     <i class="fa fa-search ml-3 search-icon" aria-hidden="true" (click)="findWord()"  ></i>
+</form>
+</div>
+  <span class="my-4"></span>
+  </div>
+</div> -->
+</div>
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<div class="container mb-5">
+  <div class="row">
+<div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9  padding-R-0">
+  
+      <label class="mt-5 help-class">Help Topics</label>
+      <hr>
+      <div class="row mb-3">
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+              <a routerLink="/getstarted" class="ref-deco">
+              <div class="card main-card-border">
+                  <div class="card-body row">
+                    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 my-auto mx-auto">
+                      <img src="assets/images/needhelp/getstarted.png " alt="" class="logo-img img-width" title=""> </div>
+                      <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                    <h5 class="card-title font-weight-bold">Getting Started</h5>
+                     <p class="card-text">Articles to get you up and running, quick and easy.</p>
+                   </div>
+                  </div>
+                </div>
+                </a>
+          </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <a routerLink="/faqs" class="ref-deco">
+          <div class="card main-card-border">
+            <div class="card-body row">
+              <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 my-auto mx-auto">
+                <img src="assets/images/needhelp/faq.png " alt="" class="logo-img img-width" title=""> </div>
+                <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+              <h5 class="card-title font-weight-bold">FAQ's</h5>
+               <p class="card-text">How to manage your account and its features.</p>
+             </div>
+            </div>
+          </div>
+          </a>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 hover-body">
+            <a routerLink="/copyright" class="ref-deco">  
+              <div class="card main-card-border">
+                <div class="card-body row ">
+                  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 my-auto mx-auto">
+                    <img src="assets/images/needhelp/copyrightandlegal.png " alt="" class="logo-img img-width" title=""> </div>
+                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                  <h5 class="card-title font-weight-bold">Copyright & Legal</h5>
+                   <p class="card-text">Important information about how we handle our data.</p>
+                 </div>
+                </div>
+              </div>
+              </a>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mobile-hover" (mouseover)="imgSrc = 'assets/images/needhelp/mobileapp_gray.png'" (mouseout)="imgSrc = 'assets/images/needhelp/mobileApp.png'"  >
+            <div class="card main-card-border">
+                <div class="card-body row">
+                  <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 my-auto mx-auto">
+                    <img [src]="imgSrc" alt="" class="logo-img img-width" title=""> </div>
+                    <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 ">
+                  <h5 class="card-title font-weight-bold">Mobile App</h5>
+                   <p class="card-text">Documentation and troubleshooting our mobile app.</p>
+                 </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    
+</div>
+<div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3  padding-R-0">
+  
+  <div class="row mb-3 mt-5">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+      <div class="card help-ask-card-grey-articles">
+        <div class="card-body card-body-class">
+          <h5 class="card-title font-weight-bold">Topics</h5>
+        <p class="card-text">  <a routerLink="/topics/create" class="font-article-color">How to Create an Account?</a></p>
+          <p class="card-text"><a routerLink="/topics/vrexperience" class="font-article-color">Creating a Virtual Reality Experience </a></p>
+        <p class="card-text">  <a routerLink="/topics/assignroom" class="font-article-color">Assigning a room to a Published Experience</a></p>
+        <p class="card-text">  <a routerLink="/topics/newroom" class="font-article-color">Creating a new Room</a></p>
+         <p class="card-text"> <a routerLink="/topics/trackxapi" class="font-article-color">Tracking using Experience API</a></p>
+         <p class="card-text" > <a routerLink="/topics/mywork" class="font-article-color">How can I share my work? </a></p>
+         <p class="card-text"> <a routerLink="/getstarted" class="font-article-color">What is Experizer</a></p>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row mb-3">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+      <div class="card help-ask-card-grey">
+        <div class="card-body card-body-class">
+          <h5 class="card-title font-weight-bold">Need Support?</h5>
+          <p class="card-text">Can't find the answer you're looking for? Don't worry we're here to help!</p>
+          <a href="mailto:care@experizer.com"  class="btn contact-button">Contact Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+</div>
+</div>
+</div>
+</div>

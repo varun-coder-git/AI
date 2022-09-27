@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="./js/jquerry3.4.1.js"></script>
+   <script src="./js/bootstrap.min.js"></script>
+   <script src="./js/aframe.min.js"></script>
+   <script src="objectPreview.js"></script>
+   <link rel="stylesheet" href="objectPreview.css">
+   
+   <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+
+<style>
+
+
+</style>
+</head>
+
+<body>
+   <div class="inner-overloy">
+      <div class="container-fluid" id="sceneDiv" style="display: none;">
+           
+         <div class="row" >
+           
+            <div class="col-10">
+              <div class="slidecontainer"  >
+                  <input type="range" min="0.005" max="5" value="0.5" step="0.0001"  id="myRange"  data-toggle="tooltip" title="Scale"
+                  data-placement="left">
+                </div>
+             </div>
+             <div class="col-2" style="margin-right: 10px;margin-top: 5px;">
+               <div class="buttons " style="text-align:right;">
+                  <button id="startAnimation" onclick="startAnimation()" class=" zoom-in btn btn-default"
+                     style="background-color: #31a38d" data-toggle="tooltip" title="Rotate"
+                     data-placement="left">
+                     <!-- <span class="glyphicon glyphicon-zoom-in"></span> -->
+                     <img src="images/rotation2.png"></img>
+                  </button>
+               </div>
+            </div>
+             </div>
+       
+      </div>
+      <div id='loadingImage'>
+         <div class="container">
+            <div class="loader" id='loader'>
+              <div class="loader--dot"></div>
+              <div class="loader--dot"></div>
+              <div class="loader--dot"></div>
+              <div class="loader--dot"></div>
+              <div class="loader--dot"></div>
+              <div class="loader--dot"></div>
+              <div class="loader--text"></div>
+            </div>
+            <div class="center" id='errorMessage'></div>
+          </div>
+          
+      </div>
+   </div>
+   <a-scene vr-mode-ui="enabled: false" id="aScene" loading-screen="enabled:false">
+      <a-entity orbit-controls="
+              enabled: true;
+              target: #object-entity;
+              autoVRLookCam: false;
+              dampingFactor: 0.125;
+              rotateSpeed:1;
+              minDistance: 2
+" position="0 0 0">
+        <a-entity camera position="0 0 0" id="camera"></a-entity>
+    </a-entity>
+      <a-assets>
+         <a-asset-item id="modelAsset" src="" modify-materials></a-asset-item>
+       </a-assets>
+      <!-- <a-text value="Loading" position="0 0 -5"  id="loadingText" negate="false" scale="2 2 1" text="align: center" visible="true"></a-text> -->
+     
+      <a-entity id="object-entity" position="0 0 -5.4497" drag-rotate-component modify-materials  animation-mixer   shadow="cast: true; receive: false"></a-entity>
+   
+</a-entity> 
+
+      <a-sky color="#66AE74" id='sky'></a-sky>
+   </a-scene>
+</body>
+<script>
+
+   </script>
+</html>

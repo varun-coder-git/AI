@@ -1,0 +1,44 @@
+
+{
+    "english": {
+      "publishAnalytics": {
+        "SelectDate": "Select Date",
+        "TimeSpent": "Time Spent",
+        "Score": "Score",
+        "CompletionStatus": "Completion Status",
+        "Complete": "Complete",
+        "ViewLog": "View Log",
+        "MainHeader": "Name Of Template",
+        "MainHeaderExperience": "Published Analytics",
+        "SubHeader": "Name of Experience",
+        "addonPlanTitle": "Add-on",
+        "menuItemsFiterGreaterLesser": [{"Menu": "Greater Than"}, {"Menu": "Lesser Than"}],
+        "menuItemsFiterStatus":  [{"Menu": "Complete"}, {"Menu": "Incomplete"}, {"Menu": "All"}],
+        "Published" : "Published",
+        "PatronsInvited" : "Patrons Invited", 
+        "PatronsReg" : "Patrons Registered", 
+        "Views" : "Views", 
+        "AverageTimeSpent" : "Average Time Spent",
+        "MaxTimeSpent" : "Maximum Time Spent",
+        "AverageScore" : "Average Score",
+        "ModeFilter": [{"Menu": "Desktop"}, {"Menu": "Mobile"}, {"Menu": "All"}],
+        "Mode": "Mode",
+        "DaysAgo": "days ago",
+        "DayAgo": "day ago",
+        "Patrons" : "patrons",
+        "views": "views",
+        "Name": "Name",
+        "Date": "Date",
+        "Report": "Report",
+        "mins": "mins",
+        "score": "score",
+        "Apply": "Apply",
+        "Clear": "Clear",
+        "Status": "Status",
+        "ErrorNumber" : "Enter number",
+        "AddScore" : "Add Score",
+        "AddTime" : "Add Time",
+        "localLang": "en"
+      }
+    }
+  }

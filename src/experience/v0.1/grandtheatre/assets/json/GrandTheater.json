@@ -1,0 +1,75 @@
+{
+    "lights": [{
+        "LightOption": "Always On",
+        "lightID": "light1"
+    }, {
+        "LightOption": "Always Off",
+        "lightID": "light2"
+    }, {
+        "LightOption": "Switch off lights during Show",
+        "lightID": "light3"
+    }],
+
+    "colors": [{
+        "colorOption": "Blue",
+        "colorPath": {"pathOn": "assets/images/blue_on.jpg", "pathOff": "assets/images/blue_off.jpg"},
+        "colorID": "1"
+    }, {
+        "colorOption": "Green",
+        "colorPath": {"pathOn": "assets/images/green_on.JPEG", "pathOff": "assets/images/green_off.JPEG"},
+        "colorID": "2"
+    }, {
+        "colorOption": "Red",
+        "colorPath": {"pathOn": "assets/images/red_on.JPEG", "pathOff": "assets/images/red_off.JPEG"},
+        "colorID": "3"
+    }, {
+        "colorOption": "Brown",
+        "colorPath": {"pathOn": "assets/images/brown_on.JPEG", "pathOff": "assets/images/brown_off.JPEG"},
+        "colorID": "4"
+    }, {
+        "colorOption": "Black",
+        "colorPath": {"pathOn": "assets/images/Black_on.JPEG", "pathOff": "assets/images/Black_off.JPEG"},
+        "colorID": "5"
+    }, {
+        "colorOption": "Purple",
+        "colorPath":{"pathOn": "assets/images/purple_on.jpg", "pathOff": "assets/images/purple_off.JPEG"},
+        "colorID": "6"
+    }, {
+        "colorOption": "Orange",
+        "colorPath": {"pathOn": "assets/images/orange_on.jpg", "pathOff": "assets/images/orange_off.JPEG"},
+        "colorID": "7"
+    }, {
+        "colorOption": "White",
+        "colorPath":{"pathOn": "assets/images/white_on.jpg", "pathOff": "assets/images/white_off.jpg"},
+        "colorID": "8"
+    },{
+        "colorOption": "Pink",
+        "colorPath":{"pathOn": "assets/images/white_on.jpg", "pathOff": "assets/images/white_off.jpg"},
+        "colorID": "9"
+    }],
+    "delay": [{
+        "delayOption": "5 Seconds",
+        "delayID": "delay1"
+    }, {
+        "delayOption": "10 Seconds",
+        "delayID": "delay2"
+    }, {
+        "delayOption": "15 Seconds",
+        "delayID": "delay3"
+    }, {
+        "delayOption": "No Delay",
+        "delayID": "delay4"
+    }],
+    "loop": [{
+        "loopOption": "None",
+        "loopID": "light1"
+    }, {
+        "loopOption": "Indefinite",
+        "loopID": "light2"
+    }],
+
+    "experience": {
+        "experienceID": "1",
+        "experienceName": "Grand Experience Theater 1"
+    }
+}

@@ -1,0 +1,24 @@
+a-scene {
+  z-index: -1;
+}
+
+/* inner overlay for zoomin and zoomout button */
+
+.inner-overloy {
+  /* width: 60%; */
+  /* position: relative; */
+  /* left: calc(100% - 80%); */
+  padding: 20px;
+  top: calc(100% - 70%);
+  /* box-shadow: 2px 2px 2px 2px #716f6f; */
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .inner-overloy {
+    width: 100%;
+    left: 0px;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 2px #716f6f;
+    top: auto;
+  }
+}

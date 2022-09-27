@@ -1,0 +1,12 @@
+{
+    "ExperienceID": "001",
+    "ExperienceName": "Grand Theater Experience1",
+    "Settings": [{
+                    "lights": "Off when Showing",
+                    "color": "Blue",
+                    "delay": "5",
+                    "loop": "None"
+                }],
+                "VideoSrc": "/GrandTheater/assets/videos/video3.mp4",
+                "SplashImg": "/GrandTheater/assets/images/Desert.jpg"
+} 

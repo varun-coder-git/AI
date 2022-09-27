@@ -1,0 +1,72 @@
+<!-- /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */-->
+<div class="row margin-LR-0">
+  <div class="col-lg-12 col-md-12 col-sm-12 personal-info-header">
+    Personal Information
+  </div>
+</div>
+
+<div class="row personal-info-main-div margin-LR-0">
+  <div class="col-lg-4 col-md-4 col-sm-4 personal-info-image-section">
+    <div class="profilepic"><img class="img-responsive" src="assets/images/avatar.png" alt="Bio Pic"></div>
+    <p></p>
+  </div>
+  <div class="col-lg-8 col-md-8 col-sm-8 personal-info-content-section">
+    <h3 class="content-section-title">About Me <span class="edit-user-info" (click)="editUserInfo()"><i class="fa fa-edit"></i></span></h3>
+      <p class="content-info">
+        <span class="content-title">Full Name</span>
+           <span class="content-separator">:</span>
+           <span class="content-value">Vishal Adsool</span>
+           <span class="content-value-input-hidden"><input type="text" class="form-control" placeholder="Add name" name="name" value="Vishal Adsool"></span>
+      </p>
+      <p class="content-info">
+        <span class="content-title">Address</span>
+           <span class="content-separator">:</span>
+           <span class="content-value">1724 Coolidge Street, SYRACUSE, New York</span>
+           <span class="content-value-input-hidden"><textarea rows="4" cols="50" type="text" class="form-control" placeholder="Add name" name="name" value="1724 Coolidge Street, SYRACUSE, New York"></textarea></span>
+      </p>
+      <p class="content-info">
+        <span class="content-title">Zip</span>
+           <span class="content-separator">:</span>
+           <span class="content-value">13251</span>
+            <span class="content-value-input-hidden"><input type="text" class="form-control" placeholder="Add name" name="name" value="13251"></span>
+      </p>
+      <p class="content-info">
+        <span class="content-title">Phone</span>
+           <span class="content-separator">:</span>
+           <span class="content-value">406-873-8531, 406-873-8532</span>
+            <span class="content-value-input-hidden"><input type="text" class="form-control" placeholder="Add name" name="name" value="406-873-8531, 406-873-8532"></span>
+      </p>
+      <p class="content-info">
+        <span class="content-title">Email</span>
+           <span class="content-separator">:</span>
+           <span class="content-value">poke@yourdomain.me</span>
+           <span class="content-value-input-hidden"><input type="text" class="form-control" placeholder="Add name" name="name" value="poke@yourdomain.me"></span>
+      </p>
+      <div class="user-info-action-div hidden">
+        <button type="button" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" (click)="cancelEditing()">Cancel</button>
+      </div>
+  </div>
+</div>  

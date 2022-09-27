@@ -1,0 +1,551 @@
+<!--  /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */-->
+<div class="" style="top:0" >
+  <div class="row storage-bg margin-LR-0">
+     <div class="col-12">
+      <div class="col-lg-12 col-md-12 col-sm-12 dashboard-header-subtitle"> 
+        Patron Management 
+      </div>
+        <div class="row  padding-24px-15px">
+           <div class="col-3 pb-2">
+              <div class="card card-bg1 text-white">
+                 <div class="storage-card-body ">
+                    <div class="card-text card-inner-header">Patron</div>
+                    <div class="card-text card-inner-count text-align-right">{{cardTotalNumberOfPatron}}<p class="card-inner-footer">patrons</p></div>
+                    <!-- <div class="card-text card-inner-count"  *ngIf="this.totalNumberOfPatron !== null">{{this.totalNumberOfPatron}}<p class="card-inner-footer">total</p></div> -->
+                 </div>
+              </div>
+           </div>
+           <div class="col-3 pb-2">
+              <div class="card card-bg2 text-white">
+                 <div class="storage-card-body ">
+                    <div class="card-text card-inner-header">Invited</div>
+                    <div class="card-text card-inner-count text-align-right">{{cardInvitedNumberOfPatron}}<p class="card-inner-footer">patrons</p></div>
+                 </div>
+              </div>
+           </div>
+           <div class="col-3 pb-2">
+              <div class="card card-bg3 text-white">
+                 <div class="storage-card-body ">
+                    <div class="card-text card-inner-header">Registered</div>
+                    <div class="card-text card-inner-count text-align-right">{{cardRegisteredNumberOfPatron}}<p class="card-inner-footer">patrons</p></div>
+                 </div>
+              </div>
+           </div>
+           <div class="col-3 pb-2">
+              <div class="card card-bg4 text-white">
+                 <div class="storage-card-body ">
+                    <div class="card-text card-inner-header">Active</div>
+                    <div class="card-text card-inner-count text-align-right">{{cardActiveNumberOfPatron}}<p class="card-inner-footer">past 30 days</p></div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="row pt-4 padding-LR-20 margin-LR-0">
+    <div class="col-3 filter-padding-left ">
+        <div class="row">
+            </div>
+      <div class="card patron-filter-shadow" >
+          <div class="col-12 filter-label">
+            <div class="search-span">Search</div>
+              <hr class="search-m mb-0">
+              </div>
+          <div class="card-body">
+            <form (ngSubmit)="patronFilterDisplayData(patronFilterData, 'Clicked')" #patronFilterData="ngForm">
+              <div class="form-group">
+                <!-- <label for="email">Name</label> -->
+                <input type="text" class="form-control" id="name" placeholder="Search name" name="name" [(ngModel)]='PatronFilterDetail.Name'  autocomplete="off">
+              </div>
+              <div class="form-group">
+                <!-- <label for="pwd">Email</label> -->
+                <input type="email" class="form-control " id="pemail" placeholder="Search email" name="pemail"  [(ngModel)]='PatronFilterDetail.Email'  autocomplete="off">
+              </div>
+              <!-- <div class="form-group">
+                <label  class="">Status</label>
+                <div class="btn-group float-right" dropdown>
+                    <i class="fa fa-angle-down drop-toggle" aria-hidden="true" id="statusDropDown" dropdownToggle aria-controls="drop-basic"></i>
+                    <ul id="dropdown-statusDropDown" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="statusDropDown">
+                      <li *ngFor="let menuStatus of menuItemsFiterStatus" class="dropdown-item" (click)="selectedDropdownStatusValue($event)">{{menuStatus.Menu}}</li>
+                    </ul>
+                  </div>
+                  <input type="text" class="form-control " id="pstatus" name="pStatus"  [value]="dropdownSelectedStatusValue"  [(ngModel)]='PatronFilterDetail.Status' readonly>
+            </div> -->
+            <div class="form-group">
+                
+              <select class="form-control hand-pointer adjust-tooltip" id="dropdown-statusDropDown" name="pStatus"  [(ngModel)]="patronStatusId" (change)="onChange($event, patronFilterData)" required>
+               
+                <!-- <option value="undefined" disabled>Select Status</option> -->
+                <option *ngFor="let menuItem of menuItemsFiterStatus" [value]="menuItem.id" [selected]="menuItem.Id == patronStatusId" class="hand-pointer adjust-tooltip">
+                {{menuItem.name}} </option>
+                <!-- <option value="undefined" disabled selected>Select Status</option>
+                <option id="21" value="1" [selected]="patronStatusId == 21">All</option>
+                <option id="22" value="2" [selected]="patronStatusId == 22">Active</option>
+                <option id="23" value="3" [selected]="patronStatusId == 23">Inactive</option> -->
+              </select>
+            
+            </div>
+            <div class="filter-button-ML filter-button-mb">
+              <button type="submit" class="btn patron-apply-button patron-popup-button-font-color">Apply</button>
+              <button type="button" class="btn clear-button patron-popup-button-font-color"  (click)="formReseFiltert(patronFilterData)">Clear</button>
+            </div>
+            <div class="">
+                <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="footer img" class="filter-bottom-img">
+            </div>
+            
+            <!-- <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 filter-img-div">
+                <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="footer img" class="filter-img">
+              </div> -->
+            </form>
+          </div>
+        </div>
+    </div>
+    <div class="col-9">
+      <div class="row pl-4">
+        <div class="col-4 patron-tabel-title">Patrons</div>
+        <div class="col-8 d-flex justify-content-end">
+            <!-- <button type="button" class="btn btn-default patron-download-sample"  (click)="downloadSampleCSVFile()">Download Sample</button> -->
+           <!-- <button type="button" class="btn btn-default patron-import-csv" (click)="csvImportModel(csvImportPatron)">Import CSV</button> -->
+           <img src="assets/images/patronManagement/addpeople32right.png" (click)="csvImportModel(csvImportPatron)" class="patron-add-icon-height hand-pointer mr-3" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter('Import bulk')" ngbTooltip="Import bulk" placement="top">
+           <!-- <i class="fa fa-user-plus patron-add-user hand-pointer adjust-tooltip" aria-hidden="true" (click)="mdModal(addPatron)"  ngbTooltip={{tooltipData[0].addPatron}} placement="top"></i> -->
+           <img src="assets/images/patronManagement/patadd32.png" class=" patron-add-icon-height hand-pointer adjust-tooltip" (click)="mdModal(addPatron)" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter(tooltipData[0].addPatron)"  ngbTooltip="Add" placement="top">
+        </div>
+      </div>
+      <form #editiedFormValue="ngForm">
+      <div class="row pl-3" *ngIf="noDataDisplayFlag === true ">
+          <table class="table" *ngIf="noDataDisplayFlag === true">
+              <thead>
+                <tr class="header-color">
+                  <th class="font-weight-light">Name</th>
+                  <th class="font-weight-light">Email</th>
+                  <th class="font-weight-light">Status</th>
+                  <th class="text-center font-weight-light">Action</th>
+                </tr>
+              </thead>
+              <tbody  *ngIf="noDataDisplayFlag === true">
+                  <tr *ngFor=" let tData of tableData1 | paginate: { id: 'listing_pagination_room',
+                    itemsPerPage: 20,
+                    currentPage: page,
+                    totalItems: totalRec }; let i = index ">
+                  <!-- <td (dblclick)="editName(i,$event)">
+                    <span *ngIf="!tData.inlineNameEdit">{{tData.Name}}</span>
+                    <input type="text" (blur)="editNameSave(i,$event,tData.Id);" *ngIf="tData.inlineNameEdit" name="userEditName" id="userEditName" [(ngModel)]="tData.Name" #userEditName="ngModel" required>
+                    <div *ngIf="tData.inlineNameEdit && editNameFlag">  
+                     <span class="alert alert-danger">
+                          <span class="formErrArrow"> </span>{{alertMessage}}
+                      </span>
+                  </div>
+                  </td> -->
+                  <td>
+                    <ng-container *ngIf="editMode != i">
+                    <span *ngIf="tData.Name.length <= 20">{{tData.Name}}</span>
+                    <div *ngIf="tData.Name.length > 20" class="three-dots-lenght">{{tData.Name}}</div>
+                    </ng-container>
+                    <ng-container *ngIf="editMode == i">
+                    <input type="text" name="userEditName" [(ngModel)]="tData.Name" #userEditName="ngModel" pattern="^[A-Za-z ]+$" required>
+                    <div [hidden]="userEditName.valid || userEditName.touched">
+                        <div class="error-msg-align-forgot" *ngIf="userEditName.errors && userEditName.errors['required']">
+                          <span class="alert alert-danger">
+                            <span class="formErrArrow"> </span>Enter name
+                          </span>
+                        </div>
+                        <div class=" error-msg-align-forgot" *ngIf="userEditName.errors && userEditName.errors['pattern']">
+                            <span class="alert alert-danger">
+                              <span class="formErrArrow"> </span>Enter correct name
+                            </span>
+                          </div>
+                      </div>
+                    </ng-container>
+                  </td>
+                  <td>
+                    <ng-container *ngIf="editMode != i">
+                    <span>{{tData.UserName}}</span>
+                    </ng-container>
+                    <ng-container *ngIf="editMode == i">
+                    <input type="email" name="userEditUserName" [(ngModel)]="tData.UserName" #userEditUserName="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                    <div [hidden]="userEditUserName.valid || userEditUserName.touched">
+                        <div class="error-msg-align-forgot" *ngIf="userEditUserName.errors && userEditUserName.errors['required']">
+                          <span class="alert alert-danger">
+                            <span class="formErrArrow"> </span>Enter valid email
+                          </span>
+                        </div>
+                      
+                    <div class=" error-msg-align-forgot" *ngIf="userEditUserName.errors && userEditUserName.errors['pattern']">
+                      <span class="alert alert-danger">
+                        <span class="formErrArrow"> </span>Enter correct email
+                      </span>
+                    </div>
+                  </div>
+                  </ng-container>
+                  </td>
+                  <td *ngIf="tData.StatusId === 2 ">Inactive</td>
+                  <td *ngIf="tData.StatusId === 1 ">Active</td>
+                  <td class="text-center">
+                    <span class="pr-3" *ngIf="tData.StatusId === 1"><i class="fa fa-circle patron-table-icon-size patron-table-avtive-icon hand-pointer adjust-tooltip" aria-hidden="true" #elem [attr.id]="'status' + tData.id"  (click)="updatePatronStatus(tData.Id, tData.StatusId)" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter(tooltipData[0].RestoreAccess)" ngbTooltip="Inactive" placement="top"></i></span>
+                    <span class="pr-3"  *ngIf="tData.StatusId === 2" ><i class="fa fa-circle patron-table-icon-size patron-table-inavtive-icon hand-pointer adjust-tooltip" aria-hidden="true" #elem [attr.id]="'status' + tData.id" (click)="updatePatronStatus(tData.Id, tData.StatusId)" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter(tooltipData[0].RestoreAccess)" ngbTooltip="Active" placement="top"></i> </span>
+                    <span class="pr-3" *ngIf="!tData.added && tData.RegisteredCount <= 0"><i class="fa fa-pencil patron-table-edit-icon" aria-hidden="true" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter('Update Patron details')" ngbTooltip="Update" placement="top" (click)="editMode = i; editPatron(i)"></i></span>
+                    <span class="pr-3" *ngIf="tData.RegisteredCount > 0"><i class="fa fa-pencil patron-table-edit-icon disable-edit" aria-hidden="true" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter('Update Patron details')" ngbTooltip="Update" placement="top" ></i></span>
+                    <span class="pr-3" *ngIf="tData.added"><i class="fa fa-save patron-save-icon hand-pointer adjust-tooltip" aria-hidden="true" (click)="SaveEditiedSubmit(editiedFormValue, i,tData.Id, tData.Name, tData.UserName)" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter('Save')" ngbTooltip="Save" placement="top"></i></span>
+                    <span class="pr-3"  (click)="goToReport(downloadReport, tData.Id, tData.Name)" ><i class="fa fa-download  patron-table-icon-size patron-table-downlad-icon-color hand-pointer adjust-tooltip"  aria-hidden="true" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter(tooltipData[0].download)" ngbTooltip="Download" placement="top"></i></span>
+                    <span class="pr-3" (click)="openDetailDownloadPopup(detailDownload, tData.Id)"><img src="assets/images/patronManagement/detailsdownload.png" class="detail-download-icon hand-pointer adjust-tooltip" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter('Download a detailed report of this Patrons activity in a specific Published Experience')" ngbTooltip="Report" placement="top" style="width:20px;"></span>
+                    <span (click)="smModal(delete, tData.Id );" class="pr-3 "><i class="fa fa-times patron-table-icon-size patron-table-delete-icon-color hand-pointer adjust-tooltip"  aria-hidden="true" (mouseleave) ="mouseLeave()" (mouseenter) ="mouseEnter(tooltipData[0].deletePatron)" ngbTooltip="Delete" placement="top"></i></span>
+                    
+                  </td>
+                
+                 </tr>
+              </tbody>
+              
+          </table> 
+          
+          
+        <div class="col-12 text-center">
+          <pagination-controls  id="listing_pagination_room" [maxSize]="5" [directionLinks]="true" (pageChange)="page = $event"></pagination-controls>
+        </div> 
+
+      </div></form>
+      <div class="row pl-3 patron-no-data" *ngIf="noDataDisplayFlag === false">
+       <div *ngIf="applyClick === '' ">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+             <div class="row">
+                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                        <div class="first-experience-top">Go ahead! Invite the first Patron to view your virtual experience</div>
+                        <hr>
+                        <div class="first-experience-description">This page will show you the Patrons that you have invited once you begin. You can invite any number of Patrons to your Experizer account. <a routerLink="/needhelp" routerLinkActive="active" target="_blank">checkout this help section</a> to discover how easy it is to configure access to your Virtual Experiences.</div>
+                        <div class="first-experience-mail">Write to us at <a href="mailto:care@experizer.com">care@experizer.com</a> If you have an issue with your Experizer account.</div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <img src="assets/images/dashboard/cat_withenvelope2.png" alt="pop-header" class="create-first-exp-image">
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-lg-1 col-md-1 col-sm-1"></div> -->
+          </div>
+          
+        </div>
+      </div>
+        <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="applyClick === 'Clicked' ">
+            <table class="table">
+                <thead>
+                    <tr class="header-color">
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr class="p-3 d-flex justify-content-center  table-no-found-center font-weight-bold ">
+                        Could not find any record with that search query. You might want to try changing the search parameters.
+                      </tr>
+                  </tbody>
+            </table>
+            
+        </div>  
+      </div> 
+
+    </div>
+    
+  </div>
+</div>
+
+<!-- Delete patron popup-->
+  <ng-template #delete>
+      <div class="modal-header"> 
+          <div class="modal-title pull-left  pl-3 popup-title">Delete Patron</div><br>
+         <button type="button" class="close pull-right mt-1 pl-0 mr-0 " aria-label="Close" (click)="modalRef.hide()" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <div class="modal-body">
+            
+        <div class="row">
+            <div class="col-12">
+                <span>Are you sure you want to delete this Patron? Please note that you may loose all the report related data for this Patron if you click Yes.</span>
+
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-width patron-apply-button patron-popup-button-font-color" (click)="deletePatron(); modalRef.hide()">Yes</button>
+                    <button type="button" class="btn btn-width clear-button patron-popup-button-font-color" (click)="modalRef.hide()">No</button>
+                </div>
+           </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-default" (click)="deletePatron(); modalRef.hide()">Yes</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide()">No</button> -->
+          <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+        </div>
+    </ng-template>
+
+    <!-- Add patron popup -->
+    <ng-template #addPatron>
+        <form (ngSubmit)="patronAddNewData(patronAddData)" #patronAddData="ngForm">
+            <div class="modal-header"> 
+                <div class="modal-title pull-left  pl-3 popup-title">Add Patron</div><br>
+                <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="closeAddPatronPopup(patronAddData);">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+        <div class="modal-body">    
+          <div class="row">
+              <div class="col-12">
+                  <!-- <form (ngSubmit)="patronAddNewData(patronAddData)" #patronAddData="ngForm"> -->
+                      <div class="form-group ">
+                          <div class="row ">
+                            <div class="col-12">
+                                <input type="text" class="form-control" id="Name" placeholder="The name of your Patron" name="pname" [(ngModel)]="PatronAddDetail.Username" #uname="ngModel"  autocomplete="off" pattern="^[A-Za-z]+$" (change)="PatronAddDetail.Username=PatronAddDetail.Username.trim()"  required>
+                                <div [hidden]="uname.valid || uname.untouched && addPatronSubmitted">
+                                    <div class="error-msg-align-forgot" *ngIf="uname.errors && uname.errors['required']">
+                                      <span class="alert alert-danger">
+                                        <span class="formErrArrow"> </span>What is your Patron's name? 
+                                      </span>
+                                    </div>
+
+                                    <div class=" error-msg-align-forgot" *ngIf="uname.errors && uname.errors['pattern']">
+                                      <span class="alert alert-danger">
+                                        <span class="formErrArrow"> </span>Enter correct name
+                                      </span>
+                                    </div>
+                                  </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div class="row ">
+                            <div class="col-12">
+                                <input type="email" class="form-control " id="Email" placeholder="Enter email address" name="pemail" [(ngModel)]="PatronAddDetail.Email" #uemail="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$" autocomplete="off" required>
+                                <div [hidden]="uemail.valid || uemail.untouched && addPatronSubmitted">
+                                    <div class="error-msg-align-forgot" *ngIf="uemail.errors && uemail.errors['required']">
+                                      <span class="alert alert-danger">
+                                        <span class="formErrArrow"> </span>What is your Patron's email address?
+                                      </span>
+                                    </div>
+                                  </div>
+                                <div class=" error-msg-align-forgot" *ngIf="uemail.errors && uemail.errors['pattern']">
+                                  <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>That email does not look right.
+                                  </span>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="form-group " *ngIf="chkEmailResLength > 0">
+                            <div class="row ">
+                              <div class="col-12">
+                                  <input type="text" class="form-control" id="Name" placeholder="Enter Name" name="pname" [(ngModel)]="PatronAddDetail.Username" #uname="ngModel" readonly required>
+                                  <div [hidden]="uname.valid || uname.untouched && addPatronSubmitted">
+                                      <div class="error-msg-align-forgot" *ngIf="uname.errors && uname.errors.required">
+                                        <span class="alert alert-danger">
+                                          <span class="formErrArrow"> </span>Enter name
+                                        </span>
+                                      </div>
+                                    </div>
+                              </div>
+                            </div>
+                          </div> -->
+                          <!-- <div class="form-group " *ngIf="chkEmailResLength === 0">
+                              <div class="row ">
+                                <div class="col-12">
+                                    <input type="text" class="form-control" id="Name" placeholder="Enter Name" name="pname" [(ngModel)]="PatronAddDetail.Username" #uname="ngModel" required>
+                                    <div [hidden]="uname.valid || uname.untouched && addPatronSubmitted">
+                                        <div class="error-msg-align-forgot" *ngIf="uname.errors && uname.errors.required">
+                                          <span class="alert alert-danger">
+                                            <span class="formErrArrow"> </span>Enter name
+                                          </span>
+                                        </div>
+                                      </div>
+                                </div>
+                              </div>
+                            </div> -->
+                  <div class="experience-template-action">
+                      <button type="submit" class="btn patron-apply-button patron-popup-button-font-color btn-width-add-patron" [disabled]="addPatronDisabled">Invite</button>
+                     <button type="button" class="btn clear-button patron-popup-button-font-color btn-width-add-patron" [disabled]="addPatronDisabled"(click)="addPatronClearFormData(patronAddData); modalRef.hide()">Cancel</button>
+                  </div>
+              </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+            <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+          </div>
+        </form>
+      </ng-template>
+
+      <ng-template #downloadReport>
+        <div class="modal-header">
+            <div class="modal-title pull-left  pl-3 popup-title">Download Report</div>
+            <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+       <div class="modal-body"> 
+          <div class="row">
+            <div class="col-12">
+              <input type="radio" name="report" value="PDF" [checked] = "true" (change)="handleChange('PDF')"> PDF<br>
+              <input type="radio" name="report" value="CSV" (change)="handleChange('CSV')"> CSV<br>
+            </div>
+          </div>
+          <!-- <div class="row">
+            <div class="col-12">
+              <hr>
+              <div class="experience-template-action">
+            <button type="button" class="btn btn-success mr-2" (click)= "getPatronReportDownload()">OK</button>
+            <button type="button" class="btn btn-primary" (click)="modalRef.hide()">Cancel </button>
+            </div>
+            </div>
+          </div> -->
+          <div class="experience-template-action">
+            <button type="button" class="btn btn-width patron-apply-button patron-popup-button-font-color" (click)="getPatronReportDownload(); modalRef.hide()">Yes</button>
+            <button type="button" class="btn btn-width clear-button patron-popup-button-font-color" (click)="modalRef.hide()">No</button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">            
+    </div> 
+        
+    </ng-template>
+    <canvas #canvas style="display: none;"></canvas>
+      <!-- Import csv to add multiple patron-->
+      <ng-template #csvImportPatron>
+        <form (ngSubmit)="patronAddCSVData(patronAddCSVDetails, csvFile)" #patronAddCSVDetails="ngForm">
+            <div class="modal-header"> 
+                <div class="modal-title pull-left  pl-3 popup-title">Import CSV data</div><br>
+                <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-12">
+                          <input type="file" accept=".csv" name="csvFile" [(ngModel)]="csvFileName" #csvFile="ngModel" pattern="^.+\.(xlsx|xls|csv)$" (change)="checkFileExtension(csvFile)" required>
+                          <a href="#/patron" class="patron-download-sample-link" (click)="downloadSampleCSVFile()">Download Sample</a>
+                          <div [hidden]="(!csvFile.valid) && !csvFileFlag">
+                            <div class="error-msg-align-forgot" *ngIf="csvFile.errors && csvFile.errors['required']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Please select a CSV file type
+                                </span>
+                            </div>
+                        </div>
+                          
+                          <div class="experience-template-action">
+                              <button type="submit" class="btn patron-apply-button patron-popup-button-font-color btn-width-add-patron">Import</button>
+                             <button type="button" class="btn clear-button patron-popup-button-font-color btn-width-add-patron" (click)="modalRef.hide()">Cancel</button>
+                          </div>
+                     </div>
+                     
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+                  </div>
+        </form>
+      </ng-template>
+      
+      <ng-template #detailDownload>
+      <div class="modal-header"> 
+          <div class="modal-title pull-left  pl-3 popup-title">Experience Activity Log</div><br>
+          <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <div class="modal-body">
+            
+        <div class="row "   *ngIf="noExpDataDisplayFlag === true">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="row">
+              <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                <div class="font-weight-bold">Patron Name: &nbsp;&nbsp;{{ExpDetailList.PersonaData[0].Name}}</div>
+                <div class="pt-2  pb-3 font-weight-bold">Patron Email: &nbsp;&nbsp;{{ExpDetailList.PersonaData[0].Email}}</div>
+              </div>
+              <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" *ngIf="ProfileExpOpenList === true">
+                <span> <img src="{{ProfileImageUrl}}" class="img-fluid rounded-circle patron-avatar"></span>               
+                </div>
+                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3" *ngIf="ProfileExpOpenList === false">
+                  <span><img src="assets/images/avatar.png"  class="img-fluid rounded-circle patron-avatar" ></span>
+                </div>
+            </div>
+            
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 patron-manage-popup-scroll">
+            <table class="table"  *ngIf="noExpDataDisplayFlag === true">
+              <thead>
+                <tr class="header-color">
+                  <th>Experience Name</th>
+                  <th>Activity Date</th>
+                  <th>Time Spent</th>
+                  <th>Download</th>
+                </tr>
+              </thead>
+              <tbody  *ngIf="noExpDataDisplayFlag === true">
+                <tr  *ngFor=" let ExpDetailListData of ExpDetailList.data ; let i = index ">
+                <td>{{ExpDetailListData.PublishedExperienceName}}</td>
+                <td>{{ExpDetailListData.ViewDate | date }}</td>
+                <td>{{ExpDetailListData.TimeSpent }}</td>
+                  <td>
+                  <!-- <span pr-3 class="icon-center-patron-existing"><i class="fa fa-download patron-table-icon-size patron-table-downlad-icon-color hand-pointer adjust-tooltip" aria-hidden="true" ngbTooltip="Download" placement="top"></i></span> -->
+                  <span class="pr-3 hand-pointer" (click)="downloadDetails(ExpDetailListData, 'CSV')"><img src="assets/images/patronManagement/download-csv-icon.png" ngbTooltip="Download CSV" placement="top" ></span>
+                  <span class="pr-3 hand-pointer" (click)="downloadDetails(ExpDetailListData, 'PDF')"><img src="assets/images/patronManagement/download-pdf-icon.png" ngbTooltip="Download PDF" placement="top" ></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row pl-3 patron-no-data" *ngIf="noExpDataDisplayFlag === false">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+               <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="row">
+                      <div class="col-lg-8 col-md-8 col-sm-8">
+                          <div class="first-experience-top">Looks like your Patron is new!</div>
+                          <hr>
+                          <div><p class="first-experience-description">We could not find any activity log for this Patron. This may have happened because</p></div>
+                          <div class="first-experience-description">- Your Patron was not invited to any of your Experience’s.</div>
+                          <div class="first-experience-description">- Your Patron has not yet got a chance to view your Experiences’s.</div>
+                          <div class="first-experience-description">- Your Experience the Patron has viewed is an Open experience that may not require Login.</div>
+                          
+                          <div class="first-experience-mail">In case if you feel this is not right, please write to us at <a href="mailto:care@experizer.com">care@experizer.com</a></div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                          <img src="assets/images/dashboard/cat_withenvelope.png" alt="pop-header" class="create-first-exp-image">
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="col-lg-1 col-md-1 col-sm-1"></div> -->
+            </div>
+            
+          </div>  
+        </div>
+      </div>
+      <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-default" (click)="deletePatron(); modalRef.hide()">Yes</button>
+          <button type="button" class="btn btn-default" (click)="modalRef.hide()">No</button> -->
+          <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+        </div>
+    </ng-template>
+
+<!-- <toaster-container [toasterconfig]="config"></toaster-container> -->
+<ng4-loading-spinner></ng4-loading-spinner>

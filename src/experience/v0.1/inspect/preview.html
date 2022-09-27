@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Experizer Experience</title>
+  <!-- For Google -->
+  <meta name="description"
+    content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Augmented 3D" />
+  <meta name="copyright" content="studio.experizer.com" />
+  <meta name="application-name" content="Experizer" />
+  <!-- For Facebook -->
+  <meta property="og:title" content="Augmented 3D" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image"
+    content="https://studio.experizer.comassets/images/dashboard/grandTheatreThumbnail.jpg?0.4243993684303231" />
+  <meta property="og:url" content="studio.experizer.com" />
+  <meta property="og:description"
+    content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+  <!-- For Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Augmented 3D" />
+  <meta name="twitter:description"
+    content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+  <meta name="viewport"
+    content="width=device-width,height=device-height, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="twitter:image"
+    content="https://studio.experizer.comassets/images/dashboard/grandTheatreThumbnail.jpg?0.4243993684303231" />
+  <link rel="icon" href="/favicon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="assets/js/aframe-v1.0.4.js"></script>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/splash.css">
+  <script src="assets/js/play-with-delay.js"></script>
+  <script src="assets/js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+  <script src="assets/js/hide-once-playing.js"></script>
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="../verbose/commonpreview.js"></script>
+  <script src="assets/js/threex-arpatternfile.js"></script>
+  <script src="assets/js/genrator.js"></script>
+   <script src="assets/js/aframe-ar.js"></script>
+   <!-- <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v6.0.0/dist/aframe-extras.min.js"></script> -->
+   <script src="../verbose/3DAssetLibrary/js/aframe-extras.min.js"></script>
+</head>
+<body style='margin : 0px; overflow: hidden !important;'>
+  <div id="snackbar"></div>
+  <div id="loaderq" class="lds-roller lds-roller-pos-assets-popup" style="position: absolute; z-index: 9999"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div id="container" class="container">
+    <div class="info" id="info">
+      <div class="inner-overloy hidden-login" style="overflow-y: auto" id="innerInfo">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label id="titleText" class="titleheader">Loading..</label>
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label id="titleDescription"></label>
+                   </div>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="row">
+                  <div class="col instruction-scroll">
+                  
+                  <label id="instruction"></label>
+                    
+                 </div>
+              </div>
+             
+          </div>
+         
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 border-left">
+                 <div class="row text-align-center logo-center-top" id="logoTop">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-2">
+                    <img src="assets/images/logo.png" id="splashLogo" class="logo ">
+                   </div>
+                </div> 
+                 <div class="row text-align-center button-center-top mt-2" id="buttonTop">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+                        <label id="loading" ><b>Loading...</b></label>  
+                    <button class="button disabled " id="start_experience"  >Enter</button>
+                   
+                </div>
+                
+            </div>
+        </div>
+      </div>
+        <div class="row text-align-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      
+                </div>
+          </div>
+        </div>
+  </div>
+</div>
+  <a-scene embedded id="aScene"  arjs=' sourceType: webcam;debugUIEnabled: false; ' loading-screen="enabled:false" style="display:none">
+    <a-entity camera>
+      <!-- <a-cursor></a-cursor> -->
+  </a-entity>
+  </a-scene>
+  <div id='imageContainer' class="disabled"></div>
+  <script src="assets/js/preview.js"></script>
+  <!-- <script src="assets/js/loadPreview.js"></script> -->
+</body>
+</html>
+    

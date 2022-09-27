@@ -1,0 +1,557 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!doctype html>
+<html>
+
+<head>
+  <title>Experizer Experience</title>
+  <!-- For Google -->
+<meta name="description" content="Images Orbiting around your learner in a real 3D space. Helps practicing active recall by creating a stronger neural connection with the combination of image, text & voice over. Flash Cards for VR. " />
+<meta name="keywords" content="" />
+
+<meta name="author" content="Image Orbit" />
+<meta name="copyright" content="studio.experizer.com" />
+<meta name="application-name" content="Experizer" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Image Orbit" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Show&tell.jpg?0.7227494436881696" />
+<meta property="og:url" content="studio.experizer.com" />
+<meta property="og:description" content="Images Orbiting around your learner in a real 3D space. Helps practicing active recall by creating a stronger neural connection with the combination of image, text & voice over. Flash Cards for VR." />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Image Orbit" />
+<meta name="twitter:description" content="Images Orbiting around your learner in a real 3D space. Helps practicing active recall by creating a stronger neural connection with the combination of image, text & voice over. Flash Cards for VR." />
+<meta name="twitter:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Show&tell.jpg?0.7227494436881696" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/sidebarinner.css">
+  <link rel="stylesheet" href="assets/css/show&tell.css">
+  <link rel="stylesheet" href="assets/css/fa-v5.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/snackbar.css">
+
+  <link rel="stylesheet" href="../verbose/css/common.css">
+  <link rel="stylesheet" href="../verbose/css/summernote-bs4.css">
+  <link rel="stylesheet" href="../verbose/css/summernote.css">
+
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../verbose/summernotejs/popper.min.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote-bs4.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote.js">
+  </script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/aframe-v1.0.4.min.js">
+  </script>
+  <script src="assets/js/aframe-click-drag-component.js"></script>
+  <script type="text/javascript" src="../verbose/summernotejs/popper.min.js"></script>
+  <script src="assets/js/aframe-gif-shader.min.js"></script>
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../verbose/css/toastr.min.css">
+  <script src="../verbose/toastr.min.js">
+  </script>
+  <!-- Toastr -->
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="spinner center" id="loaderq">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div id="snackbar">Snackbar default text</div>
+  <div class="wrapper">
+    <!-- Page Content -->
+    <div id="content">
+      <div class="container-fluid">
+        <div class="row" style="height: 100vh">
+          <div class="col-1 sidebar-fixed">
+            <button type="button"
+              onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');"
+              onmouseleave="mouseLeave()" id="brandingSidebar"
+              class="btn btn-first btn-vertical-right button-align-first"
+              onclick="toggleSideNav('launchSidenav')">Splash Screen</button>
+            <button type="button"
+              onmouseenter="mouseEnter('Place is the 360 view that your Patron sees. You can customize this place with a compatible image and a few other options.');"
+              onmouseleave="mouseLeave()" id="placeSidebar"
+              class="btn btn-second btn-vertical-right button-align-second"
+              onclick="toggleSideNav('placeSidenav')">Place</button>
+            <button type="button"
+              onmouseenter="mouseEnter('This is the Collection of the images in your Image Orbit. Expand the image tab to customize it.');"
+              onmouseleave="mouseLeave()" id="magesSidebar" class="btn btn-third btn-vertical-right button-align-third"
+              onclick="toggleSideNav('imagesSidenav');">Orbit
+              Images</button>
+          </div>
+          <div class="col-12 vr-editor" id="mainBlock">
+
+            <div id="launchSidenav" class="sidenav margin-left-60">
+              <div id="accordionOne">
+                <div class="card">
+
+                  <div class="card-header" id="headingThree">
+                    <h3 class="mb-0">
+                      <button id="wallBtn1"
+                        onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link" data-toggle="collapse"
+                        data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"> <i class="fa"
+                          aria-hidden="true"></i>
+                        Splash Screen
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                    data-parent="#accordionOne">
+                    <div class="card-body">
+                      <div class="form-group margin-top-15  mb-3 p-0">
+                        <h6 style="color:#fff;width: 100%"><i>Check preview mode to preview Splash Screen</i></h6>
+                      </div>
+                      <div class="form-group margin-top-15  mb-3 p-0">
+                        <label for="splashBackground" style="color:#fff;width: 100%">Background Color:</label>
+                        <div id="bgcolorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer splashBg"
+                            id="splashBackground" value="#8F8F8F">
+                          <div></div>
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15  mb-3 p-0">
+                        <div class="row">
+                          <div class="col-10">
+                            <label style="color:#fff;width: 100%" for="splashOpacity">Background Opacity (Drag to
+                              change):</label>
+                          </div>
+                          <div class="col-2">
+                            <label id="rangeValue"></label>
+                          </div>
+                        </div>
+                        <div class="slidecontainer">
+                          <input type="range" min="0.1" max="1" step="0.001" value="0.1" class="slider"
+                            id="splashOpacity" class="splashOpacity" />
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15  mb-3 p-0">
+                        <label for="splashHeaderColor">Choose Header Font Color:</label>
+                        <div id="colorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer headerfont"
+                            id="splashHeaderColor" value="" style="width: 100%">
+                          <div></div>
+                        </div>
+                      </div>
+                      <div class="margin-top-15 mb-3 p-0">
+                          <div class="row">
+                              <div class="col-8"> 
+                        <label for="frameDescription">Splash Screen Text:</label></div>
+                        <div class="col-4"  style=" padding-left: 63px;">
+                            <span id="maxCount">0</span>
+                            <span >/ 350</span>
+                         </div>
+                        </div>
+                        <textarea Id="summernote" class="form-control lunchScreenText maxContentPost" rows="3"
+                          placeholder="Launch Text" name="Text" value="" maxlength="150"
+                          onblur="addLaunchScreenText();closeSideNav();"></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote2">Instructions For Desktop/PC/Laptop:</label>
+                        <textarea Id="summernote2" class="form-control instructionSetForDesktop" rows="5"
+                          placeholder="Instruction Set" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote3">Instructions For Mobile/VR:</label>
+                        <textarea Id="summernote3" class="form-control instructionSetForAndroid" rows="5"
+                          placeholder="Instructions For Mobile/VR" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+                      <div class="form-group custom-file mb-5 p-0">
+                        <label class="inline-block-display" for="" style="color:white;">Splash Image:</label>
+                        <input type="button"
+                          onmouseenter="mouseEnter('Splash screen has a provision to change the image that appears on it. Use this option to change this image by selecting a new image from your Library.');"
+                          onmouseleave="mouseLeave()" class="form-control custom-file-input handPointer"
+                          onclick="customSkyImage('Image', this)" id="splashImage">
+                        <label class="custom-file-label  input_box_trasparent single-line-text text-overflow"
+                          id="splashImageLable" for="splashImage" style="top:30px; width: 100% !important">Choose
+                          <label class="custom-file-label  single-line-text text-overflow" id="splashImageLable"
+                            for="splashImage" style="color:white;top:30px;">Choose
+                            Image</label>
+                          <!-- <label class="aspect-ratio-style" id="frameImageTitle" for="splashImage"></label> -->
+                      </div>
+                      <!--
+                                            <div class="form-group">
+                                               <button type="button" id="addTeleport"  class="btn mb-2 pull-right button-OK btn-default">Save</button>
+                                           </div>
+-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div id="placeSidenav" class="sidenav margin-left-60">
+              <div id="accordion">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h3 class="mb-0">
+                      <button id="wallBtn1"
+                        onmouseenter="mouseEnter('Change/Set the Background image for the Experience. You can also choose a video if you have one with you.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link south" data-toggle="collapse"
+                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa"
+                          aria-hidden="true"></i>
+                        Place Setting
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="row pb-0">
+
+                        <!--
+                                                    <div class="col-6 padding-0">
+                                                        <div onclick="themeChanged(this)"><span>Executive</span><br><img class='ThemeDiv imagePanel' src="assets/images/360office.jpg" /></div>
+                                                    </div>
+                                                    <div class="col-6 padding-0">
+                                                        <div onclick="themeChanged(this)"><span>Plush</span><br><img class='ThemeDiv imagePanel' src="assets/images/360space.jpg" /></div>
+                                                    </div>
+                                                    <div class="col-6 padding-0">
+                                                        <div onclick="themeChanged(this)"><span>Natural</span><br><img class='ThemeDiv imagePanel' src="assets/images/360nature.jpg" /></div>
+                                                    </div>
+                                                    <div class="col-6 padding-0">
+                                                        <div onclick="themeChanged(this)"><span>Kids</span><br><img class='ThemeDiv imagePanel' src="assets/images/360kids.png" /></div>
+                                                    </div>
+                                                    <div class="col-6 padding-0">
+                                                        <div onclick="themeChanged(this)"><span>Sci-Fi</span><br><img class='ThemeDiv imagePanel' src="assets/images/360scifi.jpg" /></div>
+                                                    </div>
+-->
+                        <div class="col-12 padding-1" id="customBgThemeImage">
+                        </div>
+
+                      </div>
+                      <div class="row padding-TB-0" id="customImageUpload">
+                        <div class="col-12 pb-1">
+
+                          <lable class="">Custom Background Theme:</lable>
+                        </div>
+                        <div class="col-12 pb-3">
+                          <label><input type="radio" name="backgroungType" id="imageRadio"
+                              onclick="changeSkyType('Image')">&nbsp;Image
+                            Background</label><br>
+                          <label><input type="radio" name="backgroungType" id="videoRadio"
+                              onclick="changeSkyType('Video')">&nbsp;Video
+                            Background</label>
+                        </div>
+                        <div class="col-12 pb-3" id="imageSkyPopup">
+                          <div class="custom-file mb-1per">
+                            <label class="custom-file-label form-control input_box_trasparent text-overflow"
+                              id="customLabelThemeImage" for="customFileThemeImage">Choose
+                              Image</label>
+                            <input type="button"
+                              onmouseenter="mouseEnter('Area is the 360 view that your Patron sees. You can customize this place with a compatible image through this option. In case if you don\'t have a 360 image, you can try uploading a Panoroma OR use the \'My image is not spherical\' checkbox while uploading the image.');"
+                              onmouseleave="mouseLeave()" class="custom-file-input  handPointer"
+                              id="customFileThemeImage" onclick="customSkyImage('360Image', this)">
+                            <label class="aspect-ratio-style">Note: Recommended aspect ratio 1:2</label>
+                          </div>
+                        </div>
+                        <div class="col-12 pb-3" id="videoSkyPopup">
+                          <div class="custom-file mb-1per">
+                            <label class="custom-file-label form-control input_box_trasparent text-overflow"
+                              id="customLabelThemeVideo" for="customFileThemeVideo">Choose
+                              Video</label>
+                            <input type="button"
+                              onmouseenter="mouseEnter('Place is the 360 view that your Patron sees. You can customize this place with a compatible video through this option. For the best results please use a 360/spherical video.');"
+                              onmouseleave="mouseLeave()" class="custom-file-input handPointer"
+                              id="customFileThemeVideo" onclick="customSkyImage('360Video', this)">
+                          </div>
+                        </div>
+                      
+                      <div class="col-12 pb-1">
+                          <lable class="">Banner Customization:</lable>
+                      </div>
+                      <div class="col-12" style="margin-top: 2%">
+                          <label>Choose Description Font Color:</label>
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer  descriptionFontColor"
+                            id="descriptionFontColor" value="" style="width: 100%" onchange="changeDescriptionfont()">
+                          <div></div>
+                        </div>
+
+                        <div class="col-12" style="margin-top: 2%">
+                          <label>Choose Description Background Color:</label>
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer descriptionBgColor "
+                            id="descriptionBgColor" onchange="changeDescriptionBg()">
+                          <div></div>
+                        </div>
+                        <div class="col-12" style="margin-top: 2%">
+                          <div class="row">
+                            <div class="col-10">
+                              <label style="color:#fff;width: 100%">Background Opacity (Drag to
+                                change):</label>
+                            </div>
+                            <div class="col-2"  style=" padding: 0px">
+                              <label id="ImageDescriptionRangeValue">(20%)</label>
+                            </div>
+                          </div>
+                          <div class="slidecontainer">
+                            <input type="range" min="0.1" max="1" step="0.001" value=""
+                              class="slider descriptionBgOpacity " id="descriptionBgOpacity" onchange="changeCss(this)"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div id="imagesSidenav" class="sidenav margin-left-60">
+              <div id="accordionNewImage">
+                <div class="card">
+                  <div class="card-header" id="headingNew">
+                    <h3 class="mb-0">
+                      <button id="NewImageBtn1"
+                        onmouseenter="mouseEnter('Add a new Image to your Image Orbit. You can set the Image  by simply filling up the form below. Don\'t forget to hit the \'Add\' button once you are done.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link south" data-toggle="collapse"
+                        data-target="#collapseNewImage" aria-expanded="true" aria-controls="collapseNewImage"><i
+                          class="fa" aria-hidden="true"></i>Add New Image</button>
+                    </h3>
+                  </div>
+                  <div id="collapseNewImage" class="collapse" aria-labelledby="headingNew"
+                    data-parent="#accordionNewImage">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="custom-file ">
+                            <label class="custom-file-label form-control  input_box_trasparent text-overflow"
+                              id="customLabelNewImage" for="customFileImage-0">Choose
+                              Image</label>
+                            <input onmouseenter="mouseEnter('Set a new Image  using this option');"
+                              onmouseleave="mouseLeave()" type="button" class="custom-file-input handPointer"
+                              id="customFileImage-0" onclick="customSkyImage('Image', this)">
+                          </div>
+                          <label class="aspect-ratio-style mb-0" id="frameImageTitle">Note: Recommended aspect ratio
+                            4:3</label>
+                        </div>
+                        <div class="col-12" style="margin-top: 2%">
+                          <textarea maxlength="300" class="form-control input_box_trasparent" id="newImageDiscription"
+                            placeholder="Description text here." onblur="newText()"></textarea>
+                        </div>
+                        
+                        <div class="col-12">
+                          <div class="custom-file" style="margin-top: 2%">
+                            <label class="custom-file-label form-control  input_box_trasparent text-overflow"
+                              id="customLabelAudio-0" for="customFileAudio-0">Choose
+                              Audio</label>
+                            <input
+                              onmouseenter="mouseEnter('You can have an Audio once the Patron browses the image. Use this option to set the Audio file for the same.');"
+                              onmouseleave="mouseLeave()" type="button" class="custom-file-input handPointer"
+                              id="customFileAudio-0" onclick ="customSkyImage('Audio', this)" />
+                          </div>
+                        </div>
+                        <div class="col-12" style="margin-top: 2%">
+                          <input type="button" onmouseenter="mouseEnter('Add a new Image to your Image Orbit.');" style="    margin-top: 5px;"
+                            onmouseleave="mouseLeave()" class="btn pull-right btn-default button-OK" value="Add Image"
+                            onclick="addNewImage()">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="accordionImage">
+              </div>
+            </div>
+            <div id="overlay"></div>
+            <a-scene id="sceneid" mousedrag embedded light="defaultLightsEnabled: false" vr-mode-ui="enabled: false" loading-screen="enabled:false">
+              <a-assets id="assets">
+                <img id="office">
+                <audio id="audioAsset"></audio>
+              </a-assets>
+              <a-entity id="CamEntity">
+                <a-entity id="mainCam"  camera look-controls="reverseTouchDrag:true" position="0 1.6 0" wasd-controls-enabled="false">
+                  <a-entity cursor="fuse: false; fuseTimeout: 1150; rayOrigin: mouse;" raycaster="objects: .clickable">
+                   </a-entity>
+                </a-entity>
+              </a-entity>
+              <a-sphere id="main-bg" radius="20" position="0 1.6 0" rotation="0 90 0" color="#333"
+                material="side: double;opacity:0"></a-sphere>
+              <a-entity id="audioEntity" sound="src: #audioAsset"></a-entity>
+            </a-scene>
+          </div>
+          <div id="toast-container" class="toast-top-center">
+          </div>
+          <div class="sidebar-transparent sidebar-right">
+            <div class="button-divider tour-button">View</div>
+            <div id="freezeView"
+              onmouseenter="mouseEnter('Launch View: If you wish the current view to be the ‘Starting View’ of your Experience, then hit this button.');"
+              onmouseleave="mouseLeave()" onclick="setEntryView()"
+              class="custom-button1 graph-button place-color hidden-label">
+              <img class="img image-fluid" src="assets/images/Freeze_View.png" width="30">
+              <div>Launch View </div>
+              <span class="tooltiptext">Set the current view as the Launch View of the experience</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
+          aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" style="color:#000;">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>Are you sure you want to delete orbit Image?</div>
+                <div class="actionDiv">
+                  <button type="button" class="btn btn-color-green" onclick="deleteImageOnSelect();">Yes</button>
+                  <button type="button" class="btn btn-color-blue" data-dismiss="modal">No</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <img class="modal-footer-image" src="assets/images/HeaderPopup.png">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--
+                <div class="modal" id="maxModal" role="dialog">
+                    <div class="modal-dialog">
+                         Modal content
+                        <div class="modal-content modelPop modelTextColor">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Alert</h4>
+                                <button type="button" class="close" onclick="document.getElementById('maxModal').style.display='none'; $('#loaderoverlay').hide();">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div><span>You can select only 10 images.</span></div>
+                            </div>
+                            <div class="modal-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+-->
+        <div class="modal fade" id="maxModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmationModalLabel">Alert</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>You can add only 10 images.</div>
+                <div class="actionDiv">
+                  <!--          <button type="button" class="btn btn-color-green" onclick="deleteImageOnSelect();">Yes</button>-->
+                  <button type="button" class="btn btn-color-blue" data-dismiss="modal">OK</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <img class="modal-footer-image" src="assets/images/HeaderPopup.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+  </div>
+  <script src="assets/js/customization.js">
+  </script>
+  <script>
+
+  
+$('#summernote2').summernote({
+      placeholder: 'Instructions For Desktop/PC/Laptop',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+    $('#summernote3').summernote({
+      placeholder: 'Instructions For Mobile/VR',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+  
+    </script>
+  <script type="text/javascript">
+    // Default Configuration
+    $(document).ready(function () {
+      toastr.options = {
+        'closeButton': false,
+        // 'debug': false,
+        // 'newestOnTop': false,
+        // 'progressBar': false,
+        'positionClass': 'toast-top-center',
+        // 'preventDuplicates': false,
+        // 'showDuration': '1000',
+        // 'hideDuration': '1000',
+        'timeOut': '2000',
+        'extendedTimeOut': '2000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut',
+      }
+    });
+
+    // Toast Type
+      // $('#freezeView').click(function(event) {
+      //   toastr.success('Presto! This view is now the Starting View of this Experience.');
+      // });
+  </script>
+  <script src="../verbose/jscolor.js"></script>
+</body>
+
+</html>

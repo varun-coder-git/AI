@@ -1,0 +1,55 @@
+<!-- /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */--><div class="row margin-LR-0">
+<div class=" col-xl-12 col-lg-12 col-md-12 col-sm-12 padding-LR-0 ">
+  <img  class="background-img " src="assets/images/preDashboard/dashboard-bk.png">  
+</div>
+ 
+ 
+  <div class="main-container text-center col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+    <div class="text-align-center mt-4">
+      <div >
+        <img  class="img header-logo" src="assets/images/preDashboard/dashboard-logo.png">
+      </div>
+    </div>
+    <div class=" text-align-center headline-text">
+      <h2>Woohoo! Almost done!</h2>
+    </div>
+    <div class=" text-align-center headline-text">
+      <h3>Let us know what best do you represent?</h3>
+    </div>
+    <div >
+      <div class="dashboard-panel" *ngFor="let item of panelData" id="{{item.id}}">
+        <a [routerLink]="['/dashboard']" (click)="addCategory(item.id)">
+          <img src="{{item.image}}">
+          <div>{{item.name}}</div>
+        </a>
+      </div>
+    </div>
+    <div class="dashboard-text position-right">
+      <a [routerLink]="['/dashboard']" (click)="addCategory(8)">
+        <div class="">Other...</div>
+      </a>
+    </div>
+  </div>
+</div>

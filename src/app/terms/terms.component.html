@@ -1,0 +1,1335 @@
+<!-- /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */-->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+ <div class="row margin-R-0  " #serviceMainDiv>
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 padding-R-0">
+    <div class="fix-side-bar header-zindex text-center">
+        <img class="terms-header" style="background-size: auto;" src="assets/images/terms/terms-header.png">
+        <label class="home-class"  (click)="navigateTo()" >Home</label>
+        <img src="assets/images/login/Experizer-black-logo-small-size.png" alt="" class="logo-img" title="">
+        
+	</div>
+  </div>
+ 
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" >
+<div class="row margin-top-down-row" >
+    <!-- terms sidebar -->
+  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 " *ngIf = "termsFlag === true && privacyFlag === false" >
+	<div class="fix-side-bar">
+      <div class="terms-side-menu">
+          <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer"  (click)="scrollToDiv(serviceBlock1)"></i>
+          <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock1)">1. Introduction</h5>
+      </div>
+      <div class="terms-side-menu">
+          <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceBlock2)"></i>
+          <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock2)">2. Definitions</h5>
+      </div>
+      <div class="terms-side-menu">
+          <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceBlock3)"></i>
+          <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock3)">3. Eligibility To Use</h5>
+      </div>
+      <div class="terms-side-menu">
+          <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceBlock4)"></i>
+          <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock4)">4. Subscription To Service And User Account </h5>
+      </div>
+      <div class="terms-side-menu">
+          <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceBlock5)"></i>
+          <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock5)">5. Appropriate Use Of And Prohibitions On Service, Digital Platform And Output</h5>
+      </div>
+      <div class="terms-side-menu">
+        <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer"  (click)="scrollToDiv(serviceBlock6)"></i>
+        <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock6)">6. Communication </h5>
+    </div>
+    <div class="terms-side-menu">
+        <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceBlock7)"></i>
+        <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock7)">7. Confidential Information</h5>
+    </div>
+    <div class="terms-side-menu">
+        <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceBlock8)"></i>
+        <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock8)">8. Intellectual Property Rights</h5>
+    </div>
+    <div class="terms-side-menu">
+        <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceBlock9)"></i>
+        <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock9)">9. Limitation Of Liability</h5>
+    </div>
+    <div class="terms-side-menu">
+        <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceBlock10)"></i>
+        <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock10)">10. Indemnity</h5>
+    </div>
+    <div class="terms-side-menu">
+        <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceBlock11)"></i>
+        <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock11)">11. Content Removal </h5>
+    </div>
+    <div class="terms-side-menu">
+        <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceBlock12)"></i>
+        <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock12)">12. Privacy Policy</h5>
+    </div>
+    <div class="terms-side-menu">
+      <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer"  (click)="scrollToDiv(serviceBlock13)"></i>
+      <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock13)">13.	Warranties  </h5>
+  </div>
+  <div class="terms-side-menu">
+      <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceBlock14)"></i>
+      <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock14)">14.	Termination</h5>
+  </div>
+  <div class="terms-side-menu">
+      <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceBlock15)"></i>
+      <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock15)">15.	Survival</h5>
+  </div>
+  <div class="terms-side-menu">
+      <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceBlock16)"></i>
+      <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock16)">16.	Force Majeure</h5>
+  </div>
+  <div class="terms-side-menu">
+      <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceBlock17)"></i>
+      <h5 class="term-side-menu-service-label" (click)="scrollToDiv(serviceBlock17)">17.	General Provisions</h5>
+  </div>
+     </div>
+  </div>
+
+  <!-- Privacy Polices sidebar -->
+  <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 "  *ngIf = "termsFlag === false && privacyFlag === true" >
+        <div class="fix-side-bar">
+          <div class="terms-side-menu">
+              <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer"  (click)="scrollToDiv(servicePrivacyBlock1)"></i>
+              <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock1)">1. Introduction</h5>
+          </div>
+          <div class="terms-side-menu">
+              <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock2)"></i>
+              <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock2)">2. Type Of Data Collected</h5>
+          </div>
+          <div class="terms-side-menu">
+              <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock3)"></i>
+              <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock3)">3. How Is Your Information Shared And Disclosed</h5>
+          </div>
+          <div class="terms-side-menu">
+              <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock4)"></i>
+              <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock4)">4. How Is Your Information Used </h5>
+          </div>
+          <div class="terms-side-menu">
+              <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock5)"></i>
+              <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock5)">5. Confidentiality And Security</h5>
+          </div>
+          <div class="terms-side-menu">
+            <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer"  (click)="scrollToDiv(servicePrivacyBlock6)"></i>
+            <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock6)">6. Modifications, Alterations Or Updation Of Your Information Or Data </h5>
+        </div>
+        <div class="terms-side-menu">
+            <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock7)"></i>
+            <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock7)">7.Theft Or Loss Of Your Sensitive Information</h5>
+        </div>
+        <div class="terms-side-menu">
+            <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock8)"></i>
+            <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock8)">8. Technology Used To Secure Information</h5>
+        </div>
+        <div class="terms-side-menu">
+            <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock9)"></i>
+            <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock9)">9. Effectiveness</h5>
+        </div>
+        <div class="terms-side-menu">
+            <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock10)"></i>
+            <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock10)">10. Retention Of Information</h5>
+        </div>
+        <div class="terms-side-menu">
+            <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock11)"></i>
+            <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock11)">11. Transfer Of Data </h5>
+        </div>
+        <div class="terms-side-menu">
+            <i class="fa fa-chevron-circle-right terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(servicePrivacyBlock12)"></i>
+            <h5 class="term-side-menu-service-label" (click)="scrollToDiv(servicePrivacyBlock12)">12. Privacy Policy</h5>
+        </div>
+         </div>
+      </div>
+
+  <div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 margin-top-terms-col">
+            <tabset #staticTabs class="patron-tabset" >
+            <tab id="termsTab" heading="Terms of Service" (select)="TermsSideBar()" class="term-title patron-manage-popup-scroll" #termsTab >
+        
+        <div>
+          <label class="term-welcome-message">Welcome to Experizer!</label>
+          <p style="font-size: 16px;">These Terms govern your use of Experizer and the products, features, apps, services, technologies <br>and software that we offer (the <b>Experizer Products</b> or Products), except where we expressly state <br>that separate Terms (and not these) apply.
+          </p>
+        </div>
+        <div class="term-return-top-arrow-div">
+            <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer"></i>
+            <h4 class="term-return-top-arrow  term-page-arrow-icon1 hand-pointer" >Return to top</h4>
+        </div> 
+
+        <div style="padding-bottom: 46px;" #serviceBlock1>
+          <label class="term-service-title-overall term-service-title1 term-page-arrow-icon1">1. Introduction</label>
+          <!-- <p class="term-service-body-part-one">
+            Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+          </p> -->
+          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+              <p class="term-service-scrollbar-contents">
+                Equations Work IT Services Private Limited, a private limited company registered under The Companies Act, 1956 (<b>"Equations Work"</b>, <b>"Service Provider"</b>, <b>"We"</b>, <b>"Us"</b> <b>"Our"</b> and terms of similar meaning) is the owner of the domain name 'www.experizer.com' and provides Services ('Experizer') through the website and the mobile application ("<b>Digital Platform</b>") to you, subject to these Terms of Use and the <span (click)="selectTab(1)" class="policy-link">Privacy Policies</span><br>
+                This 'Terms of Use' (hereinafter referred as 'terms') govern the access and use of the Service through the Digital Platform. Please read the terms carefully as your use of the service through the Digital Platform is subject to and governed by your acceptance of and compliance with these terms since, these terms set out a legally binding agreement between you and us for using the service through the Digital Platform.
+              </p>
+          </div>
+          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                <p class="term-service-scrollbar-contents">
+                    You hereby agree and accept to be bound by these terms, policies and guidelines incorporated by reference in these Terms of Use when you access or use Digital Platform or access, use or subscribe to service by availing any of the available subscription plans including a free-trial. While availing any of the available subscription plans you may be given a choice to click on the 'I Agree' or 'I decline' tab to accept or decline to accept these terms. Should you choose to decline to accept these terms by clicking on the 'I Decline' tab, you will not be able to use service offered by us and shall leave and refrain from using the Digital Platform immediately. You agree that you've read, understood and are bound by these terms upon clicking the 'I Accept' tab and will be granted access to the service in accordance with your subscribed plan. 
+                </p>
+            </div>   
+            <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                <p class="term-service-scrollbar-contents">
+                    THESE TERMS OF USE ARE GENERATED BY A COMPUTER SYSTEM AND DO NOT REQUIRE ANY PHYSICAL OR DIGITAL SIGNATURES. YOU WILL NOT ACCESS OR USE DIGITAL PLATFORM, SERVICE OR OUTPUT IN ANY MANNER THAT EITHER DIRECTLY OR INDIRECTLY VIOLATES ANY LAW, REGULATION, ORDER OR JUDGMENT APPLICABLE TO YOU, OR THE PROPRIETARY, CONTRACTUAL OR OTHER RIGHTS OF ANYONE. YOU SHALL ACCESS OR USE DIGITAL PLATFORM, SERVICE OR OUTPUT IN THE MANNER APPEARING IN THE BELOW MENTIONED CLAUSES.
+                </p>
+            </div>  
+        </div>
+
+        <div #serviceBlock2>
+                <div>
+                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)"></i>
+                    <h4 class="term-return-top-arrow  term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                </div>
+                <div style="padding-bottom: 46px;">
+                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon2">2. Definitions</label>
+                    <!-- <p class="term-service-body-part-one">
+                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                    </p> -->
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Applicable Laws"</b> shall mean any statute, law, regulation, ordinance, rule, judgment, order, decree, bye-law, government approval, directive, guideline, requirement or other governmental restriction or any decision or determination by, or any interpretation, policy or administration of any of the foregoing, by any government authority having jurisdiction over the matter in question, whether in effect as on the date of this terms or thereafter.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                          <b> "Confidential information"</b> shall mean any and all information disclosed to, or otherwise acquired or observed by, receiving party, whether communicated in writing, orally, electronically, photographically, or in recorded or any other form, including, but not limited to, all sales and operating information, existing and potential business and marketing plans and strategies, financial information, cost and pricing information, data media, know-how, designs, drawings, specifications, source codes, technical information, concepts, reports, methods, processes, techniques, operations, devices, and the like, whether or not the foregoing information is patented, tested, reduced to practice, or subject to copyright.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Content"</b> shall mean the content, including but not limited to text, images, audio/video files etc. shared, uploaded by the users and/ or viewers using the Digital Platform, subject to these Terms. “Content” shall also mean and include any comment, information, idea, concept, review, or technique or any other material contained in any communication that any person may send via any written or electronic medium to us or post on any public platform, including responses to questionnaires
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Device"</b> shall mean a hardware device, software or product of such specifications as may be prescribed by the Service Provider, including VR goggles, computers, handheld devices and any other device.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Effective date"</b> means the date on which these terms will become effective and binding.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Intellectual Property"</b> includes ideas, concepts, creations, discoveries, inventions, improvements, know how, trade or business secrets; trademarks, service marks, designs, calculations and information, utility models, tools, devices, models, methods, procedures, processes, systems, principles, algorithms, works of authorship, flowcharts, drawings, books, papers, models, sketches, formulas, teaching techniques, electronic codes, proprietary techniques, research projects, and other confidential and proprietary information, computer programming code, databases, software programs including their Source Code; data, documents, instruction manuals, records, memoranda, notes, user guides; in either printed or machine-readable form, whether or not copyrightable or patentable, or any written or verbal instructions or comments.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Login details"</b> means the user id and password of the user that either he has chosen or provided by us.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Output"</b> means the user created content by using service.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Person"</b> means any natural person or an artificial juridical person created or recognized under the law and includes a firm, LLP, Company, Trust or Co-operative society.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Service"</b> means and includes the services offered under the Digital Platform (including the mobile application) and made available by the Service Provider that helps build Virtual reality experiences without any programming knowledge, but excluding any content or applications not provided or created by the Service Provider.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Subscriber" or "User"</b> means any person authorized to access the Digital Platform by logging in to the User Account.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Terms"</b> mean this 'Terms of Use' or this 'Agreement' in connection with the Service and includes all recitals, annexures, schedules, exhibits appended hereto and any other texts, requirements, subscription plans, benefits, displayed on or communicated through Digital Platform or any other mode, as may be amended and/or modified from time to time.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Viewer"</b> means a person who is viewing, navigating or accessing the Digital Platform or Output.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"User account"</b>- means a location on a server created through the Digital Platform by the user upon registration which can be accessed with login details and exclusively operated by the user to access service and his personal information. 
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Digital Platform"</b>means a website or a mobile application for the domain 'www.experizer.com' through which services can be accessed or used.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>"Service provider"</b> means 'Equations Work It Services Private Limited' or 'We' or 'Our' or 'Us' 
+                        </p>
+                    </div>
+                </div>     
+        </div>
+
+        <div #serviceBlock3>
+                <div>
+                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                    <h4 class="term-return-top-arrow  term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                </div>
+                <div style="padding-bottom: 46px;">
+                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon3">3.	Eligibility To Use</label>
+                    <!-- <p class="term-service-body-part-one">
+                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                    </p> -->
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            The service can be used by any natural person or an artificial juridical person through an authorised representative who shall be a natural person. Such natural person shall be of legal age (i.e. above the age of 18 years) and competent to contract within the meaning of Indian Contract Act, 1872 as amended from time to time. Persons who are incompetent to contract (i.e. minors, lunatics, undischarged insolvents etc.) cannot access or use the Digital Platform or service unless it is done through their legal guardians or parents who are competent to contract.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You may use the service only upon registration on the Digital Platform. We may ask your details such as name, email, phone number and organization name as a pre-requisite for registration and you are required to truthfully and accurately provide all the mandatory information asked during the registration. You represent that you have the valid authority to bind the entity to these terms.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            We reserve the right to restrict your access to service or output totally or partially, including termination of the service if, at any stage it is discovered that you are incompetent to contract or have violated these terms.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You are prohibited from selling, trading, or otherwise transferring your account to another person.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            The service may be best used and output may be best generated with certain devices that may or may not be provided or endorsed by us. The minimum, standard and maximum requirements for using the service may be provided by us on Digital Platform or communicated to you in any other manner. With technological changes and advancement such requirements may be modified from time to time and may require you to upgrade devices to obtain and generate the best service and output. You will be responsible for arranging, operating, upgrading, and maintaining such devices at your own cost and shall not hold us liable or responsible for any failure on your part to meet such requirements or arrange, operate, upgrade, or manage such devices.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You may not access the Digital Platform if you are our direct competitor, or are, either directly or indirectly involved in the design, manufacturing, development, marketing or distribution of any products or providing any services similar to or substitutable to Experizer.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           IF YOU REGISTER FOR A FREE TRIAL, THESE TERMS ALSO SHALL BE APPLICABLE TO THAT FREE TRIAL. 
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            <b>Law Applicable to the Terms </b>
+                            The Terms are published in compliance of, and are governed by the provisions of Indian law, including but not limited to:
+                            (i) 	the Indian Contract Act, 1872;
+                            (ii) 	the (Indian) Information Technology Act, 2000; and
+                            (iii)	the rules, regulations, guidelines and clarifications framed there under, including the (Indian) Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Information) Rules, 2011 (the "SPI Rules"), and the (Indian) Information Technology (Intermediaries Guidelines) Rules, 2011 (the "IG Rules"). 
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            <b>Changes to the Terms: </b>
+                            	We reserve the right to change or modify any portions of these Terms, or any policy or guideline applicable to the Digital Platform and/or the Services, at any time. If you do not agree with such changes, you may cease to use services and Digital Platform and/or cancel the User Account with us without further obligation. Unless otherwise specified, any changes or modifications will be effective immediately upon posting of the revisions on the Digital Platform, and your continued use of the Services after such posting will constitute your acceptance of such changes or modifications. Any new features or tools which may be added to the Services shall also be subject to the Terms. 
+                        </p>
+                    </div>
+                </div>     
+        </div>
+
+        <div #serviceBlock4>
+                <div>
+                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                    <h4 class="term-return-top-arrow  term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                </div>
+                <div style="padding-bottom: 46px;">
+                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon4">4.	Subscription To Service And User Account </label>
+                    <!-- <p class="term-service-body-part-one">
+                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                    </p> -->
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            The Digital Platform is an online platform that supports and facilitates its users to gain access to Services.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents inner-scroll">
+                           You acknowledge that, although the internet is often a secure environment, there might be interruptions in service or events beyond our control and any data, while its transmission on the internet may be lost. While it is our objective to make the Digital Platform accessible at all times, the Digital Platform may become unavailable from time to time for any reason including, without limitation, routine maintenance. You understand and acknowledge that due to circumstances both within and outside of the control of the Service Provider, access to the Digital Platform may be interrupted, suspended or terminated from time to time. We have the right to change or discontinue any aspect or feature of the Digital Platform from time to time, including, but not limited to, the content, hours of accessibility and device needed for access or use. Further, we may discontinue disseminating any portion of information or category of information or may change or eliminate any transmission method and transmission speeds or other signal characteristics. We reserve the right to remove or edit contents on the Digital Platform and/or limit or refuse accessibility to the Digital Platform, without any notice to you.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            <b>Free Trial:</b> After registration, you may either choose free trial or the paid subscription plans. The free trial will be available for a limited duration mentioned for that plan and the service shall automatically cease upon expiry of the free trial period unless service is renewed by subscribing for a paid plan before the free trial expires. You can avail free trial only once. Any data you enter into the Services, and any customizations made to the Services by or for you during your free trial, will be permanently lost unless you purchase a subscription to the Services or purchase the upgraded Services, before the end of the trial period. You cannot transfer data entered or customizations made during the free trial to a service that would be a downgrade from that covered by the trial;. During the free trial, the Services are provided "as is" without any warranty.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You will be allotted login details upon successful registration. You may change the password by accessing your user account. You may change all the personal details from your user account except the email id provided at the time of registration.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            Being a prepaid service, your subscription and access to service shall continue for the entire duration of your plan and cannot be terminated, stopped, or paused temporarily by you before the expiry of your plan. The subscription amount once paid to us shall not be refunded to you in any event including the event where you fail to use or access Service for any reason whatsoever. Your access to Service and output shall cease upon expiry of the duration of subscription plan. 
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           You understand that it is your duty and responsibility to safeguard the login details and contents of your user account. You undertake that you will not allow to login or login and then allow, any unauthorised person to use or access service or Digital Platform from your user account. You understand and agree that we will not be liable to you or any other person for the consequences arising out of use or misuse of your user account whether intentionally or unintentionally and whether by you or any other person using your user account. 
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You cannot transfer, lease, license, sell, allow use or gift the rights to use your user account.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You may choose to share output with selective viewers or the general public in accordance with your subscription plan. Each selected viewer shall require login details to view output and he shall be responsible to keep the login details secure.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           <b>Fees and Charges</b></p>
+                           <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents inner-scroll">
+                                Fees and any other charges for the use of the Services are described on the Digital Platform. The fees charged by us are according to the Services rendered by us. The fees for the Services stated are in US Dollar and/or Indian Rupees and are inclusive of all applicable taxes only in India, the details of which are provided, and are updated from time to time on the Digital Platform beforehand. All purchased Services and the paid fees are non-cancellable and non-refundable. Account access for any User Account will be suspended upon expiration of the subscription term of an account without imparting any grace period for renewal, unless renewed by you by paying renewal charges. In the event any renewal charges are paid by you, we will renew such User Account. 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                If the fees for the Services or any part thereof change, your continued use or access of the Services after the change indicates your agreement with the new applicable fees and charges after the effective date of the change. Any change to the fees and other charges will not be applicable to the billing period in which the change occurs. You are responsible for all taxes applicable to the fees and charges in the applicable jurisdiction, except India. 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents inner-scroll">
+                                You agree that: (i) you will fulfil your obligation to pay all the applicable taxes thereof; (ii) any payment information that you provide is true and accurate; (iii) we have the permission to retain the payment information, including the debit and credit card information submitted by you or your issuing bank; and (iv) we are authorized to charge upon you the fees for the Services using the payment method and the information provided by you that is stored in your account as of the applicable date for payment. We will issue an invoice on or shortly after the date on which the Service is purchased and on any periodic basis as provided on the Digital Platform. If you purchase a Service that renews automatically, such as monthly, quarterly, bi-annually or annually, you agree that we may process the payment method opted by you on any renewal term (based on the applicable billing cycle), on the calendar day corresponding to the commencement of the Service, as applicable. In addition, you agree that we have the permission to retain and/or share with financial institutions and payment processing firms, information regarding your purchase and the submitted payment information in order to process the purchase. 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                We have customized pricing according to the Services rendered by us. You will be able to book and/or register for Services only on advance payment of the associated fees to the Services selected by you. The payment shall be made only through the payment gateways and modes enlisted on the Digital Platform. 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                The Services availed by you, which you have made payment for, are subject to availability, and we reserve the right to cancel all or any part of the Services and to discontinue making certain Services available through the Digital Platform without any prior notice. Please note that except for the circumstances mentioned hereunder, you will not be refunded any amounts paid to us:
+                                a. In the event we are unable to confirm the Services; or
+                                b. If the User is not willing to opt for any alternate Services suggested by the Service Provider.  
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>     
+        </div>
+
+        <div #serviceBlock5>
+                <div>
+                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                    <h4 class="term-return-top-arrow  term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                </div>
+                <div style="padding-bottom: 46px;">
+                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon5">5.	Appropriate Use Of And Prohibitions On Service, Digital Platform And Output</label>
+                    <!-- <p class="term-service-body-part-one">
+                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                    </p> -->
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           You hereby agree to use service, Digital Platform and output only for the purpose that is legal, proper and in accordance with these terms and any applicable policies or guidelines.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            We may provide links on the Digital Platform that may allow you to leave the Digital Platform. The linked sites are neither endorsed by us nor under our control and we shall not be responsible for the contents of any linked site nor any link contained in a linked site. The third party links to our Digital Platform shall be governed by the terms of use and privacy policy of the third party sites.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You hereby understand, agree and acknowledge that you shall not comment, post, transmit, upload, reply, write or remark on our Digital Platform or any social networking websites or applications, instant messaging services, short messaging services, multimedia messaging services, Blogs or any such other interactive or communication services, anything that is or prima facie appears to be incorrect, inappropriate, obscene, derogatory or defamatory to us or any of our brands or hampers our reputation or reputation of any of our brands or devalues or lowers our esteem in the minds of people.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            <b>You and the Viewer agree that you and the Viewer shall not use service, Digital Platform or output:</b>
+                        </p>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To modify or replace the text, images, or other content on the Digital Platform including by (a) changing the order in which the content appear, or (b) modify, replace, obscure, or otherwise hinder the functioning of links to the Digital Platform or third party websites provided elsewhere by us; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                              To defame, abuse, harass, stalk, threaten or otherwise violate the legal rights (such as rights of privacy and publicity) of others; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To upload, post, email or transmit or otherwise make available any content that infringes any patent, trademark, copyright, trade secret or other proprietary right of any party, unless You are the owner of the content or have the permission of the owner to post such content; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                               To reverse-engineer, decompile, disassemble, modify or create derivative works based on the Services or any part thereof;  
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To reproduce, duplicate, copy, sell, resell, or exploit, any portion of the Services, use of the Services, or access to the Services; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To collect or store data about other people using the Services; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                              To use any device or software to interfere or attempt to interfere with the proper working of the Digital Platform; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To take any action that imposes an unreasonable or disproportionately large load on the infrastructure of the Digital Platform; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                               To use the Services in any manner other than as expressly authorized in the Terms; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To circumvent any technology used by Services, its licensors, or any third party to protect the Output or Content accessible through the Services
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To perform, be a part of or do anything illegal or unauthorized; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To create user accounts by automated means or under false or fraudulent pretense or multiple registrations of yourself; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                               To indulge in doing any activity that will violate any law of the land;
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To hurt the sentiments of any religion, race, sex or caste, promote hatred, create or publish anything vulgar;
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                               Against the public policy;
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To interfere with or disrupt service or servers or networks connected to service, or disobey any requirements, procedures, policies or regulations of networks connected to service; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To use any robot, spider, site search/retrieval application, or other device to retrieve or index any portion of service or to collect information about users for any unauthorized purpose; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                Submit content that falsely expresses or implies that such content is sponsored or endorsed by us;
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To transmit any viruses, worms, defects, Trojan horses, or any items of a destructive nature.
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                To upload content more than the size allocated or allowed for your subscription plan on the Digital Platform; 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                               To remove or alter any copyright, trademark or other intellectual property notices contained on or provided through the Services and must reproduce such copyrights, trademarks or other intellectual property notices on all copies explicitly permitted to be made, if any;
+                            </p>
+                        </div>
+
+                    </div>
+                </div>     
+        </div>
+
+        <div #serviceBlock6>
+                <div class="term-return-top-arrow-div">
+                        <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                        <h4 class="term-return-top-arrow  term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                    </div> 
+                    <div style="padding-bottom: 46px;">
+            <label class="term-service-title-overall term-service-title1 term-page-arrow-icon1">6. Communication </label>
+            <!-- <p class="term-service-body-part-one">
+              Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+            </p> -->
+            <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                <p class="term-service-scrollbar-contents">
+                    You may communicate with us either through email or telephone on the email address and telephone number mentioned on the Digital Platform. You hereby agree that we may communicate with you through email, telephone or messages on the email address and telephone number that you have provided to us during registration on the Digital Platform or thereafter. You agree to receive information, notifications, updates, offers, new product launches, discounts or such other communication (hereafter collectively known as ‘communication’) from us through email, telephone or messages and that such communication satisfies all the statutory requirements. You hereby consent that notwithstanding the activation of DND service for your telephone number, we can call or send messages to you which are related to your present or past transaction with us.
+                </p>
+            </div>
+            </div>
+          </div>
+  
+          <div #serviceBlock7>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)"></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon2">7.	Confidential Information</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                          <p class="term-service-scrollbar-contents">
+                            The Parties acknowledge that during the performance of its obligations herein, each Party ("Receiving party") will have access to certain of the other Party's ("Disclosing party") Confidential Information or Confidential Information of third parties that the disclosing party is required to maintain as confidential. Both the Parties hereby agree that all items of Confidential Information are proprietary to the disclosing party or such third party, to the extent and subject to the restrictions and exceptions provided in these terms, and shall remain the sole property of the disclosing party or such third party.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            Subject to use, restrictions and exceptions provided in these terms the receiving party agrees as follows: (i) to use the Confidential Information of disclosing party only for exercising its rights and performing obligations described herein; (ii) not to reproduce and will hold in confidence and protect the Confidential Information from dissemination to, and use by, any third party; (iii) shall not create any derivative work from Confidential Information of disclosing Party; (iv) to provide access of the Confidential Information to its personnel, affiliates, sub-contractors, agents, and/or consultants, if any, on a need to know basis and who have been advised of and have agreed in writing to treat such information in accordance with these terms; and (v) to return or destroy all Confidential Information of the other Party in its possession upon termination or expiration of this Agreement. 
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            Notwithstanding the foregoing, the provisions of Sections 7.1 and 7.2 shall not apply to Confidential Information that (i) is available publicly or in the public domain at the time of its disclosure; (ii) is or becomes available publicly or enters the public domain through no fault of the receiving party; (iii) is rightfully communicated to the receiving party by persons who are not bound by the confidentiality obligations with respect thereto; (iv) is already in the possession of receiving party free of any confidentiality obligations with respect thereto at the time of its disclosure; (v) is independently developed by the receiving party; or (vi) is approved for release or disclosure by the disclosing Party without restriction.
+                          </p>
+                      </div>
+                   </div>     
+          </div>
+  
+          <div #serviceBlock8>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon3">8.	Intellectual Property Rights</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            All the rights, title and interest in the Digital Platform and service including the contents thereof is either owned by or licensed to us. Such content may include source code, graphics, designs, music, videos, tradenames, logos, literature, photos, art, sound etc. whether registered or not. You hereby understand that we are not under any obligation to display any marks or identification for aiding you in knowing whether we hold any proprietary or intellectual property rights in service or Digital Platform or any material in question. You hereby agree and acknowledge that you do not acquire any rights whatsoever in the service, Digital Platform or any material or content downloaded or used from the Digital Platform. You shall be liable for any infringement of our proprietary or intellectual property rights where you are directly or indirectly a party to such infringement.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            If you are a paid subscriber, you shall hold and retain all the intellectual property rights in your customer data and output hosted on Digital Platform. 
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           If you have subscribed to the free trial, we shall hold all the right, title and interest in the output. Such output shall, in our sole discretion be available for display on Digital Platform for other users.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You understand that we host your output on our Digital Platform and generate a link of the output. Your viewers can view such output only through our Digital Platform by clicking on the link you have provided to them. Therefore, to enable us to provide access of your output to your viewers, improve our Service, analyze data, provide you with technical support, you hereby grant us a perpetual, irrevocable, worldwide, non-exclusive, sub-licensable and royalty-free license to use the output. Use includes use, host, store, modify, communicate, and publish.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            We may provide a public area on the Digital Platform (i.e. forum) where you may contribute with your questions, views, opinions, answers, gestures or in any other legal form of expression and such contribution may be viewed by any other user of the Digital Platform. You hereby expressly agree and acknowledge that any material contributed by you on the public area of the Digital Platform is your original work or that you have acquired appropriate rights of the said material and that you hereby grant us perpetual, royalty-free, worldwide, irrevocable and non-exclusive right and license to use, reproduce, distribute, modify, adapt, copy, edit, publish, commercialise, and translate such material either whole or in part worldwide and/or to embed or incorporate such material in other works in any form including in any technology or media now known or hereafter developed for the full term of any copyright that may exist in such material.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            You hereby agree and grant us a revocable, non-exclusive, worldwide, royalty-free license to use your organization name and organization logo or app logo solely for marketing purpose to be used on our Digital Platform, printed brochures and advertisements.
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            We are not liable for any infringement of copyrights, trademarks, or other proprietary or Intellectual Property rights arising out of content posted on or transmitted through the Digital Platform, or items advertised on the Digital Platform, by our other users. Further, you agree not to download any material or content from the Digital Platform.
+                        </p>
+                    </div>
+                  </div>     
+          </div>
+  
+          <div #serviceBlock9>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon4">9.	Limitation Of Liability</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            YOU HEREBY UNDERSTAND AND AGREE THAT WE SHALL NOT BE LIABLE TO YOU FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO, DAMAGES FOR LOST PROFITS, LOST OPPORTUNITY, GOODWILL, USE, LOST DATA OR OTHER INTANGIBLE LOSSES (EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), RESULTING FROM: (i) THE USE, MISUSE OR THE INABILITY TO USE SERVICE, DIGITAL PLATFORM OR OUTPPUT; (ii) UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR INFORMATION OR DATA; OR (iii) ANY OTHER MATTER RELATING TO SERVICE, DIGITAL PLATFORM OR OUTPUT.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            TO THE EXTENT PERMITTED BY LAW OUR TOTAL LIABILITY FOR ANY CLAIMS UNDER THESE TERMS INCLUDING THE IMPLIED LIABILITY FOR WARRANTIES AND INDEMNIFICATION LIABILITY SHALL BE LIMITED TO THE AMOUNT YOU PAID US FOR SERVICE DURING THE THREE MONTHS PRIOR TO THE EVENT GIVING RISE TO THE LIABILITY. 
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                           THE SERVICE PROVIDER HAS NO CONTROL OVER THE ACCURACY, QUALITY AND AUTHENTICITY OF THE CONTENT UPLOADED BY THE USER, VISITOR AND/ OR ANY THIRD PARTY ON THE DIGITAL PLATFORM AND SHALL HAVE NO LIABILITY WITH RESPECT TO, INCLUDING BUT NOT LIMITED TO ERRORS OR OMISSIONS CONTAINED IN THE CONTENT THEREIN, LIBEL, INFRINGEMENTS OF RIGHTS OF PUBLICITY, PRIVACY, TRADEMARK RIGHTS, COPYRIGHTS, BUSINESS INTERRUPTION, PERSONAL INJURY, LOSS OF PRIVACY, MORAL RIGHTS OR THE DISCLOSURE OF CONFIDENTIAL INFORMATION. 
+                        </p>
+                    </div>
+                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            The Services are controlled and offered by from its facilities in the Republic of India. The Service Provider makes no representation that the Digital Platform is appropriate or available for use in other locations other than those approved by it, from time to time. Those who access or use the Digital Platform from other jurisdictions do so at their own volition and are responsible for compliance with the applicable Law.
+                        </p>
+                    </div>
+                  </div>     
+          </div>
+  
+          <div #serviceBlock10>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon5">10.	Indemnity</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                          You agree to hold harmless, defend and indemnify us, and our subsidiaries, affiliates, directors, officers, agents, and employees, without limitation, against all liability, expense, costs, losses, damages (actual and consequential), suits, judgments, litigation costs and attorneys' fees, of every kind and nature relating to any allegation or third party legal proceeding to the extent arising from or in any way related to your use of, misuse of or inability to use service, Digital Platform or output either on your own account or through any third party, violation of any third Party intellectual property rights or confidential information, violation of these terms. In such a case, we will provide you with a written notice of such claim, suit or action, however failure to provide such written notice shall not absolve you from the liability.
+                          </p>
+                      </div>
+                  </div>     
+          </div>
+        
+          <div  #serviceBlock11> 
+              <div class="term-return-top-arrow-div">
+                <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                <h4 class="term-return-top-arrow  term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+            </div> 
+            <div style="padding-bottom: 46px;">
+            <label class="term-service-title-overall term-service-title1 term-page-arrow-icon1">11.	Content Removal</label>
+            <!-- <p class="term-service-body-part-one">
+              Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+            </p> -->
+            <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                <p class="term-service-scrollbar-contents">
+                    We respond to the notices of alleged infringement of intellectual property rights if they comply with the respective intellectual property rights protection laws. We may also act suo-motu if in our sole opinion any output infringes upon the intellectual property rights of anyone or is against the prevalent laws or in violation of Section 5 hereinabove. If in our sole opinion we find any output to be infringing or against the prevalent laws or in violation of Section 5 hereinabove then we may ask you to remove or delete the output and you shall upon such intimation forthwith remove or delete the output. We reserve the right to remove or delete such output without any intimation or notification to you.
+                </p>
+            </div>
+         </div>
+         </div>
+  
+          <div #serviceBlock12>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)"></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon2">12.	Privacy Policy</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                          <p class="term-service-scrollbar-contents">
+                            You may read our privacy policy at <span (click)="selectTab(1)" class="policy-link">Privacy Policies</span> to know about our data protection practices and, how we treat your personal information and non-personal information, and protect your privacy when you use or access service, Digital Platform or output. You hereby agree to the use of your data in accordance with our privacy policy.
+                          </p>
+                     </div>
+                  </div>     
+          </div>
+  
+          <div #serviceBlock13>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon3">13.	Warranties </label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            We will use reasonable efforts in accordance with the prevalent industry standards to provide service, Digital Platform and output in a professional and workmanlike manner. The service, Digital Platform or output may be interrupted temporarily due to scheduled maintenance, unscheduled emergency maintenance or for other reasons beyond our control and we will reasonably try to keep the interruption for a minimum duration.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                              <b>YOU HEREBY UNDERSTAND AND EXPRESSLY AGREE THAT:</b>
+                          </p>
+                          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                YOU WILL USE SERVICE AND DIGITAL PLATFORM AT YOUR SOLE RISK. WE ARE PROVIDING SERVICE AND DIGITAL PLATFORM ON AN "AS IS" AND "AS AVAILABLE" BASIS AND TO THE EXTENT PERMITTED BY LAW WE EXPRESSLY DISCLAIM ALL WARRANTIES, GUARANTEES, UNDERTAKINGS, REPRESENTATIONS, CONDITIONS OR CLAIMS OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.   
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                	WE MAKE NO WARRANTY THAT (i) THE SERVICE, DIGITAL PLATFORM OR OUTPUT WILL MEET YOUR REQUIREMENTS; (ii) THE ACCESS TO THE DIGITAL PLATFORM, SERVICE OR OUTPUT WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE; (iii) THE OUTPUT WILL BE ACCURATE OR RELIABLE; (iv) THE QUALITY OF SERVICE OR OUTPUT WILL MEET YOUR EXPECTATIONS; AND (v) ANY ERRORS IN THE SERVICE WILL BE CORRECTED.  
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                While we attempt to make your access to and use of the Services safe, we do not represent or warrant that the Digital Platform or the Services are free of viruses or other harmful components. 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                YOU SHALL CREATE OR ACCESS THE OUTPUT OR USE SERVICE, DIGITAL PLATFORM OR OURPUT AT YOUR OWN RISK AND THAT YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR HARDWARE OR SOFTWARE THROUGH WHICH YOU’VE CREATED OR ACCESSED OUTPUT OR USED SERVICE, DIGITAL PLATFORM OR OURPUT OR LOSS OF DATA THAT RESULTS FROM CREATION OF OR ACCESS TO THE OUTPUT OR USAGE OF SERVICE, DIGITAL PLATFORM OR OURPUT. 
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED BY YOU FROM US OR THROUGH OR FROM SERVICE SHALL CREATE ANY WARRANTY NOT EXPRESSLY STATED IN THESE TERMS.
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                You hereby understand, agree and acknowledge that any payment you make towards the Service whether by way of a credit card, a debit card, internet banking or a prepaid cash card, a wallet or through any other mode are either processed through third party payment gateways or require authorisation by the intermediary which processes the payments. The processing of payments or authorization is solely in accordance with their terms and policies and we are not in any manner responsible or liable to you or any third party for any delay or failure at their end in processing the payments. You may email us at care@experizer.com mentioning full particulars of the payment including date and the transaction number if your payment is delayed or declined by the third party payment gateway or intermediary. However, we will not be liable or responsible to you in any manner, if in the unfortunate event that inspite of our efforts your payment is eventually delayed or declined.
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                We make all endeavors to ensure that all the information on the Digital Platform is correct, but we neither warrant, nor make any representations regarding the quality, accuracy or completeness of any data, information, Services or any content available on the Digital Platform. The material on the Digital Platform is provided for general information only and should not be relied upon or used as the sole basis for making decisions without consulting primary, more accurate, more complete or timely sources of information. Any reliance on the content on the Digital Platform is at your own risk. We do not guarantee that the Digital Platform and its servers are free of viruses or other harmful applications. Moreover, the Digital Platform may contain certain historical information. We reserve the right to modify the contents of the Digital Platform, but have no obligation to update any information on the Digital Platform.
+                            </p>
+                        </div>
+                      </div>
+                  </div>     
+          </div>
+  
+          <div #serviceBlock14>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon4">14.	Termination</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            We may terminate service without any prior notice to you if we find in our sole opinion that you have violated these terms. Upon such termination you will not be able to access service or output including your user account and password. You cannot pause, stop or terminate the service before the expiry of its duration.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            We reserve the right to modify or discontinue service anytime at our sole discretion. In such an event we shall notify you in advance of the modification or discontinuance of service.    
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                        <p class="term-service-scrollbar-contents">
+                            We reserve the right to modify these terms anytime and post the modified terms with the effective date on the Digital Platform. We shall not be held responsible or liable if such modified terms are detrimental to your interests in any manner. You may forthwith cease to use service and Digital Platform if you do not agree with the modified terms.  
+                        </p>
+                    </div>
+                  </div>     
+          </div>
+  
+          <div #serviceBlock15>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon5">15.	Survival</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            Notwithstanding any other provisions of these terms, or any general legal principles to the contrary, any provision of these terms that imposes or contemplates continuing obligations on a party will survive the expiration or termination of these Terms.
+                          </p>
+                      </div>
+                    </div>     
+          </div>
+
+          <div  #serviceBlock16>
+                <div class="term-return-top-arrow-div">
+                        <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                        <h4 class="term-return-top-arrow  term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                    </div> 
+                    <div style="padding-bottom: 46px;">
+            <label class="term-service-title-overall term-service-title1 term-page-arrow-icon1">16.	Force Majeure</label>
+            <!-- <p class="term-service-body-part-one">
+              Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+            </p> -->
+            <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                <p class="term-service-scrollbar-contents">
+                    We shall not be deemed to be in breach of these terms or otherwise liable to you for any delay in performance or any failure to perform any obligations under this Agreement (and the time for performance shall be extended accordingly) if and to the extent that the delay or failure is due to a Force Majeure Event.
+                </p>
+            </div>
+            <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                  <p class="term-service-scrollbar-contents">
+                    We shall notify you in writing of the nature and extent of the circumstances giving rise to a Force Majeure Event. Notwithstanding the foregoing, each party shall use all reasonable endeavors to continue to perform its obligations for the duration of any Force Majeure Event
+                  </p>
+              </div>   
+              <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                  <p class="term-service-scrollbar-contents">
+                    For the purpose of this Agreement <b>"Force Majeure"</b> shall mean any events not within the reasonable control of a concerned party and which could not have been reasonably foreseeable, including without limitation, fire, flood, atmospheric disturbance, lightning, storm, typhoon, tornado, earthquake, landslide, soil erosion, subsidence, washout or epidemic or other acts of God, war (whether declared or undeclared), blockade, insurrection, rebellion, mutiny, civil commotion, riot, acts of public enemies or civil disturbance, strike, lockout, or other industrial disturbance, affecting a party, any non-discriminatory acts of government, or compliance with such acts, which directly affects that person’s ability to perform its obligations, if the non-performing Party without fault is failing to prevent or causing the default or delay, and the default or delay could not have been prevented or circumvented by the non-performing Party through the use of alternate sources, workaround plans or other reasonable precautions.
+                  </p>
+              </div>  
+          </div>
+          </div>
+  
+          <div #serviceBlock17>
+                  <div>
+                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)"></i>
+                      <h4 class="term-return-top-arrow  term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                  </div>
+                  <div style="padding-bottom: 46px;">
+                      <label class="term-service-title-overall term-service-title1 term-page-arrow-icon2">17.	General Provisions</label>
+                      <!-- <p class="term-service-body-part-one">
+                      Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                      </p> -->
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                          <p class="term-service-scrollbar-contents">
+                          <b> Entire Agreement:</b> The terms and the documents referenced herein constitute the entire agreement between you and us and govern your use of service, superseding any prior agreements between you and us. You may also be subject to additional terms and conditions that may apply when you use or purchase our other products, affiliate services, third-party content or third-party software. 
+                            <br><br>
+                           <b> Choice of Law:</b> These terms and your use of Digital Platform shall be governed by the laws of India and you agree to be bound by the courts at Pune, Maharashtra. Your use of the Digital Platform may also be subject to other local, state, national, or international laws.
+
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                            These Terms are not intended to create and shall not create any rights, entitlements, claims or benefits enforceable by any third party.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                             <b>Assignment:</b> We may assign any or all of our rights hereunder to any party without your consent. You are not permitted to assign any of your rights or obligations hereunder without our prior written consent, and any such attempted assignment will be void and unenforceable.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                             <b>Waiver and Severability of Terms:</b> Our failure to exercise or enforce any right or provision of these terms shall not constitute a waiver of such right or provision. If any provision of these terms is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties' intentions as reflected in the provision, and the other provisions of these terms will remain in full force and effect.
+                          </p>
+                      </div>
+                      <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                          <p class="term-service-scrollbar-contents">
+                             <b>Headings:</b> The headings in these terms are for convenience only and have no legal or contractual effect.
+                          </p>
+                   </div>     
+          </div>
+        
+      </div>
+      </tab>
+      <tab id="privacyTab" heading="Privacy Policies"  (select)="PrivacySideBar()" class="term-title" #privacyTab  >
+            <div style="padding-bottom: 46px;" #servicePrivacyBlock1>
+                        <label class="term-service-title-overall term-service-title1 term-page-arrow-icon1">1. Introduction</label>
+                        <!-- <p class="term-service-body-part-one">
+                          Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                        </p> -->
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                    Equations Work IT Services Private Limited, a private limited company registered under The Companies Act, 1956 (<b>"Equations Work"</b>, "Service Provider", "We", "Us" "Our" and terms of similar meaning) is the owner of the domain name 'www.experizer.com' who provides Services ('Experizer') through the website and the mobile application ("Digital Platform") to you takes your privacy seriously. For us, maintaining your privacy is of utmost importance.
+                            </p>
+                        </div>
+                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                              <p class="term-service-scrollbar-contents">
+                                    This privacy policy informs you about how we collect, use and safeguard your information. This Privacy Policy is incorporated into and subject to the Terms of Use. By accessing or using this Digital Platform or service you agree to be bound by this Privacy Policy. If you do not agree please do not access or use this Digital Platform or service. By mere access or use of this Digital Platform, you expressly consent to our use and disclosure of your personal and/ or non-personal information in accordance with this Privacy Policy. This Privacy Policy applies only to Digital Platform and service that are owned and operated by us. While other Digital Platforms may be displayed as links from within this Digital Platform, those sites are owned and operated by others, and they may have materially different privacy policies. When visiting other Digital Platforms through links from this Digital Platform, if you have any privacy concern, we insist you to review the privacy policy of those Digital Platforms. We shall not be responsible for any damages or consequences arising out of your visit to the third party Digital Platforms
+                              </p>
+                          </div>  
+                          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                            <p class="term-service-scrollbar-contents">
+                                Equations Work ensures complete data protection and security to avoid any 
+                                unauthorized use or processing of data. We also take appropriate measures to protect 
+                                data from unauthorized processing of information as well as any accidental loss, 
+                                damage, and more.  </p>
+                        </div>   
+                        </div>
+              
+                      <div #servicePrivacyBlock2>
+                              <div>
+                                  <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)"></i>
+                                  <h4 class="term-return-top-arrow  term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                              </div>
+                              <div style="padding-bottom: 46px;">
+                                  <label class="term-service-title-overall term-service-title1 term-page-arrow-icon2">2. Type Of Data Collected</label>
+                                  <!-- <p class="term-service-body-part-one">
+                                  Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                  </p> -->
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                                      <p class="term-service-scrollbar-contents">
+                                         <b>When you access or use this Digital Platform or service, we collect your following dat</b> <br >a. Certain personally identifiable information (‘personal information’), only during or upon your registration with us, email communications, online surveys conducted by us or forum chats;
+                                            <br>
+                                         b. Certain non-personally identifiable information (‘non-personal information’).<br>  Personal information may include information such as your full name, residence, organisation name and mailing address, age, gender, birthdate, telephone/ mobile number, email address whereas non-personal information may include your IP address, the pages you visit, cookie information (cookie information includes session cookies (which expire once you close your browser) and persistent cookies (which stay on your computer until you delete them)), and your behaviour on the digital platform, service or output.<br> We do not collect your Financial Data, such as your account or credit card number; all Financial Data you may supply shall be collected and processed by third party business partners for the performance of core services, including, but not limited to, payments processing via the Digital Platform or cancellation or refund of orders.<br>
+                                         Your personal information will be used in accordance with the purposes identified in clause<br>
+
+                                         c. We take commercially reasonable efforts in limiting the use of your personal information to that is necessary to fulfil the purposes identified in clause 3.<br>
+                                         d. All users’ personal data is collected in compliance with relevant laws with our processes being transparent by nature. 
+                                      </p>
+                                  </div>
+                               </div>     
+                      </div>
+              
+                      <div #servicePrivacyBlock3>
+                              <div>
+                                  <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                                  <h4 class="term-return-top-arrow  term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                              </div>
+                              <div style="padding-bottom: 46px;">
+                                  <label class="term-service-title-overall term-service-title1 term-page-arrow-icon3">3.	How Is Your Information Shared And Disclosed</label>
+                                  <p class="term-service-body-part-one">
+                                        We do not sell, rent, trade, or share your Personal Information with other users or third parties except to provide services you've requested, when we have your permission, or under the following circumstances:
+                                  </p>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            We may use other third parties including a credit/debit card processing company (i.e. payment gateway) to bill you for subscription service availed from the Digital Platform or customer care or call centre agencies to provide you with technical support services. When you subscribe to service, we will share the amount of personal information as is necessary for the third party to perform his part of the work, including your name, organisation name and email address. We may also share your phone number if it is provided by you.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            We use both your personal information and certain non-personal information to improve the design, quality, appearance, product portfolio and service of this Digital Platform and to create new features, functionality, promotions and services by storing, tracking, and analyzing user preferences and trends.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            We reserve the right to disclose your personal and confidential information when required to do so by law or regulation, or in response to a request from a law enforcement or governmental agency or authority or to establish or exercise our legal rights or defend against legal claims.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            We may share Personal Information if we believe it is necessary in order to investigate, prevent, or take action regarding illegal activities, suspected fraud, situations involving potential threats to the physical safety of any person, violations of Terms of use.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            If we are acquired by or merged with another company. In such case we will give you an intimation about such acquisition or merger.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            Any personal information posts or comments that you voluntarily post on this Digital Platform, such as on the forums becomes publicly available. Your account name is displayed to other Users when you send and/or post messages on this Digital Platform. You should note that any comment or other content that you post or send on a public platform of this Digital Platform becomes a published content and is not considered personal information and is not subject to this Privacy Policy.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            The Company may use the information generated by use of data analytics tools on aggregate data collected, for other purposes such as establishing user behavior, consumer trends etc. for the subscriber. The Company will not transact in any individual information 
+                                      </p>
+                                  </div>
+                                  
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                          <b>Changes to the Terms </b>
+                                          3.9	We reserve the right to change or modify any portions of these Terms, or any policy or guideline applicable to the Digital Platform and/or the Services, at any time. If you do not agree with such changes, you may cease to use services and Digital Platform and/or cancel the User Account with us without further obligation. Unless otherwise specified, any changes or modifications will be effective immediately upon posting of the revisions on the Digital Platform, and your continued use of the Services after such posting will constitute your acceptance of such changes or modifications. Any new features or tools which may be added to the Services shall also be subject to the Terms. 
+                                      </p>
+                                  </div>
+
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                    <p class="term-service-scrollbar-contents">
+                                        A user’s Personal Data may be used only for legitimate reasons which will be in 
+                                        compliance with the details mentioned in this Privacy Policy. We ensure each 
+                                        Personal Data is updated with the accurate details. The company also works towards 
+                                        erasing or rectifying incorrect data as required. A users’ Personal Data is only used 
+                                        for identification purposes and will not be processed unless for the specified reason.
+                                         
+                                      </p>
+                                </div>
+                              </div>     
+                      </div>
+              
+                      <div #servicePrivacyBlock4>
+                              <div>
+                                  <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                                  <h4 class="term-return-top-arrow  term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                              </div>
+                              <div style="padding-bottom: 46px;">
+                                  <label class="term-service-title-overall term-service-title1 term-page-arrow-icon4">4.	How Is Your Information Used </label>
+                                  <!-- <p class="term-service-body-part-one">
+                                  Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                  </p> -->
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            We retain the information collected from you as a custodian and only use it to perform normal Digital Platform operations, customise the content you see, improve our services, provide information to you about our or our partners’ product and services, offers, promotional material, contact you and conduct research. Our third party payment processing partner/s will use your financial and personal information to bill you for services, process subscriptions, process refund of the rightful excess amount paid, failed or cancelled subscriptions.
+                                        </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents inner-scroll">
+                                            We may use the information we collect in connection with your use of this Digital Platform or services in order to investigate, enforce, and apply our Terms of Use and Privacy Policy
+                                      </p>
+                                  </div>
+                       
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                          You will be allotted login details upon successful registration. You may change the password by accessing your user account. You may change all the personal details from your user account except the email id provided at the time of registration.
+                                      </p>
+                                  </div>
+                            </div>
+                              </div>     
+                      
+              
+                      <div #servicePrivacyBlock5>
+                              <div>
+                                  <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                                  <h4 class="term-return-top-arrow  term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                              </div>
+                              <div style="padding-bottom: 46px;">
+                                  <label class="term-service-title-overall term-service-title1 term-page-arrow-icon5">5.	Confidentiality And Security</label>
+                                  <!-- <p class="term-service-body-part-one">
+                                  Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                  </p> -->
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            We follow generally accepted industry standards to protect the personal information submitted to us, both during transmission and once we receive it. No method of transmission over the Internet, or method of electronic storage, is one hundred percent secure. Therefore, while we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. We may provide access to your personal information to our employees only on a need to know basis to perform their jobs and to serve you better. We cannot assure you that your personal information will never be disclosed in a manner that is inconsistent with this Privacy Policy. YOU HEREBY ACKNOWLEDGE THAT WE ARE NOT RESPONSIBLE FOR ANY SUCH INADVERTENT DISCLOSURE OR ANY INTERCEPTED INFORMATION SENT VIA THE INTERNET, AND YOU HEREBY RELEASE US FROM ANY AND ALL CLAIMS ARISING OUT OF OR RELATED TO THE USE OF INTERCEPTED INFORMATION IN ANY UNAUTHORIZED MANNER.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                            <b>Billing Information:</b> The Service or, certain components thereof may be accessible to you subject to your payment of such user fees as may be determined by us, from time to time. You are responsible for obtaining complete access to the Service, which access may involve third party fees (such as Internet service provider charges). The Company will never sell or rent your billing information to any third parties, except for the purpose of processing the online payment transaction, as and when required. The Company may, however, disclose your billing information as may be required by the Applicable Law.
+                                      </p>
+                                  </div>
+                                  <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                      <p class="term-service-scrollbar-contents">
+                                          <b>Email/ SMS Communication:</b> The Company may send e-mails or SMS(s) to notify you about important changes to the Service, enhanced features and functionality, new services, news and marketing information. You may choose to unsubscribe from such communications that you receive from the Company by clicking the ‘unsubscribe’ link provided at the end of every such e-mail communication.We maintain a strict “No-Spam” policy, which means that we do not intend to sell, rent or otherwise give your e-mail address to a third party without your consent.
+                                      </p>
+                                  </div>
+                                 </div>     
+                      </div>
+              
+                      <div #servicePrivacyBlock6>
+                              <div class="term-return-top-arrow-div">
+                                      <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                                      <h4 class="term-return-top-arrow  term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                                  </div> 
+                                  <div style="padding-bottom: 46px;">
+                          <label class="term-service-title-overall term-service-title1 term-page-arrow-icon1">6. Modifications, Alterations Or Updation Of Your Information Or Data </label>
+                          <!-- <p class="term-service-body-part-one">
+                            Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                          </p> -->
+                          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                              <p class="term-service-scrollbar-contents">
+                                    For updating, amending or modifying your personal information, you may login to your user account and make the necessary updations, amendments or modifications except to the email. We shall not be responsible in any manner whatsoever for updating, amending or modifying any of the information, data provided by you.
+                              </p>
+                          </div>
+                          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                <p class="term-service-scrollbar-contents">
+                                        If you forget your password, you will be asked to change it to a new one based on your e-mail authentication. You will not be able to retrieve your old password.
+                                </p>
+                            </div>
+                          </div>
+                        </div>
+                
+                        <div #servicePrivacyBlock7>
+                                <div>
+                                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)"></i>
+                                    <h4 class="term-return-top-arrow  term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                                </div>
+                                <div style="padding-bottom: 46px;">
+                                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon2">7. Theft Or Loss Of Your Sensitive Information</label>
+                                    <!-- <p class="term-service-body-part-one">
+                                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                    </p> -->
+                                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                                        <p class="term-service-scrollbar-contents">
+                                                In the unfortunate event that your sensitive information such as your login password, credit or debit card, net banking or digital wallet details are lost, stolen or used without your permission then you should promptly notify us.
+                                        </p>
+                                    </div>
+                                </div>     
+                        </div>
+                
+                        <div #servicePrivacyBlock8>
+                                <div>
+                                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                                    <h4 class="term-return-top-arrow  term-page-arrow-icon3 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                                </div>
+                                <div style="padding-bottom: 46px;">
+                                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon3">8. Technology Used To Secure Information</label>
+                                    <!-- <p class="term-service-body-part-one">
+                                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                    </p> -->
+                                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                        <p class="term-service-scrollbar-contents">
+                                                We use Secure Socket Layer (SSL) encryption technology and encrypted database to protect the personal information that we collect. SSL is an industry standard authentication and encryption technology. In order for the SSL security to work you must use an SSL enabled browser. We do not take subscription to service on emails as email is not encrypted and is not considered to be a secure means of transmission and exchange of information including credit card numbers. We will never ask any of your sensitive information on email, sms, chat, instant messenger or phone.
+                                        </p>
+                                    </div>
+                                  
+                                </div>     
+                        </div>
+                
+                        <div #servicePrivacyBlock9>
+                                <div>
+                                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                                    <h4 class="term-return-top-arrow  term-page-arrow-icon4 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                                </div>
+                                <div style="padding-bottom: 46px;">
+                                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon4">9. Effectiveness</label>
+                                    <!-- <p class="term-service-body-part-one">
+                                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                    </p> -->
+                                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                        <p class="term-service-scrollbar-contents">
+                                                This Privacy Policy is effective from the date mentioned at the top of this policy. We reserve the right, at any time, to modify, alter, or update this policy, without any prior notice to you and any such modifications, alterations, or updates will be effective upon posting on this Digital Platform. In the event we modify this Privacy policy, your continued use of this site will signify your acceptance of the modified Privacy policy.
+                                        </p>
+                                    </div>
+                                </div>     
+                        </div>
+                
+                        <div #servicePrivacyBlock10>
+                                <div>
+                                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                                    <h4 class="term-return-top-arrow  term-page-arrow-icon5 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                                </div>
+                                <div style="padding-bottom: 46px;">
+                                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon5">10. Retention Of Information</label>
+                                    <!-- <p class="term-service-body-part-one">
+                                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                    </p> -->
+                                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                        <p class="term-service-scrollbar-contents">
+                                                We will retain your personal information only for the period it is necessary in accordance with this privacy policy. We will retain your personal information to the extent necessary to comply with the legal obligations including compliance with laws, dispute resolution or enforce agreements or policies.
+                                        </p>
+                                    </div>
+                                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                            <p class="term-service-scrollbar-contents">
+                                                    We will retain all non-personal information indefinitely.
+                                            </p>
+                                        </div>
+                                </div>     
+                        </div>
+                      
+                        <div  #servicePrivacyBlock11> 
+                            <div class="term-return-top-arrow-div">
+                              <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" ></i>
+                              <h4 class="term-return-top-arrow  term-page-arrow-icon1 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                          </div> 
+                          <div style="padding-bottom: 46px;">
+                          <label class="term-service-title-overall term-service-title1 term-page-arrow-icon1">11.	Transfer Of Data</label>
+                          <!-- <p class="term-service-body-part-one">
+                            Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                          </p> -->
+                          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                              <p class="term-service-scrollbar-contents">
+                                    We use google cloud servers to store and process your data. Such servers may or may not be located within your jurisdiction and may be located outside your country, state or city where the data protection laws may differ than the laws prevalent within your jurisdiction. Your personal information or non-personal information may be transferred to and maintained on such servers for storage and processing.<br>In you consent to this privacy policy and submit your personal information then it will be treated as your deemed acceptance of such transfer of data.
+                            </p>
+                          </div>
+                          <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                <p class="term-service-scrollbar-contents">
+                                        Notwithstanding the above, the Company shall not be responsible for the confidentiality, security or distribution of your information by any third parties outside the scope of the Company’s agreement with such third parties. Further, the Company shall not be responsible for any breach of security or for any actions of any third parties or events that are beyond the Company's reasonable control including, acts of government, computer hacking, unauthorized access to computer/mobile data and storage device, Device crashes, breach of security and encryption, poor quality of internet service or mobile network of the User etc.
+                              </p>
+                            </div>
+
+                            <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                    <p class="term-service-scrollbar-contents">
+                                           <b>Changes to the Privacy Policy:</b> Please note that this Privacy Policy may change from time to time. The Company shall not reduce your rights under this Privacy Policy without your explicit consent, and most such changes will be minor. Regardless of the above statement, the Company shall, if the implemented changes are significant, post any changes to the Privacy Policy on this page and will provide a more prominent notice (including, for certain services, email notification of changes to the Privacy Policy). Each version of this Privacy Policy will be identified at the top of the page by its effective date.
+                                  </p>
+                                </div>
+                                <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin">
+                                        <p class="term-service-scrollbar-contents">
+                                               <b>Third Party Digital Platform Links:</b> In future we may provide links to Third party Digital Platform which will have their own Privacy policy which is outside our control
+                                      </p>
+                                    </div>
+                       </div>
+                       </div>
+                
+                        <div #servicePrivacyBlock12>
+                                <div>
+                                    <i class="fa fa-chevron-circle-up terms-side-menu-left-arrow term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)"></i>
+                                    <h4 class="term-return-top-arrow  term-page-arrow-icon2 hand-pointer" (click)="scrollToDiv(serviceMainDiv)" >Return to top</h4>
+                                </div>
+                                <div style="padding-bottom: 46px;">
+                                    <label class="term-service-title-overall term-service-title1 term-page-arrow-icon2">12.	Users’ Privacy Rights and 
+                                        Choices</label>
+                                        <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                                            <p class="term-service-scrollbar-contents">
+                                                   <b>1. Right to analyse, change, or rectify data</b> <br><br>
+                                                   A user holds the right to request for data correction due to inaccuracy or incomplete details. Users can also update the information by logging into their account. 
+                                            </p>
+                                       </div>
+                                       <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                                        <p class="term-service-scrollbar-contents">
+                                               <b>2. Right to raise objections, request to restrict use of data</b> <br><br>
+                                               A user has the right to request the use of Personal Data or limit its use particularly if the company no longer has any legal right to use it. This is also applicable in case of inaccurate data or if data is stored in an unlawful manner.
+                                        </p>
+                                   </div>
+                                   <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                                    <p class="term-service-scrollbar-contents">
+                                           <b>3. Right to delete or unpublish data</b> <br><br>
+                                           A user holds the right to request for Personal Data deletion from the company. However, the same might be difficult to carry out in the event the data is published in areas that are meant for public viewing. If your Personal Data is published for public view by consent and appears as a task that is cumbersome for the company, the user will be informed about the same.
+
+                                    </p>
+                               </div>
+                               <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                                <p class="term-service-scrollbar-contents">
+                                       <b>4. Right to receive information and/or transfer the data</b> <br>
+                                       The company will inform the user about data processing activities such as an update on 
+                                       the Privacy Policy. Users hold the right to accept/receive this information if the company 
+                                       decides to process Personal Data as well as share access to the Personal Data.
+                                </p>
+                           </div>
+                           <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                            <p class="term-service-scrollbar-contents">
+                                 A user holds complete right to receive the data. This can include details such as the account information or contact information. A user can also transfer this Personal Data under the Data Portability right to any other company. In the event of the user having made a payment for a particular service on the website, the company will share across payment history details about each transaction to the user.
+                            </p>
+                       </div>
+                       <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                        <p class="term-service-scrollbar-contents">
+                               <b>5. Right to raise a complaint</b> <br>
+                               Users hold the right to raise any complaint that is related to data processing activities by Equations work. They can raise the complaint with the relevant authorities in their specific areas.
+                        </p>
+                   </div>
+                   <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                    <p class="term-service-scrollbar-contents">
+                           <b>4. Right to receive information and/or transfer the data</b> <br>
+                           The company will inform the user about data processing activities such as an update on 
+                           the Privacy Policy. Users hold the right to accept/receive this information if the company 
+                           decides to process Personal Data as well as share access to the Personal Data.
+                    </p>
+               </div>
+               <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                <p class="term-service-scrollbar-contents">
+                       <b>6. Right to raise an objection for marketing-related data 
+                        processing</b> <br>
+                        A user holds the right to raise objection for any data processing that is used for marketing 
+                        purposes.
+                </p>
+           </div>
+           <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+            <p class="term-service-scrollbar-contents">
+                   <b>7. Right to withdraw consent</b> <br>
+                   A user holds the right to withdraw consent given for data processing. This also means that Equations Work holds the right to terminate any service that the user has signed up for.
+            </p>
+       </div>
+       <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+        <p class="term-service-scrollbar-contents">
+               <b>8. Methods of Exercising Users’ Rights</b> <br>
+               A user may write to Equations work anytime to exercise their rights with the details mentioned in the email. A user may send the email to <a href="mailto:info@equationswork.com">info@equationswork.com</a>. Equations Work will attempt to respond at the earliest within 30 business working days.
+        </p>
+   </div>
+                                    <!-- <p class="term-service-body-part-one">
+                                    Our mission is to give people the power to build community and bring the world closer together.<br> To help advance this mission, we provide the products and services described below to you:
+                                    </p> -->
+                                    <div class="term-service-block-scrollbar term-service-body-part-one term-service-scroll-content-margin ">
+                                        <p class="term-service-scrollbar-contents">
+                                            If you have any questions regarding Personal Data, the laws, it’s use, or believe that this policy has been violated then you may write to us at <a href="mailto:care@experizer.com">care@experizer.com</a> with details.
+                                        </p>
+                                   </div>
+                                </div>     
+                        </div>
+      </tab>
+</tabset>
+ 
+</div>
+</div> 
+</div> 

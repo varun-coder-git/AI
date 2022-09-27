@@ -1,0 +1,50 @@
+ {
+        "Visibility": [{
+            "visibility": "Always Visible",
+            "visibilityID": "v1"
+        }, {
+            "visibility": "Visible while gaze over object",
+            "visibilityID": "v2"
+        }, {
+            "visibility": "Never Visible",
+            "visibilityID": "v3"
+        }],
+        "Type": [{
+            "type": "Text",
+            "mediatype" : "T",
+            "typeID": "t1"
+        }, {
+            "type": "Image",
+            "mediatype" : "I",
+            "typeID": "t2"
+        }, {
+            "type": "Audio",
+            "mediatype" : "A",
+            "typeID": "t3"
+        },{
+            "type": "Video",
+            "mediatype" : "V",
+            "typeID": "t4"
+        }, {
+            "type": "Image with Text",
+            "mediatype" : "IT",
+            "typeID": "t5"
+        }, {
+            "type": "Audio with Text",
+            "mediatype" : "AT",
+            "typeID": "t6"
+        }, {
+            "type": "Audio with Image",
+            "mediatype" : "AI",
+            "typeID": "t7"
+        }, {
+            "type": "Audio with Text and Image",
+            "mediatype" : "AIT",
+            "typeID": "t8"
+        }, {
+            "type": "Video with Text",
+            "mediatype" : "VT",
+            "typeID": "t9"
+        }]
+       
+    }

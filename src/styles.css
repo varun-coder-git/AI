@@ -1,0 +1,66 @@
+ /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */
+ /* header */
+ /* You can add global styles to this file, and also import other style files */
+
+@import "~font-awesome/css/font-awesome.css";
+/* @import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; */
+@import "./assets/bootstrap/css/bootstrap.min.css";
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
+@import '../node_modules/angular2-toaster/toaster.css';
+
+body {
+    margin: 0px !important;
+}
+
+
+.bs-datepicker-container{padding: 0px !important; }
+
+
+
+/* #hubspot-messages-iframe-container iframe{
+    bottom: 50px !important;
+} */
+
+
+#hubspot-messages-iframe-container.widget-align-right{
+    top: 0 !important;
+}
+
+
+body > bs-daterangepicker-container > div{
+    left:10%;
+}
+
+/* .popover {
+
+    transform: translate3d(246.964px, 16.429px, 0px) !important;  
+    
+    }
+    
+    .popover-arrow{
+    
+    transform: translate3d(0px, 12.143px, 0px) !important;
+    
+    } */

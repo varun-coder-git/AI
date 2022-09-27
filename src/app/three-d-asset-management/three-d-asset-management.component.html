@@ -1,0 +1,724 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+
+<head>
+
+</head>
+<div>
+  <div class="row createExperienceBg textWhite margin-LR-0">
+    <div class="col-12">
+      <div class="col-lg-12 col-md-12 col-sm-12 dashboard-header-subtitle">
+        3D Assets Library
+      </div>
+      <div class="row font-size-18px pb-3 pl-10px">
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="row">
+            <div class="col-4">
+              <div class="card card-style mx-auto adjust-tooltip"
+                (click)="validFile = true; uploadingFile = false; filesToUpload = []; uploadProgress = 0; assetsType = '3DObjectFile'; lgModal2(upload); fileUploadFlag = true; isEdit = false;isChildFolder=false;newFolderNameModel = ''; isObjectCreated=false;"
+                ngbTooltip='Upload 3D Object' placement="top" containerClass="tooltipSingleLine">
+                <img src="assets/images/upload/icon_upload.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">Upload 3D Object</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4" style="padding-left:13px; ">
+              <div class="card card-style mx-auto adjust-tooltip"
+                (click)="filesToUpload = []; multipleDelete=true;deletetype='these files/folders? (if asset is used in any experience it will not be visible)' ;normalModal(delete)"
+                ngbTooltip={{tooltipData[0].deleteSelecte}} placement="top"
+                [style.display]="deleteMulti ? 'block' : 'none'" aria-hidden="true">
+                <img src="assets/images/upload/icon_delete.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">Delete</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item" *ngFor="let crum of breadcrumArry; let i = index"
+            [ngClass]="(i != breadcrumArry.length-1)?'':'active'">
+            <a *ngIf="i != breadcrumArry.length-1" (click)="deleteMulti = false; breadcrumpop(crum.index)"
+              class="noselect">
+              {{crum.name}}
+            </a>
+            <span *ngIf="i == breadcrumArry.length-1" class="noselect"> {{crum.name}}</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div *ngIf="tableData.length != 0">
+    <div class="row margin-LR-0 padding-LR-10 pb-3">
+      <div class="col-12">
+        <div class="row font-weight-bold div-th pt-2 pb-2 m-0">
+          <div class="fixed-th-1">
+            <i class="pl-0 fa fa-check hand-pointer" (click)="selectAll()" containerClass="tooltipSingleLine"
+              ngbTooltip={{tooltipData[0].selectAll}} placement="top" aria-hidden="true"></i>
+          </div>
+          <div class="fixed-th" style="padding-left: 6px;">Type</div>
+          <div style="width: 50%; padding-left: 15px;">Name</div>
+          <div style="width: 14%; padding-left: 4px;">Modified</div>
+          <!-- <div style="width: 14%;">Size</div> -->
+          <div class="fixed-Action" style="padding-left: 18px;">Actions</div>
+        </div>
+        <div class="row pt-2 pb-2 div-td m-0" *ngFor=" let tData of tableData; let i = index ">
+          <div class="col-12 div-table">
+            <div class="fixed-th">
+              <div (click)="toggle($event)" #elem [attr.id]="'check-' + i"
+                class="padding-1px ml-2 checkbox-border hand-pointer table-check">
+                <i class="fa fa-check hide " [style.visibility]="tData.checked ? 'visible' : 'hidden'" #elem
+                  [attr.id]="'checkFa-' + i" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="fixed-th">
+              <!-- <i class="fa fa-folder pr-2 fa-lg fas folder-color hand-pointer folder-icon-size" ngbTooltip="Folder"
+                (click)="deleteMulti = false;"
+                *ngIf="tData.AssetType == '4'" aria-hidden="true"></i> -->
+
+              <img src="assets/images/dashboard/obj.png" ngbTooltip="Object" class="image-icon-size"
+                *ngIf="tData.AssetType == '4'">
+
+            </div>
+            <div style="width: 50%;" *ngIf="tData.AssetType == '4'" class="table-margin-top">
+              <span class="text-overflow hand-pointer noselect"
+                (click)="lgModal2(previewObject);deleteMulti = false;bindModelOnPreviewClick(tData.FileUrl)">{{tData.FileName}}</span>
+            </div>
+            <div style="width: 50%;" *ngIf="tData.AssetType != '4'" class="table-margin-top">
+              <span class="text-overflow noselect">{{tData.FileName}}</span>
+            </div>
+            <div class="noselect table-margin-top" style="width: 14%;">{{tData.CreatedOn | dateAgo}}</div>
+
+
+            <div class="fixed-Action table-margin-top">
+
+              <div *ngIf="tData.AssetType == '4'">
+                <i class="fa fa-pencil assets-table-icon-size download-color mr-3 hand-pointer"
+                  ngbTooltip={{tooltipData[0].edit}} aria-hidden="true"
+                  (click)="validFile = true; uploadingFile = false; filesToUpload = []; uploadProgress = 0; assetsType = '3DObjectFile'; isEdit = true;getThreeDObjectDetails(tData); lgModal2(upload); fileUploadFlag = true; isObjectCreated=true; UploadDone=true;isChildFolder=false;"></i>
+                <!--style="visibility: hidden;"-->
+                <i class="fa fa-eye assets-table-icon-size mr-3 hand-pointer" style="color: darkblue;"
+                  aria-hidden="true" ngbTooltip={{tooltipData[0].preview}}
+                  (click)="lgModal2(previewObject);bindModelOnPreviewClick(tData.FileUrl)"></i>
+                <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer"
+                  containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFolder}} placement="top"
+                  (click)="rowId=i;multipleDelete=false;deletetype='this folder?'; normalModal(delete)"
+                  aria-hidden="true"></i>
+              </div>
+              <!-- <div *ngIf="tData.AssetType != '4'">
+                <a (click)="downloadFile(baseURL + tData.FileUrl)">
+                  <i class="fa fa-download assets-table-icon-size download-color mr-3 hand-pointer"
+                    ngbTooltip={{tooltipData[0].download}} placement="top" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer "
+                  containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFile}} placement="top"
+                  (click)="rowId=i; multipleDelete=false;deletetype='this file? (if asset is used in any experience it will not be visible)';normalModal(delete)"
+                  aria-hidden="true"></i>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row margin-LR-0" *ngIf="tableData.length == 0" style="margin-top: 20vh;">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 padding-right-0">
+              <div class="first-experience-top">Start uploading your media assets for your Experience.
+              </div>
+              <hr>
+              <div class="first-experience-description"> This page will show you the 3D objects that you have uploaded
+                to your Augmented Reality Experiences once you begin. </div>
+              <div class="first-experience-mail">Write to us at <a
+                  href="mailto:care@experizer.com">care@experizer.com</a>
+                If you have an issue with your Experizer account.</div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 padding-left-0">
+              <img src="assets/images/dashboard/cat_withcolorpalette.png" alt="pop-header"
+                class="create-first-exp-image">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<canvas #canvas style="display: none;"></canvas>
+<!-- The Modal -->
+<ng-template #newFolder>
+  <div class="modal-header">
+    <!-- <div *ngIf="flag == false" class="modal-title pull-left  pl-3 popup-title">Add New Folder</div> -->
+    <div class="modal-title pull-left  pl-3 popup-title">Add New Folder for 3D Objects</div>
+    <!--*ngIf="flag == true" -->
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+      (click)="previewModelParent='';modalRef.hide();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="createNewFolder(newFolderForm);" #newFolderForm='ngForm'>
+    <div class="modal-body pt-4">
+      <div class="row">
+        <div class="col-12">
+          <input #newFolderName="ngModel" type="text" class="form-control" maxlength="60" placeholder="Folder Name"
+            name='newFolderName' [(ngModel)]="newFolderNameModel"  pattern="^[a-zA-Z0-9:_@!&? -]*$" required>
+          <div [hidden]="newFolderName.valid || newFolderName.untouched && addNewFolderFlag">
+            <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors?.['required'] ">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Enter name
+              </span>
+            </div>
+          </div>
+          <div class="error-msg-align-forgot" *ngIf="newFolderName?.errors?.['pattern']">
+            <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Special characters are not allowed.
+            </span>
+        </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 padding-TB-1_5-per mt-3">
+          <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right" disabled="newFolderName.Invalid">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #upload>
+  <div class="modal-header">
+    <div class="modal-title pull-left  pl-3 "><div class="popup-title">
+      Upload New 3D Object
+    </div><div class="mt-1">This Wizard helps you upload a 3D Object. Follow these two steps and preview your 3D Object in the last step.</div></div>
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+      (click)="modalRef2.hide(); fileUploadFlag = true; UploadDone = false; newFolderNameModel = '';previewModelParent=''">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body pt-4">
+    <aw-wizard navBarLayout="large-empty-symbols">
+      <aw-wizard-step stepTitle="Object Name" stepId="1"
+        [navigationSymbol]="{ symbol: '&#xf07b;', fontFamily: 'FontAwesome' }">
+        <form (ngSubmit)="createNewFolder(newFolderForm);" #newFolderForm='ngForm'>
+          <div class="row">
+            <div class="col-12 mt-2">
+              <input #newFolderName="ngModel" type="text" class="form-control" maxlength="60"
+                placeholder="3D Object Name" name='newFolderName' [(ngModel)]="newFolderNameModel"
+                (ngModelChange)="objectNameChange($event)" pattern="^[a-zA-Z0-9:_@!&? -]*$" required>
+                
+              <div [hidden]="newFolderName.valid || newFolderName.untouched && addNewFolderFlag">
+                <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors?.['required']">
+                  <span class="alert alert-danger">
+                    <span class="formErrArrow"> </span>Enter 3D Object name
+                  </span>
+                </div>
+              </div>
+              <div class="error-msg-align-forgot" *ngIf="newFolderName?.errors?.['pattern']">
+                <span class="alert alert-danger">
+                    <span class="formErrArrow"> </span>Special characters are not allowed.
+                </span>
+            </div>
+            <div style="color: gray;">Type a Name for your 3D Object and hit the Save button to enable the next step.</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 padding-TB-1_5-per mt-3" style="text-align: right; margin-bottom: 5px;">
+              
+              <button type="submit" class="btn btn-color-green btn-width btn-shadow btn-margin"
+                [disabled]="newFolderForm.status === 'INVALID'">Save</button>
+              <button type="button" class="btn btn-color-green btn-width btn-shadow btn-margin"
+                [disabled]="isObjectCreated==false || isRenameObj==true" style="margin-left: 10px !important;"
+                awNextStep>Next
+              </button>
+              <!--awNextStep-->
+            </div>
+          </div>
+        </form>
+      </aw-wizard-step>
+      <!-- awOptionalStep -->
+      <aw-wizard-step stepTitle="Upload Object Assets" stepId="2"
+        [navigationSymbol]="{ symbol: '&#xf093;', fontFamily: 'FontAwesome' }">
+        <div class="row mt-2">
+          <div class="col-12">
+            <nav aria-label="breadcrumb" class="mt-3">
+              <ol class="breadcrumb" style="margin: 0px;">
+                <li class="breadcrumb-item" *ngFor="let crum of breadcrumNew; let i = index"
+                  [ngClass]="(i != breadcrumNew.length-1)?'':'active'">
+                  <a *ngIf="i != breadcrumNew.length-1" class="noselect" (click)="breadcrumClick(crum.index)">
+                    {{crum.name}}
+                  </a>
+                  <span *ngIf="i == breadcrumNew.length-1" class="noselect"> {{crum.name}}</span>
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <!-- <div class="col-2"> -->
+          <!-- <div *ngIf="!isChildFolder" style="text-align: end;" class="col-4 "><button class="btn btn-color-green btn-shadow" data-toggle="collapse" data-target="#collapseFolderName" aria-expanded="false"
+              aria-controls="collapseExample" style="width: 50% !important;margin-right: 25px;" 
+              type="button">Add Folder</button>
+          </div> -->
+
+          <!-- </div> -->
+        </div>
+        <div *ngIf="!isChildFolder" class="col-1 pull-right mt-3" [ngbPopover]="popOverNewFolder" [autoClose]="'outside'" 
+          popoverTitle="Create New Folder" placement="left" (onHidden)="onPopOverHidden()" id="popoverClick"
+          popover-trigger="'outsideClick'">
+          <span class="fa-stack ml-2 hand-pointer" ngbTooltip="Create New Folder" placement="top">
+            <i class="fa fa-folder fa-stack-2x folder-icon-size-head folder-color" aria-hidden="true" style="font-size: 3em;"></i>
+            <i class="fa fa-plus fa-stack-1x folder-plus-color mt-2" aria-hidden="true" style="font-size: x-large;"></i>
+          </span>
+        </div>
+
+        <form (ngSubmit)="uploadingFile = true; uploadNewFile(fileUploadForm, filesToUpload, assetsType, thirdModal);"
+          #fileUploadForm='ngForm'>
+          <div class="row" style="margin-bottom: 5%;">
+            <div class="col-12 mb-3" style="font-style: italic;color: gray;">Upload your 3D Object files here. Also ensure that you upload all the supporting files for your 3D Object too.  </div>
+            <!-- Upload your 3D Object files here. Ensure you upload all the supporting files too from the below frame. -->
+            <div class="col-4">
+              <input type="file" #uploadNewFileInput="ngModel" [disabled]="uploadingFile"
+                (change)='fileChangeEvent($event); validateFile($event)' name="uploadNewFileInput"
+                [(ngModel)]="uploadNewFileInputModel" title="Select a file to upload" class="input-width-100 borderOnHover" multiple
+               required>
+              <div [hidden]="validFile && fileUploadFlag">
+                <div class="error-msg-align-forgot"
+                  *ngIf="uploadNewFileInput.errors && uploadNewFileInput.errors?.['required']">
+                  <span class="alert alert-danger">
+                    <span class="formErrArrow"> </span>Please select file
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-4"></div>
+
+            <!-- <div *ngIf="!isChildFolder" style="text-align: end;" class="col-4 "><button class="btn btn-color-green btn-shadow"
+                data-toggle="collapse" data-target="#collapseFolderName" aria-expanded="false"
+                aria-controls="collapseExample" style="width: 50% !important;margin-right: 25px;" 
+                type="button">Add Folder</button>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-1"></div>
+            <div class="collapse col-10 mt-3 card card-body" id="collapseFolderName">
+              <div class="row">
+                <div class="col-12">
+                  <input type="text" class="form-control" maxlength="60" placeholder="Folder Name"
+                    name='newFolderInModelName' [(ngModel)]="folderInModelName" required>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 padding-TB-1_5-per mt-3 " style="text-align: end;">
+                  <button type="button" class="btn btn-color-green btn-shadow mr-2" style="width: 13% !important;"
+                    (click)="createNewFolderInModel();">Save</button>
+                  <button type="button" class="btn btn-color-green btn-shadow mr-2" data-toggle="collapse"
+                    data-target="#collapseFolderName" aria-expanded="false" aria-controls="collapseExample"
+                    style="width: 13% !important;"  (click)="folderInModelName=''">Cancel</button>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="row mt-2 mb-2" *ngIf="showProgressDiv != false">
+            <div class="col-12 pt-2 progress-bars-height" id="fileNamesAssets">
+            </div>
+          </div>
+
+          <!-- 3DAsset Modal Grid Starts -->
+          <div *ngIf="threeDAssetData.length != 0 && !isChildFolder">
+            <!--&& showProgressDiv == false-->
+            <div class="row margin-LR-0 padding-LR-10 pb-3">
+              <div class="col-12 three-d-assets-table-height">
+                <div class="row font-weight-bold div-th pt-2 pb-2 m-0">
+
+                  <div style="width: 15%;">Type</div>
+                  <!--class="fixed-th"-->
+                  <div style="width: 50%;">Name</div>
+                  <div style="width: 20%;">Modified</div>
+                  <!-- <div style="width: 14%;">Size</div> -->
+                  <div class="fixed-Action" style="text-align: center;">Actions</div>
+                </div>
+                <div class="row pt-2 pb-2 div-td m-0" *ngFor=" let tData of threeDAssetData; let i = index ">
+                  <div class="col-12 div-table">
+
+                    <div style="width: 15%;">
+
+                      <i class="fa fa-folder pr-2 fa-lg fas folder-color hand-pointer folder-icon-size"
+                        ngbTooltip="Folder"
+                        (click)="getAssetData(tData.ParentFolder + '/' + tData.FileName); deleteMulti = false;"
+                        *ngIf="tData.AssetType == '4'" aria-hidden="true"></i>
+                      <img src="assets/images/dashboard/image.png" ngbTooltip="Image" style="width: 20%"
+                        *ngIf="tData.AssetType == '1'">
+                      <img src="assets/images/dashboard/obj.png" ngbTooltip="glTF" style="width: 20%"
+                        *ngIf="tData.AssetType ==  '9'">
+                      <img src="assets/images/dashboard/obj.png" ngbTooltip="Object" style="width: 20%"
+                        *ngIf="tData.AssetType ==  '7'">
+                      <img src="assets/images/dashboard/mtl.png" ngbTooltip="Material" style="width: 20%"
+                        *ngIf="tData.AssetType ==  '8'">
+                      <img src="assets/images/dashboard/mtl.png" ngbTooltip="Material" style="width: 20%"
+                        *ngIf="tData.AssetType ==  ''">
+                    </div>
+
+                    <div style="width: 50%;" *ngIf="tData.AssetType == '4'" class="table-margin-top">
+                      <span class="text-overflow hand-pointer noselect"
+                        (click)="openChildFolder(tData.FileName);">{{tData.FileName}}</span>
+                    </div>
+                    <div style="width: 50%;" *ngIf="tData.AssetType != '4'" class="table-margin-top">
+                      <span class="text-overflow noselect">{{tData.FileName}}</span>
+                    </div>
+                    <div class="noselect table-margin-top" style="width: 20%;">{{tData.CreatedOn | dateAgo}}</div>
+
+                    <div class="fixed-Action table-margin-top" style="text-align: center;">
+
+                      <div>
+
+                        <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer "
+                          containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFile}} placement="top"
+                          (dblclick)="rowId=i; multipleDelete=false;deletetype='this file? (if asset is used in any experience it will not be visible)';assetDelete()"
+                          aria-hidden="true"></i>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 3DAsset Modal Grid Starts -->
+          <div *ngIf="threeDAssetChildData.length != 0 && isChildFolder">
+            <!--&& showProgressDiv == false-->
+            <div class="row margin-LR-0 padding-LR-10 pb-3">
+              <div class="col-12 three-d-assets-table-height">
+                <div class="row font-weight-bold div-th pt-2 pb-2 m-0">
+                  <!-- <div class="fixed-th">
+                    <i class="pl-2 fa fa-check hand-pointer" (click)="selectAll()" containerClass="tooltipSingleLine"
+                      ngbTooltip={{tooltipData[0].selectAll}} placement="top" aria-hidden="true"></i>
+                  </div> -->
+                  <div style="width: 15%;">Type</div>
+                  <!--class="fixed-th"-->
+                  <div style="width: 50%;">Name</div>
+                  <div style="width: 20%;">Modified</div>
+                  <!-- <div style="width: 14%;">Size</div> -->
+                  <div class="fixed-Action" style="text-align: center;">Actions</div>
+                </div>
+                <div class="row pt-2 pb-2 div-td m-0" *ngFor=" let tData of threeDAssetChildData; let i = index ">
+                  <div class="col-12 div-table">
+                    <!-- <div class="fixed-th">
+                      <div (click)="toggle($event)" #elem [attr.id]="'check-' + i"
+                        class="padding-1px ml-2 checkbox-border hand-pointer table-check">
+                        <i class="fa fa-check hide " [style.visibility]="tData.checked ? 'visible' : 'hidden'" #elem
+                          [attr.id]="'checkFa-' + i" aria-hidden="true"></i>
+                      </div>
+                    </div> -->
+                    <div style="width: 15%;">
+                      <!--class="fixed-th"-->
+                      <!-- <i class="fa fa-folder pr-2 fa-lg fas folder-color hand-pointer folder-icon-size" ngbTooltip="Folder"
+                        (click)="deleteMulti = false;"
+                        *ngIf="tData.AssetType == '4'" aria-hidden="true"></i> -->
+                      <i class="fa fa-folder pr-2 fa-lg fas folder-color hand-pointer folder-icon-size"
+                        ngbTooltip="Folder"
+                        (click)="getAssetData(tData.ParentFolder + '/' + tData.FileName); deleteMulti = false;"
+                        *ngIf="tData.AssetType == '4'" aria-hidden="true"></i>
+                      <img src="assets/images/dashboard/image.png" ngbTooltip="Image" style="width: 20%"
+                        *ngIf="tData.AssetType == '1'">
+                      <img src="assets/images/dashboard/obj.png" ngbTooltip="glTF" style="width: 20%"
+                        *ngIf="tData.AssetType ==  '9'">
+                      <img src="assets/images/dashboard/obj.png" ngbTooltip="Object" style="width: 20%"
+                        *ngIf="tData.AssetType ==  '7'">
+                      <img src="assets/images/dashboard/mtl.png" ngbTooltip="Material" style="width: 20%"
+                        *ngIf="tData.AssetType ==  '8'">
+                      <img src="assets/images/dashboard/mtl.png" ngbTooltip="Material" style="width: 20%"
+                        *ngIf="tData.AssetType ==  ''">
+                    </div>
+                    <!-- <div style="width: 50%;" *ngIf="tData.AssetType == '4'" class="table-margin-top">
+                      <span class="text-overflow hand-pointer noselect"
+                        (click)="deleteMulti = false;">{{tData.FileName}}</span>
+                    </div> -->
+                    <div style="width: 50%;" class="table-margin-top">
+                      <span class="text-overflow noselect">{{tData.FileName}}</span>
+                    </div>
+                    <div class="noselect table-margin-top" style="width: 20%;">{{tData.CreatedOn | dateAgo}}</div>
+                    <div class="fixed-Action table-margin-top" style="text-align: center;">
+                      <div>
+                        <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer "
+                          containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFile}} placement="top"
+                          (dblclick)="rowId=i; multipleDelete=false;deletetype='this file? (if asset is used in any experience it will not be visible)';doubleClickDelete()"
+                          aria-hidden="true"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 3DAsset Modal Grid Ends -->
+          <div class="row mt-1">
+            <div class="col-12 padding-TB-1_5-per" style="text-align: right; margin-bottom: 5px;">
+              <!-- <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right" [disabled]="uploadingFile" *ngIf="!UploadDone">Upload</button> -->
+              <button style="width: 13% !important;" type="button" class="btn btn-color-green btn-shadow "
+                [disabled]="uploadingFile" awPreviousStep>Previous</button>
+              <!--awPreviousStep-->
+              <button type="submit" class="btn btn-color-green btn-width btn-shadow " [disabled]="uploadingFile"
+                *ngIf="!UploadDone" style="margin-left: 10px !important;">Upload</button>
+              <button type="button" (click)="bindModel();" class="btn btn-color-green btn-width btn-shadow "
+                [disabled]="uploadingFile" *ngIf="UploadDone" style="margin-left: 10px !important;"
+                awNextStep>Next</button>
+              <!--awNextStep-->
+            </div>
+          </div>
+        </form>
+
+
+      </aw-wizard-step>
+      <aw-wizard-step stepTitle="Preview" stepId="3"
+        [navigationSymbol]="{ symbol: '&#xf06e;', fontFamily: 'FontAwesome' }">
+        <iframe [src]='experienceCustomizerURL' width="100%" height="500" id="id_description_iframe"
+          (load)="previewModelFromWizard()">
+          Sorry your browser does not support inline frames.
+        </iframe>
+        <div class="row mt-1">
+          <div class="col-12 padding-TB-1_5-per" style="text-align: right; margin-bottom: 5px;">
+            <button style="width: 13% !important;" type="button" class="btn btn-color-green btn-width btn-shadow"
+              awPreviousStep>Previous
+            </button>
+            <button type="button" style="margin-left: 10px !important;" class="btn btn-color-green btn-width btn-shadow"
+              (click)="previewModelParent='';modalRef2.hide();">Finish</button>
+          </div>
+        </div>
+      </aw-wizard-step>
+    </aw-wizard>
+  </div>
+  <div class="modal-footer">
+    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+  </div>
+  <!-- <form (ngSubmit)="uploadingFile = true; uploadNewFile(fileUploadForm, filesToUpload, assetsType, thirdModal);"
+    #fileUploadForm='ngForm'>
+    <div class="modal-body pt-4">
+      <div class="row" *ngIf='assetsType == "360image" && !UploadDone'>
+        <div class="col-12">
+          <input type="file" #uploadNewFileInput="ngModel" [disabled]="uploadingFile"
+            accept="{{assetsType == 'image' ? '.jpg, .jpeg, .png, .gif' : (assetsType == 'video' ? '.mp4, .avi, .3gp' : (assetsType == 'audio' ? '.mp3, .ogg, .wav, .m4a' : (assetsType == '360image' ? '.jpg, .jpeg, .png, .gif' : (assetsType == '360video' ? '.mp4, .avi, .3gp' : ''))))}}"
+            (change)='fileChangeEvent($event); validateFile($event)' name="uploadNewFileInput"
+            [(ngModel)]="uploadNewFileInputModel" title="Select a file to upload" class="input-width-100" required>
+          <div [hidden]="validFile && fileUploadFlag">
+            <div class="error-msg-align-forgot" *ngIf="uploadNewFileInput.errors && uploadNewFileInput.errors.required">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Please select a image file
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2 mb-2">
+        <div class="col-12 pt-2 progress-bars-height" id="fileNamesAssets">
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-12 padding-TB-1_5-per">
+          <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right" [disabled]="uploadingFile"
+            *ngIf="!UploadDone">Upload</button>
+          <button (click)="modalRef.hide(); fileUploadFlag = true; UploadDone = false;"
+            class="btn btn-color-green btn-width btn-shadow pull-right" *ngIf="UploadDone">OK</button>
+        </div>
+      </div>
+    </div>
+  </form> -->
+</ng-template>
+
+<ng-template #delete>
+  <div class="modal-header">
+    <div class="modal-title pull-left  pl-3 popup-title">Delete</div>
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body pt-4">
+    <div class="row">
+      <div class="col-12">
+        <span>Are you sure you want to delete {{deletetype}}</span>
+        <div class="experience-template-action">
+          <button type="button" class="btn btn-color-green btn-width btn-shadow delete-button-mr"
+            (click)="deleteSelected()">Yes</button>
+          <button type="button" class="btn btn-color-blue btn-width btn-shadow" (click)="modalRef.hide()">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+  </div>
+</ng-template>
+
+<ng-template #thirdModal>
+  <div class="modal-header">
+    <div id="dialog-nested-name2" class="modal-title pull-left pl-3 popup-title">Create Spherical</div>
+    <button type="button" class="close pull-right mt-3 pl-0 mr-0" aria-label="Close"
+      (click)="modalRef2.hide(); sidePaddingCheck = false; topPaddingCheck = false; clearThird();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <image-cropper [imageBase64]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="2 / 1"
+        format="jpeg" (imageCroppedBase64)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="loadImageFailed()"></image-cropper>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="topPaddingCheck"><input type="checkbox" name="topPaddingCheck" [(ngModel)]="topPaddingCheck"
+            (change)="addTopPadding()"> Add top and bottom padding</label>
+      </div>
+      <div class="col-6">
+        <label for="sidePaddingCheck"><input type="checkbox" (change)="addSidePadding()" name="sidePaddingCheck"
+            [(ngModel)]="sidePaddingCheck"> Add side padding</label>
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col-1">
+        <span>Preview: </span>
+      </div>
+      <div class="col-11">
+        <img [src]="croppedImage" style="width: 140px;" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 m-3">
+        <button type="button" class="btn btn-color-green btn-width btn-shadow pull-right mr-3"
+          (click)="uploadBase64(); clearThird();">OK</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+  </div>
+</ng-template>
+<ng-template #previewObject>
+  <div class="modal-header">
+    <div class="modal-title pull-left pl-3 popup-title">Preview Object</div>
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+      (click)="previewModelParent='';modalRef2.hide();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body pt-4">
+    <div class="row">
+      <div class="col-12">
+        <!-- <span>Bind preview</span> -->
+        <div class="experience-template-action">
+          <iframe [src]='experienceCustomizerURL' width="100%" height="500" id="viewModel" (load)="previewModel()">
+            Sorry your browser does not support inline frames.
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 padding-TB-1_5-per mt-3">
+        <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right"
+          (click)="previewModelParent='';modalRef2.hide()">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+  </div>
+</ng-template>
+
+
+
+
+<ng-template #popOverNewFolder>
+  <!-- <form (ngSubmit)="createNewFolder(newFolderForm);" #newFolderForm='ngForm'>
+        <div class="row">
+            <div class="col-12">
+                <input #newFolderName="ngModel" type="text" class="form-control" placeholder="Folder Name"
+                    maxlength="60" name='newFolderName' [(ngModel)]="newFolderNameModel" required>
+                <div [hidden]="newFolderName.valid || newFolderName.untouched && addNewFolderFlag">
+                    <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors.required">
+                        <span class="alert alert-danger">
+                            <span class="formErrArrow"> </span>Enter name
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 padding-TB-1_5-per mt-3">
+                <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right">Add</button>
+            </div>
+        </div>
+    </form> -->
+  <!-- <div> <input type="text" placeholder="Folder Name"></div> -->
+  <form (ngSubmit)="createNewFolderInModel(folderInFolderNameForm);" #folderInFolderNameForm='ngForm'>
+    <!-- <div *ngIf="!isChildFolder" style="text-align: end;" class="col-4 "><button class="btn btn-color-green btn-shadow" data-toggle="collapse" data-target="#collapseFolderName" aria-expanded="false"
+      aria-controls="collapseExample" style="width: 50% !important;margin-right: 25px;" 
+      type="button">Add Folder</button>
+  </div> -->
+
+    <div class="row">
+      <div class="col-12">
+        <input type="text" class="form-control" maxlength="60" placeholder="Folder Name" #newFolderInModelName="ngModel"
+          name='newFolderInModelName' [(ngModel)]="folderInModelName"  pattern="^[a-zA-Z0-9:_@!&? -]*$" required>
+        <div [hidden]="newFolderInModelName.valid || newFolderInModelName.untouched && addNewFolderInFolderFlag">
+          <div class="error-msg-align-forgot"
+            *ngIf="newFolderInModelName.errors && newFolderInModelName.errors?.['required']">
+            <span class="alert alert-danger">
+              <span class="formErrArrow"> </span>Enter name
+            </span>
+          </div>
+          <div class="error-msg-align-forgot" *ngIf="newFolderInModelName?.errors?.['pattern']">
+            <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Special characters are not allowed.
+            </span>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 padding-TB-1_5-per mt-3 " style="text-align: end;">
+        <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right" [disabled]="newFolderInModelName.invalid ">Add</button>
+        <!-- <button type="button" class="btn btn-color-green btn-shadow mr-2" data-toggle="collapse"
+      data-target="#collapseFolderName" aria-expanded="false" aria-controls="collapseExample"
+      style="width: 13% !important;"  (click)="folderInModelName=''">Cancel</button> -->
+      </div>
+    </div>
+  </form>
+</ng-template>
+<ngx-spinner type="ball-scale-multiple"  [timeout]="1000000"></ngx-spinner>

@@ -1,0 +1,7 @@
+ var arMarkersData = {
+ "actionMarkers":[             
+ {"mediatype":'T',"markerText":'A turbocharger, or colloquially turbo, is a turbine-driven forced induction device that increases an internal combustion engine efficiency and power output by forcing extra compressed air into the combustion chamber.',"markerHeader":"Turbocharger"},   {"mediatype":'I',"actionPointImage":'/Gallery/10.jpg'},
+ {"mediatype":'V',"actionPointVideo":'/Gallery/videoplayback.mp4'},  
+{"mediatype":'A',"actionPointAudio":''}                        
+ ] 
+ }

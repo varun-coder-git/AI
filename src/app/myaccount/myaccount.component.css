@@ -1,0 +1,129 @@
+.dashboard-header {
+    background-image: url(src/assets/images/dashboard/dashboard-bg.png);
+    background-size: cover;
+    
+}
+.breadcrumb {
+    background-color: #f0f2f4;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+  
+    border-radius: 0.25rem;
+  }
+  a{
+    text-decoration: none;
+}
+.fix-side-bar{
+    position: relative;
+    width: 100%;
+}
+
+.header-zindex{
+	z-index: 1;
+}
+
+
+.search-height{
+    height: 52px !important;
+    border-radius: 25px;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
+    font-size: 16px;
+}
+
+.search-icon{
+    font-size: 25px;
+    color: white;
+}
+
+.terms-header {
+    width: 100%;
+    height: 80px;;
+}
+@supports (-ms-ime-align:auto) {
+.terms-header {
+    width: 200%;
+    height: 80px;;
+}
+}
+.padding-R-0{
+    padding-right: 0px;
+ }
+
+.margin-R-0{
+    margin-right: 0px;
+}
+
+.position-img{
+    margin-top: -95px;
+}
+
+.image-margin-left{
+    margin-left: 70px;
+}
+
+.help-class{  
+      font-size: 20px;
+    font-weight: bold;}
+
+    .help-ask-card-grey{
+        border-radius: 5px;
+        background: #f4f5f5;
+        border: none;
+       
+    width: 100%;
+  
+    background: inherit;
+    background-color: rgba(50, 69, 86, 0.619607843137255);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 1);
+    border-radius: 10px;
+    font-weight: 400;
+    cursor: pointer;
+    border: 2px solid black;
+    box-shadow: 5px 5px 10px #1c1c1c;
+    background-image: url(src/assets/images/needhelp/thinking.jpg);
+    }
+
+    .card-body-class{
+        
+    background-color: rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    width: inherit;
+    height: 100%;
+    border-radius: 5px;
+    color: white;
+ 
+    }
+
+.contact-button{
+    width: 100%;
+    color: #fff !important;
+    border-color: transparent;
+    background-color: #31A38D;
+    transition: filter .2s ease;
+}
+
+.main-card-border {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+    /* cursor: pointer; */
+}
+
+.img-width {
+    width: 55px;
+}
+
+.ref-deco{
+    color: black;
+    text-decoration: none;
+}
+
+.icon-check{
+    color: #31a38d;
+}

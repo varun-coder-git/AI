@@ -1,0 +1,458 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<div>
+  <div class="row createExperienceBg textWhite margin-LR-0">
+    <div class="col-12">
+      <div class="col-lg-12 col-md-12 col-sm-12 dashboard-header-subtitle">
+        Assets Library
+      </div>
+      <div class="row font-size-18px pb-3 pl-10px">
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="row">
+            <div class="col-4">
+              <div class="card card-style mx-auto adjust-tooltip" (click)="assetsType = 'folder'; normalModal(newFolder)"
+                ngbTooltip={{tooltipData[0].newFolder}} placement="top" containerClass="tooltipSingleLine">
+                <img src="assets/images/upload/icon_folder.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">Folder</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card card-style mx-auto adjust-tooltip" placement="top" ngbTooltip='Upload 360° Video' (click)="validFile = true; uploadingFile = false; filesToUpload = []; uploadProgress = 0; assetsType = '360video'; normalModal(upload); fileUploadFlag = true"
+                containerClass="tooltipSingleLine">
+                <img src="assets/images/upload/360videoicon_64.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">360° Videos</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card card-style mx-auto adjust-tooltip" placement="top" ngbTooltip='Upload 360° Image' (click)="validFile = true; uploadingFile = false; filesToUpload = []; uploadProgress = 0; assetsType = '360image'; normalModal(upload); fileUploadFlag = true"
+                containerClass="tooltipSingleLine">
+                <img src="assets/images/upload/360imageicon_64.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">360° Images</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="row">
+            <div class="col-4">
+              <div class="card card-style mx-auto adjust-tooltip" (click)="validFile = true; uploadingFile = false; filesToUpload = []; uploadProgress = 0; assetsType = 'image'; normalModal(upload); fileUploadFlag = true"
+                ngbTooltip='Upload Image' placement="top" containerClass="tooltipSingleLine">
+                <img src="assets/images/upload/icon_upload.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">Images</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card card-style mx-auto adjust-tooltip" placement="top" ngbTooltip='Upload Video' (click)="validFile = true; uploadingFile = false; uploadProgress = 0; assetsType = 'video'; normalModal(upload); fileUploadFlag = true"
+                containerClass="tooltipSingleLine">
+                <img src="assets/images/upload/videoicon.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">Videos</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card card-style mx-auto adjust-tooltip" placement="top" ngbTooltip='Upload Audio' (click)="validFile = true; uploadingFile = false; filesToUpload = []; uploadProgress = 0; assetsType = 'audio'; normalModal(upload); fileUploadFlag = true"
+                containerClass="tooltipSingleLine">
+                <img src="assets/images/upload/audioicon.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">Audio</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+          <div class="row">
+            <div class="col-4" style="padding-left:13px; ">
+              <div class="card card-style mx-auto adjust-tooltip" (click)="filesToUpload = []; multipleDelete=true;deletetype='these files/folders? (if asset is used in any experience it will not be visible)' ;normalModal(delete)"
+                ngbTooltip={{tooltipData[0].deleteSelecte}} placement="top" [style.display]="deleteMulti ? 'block' : 'none'"
+                aria-hidden="true">
+                <img src="assets/images/upload/icon_delete.png" />
+                <div class="card-body card-body-content">
+                  <p class="card-text">Delete</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="row m-2">
+      <div class="col-12">
+        <nav aria-label="breadcrumb" class="mt-3">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item" *ngFor="let crum of breadcrumArry; let i = index" [ngClass]="(i != breadcrumArry.length-1)?'':'active'">
+              <a *ngIf="i != breadcrumArry.length-1" (click)="deleteMulti = false; breadcrumpop(crum.index)" class="noselect">
+                {{crum.name}}
+              </a>
+              <span *ngIf="i == breadcrumArry.length-1" class="noselect"> {{crum.name}}</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  <div *ngIf="tableData.length != 0">
+    <div class="row font-weight-bold margin-LR-0 padding-LR-10 pb-2 ml-4 mr-4 mb-3 pt-2 m-0 div-th">
+      <!-- <div class="col-12">
+        <div class="row font-weight-bold div-th pt-2 pb-2 m-0">
+              <div class="fixed-th-1">
+                <i class="pl-0 fa fa-check hand-pointer" (click)="selectAll()" containerClass="tooltipSingleLine"
+                  ngbTooltip={{tooltipData[0].selectAll}} placement="top" aria-hidden="true"></i>
+              </div>
+              <div class="fixed-th">Type</div>
+              <div style="width: 50%;">Name</div>
+              <div style="width: 14%;">Modified</div>
+              <div style="width: 14%;">Size</div>
+              <div class="fixed-Action">Actions</div>
+        </div>
+        <div class="row pt-2 pb-2 div-td m-0" *ngFor=" let tData of tableData; let i = index ">
+          <div class="col-12 div-table">
+            <div class="fixed-th">
+              <div (click)="toggle($event)" #elem [attr.id]="'check-' + i" class="padding-1px ml-2 checkbox-border hand-pointer table-check">
+                <i class="fa fa-check hide " [style.visibility]="tData.checked ? 'visible' : 'hidden'" #elem
+                  [attr.id]="'checkFa-' + i" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="fixed-th">
+              <i class="fa fa-folder pr-2 fa-lg fas folder-color hand-pointer folder-icon-size" ngbTooltip="Folder"
+                (click)="breadcrumPush(tData.ParentFolder + '/' + tData.FileName,tData.FileName);getAssetData(tData.ParentFolder + '/' + tData.FileName); deleteMulti = false;"
+                *ngIf="tData.AssetType == '4'" aria-hidden="true"></i>
+              <img src="./assets/images/dashboard/image.png" ngbTooltip="Image" class="image-icon-size" *ngIf="tData.AssetType == '1'">
+              <img src="./assets/images/dashboard/360images.png" ngbTooltip="360° Image" class="image-icon-size" *ngIf="tData.AssetType == '5'">
+              <img src="./assets/images/dashboard/audio.png" ngbTooltip="Audio" class="image-icon-size" *ngIf="tData.AssetType == '3'">
+              <img src="./assets/images/dashboard/video.png" ngbTooltip="Video" class="image-icon-size" *ngIf="tData.AssetType == '2'">
+              <img src="./assets/images/dashboard/video360.png" ngbTooltip="360° Video" class="image-icon-size" *ngIf="tData.AssetType ==  '6'">
+            </div>
+            <div style="width: 50%;" *ngIf="tData.AssetType == '4'" class="table-margin-top">
+              <span class="text-overflow hand-pointer noselect" (click)="breadcrumPush(tData.ParentFolder + '/' + tData.FileName,tData.FileName);getAssetData(tData.ParentFolder + '/' + tData.FileName); deleteMulti = false;">{{tData.FileName}}</span>
+            </div>
+            <div style="width: 50%;" *ngIf="tData.AssetType != '4'" class="table-margin-top">
+              <span class="text-overflow noselect">{{tData.FileName}}</span>
+            </div>
+            <div class="noselect table-margin-top" style="width: 14%;">{{tData.CreatedOn | dateAgo}}</div>
+            <div class="noselect table-margin-top" style="width: 14%;"  *ngIf="tData.AssetType != '4'">{{tData.FileSize | fileSize}}</div>
+            <div class="noselect table-margin-top" style="width: 14%;" *ngIf="tData.AssetType == '4'"></div>
+            
+            <div class="fixed-Action table-margin-top">
+              <div *ngIf="tData.AssetType == '4'">
+                <i class="fa fa-download assets-table-icon-size download-color mr-3 hand-pointer" style="visibility: hidden;"
+                  aria-hidden="true"></i>
+                <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer"
+                  containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFolder}} placement="top" (click)="rowId=i;multipleDelete=false;deletetype='this folder?'; normalModal(delete)"
+                  aria-hidden="true"></i>
+              </div>
+              <div *ngIf="tData.AssetType != '4'">
+                <a (click)="downloadFile(baseURL + tData.FileUrl)">
+                  <i class="fa fa-download assets-table-icon-size download-color mr-3 hand-pointer" ngbTooltip={{tooltipData[0].download}}
+                    placement="top" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer "
+                  containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFile}} placement="top" (click)="rowId=i; multipleDelete=false;deletetype='this file? (if asset is used in any experience it will not be visible)';normalModal(delete)"
+                  aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="col-1">
+        <i class="pl-0 fa fa-check hand-pointer" (click)="selectAll()" containerClass="tooltipSingleLine"
+        ngbTooltip={{tooltipData[0].selectAll}} placement="top" aria-hidden="true"></i>
+      </div>
+      <div class="col-1" style="padding-left: 15px;">Type</div>
+      <div class="col-4" style="padding-left: 22px;">Name</div>
+      <div class="col-2" style="padding-left: 20px;">Modified</div>
+      <div class="col-2" style="padding-left: 30px;">Size</div>
+      <div class="col-2" style="padding-left: 15px;">Actions</div>
+    </div>
+<div>
+    <div style="margin-top:-18px;">
+      <div class="row margin-LR-0 padding-LR-10 ml-4 mr-4 pt-2 pb-2 div-td top-border m-0" *ngFor=" let tData of tableData; let i = index ">
+      <div class="col-1">
+        <div class="fixed-th">
+          <div (click)="toggle($event)" #elem [attr.id]="'check-' + i" class="padding-1px checkbox-border hand-pointer table-check">
+            <i class="fa fa-check hide " [style.visibility]="tData.checked ? 'visible' : 'hidden'" #elem
+              [attr.id]="'checkFa-' + i" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="fixed-th">
+          <i class="fa fa-folder pr-2 fa-lg fas folder-color hand-pointer folder-icon-size" ngbTooltip="Folder"
+            (click)="breadcrumPush(tData.ParentFolder + '/' + tData.FileName,tData.FileName);getAssetData(tData.ParentFolder + '/' + tData.FileName); deleteMulti = false;"
+            *ngIf="tData.AssetType == '4'" aria-hidden="true"></i>
+          <img src="./assets/images/dashboard/image.png" ngbTooltip="Image" class="image-icon-size" *ngIf="tData.AssetType == '1'">
+          <img src="./assets/images/dashboard/360images.png" ngbTooltip="360° Image" class="image-icon-size" *ngIf="tData.AssetType == '5'">
+          <img src="./assets/images/dashboard/audio.png" ngbTooltip="Audio" class="image-icon-size" *ngIf="tData.AssetType == '3'">
+          <img src="./assets/images/dashboard/video.png" ngbTooltip="Video" class="image-icon-size" *ngIf="tData.AssetType == '2'">
+          <img src="./assets/images/dashboard/video360.png" ngbTooltip="360° Video" class="image-icon-size" *ngIf="tData.AssetType ==  '6'">
+        </div>
+      </div>
+      <div class="col-4">
+        <div *ngIf="tData.AssetType == '4'" class="table-margin-top">
+          <span class="text-overflow hand-pointer noselect" (click)="breadcrumPush(tData.ParentFolder + '/' + tData.FileName,tData.FileName);getAssetData(tData.ParentFolder + '/' + tData.FileName); deleteMulti = false;">{{tData.FileName}}</span>
+        </div>
+        <div *ngIf="tData.AssetType != '4'" class="table-margin-top">
+          <span class="text-overflow noselect">{{tData.FileName}}</span>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="noselect table-margin-top">{{tData.CreatedOn | dateAgo}}</div>
+        
+      </div>
+      <div class="col-2">
+        <div class="noselect table-margin-top"  *ngIf="tData.AssetType != '4'">{{tData.FileSize | fileSize}}</div>
+        <div class="noselect table-margin-top" *ngIf="tData.AssetType == '4'"></div>
+      </div>
+      <div class="col-2">
+        <div class="fixed-Action table-margin-top">
+          <div *ngIf="tData.AssetType == '4'">
+            <i class="fa fa-download assets-table-icon-size download-color mr-3 hand-pointer" style="visibility: hidden;"
+              aria-hidden="true"></i>
+            <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer"
+              containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFolder}} placement="top" (click)="rowId=i;multipleDelete=false;deletetype='this folder?'; normalModal(delete)"
+              aria-hidden="true"></i>
+          </div>
+          <div *ngIf="tData.AssetType != '4'">
+            <a (click)="downloadFile(baseURL + tData.FileUrl)">
+              <i class="fa fa-download assets-table-icon-size download-color mr-3 hand-pointer" ngbTooltip={{tooltipData[0].download}}
+                placement="top" aria-hidden="true"></i>
+            </a>
+            <i class="fa fa-times assets-table-icon-size assets-table-delete-icon-color hand-pointer "
+              containerClass="tooltipSingleLine" ngbTooltip={{tooltipData[0].deleteFile}} placement="top" (click)="rowId=i; multipleDelete=false;deletetype='this file? (if asset is used in any experience it will not be visible)';normalModal(delete)"
+              aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  <div class="row margin-LR-0" *ngIf="tableData.length == 0" style="margin-top: 20vh;">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+        <div class="col-lg-7 col-md-7 col-sm-7">
+          <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8 padding-right-0">
+              <div class="first-experience-top">Start uploading your media assets for your Experience</div>
+              <hr>
+              <div class="first-experience-description"> This page will show you the media files that you have uploaded to your Virtual Reality Experiences once you begin. </div>
+              <div class="first-experience-mail">Write to us at <a href="mailto:care@experizer.com">care@experizer.com</a>
+                If you have an issue with your Experizer account.</div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 padding-left-0">
+              <img src="assets/images/dashboard/cat_withcolorpalette.png" alt="pop-header" class="create-first-exp-image">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<canvas #canvas style="display: none;"></canvas>
+<!-- The Modal -->
+<ng-template #newFolder>
+  <div class="modal-header">
+    <div class="modal-title pull-left  pl-3 popup-title">Add New Folder</div>
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="createNewFolder(newFolderForm);" #newFolderForm='ngForm'>
+    <div class="modal-body pt-4">
+      <div class="row">
+        <div class="col-12">
+          <input #newFolderName="ngModel" type="text" class="form-control" maxlength="60" placeholder="Folder Name"
+            name='newFolderName' [(ngModel)]="newFolderNameModel" pattern="^[a-zA-Z0-9:_@!&? -]*$" (change)="newFolderNameModel=newFolderNameModel.trim()" required>
+          <!-- <div [hidden]="newFolderName.valid || newFolderName.untouched && addNewFolderFlag"> -->
+            <div *ngIf="newFolderName.invalid && (newFolderName.dirty || newFolderName.touched)">
+            <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors['required']">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Enter name
+              </span>
+            </div>
+            <div class="error-msg-align-forgot" *ngIf="newFolderName.errors && newFolderName.errors['pattern']">
+              <span class="alert alert-danger">
+                  <span class="formErrArrow"> </span>Special characters are not allowed.
+              </span>
+          </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 padding-TB-1_5-per mt-3">
+          <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right" [disabled]="newFolderName.errors">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #upload>
+  <div class="modal-header">
+    <div class="modal-title pull-left  pl-3 popup-title">Upload New {{assetsType == 'image' ? 'Image' : (assetsType ==
+      'video' ? 'Video' : (assetsType == 'audio' ? 'Audio' : (assetsType == '360image' ? '360° Image' : (assetsType ==
+      '360video' ? '360° Video' : 'Asset'))))}}</div>
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" [disabled]="uploadingFile" aria-label="Close" (click)="modalRef.hide(); fileUploadFlag = true; UploadDone = false;">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form (ngSubmit)="uploadingFile = true; uploadNewFile(fileUploadForm, filesToUpload, assetsType, thirdModal);"
+    #fileUploadForm='ngForm'>
+    <div class="modal-body pt-4">
+      <div class="row" *ngIf='assetsType == "360image" && !UploadDone'>
+        <!-- *ngIf='assetsType == "360image" && !UploadDone' -->
+      <!-- <div class="row" *ngIf='assetsType == !UploadDone'> -->
+        <div class="col-12" >
+          <input type="file" #uploadNewFileInput="ngModel" [disabled]="uploadingFile" accept="{{assetsType == 'image' ? '.jpg, .jpeg, .png, .gif' : (assetsType == 'video' ? '.mp4, .avi, .3gp' : (assetsType == 'audio' ? '.mp3, .ogg, .wav, .m4a' : (assetsType == '360image' ? '.jpg, .jpeg, .png, .gif' : (assetsType == '360video' ? '.mp4, .avi, .3gp' : ''))))}}"
+            (change)='fileChangeEvent($event); validateFile($event)' name="uploadNewFileInput" [(ngModel)]="uploadNewFileInputModel"
+            title="Select a file to upload" class="input-width-100 borderOnHover" required>
+          <div [hidden]="validFile && fileUploadFlag">
+            <div class="error-msg-align-forgot" *ngIf="uploadNewFileInput.errors && uploadNewFileInput.errors['required']">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Please select a image file
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" *ngIf='assetsType != "360image" && !UploadDone'>
+        <div class="col-12">
+          <input type="file" #uploadNewFileInput="ngModel" [disabled]="uploadingFile" accept="{{assetsType == 'image' ? '.jpg, .jpeg, .png, .gif' : (assetsType == 'video' ? '.mp4, .avi, .3gp' : (assetsType == 'audio' ? '.mp3, .ogg, .wav, .m4a' : (assetsType == '360image' ? '.jpg, .jpeg, .png, .gif' : (assetsType == '360video' ? '.mp4, .avi, .3gp' : ''))))}}"
+            (change)='fileChangeEvent($event); validateFile($event)' name="uploadNewFileInput" [(ngModel)]="uploadNewFileInputModel"
+            title="Select a file to upload" class="input-width-100 borderOnHover" required multiple>
+          <div [hidden]="validFile && fileUploadFlag">
+            <div class="error-msg-align-forgot" *ngIf="uploadNewFileInput.errors && uploadNewFileInput.errors['required']">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Please select a media file
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-2 mb-2">
+        <div class="col-12 pt-2 progress-bars-height" id="fileNamesAssets">
+        </div>
+      </div>
+      <div class="row" *ngIf='assetsType == "360image" && !UploadDone'>
+        <div class="col-12 mt-3">
+          <label for="imageIssphericalId"><input type="checkbox" name="spherical" id="imageIssphericalId"
+              #imageIsspherical [disabled]="uploadingFile"> Make my image spherical</label>
+        </div>
+      </div>
+      <div class="row mt-1">
+        <div class="col-12 padding-TB-1_5-per">
+          <button type="submit" class="btn btn-color-green btn-width btn-shadow pull-right" [disabled]="uploadingFile" *ngIf="!UploadDone">Upload</button>
+          <button (click)="modalRef.hide(); fileUploadFlag = true; UploadDone = false;" class="btn btn-color-green btn-width btn-shadow pull-right" *ngIf="UploadDone">OK</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #delete>
+  <div class="modal-header">
+    <div class="modal-title pull-left  pl-3 popup-title">Delete</div>
+    <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body pt-4">
+    <div class="row">
+      <div class="col-12">
+        <span>Are you sure you want to delete {{deletetype}}</span>
+        <div class="experience-template-action">
+          <button type="button" class="btn btn-color-green btn-width btn-shadow delete-button-mr" (click)="deleteSelected()">Yes</button>
+          <button type="button" class="btn btn-color-blue btn-width btn-shadow" (click)="modalRef.hide()">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+  </div>
+</ng-template>
+
+<ng-template #thirdModal>
+  <div class="modal-header">
+    <div id="dialog-nested-name2" class="modal-title pull-left pl-3 popup-title">Create Spherical</div>
+    <button type="button" class="close pull-right mt-3 pl-0 mr-0" aria-label="Close" (click)="modalRef2.hide(); sidePaddingCheck = false; topPaddingCheck = false; clearThird();">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <image-cropper [imageBase64]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="2 / 1" format="jpeg"
+        (imageCroppedBase64)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <label for="topPaddingCheck"><input type="checkbox" name="topPaddingCheck" [(ngModel)]="topPaddingCheck"
+            (change)="addTopPadding()"> Add top and bottom padding</label>
+      </div>
+      <div class="col-6">
+        <label for="sidePaddingCheck"><input type="checkbox" (change)="addSidePadding()" name="sidePaddingCheck"
+            [(ngModel)]="sidePaddingCheck"> Add side padding</label>
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col-1">
+        <span>Preview: </span>
+      </div>
+      <div class="col-11">
+        <img [src]="croppedImage" style="width: 140px;" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 m-3">
+        <button type="button" class="btn btn-color-green btn-width btn-shadow pull-right mr-3" (click)="uploadBase64(); clearThird();">OK</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+  </div>
+</ng-template>
+<ngx-spinner type="ball-scale-multiple"  [timeout]="1000000"></ngx-spinner>

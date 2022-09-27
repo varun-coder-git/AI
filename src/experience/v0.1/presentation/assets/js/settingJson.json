@@ -1,0 +1,22 @@
+ {
+        "Visibility": [{
+            "visibility": "Always Visible",
+            "visibilityID": "v1"
+        }, {
+            "visibility": "Visible while gaze over object",
+            "visibilityID": "v2"
+        }, {
+            "visibility": "Never Visible",
+            "visibilityID": "v3"
+        }],
+        "Type": [{
+            "type": "Text",
+            "mediatype" : "T",
+            "typeID": "t1"
+        }, {
+            "type": "Image",
+            "mediatype" : "I",
+            "typeID": "t2"
+        }]
+       
+    }

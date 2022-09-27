@@ -1,0 +1,271 @@
+/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ 
+.login-form-input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #000;
+  outline: none;
+  
+}
+
+.btn-login {
+  margin-top: 9px;
+  font-size: 12px !important;
+}
+
+.input-margin{
+  margin-right: 15px;
+  
+}
+
+input::placeholder {
+  color: #9e9e9e;
+}
+
+.login-forgot-password {
+ color: white;
+ font-size: 12px;
+ width: 88%;
+ text-align: right;
+}
+
+.login-background-img {
+  background-image: url(src/assets/images/login/background-main.jpg);
+  width: 100%;
+  position: absolute;
+  min-height: 100vh;
+  padding-top: 75px;
+}
+
+.header-background-img{
+  background-image: url(src/assets/images/login/logo.png);
+  width: 100%;
+}
+
+.login-forgot-password{
+  cursor: pointer;
+}
+
+
+.login-container {
+  border: 1px solid gray;
+  background-color: rgba(174, 174, 174, 0.349019607843137);
+  border-radius: 23px;
+  padding-right: 5px!important;
+}
+
+.form-signup-title {
+  text-align: center;
+  color: black;
+}
+
+.form-signup-title-font{
+  text-align: center;
+  font-size: 25px;
+  color: black;
+}
+
+
+.form-signup-input-field {
+  margin-left: 25px;
+  width: 80%;
+  border-bottom: 1px solid #2723239c !important;
+  padding: 2px 5px 2px 5px;
+}
+
+.form-signup-btn-signup {
+  width: 80%;
+  margin-left: 25px;
+}
+
+.form-signup-term-codition-contents {
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  font-size: 12px;
+  padding: 10px;
+  margin-left: -19px;
+}
+
+.form-signup-contents-link {
+  color:rgb(0, 0, 255);
+}
+
+.form-signup-term-condidtion-blk {
+  background-color: #cccccc3b;
+  border-radius: 23px;
+  margin-top: 26px;
+  width: 325px;
+  height: 78px;
+  margin-left: 5px;
+  color: black;
+}
+
+.btn-center{
+  text-align: center;
+}
+
+.btn-google-color{background-color:#dd4b39;;color: #fff; font-size: 14px;}
+.btn-facebook-color{background-color:#3b5998;color: #fff; font-size: 14px;}
+.btn-linkedin-color{background-color:#0077b5;color: #fff; font-size: 14px;}
+
+.login-page-image{
+  text-align: center;
+}
+
+
+/* .alert-danger {
+    border: 1px solid #c0392b;
+    border-radius: 3px;
+    box-shadow: 0 8px 10px #888;
+    left: 17px;
+    font: 14px open_sansregular;
+    padding: 4px 9px;
+    z-index: 1;
+    color: #a94442;
+    } */
+
+.alert-danger {
+  border: 1px solid #c0392b;
+  border-radius: 3px;
+  box-shadow: 0 8px 10px #888;
+  /* left: 17px; */
+  font-size: 14px;
+  padding: 4px 9px;
+  z-index: 1;
+  color: #fff;
+  background-color: #c0392b;
+}
+
+.formErrArrow {
+  background: url(/assets/images/login/errorArrow.png) no-repeat 0px 0px;
+  display: inline-block;
+  left: 13px;
+  position: absolute;
+  top: -7px;
+  width: 14px;
+  padding-top: 27px
+}
+
+
+.error-msg-align{
+  text-align: left;
+  padding-left: 10%;
+}
+
+.error-msg-align-forgot {
+  padding-top: 1.5%;
+}
+
+.error-msg-align-signup{
+padding-top: 1.5%;
+padding-left: 7%;
+width: 87%
+}
+
+.login-margin-right{
+  margin-right: 10px;
+  padding:2px 5px 2px 5px ;
+}
+
+input::placeholder{
+  color:rgba(19, 17, 17, 0.678);
+}
+
+.ng-star-inserted > .toast-close-button{
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+input:-webkit-autofill {
+  background-color: #FAFFBD !important;
+  background-image:none !important;
+  color: #000000 !important;
+}
+.btn {
+  font-size: 14px !important;
+}
+.mt-171{
+  margin-top: 1.71rem !important;
+}
+.vh-100{
+  min-height: 100vh !important;
+}
+.branding-logo {
+  position: absolute;
+  left: calc(50% - 87px);
+  top: -60px;
+  width: 23.7%;
+}
+.experizer-line{
+  margin-left: -24px;
+  margin-right: -4px;
+  background: white;
+  padding: 15px 25px;
+}
+
+.error-msg-align-signin{
+    padding-top: 1.5%;
+    padding-left: 7%;
+    width: 87%;
+}
+
+.experizer-line-title {
+  font-weight: 800;
+}
+
+.signin-google-facebook-button {
+  
+    width: 170px;
+    text-align: left;
+}
+
+.signup-google-facebook-button {
+  width: 100px;
+  margin-left: -31px;
+}
+
+.popup-title{
+	font-size: 16px;
+    color: #000;
+    z-index: 1;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.forgot-share-button {
+  margin-left: 300px;
+  width: 16.5%;
+  background: #31A38D;
+  color: white;
+}
+
+.forgot-cancel-button {
+  float: right;
+  width: 16.5%;
+  background: #6CA0B6;
+  color: white;
+}
+

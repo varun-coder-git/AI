@@ -1,0 +1,191 @@
+ /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */
+.logo-img{
+    margin-top: -96px;
+    /* margin-left: 47px; */
+}
+.fix-side-bar{
+    position: relative;
+    width: 100%;
+}
+.margin-top-80{
+	margin-top:80px;
+}
+.margin-R-0{
+    margin-right: 0px;
+}
+.padding-R-0{
+    padding-right: 0px;
+ }
+ .margin-top-down-row{
+    margin-top: -18px !important;
+ }
+
+ .margin-top-terms-col{
+    margin-top: 50px !important;
+ }
+
+.header-zindex{
+	z-index: 1;
+}
+.terms-header {
+    width: 100%;
+    height: 80px;;
+}
+@supports (-ms-ime-align:auto) {
+.terms-header {
+    width: 200%;
+    height: 80px;;
+}
+}
+.terms-side-menu {
+    background-color: #ddd0;
+    width: 400px;
+    height: 60px;
+    border-radius: 11px -5px 2px 2px;
+    box-shadow: 1px 1px #ddddddbd;
+}
+.terms-side-menu-left-arrow {
+    font-size: 24px;
+    margin-top: 13px;
+    margin-left: 14px;
+}
+.term-page-arrow-icon1 {
+    color:#6CA0B6; 
+}
+.term-page-arrow-icon2 {
+    color:#E9785B; 
+}
+.term-page-arrow-icon3 {
+    color:#31A38D; 
+}
+.term-page-arrow-icon4 {
+    color:#F36B7F; 
+}
+.term-page-arrow-icon5 {
+    color:#FCD872; 
+}
+.term-side-menu-service-label {
+    margin-top: -25px;
+    margin-left: 56px;
+    margin-right: 14px;
+    font-size: 16px;
+    color: #6B6B6B;
+    cursor: pointer;
+}
+
+.term-service-block {
+    margin-top: -281px;
+    margin-left: 502px;
+}
+.term-title {
+    font-size: 32px;
+    font-weight: 400;
+}
+.term-welcome-message {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 33px;
+    margin-bottom: 24px;
+}
+.term-return-top-arrow-div {
+    margin-top: 36px;
+}
+
+.term-service-title-overall {
+    margin-left: 16px;
+    font-size: 28px;
+    font-weight: 400;
+}
+.term-service-title1 {
+    margin-top: 31px;
+   /* color: #6CA0B6; */
+}
+.term-service-body-part-one {
+    margin-left: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+.term-service-block-scrollbar {
+    /* overflow: auto; */
+    direction:rtl;  
+    /* height:141px; */
+
+}
+
+/* .inner-scroll{
+    direction:rtl;  
+    overflow: auto;
+   height:141px; 
+} */
+
+.term-service-scrollbar-contents {
+    direction: ltr;
+    margin-left: 10px;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: white; 
+}
+ /* Handle */
+::-webkit-scrollbar-thumb {
+    background: #6CA0B6; 
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #6CA0B6; 
+}
+.term-service-scroll-content-margin {
+    margin-left: 31px;
+    margin-top: 33px;
+}
+
+.hand-pointer{
+    cursor: pointer;
+}
+
+.policy-link{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+.home-class{
+    position: relative;
+    z-index: 999;
+    top: -55px;
+    float: left;
+    color: #fff;
+    left: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+

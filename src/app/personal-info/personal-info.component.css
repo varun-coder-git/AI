@@ -1,0 +1,120 @@
+ /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */
+.personal-info-header
+{
+    background-image: url('/assets/images/dashboard/dashboard-bk.png');
+    width: 100%;
+    height: 150px;
+    color: #fff;
+    padding: 10px 30px;;
+    font-size: 36px;
+}
+
+.personal-info-main-div {
+    padding: 50px;
+    width: 100%;
+}
+
+.personal-info-image-section {
+    padding: 20px 30px;
+    vertical-align: top;
+    position: relative;
+    z-index: 0;
+}
+
+.profilepic
+{
+    display: block;
+    margin: -20px -30px 30px;
+}
+
+.content-title{width:120px;}
+.personal-info-content-section
+{
+    width: auto;
+    overflow: hidden;
+    padding: 20px 50px;
+    position: relative;
+    z-index: 0;
+}
+
+.content-section-title {
+    color: #000;
+    letter-spacing: 2px;
+    padding-bottom: 40px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+ .content-info {
+    display: table;
+    font-size: 13px;
+    position: relative;
+    width: 100%;
+}
+
+.content-info .content-separator {
+    text-align: center;
+    width: 80px;
+}
+.content-value-input-hidden
+{
+    display:none !important;
+}
+
+.content-value-input
+{
+    display: table-cell !important;
+}
+
+.content-info span {
+    display: table-cell;
+    position: relative;
+}
+
+.profilepic > img{
+    height: auto;
+    max-width: 100%;
+}
+
+.user-info-action-div
+{
+    text-align: right;
+}
+
+.user-info-action-div > button:nth-child(1)
+{
+    margin-right: 15px;
+}
+
+.hidden
+{
+    display: none !important;
+}
+
+.edit-user-info
+{
+    cursor: pointer;
+}
+

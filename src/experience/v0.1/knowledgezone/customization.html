@@ -1,0 +1,1303 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Experizer Experience</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/SideBarInner.css">
+  <link rel="stylesheet" href="assets/css/snackbar.css">
+  <link rel="stylesheet" href="../verbose/css/common.css">
+
+  <link rel="stylesheet" href="../verbose/css/summernote-bs4.css">
+  <link rel="stylesheet" href="../verbose/css/summernote.css">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../verbose/summernotejs/popper.min.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote-bs4.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote.js">
+  </script>
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/aframe-v1.0.4.min.js"></script>
+  <link href="assets/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+  <script src="assets/js/bootstrap-multiselect.js" type="text/javascript"></script>
+  <script src="../verbose/jscolor.js"></script>
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../verbose/css/toastr.min.css">
+  <script src="../verbose/toastr.min.js"></script>
+  <!-- Toastr -->
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body style="overflow:hidden;">
+  <div id="loaderq" class="lds-roller lds-roller-pos-assets-popup" style="position: absolute; z-index: 9999">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div class="overlay" id='loaderoverlay'></div>
+  <div id="snackbar">Snackbar default text</div>
+  <div class="wrapper">
+    <!-- Page Content -->
+    <div id="content">
+
+      <div class="">
+        <div class="row margin-LR-0">
+          <div class="col-1 sidebar-fixed">
+            <button type="button" id="brandingSidebar" class="btn btn-vertical-right button-align-first btn-first"
+              onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('launchSidenav')">Splash Screen</button>
+            <button type="button" id="placeSidebar" class="btn btn-second btn-vertical-right button-align-second"
+              onmouseenter="mouseEnter('Use this Tab to customize the  ambiance such as the Theme OR the branding. You can also add a music track for your Patrons to listen to.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('placeSidenav')">Place</button>
+            <button type="button" id="wallSidebar" class="btn btn-third btn-vertical-right button-align-next"
+              onmouseenter="mouseEnter('Use this Tab to customize the Walls in your Trivia Room.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('wallSidenav')">Wall</button>
+            <button type="button" id="questionSidebar" class="btn btn-fourth btn-vertical-right button-align-next"
+              onmouseenter="mouseEnter('Use this Tab to customize the Topic that you want to ask to the Learner inside the Experience. You can also do the Score board settings using this option.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('questionSidenav')">Topics</button>
+          </div>
+          <div class="col-12 vr-editor">
+            <div id="launchSidenav" class="sidenav margin-left-60">
+              <div id="accordionOne">
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h3 class="mb-0">
+                      <button id="wallBtn1"
+                        onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link south padding-0" data-toggle="collapse"
+                        data-target="#LaunchScreenCollapse" aria-expanded="true" aria-controls="LaunchScreenCollapse">
+                        <i class="fa" aria-hidden="true"></i>
+                        Splash Screen
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="LaunchScreenCollapse" class="collapse show" aria-labelledby="headingThree"
+                    data-parent="#accordionOne">
+                    <div class="card-body">
+                      <div class="form-group margin-top-15">
+                        <h6 style="color:#fff;width: 100%"><i>Check preview mode to preview Splash Screen</i></h6>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="splashBackground" style="color:#fff;width: 100%">Background Color:</label>
+                        <div id="bgcolorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer splashBg"
+                            id="splashBackground" value="">
+                          <div></div>
+                        </div>
+                      </div>
+
+                      <div class="form-group margin-top-15">
+                        <div class="row">
+                          <div class="col-10">
+                            <label style="color:#fff;width: 100%" for="fixOpacity">Background Opacity (Drag to
+                              change):</label>
+                          </div>
+                          <div class="col-2" style="padding:0px;">
+                            <label id="rangeValue"></label>
+                          </div>
+                        </div>
+                        <div class="slidecontainer">
+                          <input type="range" min="0.1" max="1" step="0.001" value="0.1" class="slider"
+                            id="fixOpacity" />
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="splashHeaderColor">Header Font Color:</label>
+                        <div id="colorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer headerfont"
+                            id="splashHeaderColor" value="" style="width: 100%">
+                          <div></div>
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <div class="row">
+                          <div class="col-8">
+                            <label for="frameDescription">Splash Screen Text:</label></div>
+                          <div class="col-4" style=" padding-left: 50px; color:#fff">
+                            <span id="maxCount">0</span>
+                            <span>/ 350</span>
+                          </div>
+                        </div>
+                        <textarea Id="summer" class="form-control lunchScreenText maxContentPost" rows="3"
+                          placeholder="Launch Text" name="Text" value="" maxlength="150"></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote2">Instructions For Desktop/PC/Laptop:</label>
+                        <textarea Id="summernote2" class="form-control instructionSetForDesktop" rows="5"
+                          placeholder="Instruction Set" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote3">Instructions For Mobile/VR:</label>
+                        <textarea Id="summernote3" class="form-control instructionSetForAndroid" rows="5"
+                          placeholder="Instructions For Mobile/VR" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+
+                      <div class="form-group custom-file">
+                        <label class="inline-block-display " for="">Splash
+                            Image:</label>
+                        <input
+                            onmouseenter="mouseEnter('Splash screen has a provision to change the image that appears on it. Use this option to change this image by selecting a new image from your Library.');"
+                            onmouseleave="mouseLeave()" type="button"
+                            class="input_box_trasparent handPointer mt-3"
+                            onclick="changeSplashImage();" id="splashImage">
+                        <label class="custom-file-label single-line-text text-overflow handPointer"
+                            id="splashImageLable" for="splashImage"
+                            style="top:25px; width: 100% !important"><span>Choose Image</span></label>
+                        <!-- <label class="aspect-ratio-style" id="frameImageTitle" for="splashImage"></label> -->
+                    </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="placeSidenav" class="sidenav margin-left-60 ">
+
+              <div class="card">
+
+                <div class="card-body">
+
+                  <div class="sidebar-text-first">Background Theme: <span id="place-name"></span></div>
+                  <div class="row bgThemes">
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >natural</div><img id="natural"
+                          src="assets/images/decor/natural.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >sci-fi blue</div><img id="sifi"
+                          src="assets/images/decor/sifi.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >playful</div><img id="creative"
+                          src="assets/images/decor/creative.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >garden</div><img id="garden"
+                          src="assets/images/decor/garden.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >brick</div><img id="brick"
+                          src="assets/images/decor/brick.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >sci-fi green</div><img id="sci-fi-green"
+                          src="assets/images/decor/sci-fi-green.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >executive</div><img id="executive"
+                          src="assets/images/decor/executive.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >star</div><img id="star"
+                          src="assets/images/decor/star.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >patroit</div><img id="american"
+                          src="assets/images/decor/american.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >artistic</div><img id="artistic"
+                          src="assets/images/decor/artistic.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >granite</div><img id="granite"
+                          src="assets/images/decor/granite.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >green granite</div><img id="green_grana"
+                          src="assets/images/decor/green_grana.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >red granite</div><img id="red_grana"
+                          src="assets/images/decor/red_grana.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >grass</div><img id="grass"
+                          src="assets/images/decor/grass.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >sky</div><img id="cloud"
+                          src="assets/images/decor/cloud.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >gray</div><img id="gray"
+                          src="assets/images/decor/gray.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >green</div><img id="green"
+                          src="assets/images/decor/green.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >cream</div><img id="lemon"
+                          src="assets/images/decor/lemon.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >light green</div><img id="lightgreen"
+                          src="assets/images/decor/lightgreen.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >pink</div><img id="pink"
+                          src="assets/images/decor/pink.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >purple</div><img id="purple"
+                          src="assets/images/decor/purple.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >red</div><img id="red"
+                          src="assets/images/decor/red.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >royal blue</div><img id="royalblue"
+                          src="assets/images/decor/royalblue.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >light gray</div><img id="silver"
+                          src="assets/images/decor/silver.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >white</div><img id="white"
+                          src="assets/images/decor/white.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+
+                    <div class="col-4">
+                      <div class='bgThemeDiv mb-4'>
+                        <div class="themeLabel" >women</div><img id="women"
+                          src="assets/images/decor/women.jpg" style="width:100%;height:100%;" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="wallSidenav" class="sidenav margin-left-60">
+              <div id="accordion1">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+
+                    <h3 class="mb-0">
+
+                      <button id="wallBtn1" onmouseleave="mouseLeave()" onmouseenter="mouseEnter('The wall on the right side of the Learner in the Experience can be customized using this option. TIP: Though you can use any image on the wall, try using a Infographic.');" class="btn btn-link south"
+                        data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne"> <i class="fa" aria-hidden="true"></i>
+                        Score Wall
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion1">
+                    <div class="card-body">
+                      <div>
+                        <label>Choose Score Wall Top Image:</label>
+                      </div>
+                      <div class="form-group custom-file">
+                        <button type="file"
+                          onmouseenter="mouseEnter('Upload/Change the image on the Right Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                          onmouseleave="mouseLeave()" class="custom-file-input form-control handPointer"
+                          onclick="scorewallheading(this);" id="score-screen-wall-logo" accept="image/png, image/jpeg"
+                          style=" float: right;margin-top: 10px;"></button>
+                        <label class="custom-file-label form-control" id="score-wall-logolabel"
+                          for="score-screen-wall-logo"><span>Choose Image</span></label>
+                      </div>
+                      <div>
+                        <label class="aspect-ratio-style ">Note: Recommended aspect ratio 2:1</label>
+                      </div>
+
+
+                      <div>
+                        <label>Choose Score Wall Main Image:</label>
+                        <label class="aspect-ratio-style mt-0">Note: This image is overlayed by the
+                          scoreboard
+                          upon completion. </label>
+                      </div>
+
+                      <div class="form-group custom-file">
+                        <button type="file"
+                          onmouseenter="mouseEnter('Upload/Change the image on the Right Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                          onmouseleave="mouseLeave()" class="custom-file-input form-control handPointer"
+                          onclick="showFrameImage(this);" id="score-screen-wall-image" accept="image/png, image/jpeg"
+                          style=" float: right;margin-top: 10px;"></button>
+                        <label class="custom-file-label form-control" id="score-wall-imagelabel"
+                          for="score-screen-wall-image"><span>Choose Image</span></label>
+                      </div>
+                      <div>
+                        <label class="aspect-ratio-style ">Note: Recommended aspect ratio 3:2</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h3 class="mb-0">
+                      <button id="wallBtn2"
+                        onmouseenter="mouseEnter('The Wall on the Back side of the Learner in the Experience can be customized using this option. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link west" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> <i class="fa"
+                          aria-hidden="true"></i>
+                        Media Wall
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion1">
+                    <div class="card-body">
+                      <div>
+                        <label>Choose Media Wall Top Image:</label>
+                      </div>
+                      <div class="form-group custom-file ">
+                        <button type="file"
+                          onmouseenter="mouseEnter('Upload/Change the image on the Back Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                          onmouseleave="mouseLeave()" class="custom-file-input form-control handPointer"
+                          onclick="mediawallheading(this);" id="media-wall-logo" accept="image/png, image/jpeg"
+                          style=" float: right;margin-top: 10px;"></button>
+                        <label class="custom-file-label form-control" id="media-wall-logoLabel"
+                          for="media-wall-logo"><span>Choose Image</span></label>
+                      </div>
+                      <div>
+                        <label class="aspect-ratio-style ">Note: Recommended aspect ratio 2:1</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h3 class="mb-0">
+                      <button id="wallBtn3"
+                        onmouseenter="mouseEnter('The Wall on the Left side of the Learner in the Experience can be customized using this option. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link east" data-toggle="collapse"
+                        data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"> <i class="fa"
+                          aria-hidden="true"></i>
+                        Quiz Wall
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion1">
+                    <div class="card-body">
+                      <div>
+                        <label>Choose Quiz Wall Top Image:</label>
+                      </div>
+                      <div class="form-group custom-file">
+                        <button type="file"
+                          onmouseenter="mouseEnter('Upload/Change the image on the Left Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                          onmouseleave="mouseLeave()" class="custom-file-input form-control handPointer"
+                          onclick="quizwallheading(this);" id="quiz-wall-logo" accept="image/png, image/jpeg"
+                          style=" float: right;margin-top: 10px;"></button>
+                        <label class="custom-file-label form-control" id="quiz-wall-logoLabel"
+                          for="quiz-wall-logo"><span>Choose Image</span></label>
+                      </div>
+                      <div>
+                        <label class="aspect-ratio-style ">Note: Recommended aspect ratio 2:1</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingFour">
+                    <h3 class="mb-0">
+                      <button id="wallBtn4"
+                        onmouseenter="mouseEnter('The Wall on the front side of the Learner in the Experience can be customized using this option. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link east" data-toggle="collapse"
+                        data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour"> <i class="fa"
+                          aria-hidden="true"></i>
+                        Topic Wall
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion1">
+                    <div class="card-body">
+                      <div>
+                        <label>Choose Topic Wall Top Image:</label>
+                      </div>
+                      <div class="form-group custom-file">
+                        <button type="file"
+                          onmouseenter="mouseEnter('Upload/Change the image on the front Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                          onmouseleave="mouseLeave()" class="custom-file-input form-control handPointer"
+                          onclick="topicwallheading(this);" id="topic-wall-logo" accept="image/png, image/jpeg"
+                          style=" float: right;margin-top: 10px;"></button>
+                        <label class="custom-file-label form-control" id="topic-wall-logoLabel"
+                          for="topic-wall-logo"><span>Choose Image</span></label>
+                      </div>
+                      <div>
+                        <label class="aspect-ratio-style ">Note: Recommended aspect ratio 2:1</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="questionSidenav" class="sidenav margin-left-60">
+              <div id="mainAccordion">
+
+                <div class="card" id="addTopicCardDiv">
+                  <div class="card-header" id="addTopicDiv">
+                    <h3 class="mb-0">
+                      <button id="addTopic1"
+                        onmouseenter="mouseEnter('Add a new Topic. Once you hit this button you can enter the details that are required to add a new topic. You can create both MCQ as well as MCMA type of questions.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link add_question" data-toggle="collapse"
+                        data-target="#addTopicDivCollapse" aria-expanded="true" aria-controls="addTopicDivCollapse">
+                        <i class="fa" aria-hidden="true"></i>
+                        <span id='displaytopictitle'> Add Topic</span>
+                      </button>
+                    </h3>
+                  </div>
+
+
+                  <div id="addTopicDivCollapse" class="collapse show" aria-labelledby="addTopicDiv"
+                    data-parent="#mainAccordion">
+                    <div class="card-body">
+                      <div class='actionDiv'>
+                        <button type="button" onmouseenter="mouseEnter('Save the above topic to this Experience. ');"
+                          onmouseleave="mouseLeave()" id="addTopic2" class="btn btn-primary"
+                          onclick="addNewTopic()">Save Topic</button>
+                        <button type="button" onmouseenter="mouseEnter('Save the above question to this Experience. ');"
+                          onmouseleave="mouseLeave()" id="saveTopic1" class="btn btn-primary display-none"
+                          onclick="saveTopic()">Save</button>
+                        <button type="button" id="cancelTopic1" class="btn btn-primary display-none"
+                          onclick="cancelTopic()">Cancel</button>
+                      </div>
+
+                      <div class="questionDiv">
+
+                        <label class="aspect-ratio-style mt-0">Create Topics and add multiple questions under each
+                          topic.
+                          You can also associate a Media file like a Video/Image</label>
+
+                          <div class='form-group'>
+                            <div class='row'>
+                              <div class='col-8'>
+                                <label for="topicTitle">Title:</label>
+                              </div>
+                              <div class='col-4' style='text-align: right;'>
+                                <span id='titlecharcount'>0</span><span>/ 25</span>
+                              </div>
+                            </div>
+                            <div class='row'>
+                              <div class='col-12'>
+                                <input id="topicTitle" class="form-control custom-input input_box_trasparent"
+                                maxlength="25"  onkeyup='ontextChange(this,25)' onpaste="return pasteText(this,25)"></input>
+                              </div>
+                            </div>
+                          </div>
+                        <label id="topicTitleValidation" class="validationLabel hidden" style="color:red;">Missed to
+                          fill this?</label>
+
+
+                        <div class="form-group">
+                          <lable for="typeDropDownID">Topic Introduction:</lable>
+                          <label class="aspect-ratio-style">This introduction is visible right next to the list of
+                            topics. You can choose the introduction from 'text' or 'image'</label>
+                          <select name='type' id="typeDropDownID"
+                            class="form-control input_box_trasparent select-dropdown "
+                            onchange="selectDescriptionType()">
+                            <option value="text">Text</option>
+                            <option value="image">Image</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group active-story" id="descriptionInImage">
+                          <label> Description Image:</label>
+                          <div class="form-group custom-file">
+                            <input onmouseenter="mouseEnter('Change the Image using this option.');"
+                              onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input handPointer"
+                              onclick="addImage();" id="customFileImage" />
+                            <label class="custom-file-label " id="customImageLabel" for="customFileImage"><span>Choose
+                                Description Image</span></label>
+                            <label class="aspect-ratio-style ">Note: Recommended aspect ratio 3:2</label>
+                          </div>
+                        </div>
+                        <div id="uploadedimgdiv" style="text-align: center;margin-bottom: 20px;margin-top: 30px;"
+                          class="display-none">
+                          <img id="uploadedimg" height="150" width="225" />
+                        </div>
+
+                        <div class='form-group' id="descriptionInText">
+                          <div class='row'>
+                            <div class='col-8'>
+                              <label for="topicDescription">Description:</label>
+                            </div>
+                            <div class='col-4' style='text-align: right;'>
+                              <span id='descriptioncharcount'>0</span><span>/ 800</span>
+                            </div>
+                          </div>
+                          <div class='row'>
+                            <div class='col-12'>
+                              <textarea id="topicDescription" class="form-control custom-input input_box_trasparent"
+                                rows="3" maxlength="800" onkeyup='ontextChange(this,800)' onpaste="return pasteText(this,800)"></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+                        <label id="topicDescriptionValidation" class="validationLabel hidden" style="color:red;">Missed
+                          to fill
+                          this?</label>
+
+
+                        <div class="form-group ">
+                          <label> Associated Video file for topic:</label>
+                          <label class="aspect-ratio-style mt-0">The learners are expected to watch the video before
+                            answering the questions. You can customize the video settings from the "Settings" on this
+                            same customization pane.</label>
+                          <div class="form-group custom-file">
+                            <input onmouseenter="mouseEnter('Change the Video  using this option.');"
+                              onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input handPointer"
+                              onclick="addVideo();" id="customFileVideo" />
+                            <label class="custom-file-label " id="customLabelVideo" for="customFileVideo"><span>Choose
+                                Video</span></label>
+                          </div>
+                          <!-- <label id="customFileVideoValidation" class="validationLabel hidden" style="color:red;">Missed to fill
+                            this?</label> -->
+                        </div>
+
+                        <div class="card">
+                          <div class="card-header" id="addQuestionDiv">
+                            <h3 class="mb-0">
+                              <button id="addQuestion1"
+                                onmouseenter="mouseEnter('Add a new question to corresponding topic. Once you hit this button you can enter the details that are required to add a new question. You can create both MCQ as well as MCMA type of questions.');"
+                                onmouseleave="mouseLeave()" class="btn btn-link add_question" data-toggle="collapse"
+                                data-target="#addQuestionDivCollapse" aria-expanded="true"
+                                aria-controls="addQuestionDivCollapse">
+                                <i class="fa" aria-hidden="true"></i>
+                                <span id='displayquestiontitle'>Add Question</span>
+                                </button>
+                            </h3>
+                          </div>
+
+                          <div class=" card-body collapse show" data-parent="#child1" id="addQuestionDivCollapse">
+                            <div class='form-group'>
+                              <div class='row'>
+                                <div class='col-8'>
+                                  <label for="comment">Question:</label>
+                                </div>
+                                <div class='col-4' style='text-align: right;'>
+                                  <span id='questioncharcount'>0</span><span>/ 500</span>
+                                </div>
+                              </div>
+                              <div class='row'>
+                                <div class='col-12'>
+                                  <textarea id="questionTextarea" class="form-control custom-input input_box_trasparent"
+                                    onkeyup='ontextChange(this,500)' rows="3" maxlength="500" onpaste="return pasteText(this,500)"></textarea>
+                                </div>
+                              </div>
+                            </div>
+
+                            <label id="questionValidation" class="validationLabel hidden" style="color:red;">Missed to
+                              fill
+                              this?</label>
+
+                            <div class='form-group' >
+                              <div class='row'>
+                                <div class='col-8'>
+                                  <label for="option1">Option 1:</label>
+                                </div>
+                                <div class='col-4' style='text-align: right;'>
+                                  <span id='option1charcount'>0</span><span>/ 150</span>
+                                </div>
+                              </div>
+                              <div class='row'>
+                                <div class='col-12'>
+                                  <input id="option1" type="text"
+                                    class="form-control custom-input optionInput input_box_trasparent" maxlength="150"
+                                    onkeyup='ontextChange(this,150)' onpaste="return pasteText(this,150)">
+                                </div>
+                              </div>
+                            </div>
+                            <label id="option1Validation" class="validationLabel hidden" style="color:red;">Missed to
+                              fill this?</label>
+
+                            <div class='form-group' >
+                              <div class='row'>
+                                <div class='col-8'>
+                                  <label for="option2">Option 2:</label>
+                                </div>
+                                <div class='col-4' style='text-align: right;'>
+                                  <span id='option2charcount'>0</span><span>/ 150</span>
+                                </div>
+                              </div>
+                              <div class='row'>
+                                <div class='col-12'>
+                                  <input id="option2" type="text"
+                                    class="form-control custom-input optionInput input_box_trasparent" maxlength="150"
+                                    onkeyup='ontextChange(this,150)' onpaste="return pasteText(this,150)">
+                                </div>
+                              </div>
+                            </div>
+                            <label id="option2Validation" class="validationLabel hidden" style="color:red;">Missed to
+                              fill
+                              this?</label>
+
+                              <div class='form-group'>
+                                <div class='row'>
+                                  <div class='col-8'>
+                                    <label for="option3">Option 3:</label>
+                                  </div>
+                                  <div class='col-4' style='text-align: right;'>
+                                    <span id='option3charcount'>0</span><span>/ 150</span>
+                                  </div>
+                                </div>
+                                <div class='row'>
+                                  <div class='col-12'>
+                                    <input id="option3" type="text"
+                                      class="form-control custom-input input_box_trasparent" maxlength="150"
+                                      onkeyup='ontextChange(this,150)' onpaste="return pasteText(this,150)">
+                                  </div>
+                                </div>
+                              </div>
+                            <label id="option3Validation" class="validationLabel hidden" style="color:red;">Missed to
+                              fill
+                              this?</label>
+
+                              <div class='form-group'>
+                                <div class='row'>
+                                  <div class='col-8'>
+                                    <label for="option4">Option 4:</label>
+                                  </div>
+                                  <div class='col-4' style='text-align: right;'>
+                                    <span id='option4charcount'>0</span><span>/ 150</span>
+                                  </div>
+                                </div>
+                                <div class='row'>
+                                  <div class='col-12'>
+                                    <input id="option4" type="text"
+                                      class="form-control custom-input input_box_trasparent" maxlength="150"
+                                      onkeyup='ontextChange(this,150)' onpaste="return pasteText(this,150)">
+                                  </div>
+                                </div>
+                              </div>
+                            <label id="option4Validation" class="validationLabel hidden" style="color:red;">Missed to
+                              fill
+                              this?</label>
+
+                            </div-->
+                            <div class="form-group">
+                              <label for="exampleSelect1">Answer</label>
+                              </select-->
+                              <select id="answerMultiSelect" multiple="multiple">
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                                <option value="4">Option 4</option>
+                              </select>
+                              <label id="validOption" class="hidden" style="color:red;">Select the right
+                                option</label>
+                              <label id="optionValidation" class="validationLabel hidden" style="color:red;">Enter
+                                options.</label>
+                            </div>
+
+                            <div class="form-group">
+                              <div class='row'>
+                                <div class='col-8'>
+                                  <label for="Reenforcement_Feedback">Reinforcement Feedback:</label>
+                                </div>
+                                <div class='col-4' style='text-align: right;'>
+                                  <span id='reenforcecharcount'>0</span><span>/ 150</span>
+                                </div>
+                              </div>
+                              <div class='row'>
+                                <div class='col-12'>
+                                  <textarea id="Reenforcement_Feedback"
+                                    class="form-control custom-input input_box_trasparent" rows="3" maxlength="150"
+                                    onkeyup='ontextChange(this,150)' onpaste="return pasteText(this,150)"></textarea>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class='row'>
+                                <div class='col-8'>
+                                  <label for="Corrective_Feedback">Corrective Feedback:</label>
+                                </div>
+                                <div class='col-4' style='text-align: right;'>
+                                  <span id='correctivecharcount'>0</span><span>/ 150</span>
+                                </div>
+                              </div>
+                              <div class='row'>
+                                <div class='col-12'>
+                                    <textarea id="Corrective_Feedback" class="form-control custom-input input_box_trasparent"
+                                    rows="3" maxlength="150" onkeyup='ontextChange(this,150)' onpaste="return pasteText(this,150)"></textarea>
+                                </div>
+                              </div>
+    
+                            </div>
+                            <input id="hidden-question-id" type="text" class="form-control display-none">
+                            <div class='actionDiv'>
+                              <button type="button"
+                                onmouseenter="mouseEnter('Save the above question for corresponding topic of this Experience. ');"
+                                onmouseleave="mouseLeave()" id="addQuestion" class="btn btn-primary">Save
+                                Question</button>
+                              <button type="button"
+                                onmouseenter="mouseEnter('Save the above question for corresponding topic of this Experience. ');"
+                                onmouseleave="mouseLeave()" id="saveQuestion" class="btn btn-primary display-none"
+                                onclick="saveQuestion()">Save</button>
+                              <button type="button" id="cancelQuestion" class="btn btn-primary display-none"
+                                onclick="cancelQuestion()">Cancel</button>
+                            </div>
+                          </div>
+
+
+                        </div>
+                        <div id="addQuestionDiv">
+                          <h6 class="mb-0">
+                            <div id='questionSet'>
+                              <div id="accordion">
+
+                              </div>
+                            </div>
+                          </h6>
+                        </div>
+
+                        <input id="hidden-topic-id" type="text" class="form-control display-none">
+                        <div class='actionDiv'>
+                          <button type="button"
+                            onmouseenter="mouseEnter('Save the above topic to this Experience. ');"
+                            onmouseleave="mouseLeave()" id="addTopic" class="btn btn-primary"
+                            onclick="addNewTopic()">Save Topic</button>
+                          <button type="button"
+                            onmouseenter="mouseEnter('Save the above topic to this Experience. ');"
+                            onmouseleave="mouseLeave()" id="saveTopic" class="btn btn-primary display-none"
+                            onclick="saveTopic()">Save</button>
+                          <button type="button" id="cancelTopic" class="btn btn-primary display-none"
+                            onclick="cancelTopic()">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div id="addTopicDiv">
+                  <h6 class="mb-0">
+                    <div id='topicSet'>
+                      <div id="topicaccordion">
+
+                      </div>
+                    </div>
+                  </h6>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="messageDiv">
+                    <h3 class="mb-0">
+                      <button
+                        onmouseenter="mouseEnter('Use the Settings panel to configure various options related to the Questions.');"
+                        onmouseleave="mouseLeave()" id="messages" class="btn btn-link add_question"
+                        data-toggle="collapse" data-target="#messageDivCollapse" aria-expanded="true"
+                        aria-controls="messageDivCollapse"> <i class="fa" aria-hidden="true"></i>
+                        Settings
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="messageDivCollapse" class="collapse " aria-labelledby="messageDiv"
+                    data-parent="#mainAccordion">
+                    <div class="card-body">
+
+                      <div class="questionSetttingDiv">
+
+                        <div class="form-group">
+                          <label for="topicInstruction">Topic Wall Title Message:</label>
+                          <textarea class="form-control custom-input input_box_trasparent" rows="3"
+                            id="topicInstruction" maxlength="170" onchange="showOnScreen() "></textarea>
+                        </div>
+
+                        <div class="form-group custom-file margin-bottom-20">
+                          <label class="inline-block-display">Start Video Button:</label>
+                          <input type="button"
+                            onmouseenter="mouseEnter('Change the image for this Photo Frame using this option. ');"
+                            onmouseleave="mouseLeave()" class="form-control custom-file-input handPointer"
+                            onclick="startvideobtn();" id="startvideobtn">
+                          <label class="custom-file-label single-line-text " id="StartVideoImageLabel" for="customFile"
+                            style="margin-top: 30px;">Choose Image</label>
+                          <label class="aspect-ratio-style ">Note: Recommended aspect ratio 2:1</label>
+                        </div>
+
+                        <div class="form-group custom-file margin-bottom-20">
+                          <label class="inline-block-display">Start Quiz Button:</label>
+                          <input type="button"
+                            onmouseenter="mouseEnter('Change the image for this Photo Frame using this option. ');"
+                            onmouseleave="mouseLeave()" class="form-control custom-file-input handPointer" onclick="startquizbtn();"
+                            id="startquizbtn">
+                          <label class="custom-file-label single-line-text " id="StartQuizImageLabel" for="customFile"
+                            style="margin-top: 30px;">Choose Image</label>
+                          <label class="aspect-ratio-style ">Note: Recommended aspect ratio 2:1</label>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="singleTopicMessage">Topic Completion Default Message:</label>
+                          <textarea class="form-control custom-input input_box_trasparent" rows="3"
+                            id="singleTopicMessage" maxlength="600"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="quizCompletedMessage">Activity Completion Message:</label>
+                          <textarea class="form-control custom-input input_box_trasparent" rows="3"
+                            id="quizCompletedMessage" maxlength="600"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message">Allow Skipping Video</label>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input " name="seeVideo" value="Yes" checked>Yes
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="seeVideo" value="No">No
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="message">Show Score At Very End:</label>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input " name="score" value="Yes" checked>Yes
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="score" value="No">No
+                            </label>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="message">Show Right Answer:</label>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="right" value="Yes" checked>Yes
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="right" value="No">No
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="passingPercentage">Passing Percentage:</label>
+                          <input id="passingPercentage" type="text" class="form-control custom-input input_box_trasparent"
+                            maxlength="3"
+                            onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" onpaste="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                        </div>
+
+
+                        <div>
+                          <label>Choose Background Audio:</label>
+                        </div>
+
+                        <div class="form-group custom-file margin-bottom-20">
+                          <button type="file"
+                            onmouseenter="mouseEnter('Choose a Background Audio for the room. The audio keeps playing in loop.');"
+                            onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="BindAudio()"
+                            id="backgroundAudio" accept="mp3, ogg, m4a, wav"
+                            style=" float: right;margin-top: 10px;"></button>
+                          <label class="custom-file-label form-control" id="BackgroundAudioLabel"
+                            for="backgroundAudio"><span>Choose Audio</span></label>
+                        </div>
+
+                        <div style="text-align:right;font-size:13px;cursor:pointer;position:relative;top:-10px">
+                          <span
+                            onmouseenter="mouseEnter('In case if you wish to remove the Audio you have set for the room, use this option.');"
+                            onmouseleave="mouseLeave()" onclick="removeAudio()">Remove audio</span>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="HeaderMessage">Header Message:</label>
+                          <textarea class="form-control custom-input input_box_trasparent" rows="3" id="HeaderMessage"
+                            maxlength="22"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="EndMessage">End Message:</label>
+                          <textarea class="form-control custom-input input_box_trasparent" rows="3" id="EndMessage"
+                            maxlength="70"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="SubheaderMessage">Successful Completion Message:</label>
+                          <textarea class="form-control custom-input input_box_trasparent" rows="3"
+                            id="SubheaderMessage" maxlength="70"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="failuerMessage">Unsuccessful Completion Message:</label>
+                          <textarea class="form-control custom-input input_box_trasparent" rows="3" id="failuerMessage"
+                            maxlength="70"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div id="overlay"></div>
+            <a-scene mousedrag vr-mode-ui="enabled: false" loading-screen="enabled:false">
+
+              <a-assets>
+                <a-mixin id="floorMat" material="color:#BBB"></a-mixin>
+                <img id="office" src="assets/images/sky.jpg">
+                <video id="video" src="assets/images/default.jpg"></video>
+                <a-asset-item id="cuberoom-obj" src="assets/images/CubeRoom.obj"></a-asset-item>
+                <img id="cuberoom-texture" src="assets/images/decor/natural.jpg">
+                <audio id="blip1">
+                  <source src="assets/videos/click.wav" type="audio/wav">
+                  </audio>
+                <!-- <audio id="blip1" src="assets/videos/click.wav"></audio> -->
+              </a-assets>
+
+
+              <a-entity obj-model="obj:assets/images/CubeRoom.obj"
+                material="metalness:0.6;src:assets/images/decor/natural.jpg"
+                position="-0.43004353980647725 -2.073 0.03519584671299558" rotation="0 90 0" scale="1.5 1.5 1.5"
+                id="cuberoom"></a-entity>
+
+
+              <a-entity id="CamEntity">
+                <a-entity id="mainCam" camera look-controls wasd-controls-enabled="false" position="-0.85 0.303 0"
+                  rotation="0 90 0">
+                  <a-entity cursor="rayOrigin: mouse;" position="0 0 -1" raycaster="objects: .clickable">
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+
+              <a-image visible="true" id="flex1" src="assets/images/bg.png" geometry="height:3;width:6"
+                position="6.75 1.0312388739393026 0.2309748624510259" rotation="0 90 0" scale="1.8 2 0.7" material="">
+              </a-image>
+
+              <!--MainScreen Start-->
+              <a-entity id="mainScreen" position="1.758 -0.311 0">
+                <a-entity id="questionText" position="4.966 4.084365795823561 0.23130820017334597" rotation="0 -90 0"
+                  scale="0 0 0"
+                  text="width: 10.5; color: #fff; wrapCount: 89; baseline: top; tabSize: 1;value:Question will appear here"
+                  sky=""></a-entity>
+
+              </a-entity>
+              <!--MainScreen End-->
+
+              <a-image id="quizTopicsPanel" cursor-listener rotation="0 180 0" position="-0.291 1.12407 7.358"
+                scale="0.530 0.535 0.5" crossorigin="anonymous" src="assets/images/blackboard.jpg"
+                geometry="height: 12; width: 25" material="" class="cursorEntry"></a-image>
+
+              <a-entity id="topicsPanel"
+                text="font: https://cdn.aframe.io/fonts/Exo2Bold.fnt;width: 12.5; color: #ffff00; wrapCount: 80; value:Instruction; letterSpacing: 1; tabSize: 1; whiteSpace: pre"
+                position="-0.406 3.766 7.34927" rotation="0 180 0" scale="" visible="true"></a-entity>
+
+            
+              <a-entity id="topicTitle1" position="-2.650 3.091 7.159" rotation="0 180 0" scale=""
+                text="font: https://cdn.aframe.io/fonts/Exo2Bold.fnt;width:  8;  color:  #fff;  value: topic title;  align:  center;  letterSpacing: 0.5;  tabSize:  1;  wrapCount:  55"
+                visible="false">
+              </a-entity>
+
+              <a-entity id="topicDescription1" position="-2.7746 2.7 7.153" rotation="0 180 0" scale=""
+                text="width: 7.5; color: white; wrapCount: 55; baseline: top; letterSpacing: 0.5; tabSize: 1; value: Description"
+                visible="false">
+              </a-entity>
+
+              <a-image id="topicDescriptionImage1" baseline:top="" position="-2.75823 0.71123 7.193" scale=""
+                rotation="0 180 0" visible="false" geometry="height: 4; width: 7"></a-image>
+
+              <a-entity id="proceed" mouseclick class="clickable" geometry="primitive:plane;width:1.5;height:0.5"
+                rotation="0 180 0" material="src:assets/images/continuebtn.png;opacity:0.99;shader:flat"
+                position="-5.655 -1.58692 7.229" visible="true" scale="1 0.81 1">
+              </a-entity>
+
+              <a-image id="score-screen-default-image" class="clickable" crossorigin="anonymous"
+                src="assets/images/default.jpg" visible="" geometry="height:3;width:6"
+                position="-7.80213 1.107 -1.24304" rotation="0 90 0" scale="1.6 2.11 0.7" open-browse-image="">
+              </a-image>
+
+              <a-video id="videoPlayer" crossorigin="anonymous" src="assets/images/appearvideoscreen.jpg" width="4"
+                height="3" geometry="width:215;height:140" rotation="" material="width:0;height:0" visible=""
+                position="-0.80453 1.190 -7.35768" scale="0.06 0.046 0.00001"></a-video>
+
+              <a-image id="topic-WallHeadingimage" class="clickable" position="4.95534 4.743 7.427" rotation="0 180 0"
+                a-image="" scale="3 0.87 0.00001" src="assets/images/topicswall.png" open-browse-image=""></a-image>
+              <a-image id="quiz-WallHeading" class="clickable" position="6.945 4.624 -3.793" rotation="0 270 0"
+                a-image="" scale="3 0.87 0.1" src="assets/images/quizwall.png" open-browse-image=""></a-image>
+              <a-image id="score-WallHeading" class="clickable" position="-7.82676 4.740 2.03197" rotation="0 90 0"
+                a-image="" scale="3 0.87 0.18" src="assets/images/scorewall.png" open-browse-image=""></a-image>
+              <a-image id="media-WallHeading" class="clickable" position="-5.778 4.956 -7.440" rotation="" a-image=""
+                scale="3 0.87 0.00001" src="assets/images/mediawall.png" material="" geometry="" open-browse-image="">
+              </a-image>
+
+              <a-entity id="playVideo" crossorigin="anonymous" geometry="primitive:plane;width:0.71;height:0.4"
+                rotation="" material="src:assets/images/pause.png;opacity:0.99;shader:flat"
+                position="-5.78066 -1.41447 -7.243" scale="0.99 1 1"></a-entity>
+
+              <a-entity id="restartVideo" geometry="primitive:plane;width:0.71;height:0.4"
+                material="src:assets/images/startovericon.png;opacity:0.99;shader:flat"
+                position="-6.66663 -1.41447 -7.243" crossorigin="anonymous" scale="0.99 1 1"></a-entity>
+
+              <a-image id="startQuiz" mouseclick class="clickable" crossorigin="anonymous"
+                src="assets/images/startq.png" visible="" geometry="width:1.5;height:0.5" rotation="" material=""
+                position="4.71 -1.41447 -7.243"></a-image>
+
+
+              <a-entity id="singleQuiz" position="1.366 0.95903 0.13434" rotation="" scale="0.72 0.6 1.04">
+                <a-entity id="topicsPanelClick" position="-2.14359 4.3 6.66541" rotation="0 180 0" geometry="height: 5; width: 3.8" material="opacity: 0; color: #FFFFFF" scale="4.3 0.23 0.09" visible="" mouseclick="" class="clickable"></a-entity>
+
+                <!-- <a-entity id="topicsPanelClick" position="3.40565 4.3 6.66541" rotation="0 180 0"
+                  geometry="height:5;width:3.8" material="opacity:0;color:#FFFFFF" scale="1.27 0.23 0.09" visible=""
+                  mouseclick="" class="clickable"></a-entity> -->
+
+                <a-entity id="0" position="3.176 3.42522 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="1" position="3.176 2.5947 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="2" position="3.176 1.741 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="3" position="3.176 0.891 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="4" position="3.176 0.089 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="5" position="3.176 -0.765 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="6" position="3.176 -1.613 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="7" position="3.176 -2.429 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="8" position="3.176 -3.254 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+                <a-entity id="9" position="3.176 -4.10229 6.742" rotation="0 180 0" geometry="height:5;width:3.8"
+                  material="opacity:0.9;color:#FFFFFF;src:assets/images/woodenbtn.png" scale="1.5 0.14 0.00001"
+                  class="clickable" visible="false" ></a-entity>
+
+              </a-entity>
+              <a-entity light="type:ambient;intensity:1" visible=""></a-entity>
+              <a-entity light="intensity: 0.6" position="-0.054 7.17403 -0.014" visible=""></a-entity>
+            </a-scene>
+          </div>
+          <div id="toast-container" class="toast-top-center">
+          </div>
+          <div class="sidebar-transparent sidebar-right">
+            <div class="button-divider tour-button">View</div>
+            <div id="freezeView"
+              onmouseenter="mouseEnter('Launch View: If you wish the current view to be the ‘Starting View’ of your Experience, then hit this button.');"
+              onmouseleave="mouseLeave()" onclick="setEntryView()"
+              class="custom-button1 graph-button place-color hidden-label">
+              <img class="img image-fluid" src="assets/images/Freeze_View.png" width="30">
+              <div>Launch View </div>
+              <span class="tooltiptext">Set the current view as the Launch View of the experience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
+    aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>Are you sure you want to delete this question?</div>
+          <div class="actionDiv">
+            <button type="button" class="btn btn-color-green" onclick="deleteQuestionAfterConfirmation();">Yes</button>
+            <button type="button" class="btn btn-color-blue" data-dismiss="modal">No</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <img class="modal-footer-image" src="assets/images/HeaderPopup.png">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="deleteTopicConfirmationModal" tabindex="-1" role="dialog"
+    aria-labelledby="deleteTopicConfirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteTopicConfirmationModalLabel">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>Are you sure you want to delete this Topic?</div>
+          <div class="actionDiv">
+            <button type="button" class="btn btn-color-green" onclick="deleteTopicAfterConfirmation();">Yes</button>
+            <button type="button" class="btn btn-color-blue" data-dismiss="modal">No</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <img class="modal-footer-image" src="assets/images/HeaderPopup.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+$('#summernote2').summernote({
+      placeholder: 'Instructions For Desktop/PC/Laptop',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']],
+        //['fontNamesIgnoreCheck', 'Comic Sans MS']
+      ],
+    });
+    $('#summernote3').summernote({
+      placeholder: 'Instructions For Mobile/VR',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+  </script>
+  <script type="text/javascript">
+    // Default Configuration
+    $(document).ready(function () {
+      toastr.options = {
+        'closeButton': false,
+        'positionClass': 'toast-top-center',
+        'timeOut': '2000',
+        'extendedTimeOut': '2000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut',
+      }
+    });
+
+  </script>
+</body>
+
+
+<script src="assets/js/customScript.js"></script>
+
+</html>

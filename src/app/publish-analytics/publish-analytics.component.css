@@ -1,0 +1,166 @@
+ /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */
+/* header */
+.bg-header{background-image:  url('src/assets/images/publishAnalytics/slide-01.jpg'); width: 100%;}
+.header-font{font-size: 24px; color: white;}
+.subheader{font-size: 18px;color: #31A38D; font-weight: 700;font-style: normal;}
+
+/* cards analytics*/
+.card-bg1{background-image:  url('src/assets/images/publishAnalytics/card_bg/bg_blue.jpg'); color: white; background-repeat: round; border-radius: 10px; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137)}
+.card-bg2{background-image:  url('src/assets/images/publishAnalytics/card_bg/bg_green.jpg'); color: white; background-repeat: round; border-radius: 10px; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137)}
+.card-bg3{background-image:  url('src/assets/images/publishAnalytics/card_bg/bg_sky.jpg'); color: white; background-repeat: round; border-radius: 10px; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137)}
+.card-bg4{background-image:  url('src/assets/images/publishAnalytics/card_bg/bg_purple.jpg'); color: white; background-repeat: round; border-radius: 10px; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137)}
+.card-bg5{background-image:  url('src/assets/images/publishAnalytics/card_bg/bg_orange.jpg'); color: white; background-repeat: round; border-radius: 10px; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137)}
+.spacing-all{padding: 1rem;}
+.card-inner-header{font-size: 20px; font-weight: 700;}
+.card-inner-count{font-size: 45px; font-weight: 700;line-height: 1;}
+.card-inner-footer{ font-size: 16px; font-weight: normal; text-align: end;}
+
+.date-div-color{background-color:#4CC189; text-align: center; color: white; border-radius: 5px;}
+.card-shadow{box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);}
+.card-filter-css{border-radius: 10px;}
+
+.list-header{font-size: 24px;color: #31A38D;font-weight: 700;}
+.card-inner-header-list{font-size: 14px; font-weight: 700;}
+.card-inner-count-list{font-size: 36px;font-weight: 700;}
+.card-inner-footer-list{font-size: 14px;font-weight: normal;}
+.apply-button{background-color: #31A38D; border: none; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);}
+.clear-button{background-color: #6CA0B6; border: none; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);}
+.color-download{color: #31A38D;}
+.tabel-header{color:#AEB6CB;}
+.cursor-icon{cursor: pointer;}
+.row-m{margin-left: 0px !important; margin-right: 0px !important;}
+.small-card-height {min-height: 45px; max-height: 45px;}
+
+.alert-danger { border: 1px solid #c0392b; border-radius: 3px; box-shadow: 0 8px 10px #888;font-size: 14px;padding: 4px 9px;z-index: 1; color: #fff; background-color: #c0392b; }
+  
+.formErrArrow {background: url(/assets/images/login/errorArrow.png) no-repeat 0px 0px;display: inline-block;left: 13px; position: absolute; top: -7px; padding-top: 27px }
+
+.modal-header-image{position: absolute;width: inherit;}
+.modal-header{    width: inherit; padding: 0px; border-bottom: none;}
+.modal-text-muted{font-size: 14px;}
+.modal-header-title{font-weight: 400;font-style: normal; font-size: 20px;color: #F36B7F;}
+.btn-orange{background-color: #E9785B; color: white; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);}
+.btn-green{background-color:  #31A38D; color: white; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);}
+.btn-blue{background-color:  #6CA0B6; color: white; box-shadow:5px 5px 5px rgba(0, 0, 0, 0.349019607843137);}
+.checkbox-border{border-top: 1px solid #E4E4E4; border-left: 1px solid #E4E4E4; border-right: 1px solid #E4E4E4;}
+.checkbox-level{position: relative;top: 1px;}
+.formgroup-border-bottom{border-bottom: 1px solid #E4E4E4;}
+.scroll-class{  max-height:250px; overflow-y: auto;}
+.selectedValueClass{    font-size: 10px; color: gray;}
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+  .form-style{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:#404040; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #808080 }
+
+  .patron-table-icon-size {
+      font-size: 20px;
+  }
+
+  .patron-table-downlad-icon-color {
+    color: #31a38d;
+}
+.back-arrow
+{
+    position: absolute;
+    cursor: pointer;
+    left: -4px;
+}
+
+.btn-color-blue {
+    background: #6CA0B6;
+    color: #fff;
+}
+
+.btn-color-green {
+    background: #31A38D;
+    color: #fff;
+}
+
+.create-first-exp-image{
+	height: 215px;
+}
+
+.first-experience-top{
+    position: relative;
+      font-size: 24px;
+      color: #8ac5c1;
+  }
+  
+  .first-experience-description{
+    margin-bottom: 10px;
+      color: #8ac5c1;
+  }
+  
+  .first-experience-mail{
+      color: #8ac5c1;
+  }
+
+  .filter-img{
+    position: relative;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: -3px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .filter-img-div{
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .search-m{
+    margin-top: 4px;
+  }
+
+  .filter-label{
+    font-size: 20px;
+    /* text-align: center; */
+    color: #31A38D;
+    font-weight: 700;
+  }
+
+  .text-center{
+    text-align: center;
+  }

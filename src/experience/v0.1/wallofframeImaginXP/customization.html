@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Experizer Experience</title>
+  <!-- For Google -->
+<meta name="description" content="Virtual Image museum in a lifelike 3D space where your learners can walk around admiring each exhibit. This encourages focused research, or an effective means of summarising or revising a topic." />
+<meta name="keywords" content="" />
+
+<meta name="author" content="Image gallery" />
+<meta name="copyright" content="studio.experizer.com" />
+<meta name="application-name" content="Experizer" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Image gallery" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Wall-of-frames.jpg" />
+<meta property="og:url" content="studio.experizer.com" />
+<meta property="og:description" content="Virtual Image museum in a lifelike 3D space where your learners can walk around admiring each exhibit. This encourages focused research, or an effective means of summarising or revising a topic. " />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Image gallery" />
+<meta name="twitter:description" content="Virtual Image museum in a lifelike 3D space where your learners can walk around admiring each exhibit. This encourages focused research, or an effective means of summarising or revising a topic. " />
+<meta name="twitter:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Wall-of-frames.jpg" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/SideBarInner.css">
+	<link rel="stylesheet" href="../verbose/css/common.css">
+	<link rel="stylesheet" href="assets/css/snackbar.css">
+	<link rel="stylesheet" href="../verbose/css/summernote-bs4.css">
+  <link rel="stylesheet" href="../verbose/css/summernote.css">
+   <link rel="icon" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <meta name="description" content="Cecropia's The Hall VR in A-Frame">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../verbose/summernotejs/popper.min.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote-bs4.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote.js">
+  </script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/aframe-click-drag-component.min.js"></script>
+  	 <script src="assets/js/aframe.0.7.0.min.js"></script>
+    <script src="assets/js/lzma.js"></script>
+	<script src="assets/js/ctm.js"></script>
+
+
+    <script src="assets/js/aframe-teleport-controls.min.js"></script>
+    <script src="assets/js/spheres_anim.js"></script>
+    <script src="assets/js/anim_1.js"></script>
+    <script src="assets/js/anim_2.js"></script>
+    <script src="assets/js/mocap.js"></script>
+    <script src="assets/js/envMapMaterial.js"></script>
+    <!--<script src="assets/js/mobile_component.js"></script>-->
+	<script src="assets/js/aframe-extras.min.js"></script>
+	<script src="../verbose/jscolor.js"></script>
+<!-- Toastr -->
+<link rel="stylesheet" href="../verbose/css/toastr.min.css">
+<script src="../verbose/toastr.min.js">
+</script>
+ <!-- Toastr -->
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+	  }
+  </style>
+</head>
+
+<body>
+	<div id="loaderq" class="lds-roller lds-roller-pos-assets-popup" style="position: absolute; z-index: 9999"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+		  <div class="overlay" id='loaderoverlay'></div>
+		  <div id="snackbar">Snackbar default text</div>
+  <div class="wrapper">
+    <!-- Page Content -->
+    <div id="content">
+		  <div class="">
+        <div class="row">
+          <div class="col-1 sidebar-fixed">
+            <button type="button" onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');" onmouseleave="mouseLeave()" id="brandingSidebar" class="btn btn-first btn-vertical-right button-align-first" onclick="toggleSideNav('launchSidenav')">Splash Screen</button>
+            <button type="button" onmouseenter="mouseEnter('Use this Tab to customize the Hall ambiance such as the Theme OR the branding. You can also add a music track for your Patrons to listen to.');" onmouseleave="mouseLeave()" id="auditoriumSidebar" class="btn btn-second btn-vertical-right  button-align-second" onclick="toggleSideNav('auditoriumSidenav')">Hall</button>
+            <button type="button" onmouseenter="mouseEnter('You can change the setting for the current Frame using this tab. To select a Frame click on the Photo frame in the window with your Mouse. ');" onmouseleave="mouseLeave()" id="gallerySidebar" class="btn btn-third btn-vertical-right button-align-second" onclick="toggleSideNav('gallerySidenav')">Frames</button>
+          </div>
+          <div class="col-12 vr-editor"  id="mainBlock">
+            <div id="launchSidenav" class="sidenav margin-left-60">
+             	<div id="accordionOne">
+					<div class="card">
+					<div class="card-header" id="headingThree">
+						<h3 class="mb-0">
+						  <button id="wallBtn1" onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');" onmouseleave="mouseLeave()" class="btn btn-link south" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">               <i class="fa" aria-hidden="true"></i>
+								Splash Screen
+						  </button>
+						</h3>
+				  </div>	  
+				  <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionOne">
+					<div class="card-body">
+							<div class="form-group margin-top-15">
+									<h6 style="color:#fff;width: 100%"><i>Check preview mode to preview Splash Screen</i></h6>
+								  </div>
+								  <div class="form-group margin-top-15">
+									<label for="splashBackground" style="color:#fff;width: 100%">Background Color:</label>
+									<div id="bgcolorSelector" class="colorSelector">
+									  <input class="jscolor {closable:true,closeText:'Close'} pointer splashBg"
+										id="splashBackground" value="">
+									  <div></div>
+									</div>
+								  </div>
+			
+								  <div class="form-group margin-top-15">
+									  <div class="row">
+										  <div class="col-10">
+												<label style="color:#fff;width: 100%" for="fixOpacity">Background Opacity (Drag to
+														change):</label>
+										  </div>
+										  <div class="col-2" style="padding:0px;">
+												<label id="rangeValue"></label>
+										  </div>
+									  </div>
+									
+									<div class="slidecontainer">
+									  <input type="range" min="0.1" max="1" step="0.001" value="0.1" class="slider"
+										id="fixOpacity" />
+									</div>
+								  </div>
+								  <div class="form-group margin-top-15">
+									<label for="splashHeaderColor">Header Font Color:</label>
+									<div id="colorSelector" class="colorSelector ">
+									  <input class="jscolor {closable:true,closeText:'Close'} pointer headerfont" id="splashHeaderColor"
+										value=""style="width: 100%">
+									  <div></div>
+									</div>
+								  </div>
+						 <div class="form-group margin-top-15">
+								<div class="row">
+										<div class="col-8"> 
+							<label >Splash Screen Text:</label></div>
+							<div class="col-4"  style=" padding-left: 50px; color:#fff">
+									<span id="maxCount">0</span>
+									<span >/ 350</span> 
+							 </div>
+							</div>
+							<textarea Id="summernote"  class="form-control lunchScreenText maxContentPost" rows="3" placeholder="Launch Text" name="Text"  value="" maxlength="150"> </textarea>
+						</div>
+						<div class="form-group margin-top-15">
+                            <label for="summernote2">Instructions For Desktop/PC/Laptop:</label>
+                            <textarea Id="summernote2" class="form-control instructionSetForDesktop" rows="5"
+                              placeholder="Instruction Set" name="Text" value="" maxlength="350"></textarea>
+                          </div>
+                          <div class="form-group margin-top-15">
+                            <label for="summernote3">Instructions For Mobile/VR:</label>
+                            <textarea Id="summernote3" class="form-control instructionSetForAndroid" rows="5"
+                              placeholder="Instructions For Mobile/VR" name="Text" value="" maxlength="350"></textarea>
+                          </div>
+							<div class="form-group custom-file">
+									<label class="inline-block-display" for="">Splash Image:</label>
+									<input type="button" onmouseenter="mouseEnter('Splash screen has a provision to change the image that appears on it. Use this option to change this image by selecting a new image from your Library. ');" onmouseleave="mouseLeave()" class="form-control custom-file-input handPointer" onclick="changeSplashImage();" id="splashImage" >
+									<label class="custom-file-label single-line-text" id="splashImageLable" for="splashImage">Choose Image</label>
+							 </div>
+				  	</div>
+				  </div>
+				 </div>
+
+				</div>
+				
+            </div>
+            <div id="auditoriumSidenav" class="sidenav margin-left-60">
+				<div id="accordion">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h3 class="mb-0">
+						  <button id="wallBtn1" onmouseenter="mouseEnter('Background theme helps you select the right ambiance for your Hall. Select a Background theme that goes good with your overall content. ');" onmouseleave="mouseLeave()" class="btn btn-link south" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i>
+							Background Theme
+						  </button>
+						</h3>
+				  </div>
+				  
+				  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >ARTISTIC</div>
+									<img id="Artistic" src="assets/textures/Artistic-hall.jpg" class="activeCLass" style="width:100%;height:100%;" onclick="decoreOptionChanged('Artistic')"/>
+								</div>
+							</div>
+							<div class="col-4">
+							  <div class='bgThemeDiv'>
+								<div class="themeLabel" >CLOUDS</div>
+								  <img id="Clouds" src="assets/textures/Clouds-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Clouds')"/>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >EXECUTIVE</div>
+									<img id="Executive" src="assets/textures/Executive-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Executive')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >GREEN</div>
+									<img id="Green" src="assets/textures/Green-hall.jpg" style="width:100%;height:100%;"onclick="decoreOptionChanged('Green')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv' >
+									<div class="themeLabel" >GRAY</div>
+									<img id="Gray" src="assets/textures/Gray-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Gray')"/></div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >PLAYFUL</div>
+									<img id="Kid" src="assets/textures/Kid-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Kid')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >LEMONGRASS</div>
+									<img id="Lemongrass" src="assets/textures/Lemongrass-hall.jpg" style="width:100%;height:100%;"onclick="decoreOptionChanged('Lemongrass')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >LIGHT GREEN</div>
+									<img id="Lightgreen" src="assets/textures/Lightgreen-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Lightgreen')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >NATURAL</div>
+									<img id="Natural" src="assets/textures/Natural-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Natural')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >PINK</div>
+									<img id="Pink" src="assets/textures/Pink-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Pink')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+							<div class='bgThemeDiv'>
+								<div class="themeLabel" >PLUSH</div>
+								<img id="Plush" src="assets/textures/Plush-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Plush')"/>
+							</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >PURPLE</div>
+									<img id="Purple" src="assets/textures/Purple-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Purple')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >RED</div>
+									<img id="Red" src="assets/textures/Red-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Red')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+							<div class='bgThemeDiv' >
+								<div class="themeLabel" >ROYAL BLUE</div>
+								<img id="Royalblue" src="assets/textures/Royalblue-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Royalblue')"/></div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >ROYAL </div>
+									<img id="Royal" src="assets/textures/Royal-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Royal')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv' >
+									<div class="themeLabel" >SIFI</div>
+									<img id="Sifi" src="assets/textures/Sifi-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Sifi')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv' >
+									<div class="themeLabel" >SILVER</div>
+									<img id="Silver" src="assets/textures/Silver-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Silver')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv' >
+									<div class="themeLabel" >SKYBLUE</div>
+									<img id="Skyblue" src="assets/textures/Skyblue-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('Skyblue')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >STAR</div>
+									<img id="Star" src="assets/textures/Star-hall.jpg" style="width:100%;height:100%;"onclick="decoreOptionChanged('Star')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv'>
+									<div class="themeLabel" >US</div>
+									<img id="US" src="assets/textures/US-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('US')"/>
+								</div>
+							</div>
+							<div class="col-4 mt-4">
+								<div class='bgThemeDiv' >
+									<div class="themeLabel" >WOODEN</div>
+									<img id="wooden" src="assets/textures/wooden-hall.jpg" style="width:100%;height:100%;" onclick="decoreOptionChanged('wooden')"/>
+								</div>
+							</div>
+							<div class="p-3">
+							<p style="color: white;">To Customize Hall Click Below Link:<p>
+									<a href="assets/textures/Executive-hall.jpg" download>
+									 
+										Customize Hall</a>
+									<a href="assets/textures/Executive-floor.jpg" download>Customize Floor</a>
+										
+									  
+							</div>	
+								   <div class="form-group custom-file" id="hallPopup"> 
+										<label class="inline-block-display" for="">Hall Theme:</label>
+									 <input type="button" class="custom-file-input handPointer" onclick="ImageMediaName('Image','Hall');" id="customFileHallImage">
+									 <label class="form-control custom-file-label single-line-text" id="customHallLabelImage" for="customFilehall">Choose Image</label>
+								 </div>	   
+								<!-- <div class="p-3">
+							<p style="color: white;">Click on floor the image to download it:<p>
+									<a href="assets/textures/Executive-floor.jpg" download>
+									  <img src="assets/textures/Executive-floor.jpg" alt="Executive-floor.jpg" width="100" height="100">
+									</a>
+							</div>	 -->
+								   <div class="form-group custom-file" id="centerFloorPopup"> 
+										<label class="inline-block-display" for="">Center Floor Carpet:</label>
+									 <input type="button" class="custom-file-input handPointer" onclick="ImageMediaName('Image','centerFloor');" id="centerFloorImage">
+									 <label class="form-control custom-file-label single-line-text" id="centerFloorLabelImage" for="centerCarpetFloorImage">Choose Image</label>
+								 </div>	   
+								 <div class="form-group custom-file" id="frontFloorPopup"> 
+										<label class="inline-block-display" for="">Front Floor Carpet:</label>
+									 <input type="button" class="custom-file-input handPointer" onclick="ImageMediaName('Image','frontFloor');" id="frontFloorImage">
+									 <label class="form-control custom-file-label single-line-text" id="frontFloorLabelImage" for="frontCarpetFloorImage">Choose Image</label>
+								 </div>
+								 <div class="form-group custom-file" id="backFloorPopup"> 
+										<label class="inline-block-display" for="">Back Floor Carpet:</label>
+									 <input type="button" class="custom-file-input handPointer" onclick="ImageMediaName('Image','backFloor');" id="backFloorImage">
+									 <label class="form-control custom-file-label single-line-text" id="backFloorLabelImage" for="backCarpetFloorImage">Choose Image</label>
+								 </div> 
+						  </div>
+			 
+					</div>
+				  </div>
+				  
+				  </div>
+				  
+				  <div class="card">
+					<div class="card-header" id="headingTwo">
+						<h3 class="mb-0">
+						  <button id="wallBtn2" onmouseenter="mouseEnter('Choose from a range of settings for this Experience like Branding and Music. You can customize settings for the Experience using this option.');" onmouseleave="mouseLeave()" class="btn btn-link west" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">               <i class="fa" aria-hidden="true"></i>
+							Settings
+						  </button>
+						</h3>
+					  </div>
+					
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+					<div class="card-body">
+						<div class="form-group custom-file"> 
+							 <label class="inline-block-display" for="">Default Image:</label>
+						  <input type="button" onmouseenter="mouseEnter('\'Default image\' is the image that gets shown when any Frame does not have an Image associated with it. You can select a default image that you would want to load as a placeholder for such frames.');" onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="showDefaultImage();" id="customFile1">
+						  <label class="form-control custom-file-label single-line-text" id="defaultImageLable" for="customFile">Choose Default Image</label>
+					  </div>
+						<div class="form-group custom-file"> 
+							 <label class="inline-block-display" for="">North Wall:</label>
+						  <input type="button" onmouseenter="mouseEnter('The North Wall and the South Walls of this Museum are reserved for Branding. You can set these Images through this option.');" onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="showNorthImage();" id="customFile1">
+						  <label class="form-control custom-file-label single-line-text" id="northImageLable" for="customFile">Choose North Wall Image</label>
+					  </div>
+					  <div class="form-group custom-file">
+						   <label class="inline-block-display" for="">South Wall:</label>
+						<input type="button" onmouseenter="mouseEnter('The North Wall and the South Walls of this Museum are reserved for Branding. You can set these Images through this option.');" onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="showSouthImage();" id="customFile2" accept="image/png, image/jpeg" >
+						  <label class="form-control custom-file-label single-line-text" id="southImageLable" for="customFile">Choose South Wall Image</label>
+					  </div>
+					  <div class="form-group custom-file">
+						   <label class="inline-block-display" for="">Background Music:</label>
+						<input type="button" onmouseenter="mouseEnter('Use this setting to Customize the audio that you would want to play while the Patron is going through the frames.');" onmouseleave="mouseLeave()" class=" custom-file-input handPointer" onclick="assignAudio();" id="customFile3" accept="mp3">
+						  <label class="form-control custom-file-label single-line-text" id="audioLable" for="customFile">Choose Audio</label>
+					  </div>
+					  <div onmouseenter="mouseEnter('Remove the Music/Audio track from your Experience.');" onmouseleave="mouseLeave()" class="remove-audio"><span onclick="removeAudio()">Remove Audio</span></div>
+					  <div class="form-group custom-file">
+							<label class="inline-block-display" for="">Video Icon-Play:</label>
+						 <input type="button" onmouseenter="mouseEnter('Set the video play media button icon using this option.');" onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="ImageMediaName('Image','VideoIconsMediaButton')" id="customVideoIconFile" accept="image/png, image/jpeg, image/jpg" >
+						   <label class="form-control custom-file-label single-line-text" id="customVideoIconsLabelImage" for="customFile">Choose Image</label>
+					   </div>
+					   <div class="form-group custom-file">
+							<label class="inline-block-display" for="">Video Icon-Pause:</label>
+						 <input type="button" onmouseenter="mouseEnter('Set the video pause media button icon using this option.');" onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="ImageMediaName('Image','VideoPauseIconsMediaButton')" id="customVideoPauseIconFile" accept="image/png, image/jpeg, image/jpg" >
+						   <label class="form-control custom-file-label single-line-text" id="customVideoPauseIconsLabelImage" for="customFile">Choose Image</label>
+					   </div>
+					   <div class="form-group custom-file">
+							<label class="inline-block-display" for="">URL Icon:</label>
+						 <input type="button" onmouseenter="mouseEnter('Set the URL media button icon using this option.');" onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="ImageMediaName('Image','URLIconsMediaButton')" id="customURLIconFile" accept="image/png, image/jpeg, image/jpg" >
+						   <label class="form-control custom-file-label single-line-text" id="customURLIconsLabelImage" for="customFile">Choose Image</label>
+					   </div>
+					   <div class="form-group custom-file">
+							<label class="inline-block-display" for="">Image Icon:</label>
+						 <input type="button" onmouseenter="mouseEnter('Set the Image media button icon using this option.');" onmouseleave="mouseLeave()" class="custom-file-input handPointer" onclick="ImageMediaName('Image','ImageIconsMediaButton')" id="customImageIconFile" accept="image/png, image/jpeg, image/jpg" >
+						   <label class="form-control custom-file-label single-line-text" id="customImageIconsLabelImage" for="customFile">Choose Image</label>
+					   </div>
+					  <!--<div class="form-group margin-top-25">
+						<button type="button" id="addTeleport" onclick="addDecoreOption();" class="btn btn-default btn-align">Add Decore</button>
+					  </div>-->
+					  <!-- <div class="form-group">
+							<label for="">Media Button Icons :</label>
+							
+							<select id="IconsSelect" class="form-control input_box_trasparent" onclick="IconList()" >
+						
+							
+							<option name="backgroungType" selected value="noneOption">&nbsp;None</option><br>
+							<option name="backgroungType" value="videoOption">&nbsp;Video</option><br>
+							<option name="backgroungType" value="urlOption">&nbsp;URL</option>
+							<option name="backgroungType" value="imageOption">&nbsp;Image</option>
+						</select>
+						</div> -->
+						<!-- <div class="form-group" id="iconsMediaButtonPopup" >
+								<div class="form-group custom-file">
+									<label for="">Choose Image :</label>
+									<input onmouseenter="mouseEnter('Change the Image  using this option.');"
+									onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+									onclick="ImageMediaName('Image','IconsMediaButton')" id="customIconImageMedia">
+								  <label class="custom-file-label form-control" id="customIconsLabelImage"
+									for="customIconImageMedia">Choose Image</label>
+							   </div>
+							   </div> -->
+					</div>
+				  </div>
+				  </div>
+				</div>
+				<!--div class="sidebar-text-first">Background Theme: <span id="place-name"></span></div>
+               <div class="sidebar-text-first">Branding: <span id="place-name"></span></div-->
+				
+            </div>
+            <div id="gallerySidenav" class="sidenav margin-left-60">
+             	<div id="accordionFrame">
+					<div class="card">
+					<div class="card-header" id="headingThree">
+						<h3 class="mb-0">
+							<button id="wallBtn1" onmouseenter="mouseEnter('You can change the setting for the current Frame using this tab. To select a Frame click on the Photo frame in the window with your Mouse.');" onmouseleave="mouseLeave()" class="btn btn-link south" data-toggle="collapse" data-target="#collapseFrame" aria-expanded="true" aria-controls="collapseThree">               <i class="fa" aria-hidden="true"></i>
+							Frames
+						  </button>
+						</h3>
+				  </div>
+				  
+				  <div id="collapseFrame" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionFrame">
+					<div class="card-body">
+				<div class="form-group" style="display:none;">
+              <label for="frameDropDown">Museum Frame:</label>
+                <select name="lights" style="cursor:pointer;" id="frameDropDown" onchange="frameChanged()" class="form-control">
+<!--                  <option value="0" selected="Selected">Select Frame</option>-->
+                  <option value="1" selected="Selected">Frame 1</option>
+                  <option value="2">Frame 2</option>
+                  <option value="3">Frame 3</option>
+                  <option value="4">Frame 4</option>
+                  <option value="5">Frame 5</option>
+                  <option value="6">Frame 6</option>
+                  <option value="7">Frame 7</option>
+                  <option value="8">Frame 8</option>
+                  <option value="9">Frame 9</option>
+                  <option value="10">Frame 10</option>
+                  <option value="11">Frame 11</option>
+                  <option value="12">Frame 12</option>
+                  <option value="13">Frame 13</option>
+                  <option value="14">Frame 14</option>
+                  <option value="15">Frame 15</option>
+                  <option value="16">Frame 16</option>
+                  <option value="17">Frame 17</option>
+                  <option value="18">Frame 18</option>
+                  <option value="19">Frame 19</option>
+                  <option value="20">Frame 20</option>
+                </select>
+              </div>
+							
+			<div class="form-group" >
+				   <label for="">Frame Name:</label>
+                 <input type="text" class="form-control input_box_trasparent" rows="3" placeholder="Frame name" name="Text" Id="frameName" 
+				 value="" maxlength="150"> 
+              </div>
+             <div class="form-group custom-file">
+				   <label class="inline-block-display" for="">Frame Image:</label>
+                  <input type="button" onmouseenter="mouseEnter('Change the image for this Photo Frame using this option. ');"
+				   onmouseleave="mouseLeave()" class="form-control custom-file-input handPointer" onclick="showFrameImage();" id="customFile" >
+                  <label class="custom-file-label single-line-text" id="frameImageLabel" for="customFile">Choose Image</label>
+				 <label class="aspect-ratio-style" id="frameImageTitle" for=""></label>
+              </div>
+			
+			 <div class="form-group margin-top-15">
+			<label for="frameDescription">Frame Description:</label>
+				<textarea class="form-control input_box_trasparent" rows="3" name="Text" Id="frameDescription" value="" maxlength="150"> </textarea>
+
+			</div>
+			  <!--media Attachment 1-->
+			  <div class="form-group">
+				<label for="">Media Attachment 1:</label>
+				
+				<select id="option1" class="form-control input_box_trasparent" onclick="DropdownList()" >
+			
+				
+				<option name="backgroungType" selected value="noneOption">&nbsp;None</option><br>
+				<option name="backgroungType" value="videoOption">&nbsp;Video</option><br>
+				<option name="backgroungType" value="urlOption">&nbsp;URL</option>
+				<option name="backgroungType" value="imageOption">&nbsp;Image</option>
+			</select>
+			</div>
+				<div class="form-group" id="urlDisplay" style="display: none">
+					<input type="email" class="form-control input_box_trasparent" rows="3" placeholder="Enter URL" name="Text"
+					 onchange="urlName1()" id="urlname1" value="" maxlength="150"> 
+					 <label class="aspect-ratio-style" id="urlNote" for="">Note: User gets navigated to another Tab by using this option. This may impact the experience on certain VR Headsets(if in use).</label>
+
+					</div>  
+				  
+				  <div class="form-group" id="videoSkyPopup" style="display: none">
+					<div class="form-group custom-file">
+						<label for="">Choose Video :</label>
+						<input onmouseenter="mouseEnter('Change the Video  using this option.');"
+						onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+						onclick="VideoName('Video',null)" id="customFileVideo">
+					  <label class="custom-file-label form-control" id="customLabelVideo"
+						for="customFileVideo">Choose Video</label>
+				   </div>
+				   </div>
+
+				   <div class="form-group" id="imageMediaPopup" style="display: none">
+					<div class="form-group custom-file">
+						<label for="">Choose Image :</label>
+						<input onmouseenter="mouseEnter('Change the Image  using this option.');"
+						onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+						onclick="ImageMediaName('Image','MediaType1')" id="customFileImageMedia">
+					  <label class="custom-file-label form-control" id="customLabelImage"
+						for="customFileImageMedia">Choose Image</label>
+				   </div>
+				   </div>
+
+			<!--media type 2-->
+			<div class="form-group">
+				<label for="">Media Attachment 2:</label>
+				<select id="option2" class="form-control input_box_trasparent" onclick="DropdownList2()" >
+				<option name="backgroungType" selected value="noneOption2">&nbsp;None</option><br>
+				<option name="backgroungType" value="videoOption2">&nbsp;Video</option><br>
+				<option name="backgroungType" value="urlOption2">&nbsp;URL</option>
+				<option name="backgroungType" value="imageOption2">&nbsp;Image</option>
+			</select>
+			</div>
+				<div class="form-group" id="urlDisplay2" style="display: none">
+					<input type="email" class="form-control input_box_trasparent" rows="3" placeholder="Enter URL" name="Text" 
+					onchange="urlName2()" id="urlname2" value="" maxlength="150"> 
+					<label class="aspect-ratio-style" id="urlNote" for="">Note: User gets navigated to another Tab by using this option. This may impact the experience on certain VR Headsets(if in use).</label>
+
+					</div>  
+				 
+				  <div class="form-group" id="videoSkyPopup2" style="display: none">
+					<div class="form-group custom-file">
+						<label for="">Choose Video :</label>
+
+						<input onmouseenter="mouseEnter('Change the Video  using this option.');"
+						onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+						onclick="VideoName2('Video',null)" id="customFileVideo2">
+					  <label class="custom-file-label form-control" id="customLabelVideo2"
+						for="customFileVideo2">Choose Video</label>
+				   </div>
+				   </div>
+				   <div class="form-group" id="imageMediaPopup2" style="display: none">
+					<div class="form-group custom-file">
+						<label for="">Choose Image :</label>
+						<input onmouseenter="mouseEnter('Change the Image  using this option.');"
+						onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+						onclick="ImageMediaName('Image','MediaType2')" id="customFileImageMedia2">
+					  <label class="custom-file-label form-control" id="customLabelImage2"
+						for="customFileImageMedia2">Choose Image</label>
+				   </div>
+				   </div>
+
+			<!--media type 3-->
+			<div class="form-group">
+				<label for="">Media Attachment 3:</label>
+				<select id="option3" class="form-control input_box_trasparent" onclick="DropdownList3()" >
+				<option name="backgroungType" selected value="noneOption3">&nbsp;None</option><br>
+				<option name="backgroungType" value="videoOption3">&nbsp;Video</option><br>
+				<option name="backgroungType" value="urlOption3">&nbsp;URL</option>
+				<option name="backgroungType" value="imageOption3">&nbsp;Image</option>
+			</select>
+			</div>
+				<div class="form-group" id="urlDisplay3" style="display: none">
+					<input type="email" class="form-control input_box_trasparent" rows="3" placeholder="Enter URL" name="Text" 
+					onchange="urlName3()" id="urlname3" value="" maxlength="150"> 
+					<label class="aspect-ratio-style" id="urlNote" for="">Note: User gets navigated to another Tab by using this option. This may impact the experience on certain VR Headsets(if in use).</label>
+
+					</div>  
+				 
+				  <div class="form-group" id="videoSkyPopup3" style="display: none">
+					<div class="form-group custom-file">
+						<label for="">Choose Video :</label>
+
+						<input onmouseenter="mouseEnter('Change the Video  using this option.');"
+						onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+						onclick="VideoName3('Video',null)" id="customFileVideo3">
+					  <label class="custom-file-label form-control" id="customLabelVideo3"
+						for="customFileVideo3">Choose Video</label>
+				   </div>
+				   </div>
+				   <div class="form-group" id="imageMediaPopup3" style="display: none">
+					<div class="form-group custom-file">
+						<label for="">Choose Image :</label>
+						<input onmouseenter="mouseEnter('Change the Image  using this option.');"
+						onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+						onclick="ImageMediaName('Image','MediaType3')" id="customFileImageMedia3">
+					  <label class="custom-file-label form-control" id="customLabelImage3"
+						for="customFileImageMedia3">Choose Image</label>
+				   </div>
+				   </div>
+
+				<!--media Attachment 4-->
+				<div class="form-group">
+					<label for="">Media Attachment 4:</label>
+					
+					<select id="option4" class="form-control input_box_trasparent" onclick="DropdownList4()" >
+				
+					
+					<option name="backgroungType" selected value="noneOption4">&nbsp;None</option><br>
+					<option name="backgroungType" value="videoOption4">&nbsp;Video</option><br>
+					<option name="backgroungType" value="urlOption4">&nbsp;URL</option>
+					<option name="backgroungType" value="imageOption4">&nbsp;Image</option>
+				</select>
+				</div>
+					<div class="form-group" id="urlDisplay4" style="display: none">
+						<input type="email" class="form-control input_box_trasparent" rows="3" placeholder="Enter URL" name="Text"
+						onchange="urlName4()" id="urlname4" value="" maxlength="150"> 
+						<label class="aspect-ratio-style" id="urlNote" for="">Note: User gets navigated to another Tab by using this option. This may impact the experience on certain VR Headsets(if in use).</label>
+	
+						</div>  
+					
+					<div class="form-group" id="videoSkyPopup4" style="display: none">
+						<div class="form-group custom-file">
+							<label for="">Choose Video :</label>
+							<input onmouseenter="mouseEnter('Change the Video  using this option.');"
+							onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+							onclick="ImageMediaName('Video','MediaType4')" id="customFileVideo4">
+						<label class="custom-file-label form-control" id="customLabelVideo4"
+							for="customFileVideo4">Choose Video</label>
+					</div>
+					</div>
+	
+					<div class="form-group" id="imageMediaPopup4" style="display: none">
+						<div class="form-group custom-file">
+							<label for="">Choose Image :</label>
+							<input onmouseenter="mouseEnter('Change the Image  using this option.');"
+							onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+							onclick="ImageMediaName('Image','MediaType4')" id="customFileImageMedia4">
+						<label class="custom-file-label form-control" id="customLabelImage4"
+							for="customFileImageMedia4">Choose Image</label>
+					</div>
+					</div>	   
+			<!--media Attachment 4 end-->
+
+						<!--media Attachment 5-->
+						<div class="form-group">
+							<label for="">Media Attachment 5:</label>
+							
+							<select id="option5" class="form-control input_box_trasparent" onclick="DropdownList5()" >
+						
+							
+							<option name="backgroungType" selected value="noneOption5">&nbsp;None</option><br>
+							<option name="backgroungType" value="videoOption5">&nbsp;Video</option><br>
+							<option name="backgroungType" value="urlOption5">&nbsp;URL</option>
+							<option name="backgroungType" value="imageOption5">&nbsp;Image</option>
+						</select>
+						</div>
+							<div class="form-group" id="urlDisplay5" style="display: none">
+								<input type="email" class="form-control input_box_trasparent" rows="3" placeholder="Enter URL" name="Text"
+								onchange="urlName5()" id="urlname5" value="" maxlength="150"> 
+								<label class="aspect-ratio-style" id="urlNote" for="">Note: User gets navigated to another Tab by using this option. This may impact the experience on certain VR Headsets(if in use).</label>
+			
+								</div>  
+							
+							<div class="form-group" id="videoSkyPopup5" style="display: none">
+								<div class="form-group custom-file">
+									<label for="">Choose Video :</label>
+									<input onmouseenter="mouseEnter('Change the Video  using this option.');"
+									onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+									onclick="ImageMediaName('Video','MediaType5')" id="customFileVideo5">
+								<label class="custom-file-label form-control" id="customLabelVideo5"
+									for="customFileVideo5">Choose Video</label>
+							</div>
+							</div>
+			
+							<div class="form-group" id="imageMediaPopup5" style="display: none">
+								<div class="form-group custom-file">
+									<label for="">Choose Image :</label>
+									<input onmouseenter="mouseEnter('Change the Image  using this option.');"
+									onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+									onclick="ImageMediaName('Image','MediaType5')" id="customFileImageMedia5">
+								<label class="custom-file-label form-control" id="customLabelImage5"
+									for="customFileImageMedia5">Choose Image</label>
+							</div>
+							</div>	   
+						<!--media Attachment 5 end-->
+								
+			<!--end of media types-->
+
+			 <!--<div class="form-group">
+			<button type="button" id="addTeleport" onclick="addFrame();" class="btn btn-default btn-align">Add Frame</button>
+			</div>-->
+				  </div>
+				  
+				  </div>
+			</div>
+				</div>
+				
+            </div>
+			
+            <div id="overlay"></div>
+             <a-scene physics vr-mode-ui="enabled: false">
+								<a-entity id="CamEntity">
+										<a-entity id="mainCam" camera="userHeight:1.6" mouse-controls="pointerlockEnabled: false" universal-controls kinematic-body></a-entity>
+									</a-entity>
+<a-grid static-body="sphereRadius:NaN" position="0 -0.01 0"></a-grid>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="9.607 0.391 -0.049" static-body="sphereRadius:NaN" rotation="0 90 0" geometry="depth:0.1;width:5" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="4.171 0.391 -8.113" static-body="sphereRadius:NaN" rotation="0 90 0" geometry="width:12;depth:0.1" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="-0.102 0.391 -14.12" static-body="sphereRadius:NaN" geometry="width:8;depth:0.1" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="-4.143 0.391 -8.113" static-body="sphereRadius:NaN" rotation="0 90 0" geometry="depth:0.1;width:12" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="-9.563 0.391 -0.049" static-body="sphereRadius:NaN" rotation="0 90 0" geometry="depth:0.1;width:5" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="-0.004 0.391 14.174" static-body="sphereRadius:NaN" geometry="width:8;depth:0.1" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="-6.958 0.391 2.479" static-body="sphereRadius:NaN" geometry="width:5.5;height:1;depth:0.1" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="-6.958 0.391 -2.175" static-body="sphereRadius:NaN" geometry="width:5.5;height:1;depth:0.1" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="6.882 0.391 -2.175" static-body="sphereRadius:NaN" geometry="width:5.5;height:1;depth:0.1" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="6.882 0.391 2.275" static-body="sphereRadius:NaN" geometry="width:5.5;height:1;depth:0.1" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="4.094 0.391 8.197" static-body="sphereRadius:NaN" rotation="0 90 0" geometry="depth:0.1;width:12" material="opacity:0.1"></a-box>
+<a-box color="#39BB82" scale="1 6 1" width="15" height="1" depth="3" position="-4.143 0.391 8.171" static-body="sphereRadius:NaN" rotation="0 90 0" geometry="depth:0.1;width:12" material="opacity:0.1"></a-box>
+				 
+<a-entity cursor="fuse: false; rayOrigin: mouse;"
+            position="0 0 -1"
+            geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+            material="color: black; shader: flat">
+  </a-entity>
+      <a-entity mobile> </a-entity>
+      <a-entity light="type: directional; color: #FFF; intensity: 0.5" position="2 20 0"></a-entity>
+      <a-entity light="type: ambient; color: #FFF"></a-entity>
+
+				 
+      <a-entity anim_1></a-entity>
+      <a-assets>
+        <a-mixin id="checkpoint"></a-mixin>
+        <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
+        <img id="sky_sphere-texture" src="assets/textures/sky_sphere.jpg">
+        <a-sound id="audio-1"
+                 autoplay="true"
+                 loop="true"
+                 position="1 1 0"></a-sound>
+        <a-sound id="audio-2"
+                 autoplay="true"
+                 loop="true"
+                 position="1 1 10"></a-sound>
+        <!-- floor -->
+        <a-asset-item id="floor-obj" src="assets/models/floor.obj"></a-asset-item>
+        <img id="floor-texture">
+        <img id="floor_normal-texture" src="assets/textures/floor_normal.jpg">
+        <!-- - floor -->
+        <!-- hall -->
+        <a-asset-item id="hall-obj" src="assets/models/hall.obj"></a-asset-item>
+        <img id="hall-texture">
+        <!--<img id="hall_normal-texture" src="textures/hall_normal.jpg">-->
+        <!-- - hall -->
+		  <!-- acropolis -->
+        <a-asset-item id="acropolis-obj" src="assets/models/acropolis.obj"></a-asset-item>
+        <img id="defaultgallery" src="assets/images/defaultgallery.jpg">
+        <img id="changedgallery">
+        <!-- - acropolis -->	
+		<!--<img id="buttonWeb" src="assets/images/web.jpg">
+		<img id="buttonVideo" src="assets/images/play.jpg">
+		<img id="buttonAudio" src="assets/images/audio.jpg">-->
+		 <!-- moonlight -->
+        <a-asset-item id="moonlight-obj" src="assets/models/moonlight.obj"></a-asset-item>
+        <!-- castle_lake -->
+        <a-asset-item id="castle-obj" src="assets/models/castle_lake.obj"></a-asset-item>
+        <!-- - castle_lake -->
+        <!-- good_samaritan -->
+        <a-asset-item id="good_samaritan-obj" src="assets/models/good_samaritan.obj"></a-asset-item>
+        <!-- - good_samaritan -->
+
+		
+		  
+		  <!-- moonlight -->
+        <a-asset-item id="north-obj" src="assets/models/moonlight.obj"></a-asset-item>
+        <img id="north-texture" src="assets/images/defaultbranding.jpg">
+        <!-- - moonlight -->
+		  <!-- moonlight -->
+        <a-asset-item id="south-obj" src="assets/models/moonlight.obj"></a-asset-item>
+        <img id="south-texture" src="assets/images/defaultbranding.jpg">
+        <!-- - moonlight -->
+		  
+		  <!-- moonlight -->
+        <a-asset-item id="bg-obj" src="assets/models/moonlight.obj"></a-asset-item>
+        <img id="bg-texture" src="assets/textures/bg_light.png">
+        <!-- - moonlight -->
+		  
+		  <!-- moonlight -->
+        <a-asset-item id="lightoverlay-obj" src="assets/models/moonlight.obj"></a-asset-item>
+        <img id="lightoverlay-texture" src="assets/textures/lightoverlay.png">
+        <!-- - moonlight -->
+		  
+        <!-- hall low floor -->
+        <!-- this piece is only meant for teleportation -->
+        <a-asset-item id="hall_low_floor-obj" src="assets/models/hall_low_floor.obj"></a-asset-item>
+
+        <!-- - hall low floor-->
+
+        <!-- lamps -->
+        <a-asset-item id="lamps-obj" src="assets/models/lamps.obj"></a-asset-item>
+        <img id="lamps-texture" src="assets/textures/lamps.jpg">
+        <!-- - lamps -->
+		<a-asset-item id="lamps-obj1" src="assets/models/lampsnew.obj"></a-asset-item>
+        <img id="lamps-texture1" src="assets/textures/lamps.jpg">
+		  
+        <!-- mocaps -->
+        <a-asset-item id="am_threejs_CEC_BODY_1_HEAD-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_1_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_1_LEFT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_1_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_1_RIGHT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_1_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_2_HEAD-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_2_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_2_LEFT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_2_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_2_RIGHT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_2_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_3_HEAD-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_3_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_3_LEFT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_3_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_3_RIGHT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_3_RIGHT.js"></a-asset-item>
+
+        <a-asset-item id="am_threejs_CEC_BODY_4_HEAD-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_4_HEAD.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_4_LEFT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_4_LEFT.js"></a-asset-item>
+        <a-asset-item id="am_threejs_CEC_BODY_4_RIGHT-mocap" src="assets/js/mocap/am_threejs_CEC_BODY_4_RIGHT.js"></a-asset-item>
+        <!-- - mocaps -->
+		
+      </a-assets>
+
+      <a-sky color="#EEEEFF" material="src: #sky_sphere-texture"></a-sky>
+
+      <a-entity mousedrag obj-model="obj: #floor-obj;" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.6" id="floor"  static-body="sphereRadius:NaN"></a-entity>
+			<a-entity mousedrag obj-model="obj: #floor-obj;" position="0.000 0.018 8.104" scale="0.820 1.000 1.000" rotation="0.000 90 0" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.6" id="floor2" static-body="sphereRadius:NaN"></a-entity>
+	   <a-entity  mousedrag obj-model="obj: #floor-obj;" position="0.000 0.038 -7.895" scale="0.800 1.000 1.000" rotation="0.000 90 0" material="src: #floor-texture; normalMap: #floor_normal-texture; metalness: 0.6" id="floor3" static-body="sphereRadius:NaN" ></a-entity>
+			<a-entity mousedrag obj-model="obj: #hall-obj;" material="src: #hall-texture" id="hall"></a-entity>
+      <a-entity mousedrag obj-model="obj: #hall_low_floor-obj;" material="opacity: 0.0" id="hall_low_floor" ></a-entity>
+      
+      <a-entity mousedrag obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;"></a-entity>
+		
+		<!--		1 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-1" src="assets/textures/lightoverlay.png" position="5.17 2.002 1.873" scale="2.5 2 1" material="opacity:0.5"></a-image>
+      <a-entity id="gallery-1" mousedrag mouseclick obj-model="obj: #acropolis-obj;" material="src: #defaultgallery"></a-entity>
+		<a-entity data-brackets-id="6448" id="no-hmd-intro" position="5.163 0.726 2.058" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 180 0">
+    	<a-entity data-brackets-id="6449" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text id="text-1" data-brackets-id="6450" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-1" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.738 1.947 0.546" visible="false" >   
+		</a-entity>
+		<a-entity id="button-2-frame-1" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.738 1.547 0.441" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-1" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.738 1.151 0.347" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-1" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.738 0.726 0.272"
+		visible="false"> 
+		</a-entity>
+		<a-entity id="button-5-frame-1" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.738 0.270 0.272"
+		visible="false">  
+		</a-entity>
+		</a-entity>
+<!--		1 Image and text end-->
+
+			<!--		2 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-2" src="assets/textures/lightoverlay.png" position="3.728 1.88 4.213" rotation="0 90 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-2" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="1.917 -0.13 -1.511" rotation="0 90 0"></a-entity>
+		<a-entity data-brackets-id="8579" id="no-hmd-intro" position="4.043 0.692 4.272" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 270 0">
+    	<a-entity data-brackets-id="8580" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8581" id="text-2" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-2" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.690 0.487" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-2" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.292 0.387" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-2" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.893 0.287" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-2" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.505 0.197" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-2" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.116 0.108" visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--2 Image and text -->
+	
+		<!--		3 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-3" src="assets/textures/lightoverlay.png" position="3.728 1.832 7.909" rotation="0 90 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-3" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="1.875 -0.155 2.167" rotation="0 90 0"></a-entity>
+		<a-entity data-brackets-id="8583" id="no-hmd-intro" position="3.982 0.68 7.948" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 270 0">
+    	<a-entity data-brackets-id="8584" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8585" id="text-3" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-3" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.690 0.487" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-3" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.292 0.387" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-3" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.893 0.287" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-3" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.505 0.197" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-3" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.112 0.107" visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		3 Image and text end-->
+		
+		<!--		4 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-4" src="assets/textures/lightoverlay.png" position="3.728 1.908 11.727" rotation="0 90 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-4" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="1.884 -0.08 6.039" rotation="0 90 0"></a-entity>
+		<a-entity data-brackets-id="8587" id="no-hmd-intro" position="4.09 0.710 11.816" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 270 0">
+    	<a-entity data-brackets-id="8588" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8589" id="text-4" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-4" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.274 1.655 0.643" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-4" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.282 1.25 0.568" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-4" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.288 0.849 0.46" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-4" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.288 0.472 0.373" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-4" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.288 0.092 0.285" visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		4 Image and text end-->
+		
+		<!--		5 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-5" src="assets/textures/lightoverlay.png" position="0.006 2.01 13.888" rotation="0 180 0" scale="2.5 1.8 1" material="opacity:0.5"></a-image>
+      <a-entity mousedrag mouseclick id="gallery-5" obj-model="obj: #castle-obj;" material="src: #defaultgallery"></a-entity>
+		<a-entity data-brackets-id="7268" id="no-hmd-intro" position="-0.043 0.795 14.062" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 180 0">
+    	<a-entity data-brackets-id="7269" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="7270" id="text-5" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-5" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 1.690 0.487" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-5" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 1.292 0.387" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-5" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 0.893 0.287" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-5" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 0.494 0.195" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-5" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 0.122 0.109" visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		5 Image and text end-->
+		
+		<!--		6 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-6" src="assets/textures/lightoverlay.png" position="-3.718 1.888 11.723" rotation="0 270 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-6" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="-1.908 -0.155 17.366" rotation="0 270 0"></a-entity>
+		<a-entity data-brackets-id="8595" id="no-hmd-intro" position="-4.017 0.726 11.556" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13.02 90 0">
+    	<a-entity data-brackets-id="8596" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8597" id="text-6" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-6" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.690 0.487" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-6" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.292 0.387" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-6" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.893 0.287" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-6" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.505 0.197" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-6" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.094 0.102" visible="false">   
+		</a-entity>	
+		</a-entity>
+		<!--		6 Image and text end-->
+		
+		<!--		7 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-7" src="assets/textures/lightoverlay.png" position="-3.718 1.863 8.042" rotation="0 270 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-7" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="-1.945 -0.155 13.673" rotation="0 270 0"></a-entity>
+		<a-entity data-brackets-id="8599" id="no-hmd-intro" position="-4.017 0.699 7.887" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13.02 90 0">
+    	<a-entity data-brackets-id="8600" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8601" id="text-7" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-7" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.690 0.487" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-7" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.292 0.387" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-7" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.893 0.287" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-7" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.509 0.198" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-7" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.103 0.104" visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		7 Image and text end-->
+		
+		<!--		8 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-8" src="assets/textures/lightoverlay.png" position="-3.718 1.871 4.275" rotation="0 270 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-8" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="-1.895 -0.155 9.972" rotation="0 270 0"></a-entity>
+		<a-entity data-brackets-id="8603" id="no-hmd-intro" position="-3.985 0.698 4.2" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13.02 90 0">
+    	<a-entity data-brackets-id="8604" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8605" id="text-8" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-8" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.690 0.487" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-8" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 1.292 0.387"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-8" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.893 0.287" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-8" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.445 0.183" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-8" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.324 0.023 0.086" visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		8 Image and text end-->
+		
+		<!--		9 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-9" src="assets/textures/lightoverlay.png" position="-2.936 2.028 1.922" scale="1.8 1.9 1" material="opacity:0.5"></a-image>
+      <a-entity mousedrag mouseclick id="gallery-9" obj-model="obj: #good_samaritan-obj;" material="src: #defaultgallery"></a-entity>
+		<a-entity data-brackets-id="7429" id="no-hmd-intro" position="-3.067 0.774 2.058" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 180 0">
+    	<a-entity data-brackets-id="7430" geometry="width:1.6;primitive:plane;height:0.4" position="-0.128 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="7431" id="text-9" text="width:1.5;align:center" position="0 0.003 0.001"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-9" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.994 1.973 0.518" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-9" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 1.587 0.441" visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-9" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 1.216 0.369" visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-9" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 0.852 0.285" visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-9" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 0.486 0.2" visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		9 Image and text end-->
+		
+		<!--		10 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-10" src="assets/textures/lightoverlay.png" position="-5.723 2.019 1.947" scale="2 1.8 1" material="opacity:0.5"></a-image>
+		
+      <a-entity mousedrag mouseclick id="gallery-10" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery"></a-entity>
+		<a-entity data-brackets-id="7429" id="no-hmd-intro" position="-5.808 0.828 2.058" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 180 0">
+    	<a-entity data-brackets-id="7430" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="7431" id="text-10" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-10" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.388 1.789 0.493" visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-10" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.388 1.406 0.388"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-10" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.356 1.027 0.345"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-10" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.356 0.649 0.258"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-10" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.356 0.279 0.172"  visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		10 Image and text  end-->
+		
+		<!--		11 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-11" src="assets/textures/lightoverlay.png" position="-5.185 2.014 -1.95" rotation="0 180 0" scale="2.5 2 1" material="opacity:0.5"></a-image>		 
+		<a-entity mousedrag mouseclick id="gallery-11" obj-model="obj: #acropolis-obj;" material="src: #defaultgallery" rotation="0 180 0"></a-entity>
+		<a-entity data-brackets-id="7608" id="no-hmd-intro" position="-5.142 0.726 -2.064" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 0 0">
+    	<a-entity data-brackets-id="7609" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="7610" id="text-11" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-11" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.647 2.035 0.537"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-11" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.647 1.64 0.467"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-11" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.647 1.268 0.374"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-11" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.647 0.871 0.282"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-11" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.647 0.472 0.19"  visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		11 Image and text  end-->
+		
+		
+		<!--		12 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-12" src="assets/textures/lightoverlay.png" position="-3.802 1.857 -4.142" rotation="0 270 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-12" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="-1.895 -0.155 1.45" rotation="0 270 0"></a-entity>
+		<a-entity data-brackets-id="8213" id="no-hmd-intro" position="-4.01 0.709 -4.325" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 90 0">
+    	<a-entity data-brackets-id="8214" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8215" id="text-12" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-12" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 1.690 0.487"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-12" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 1.292 0.387"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-12" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.893 0.287"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-12" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.487 0.193"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-12" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.036 0.089"  visible="false">   
+		</a-entity>
+		</a-entity>
+<!--		12 Image and text end-->
+		
+		<!--		13 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-13" src="assets/textures/lightoverlay.png" position="-3.802 1.876 -7.987" rotation="0 270 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-13" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="-1.895 -0.155 -2.314" rotation="0 270 0"></a-entity>
+		<a-entity data-brackets-id="8017" id="no-hmd-intro" position="-4.009 0.69 -8.083" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 90 0">
+    	<a-entity data-brackets-id="8018" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8019" id="text-13" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-13" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 1.690 0.487"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-13" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 1.292 0.387"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-13" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.893 0.287"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-13" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.516 0.2"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-13" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.134 0.112"  visible="false">   
+		</a-entity>		
+		</a-entity>
+		<!--		13 Image and text end-->
+		
+		<!--		14 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-14" src="assets/textures/lightoverlay.png" position="-3.802 1.876 -11.75" rotation="0 270 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-14" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="-1.895 -0.155 -6.079" rotation="0 270 0"></a-entity>
+		<a-entity data-brackets-id="8017" id="no-hmd-intro" position="-4.005 0.69 -11.875" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 90 0">
+    	<a-entity data-brackets-id="8018" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8019" id="text-14" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-14" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 1.690 0.487"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-14" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 1.292 0.387"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-14" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.893 0.287"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-14" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.502 0.197"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-14" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.284 0.125 0.11"  visible="false">   
+		</a-entity>	
+		</a-entity>
+		<!--		14 Image and text end-->
+		
+		<!--		15 Image and text -->
+		<a-image mousedrag mouseclick="" id="light-15" src="assets/textures/lightoverlay.png" position="-0.027 2.047 -13.922" scale="2.5 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-15" obj-model="obj: #castle-obj;" material="src: #defaultgallery" rotation="0 180 0"></a-entity>
+		<a-entity data-brackets-id="8017" id="no-hmd-intro" position="0.038 0.833 -14.092" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 0 0">
+    	<a-entity data-brackets-id="8018" geometry="primitive:plane;height:0.4;width:2.1" position="-0.081 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8019" id="text-15" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-15" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 1.690 0.525"  visible="false" >   
+		</a-entity>
+		<a-entity id="button-2-frame-15" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 1.292 0.525"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-15" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 0.893 0.525"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-15" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 0.419 0.416"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-15" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.424 0.016 0.323"  visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		15 Image and text end-->
+		
+		<!--		16 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-16" src="assets/textures/lightoverlay.png" position="3.801 1.925 -11.777" rotation="0 90 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-16" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="1.917 -0.155 -17.474" rotation="0 90 0"></a-entity>
+		<a-entity data-brackets-id="8373" id="no-hmd-intro" position="3.982 0.690 -11.915" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 270 0">
+    	<a-entity data-brackets-id="8374" geometry="primitive:plane;height:0.4;width:2.1" position="0.143 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8375" id="text-16" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-16" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 1.690 0.487"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-16" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 1.292 0.387"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-16" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 0.893 0.287"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-16" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 0.45 0.185"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-16" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 -0.009 0.079"  visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		16 Image and text end-->
+		
+		<!--		17 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-17" src="assets/textures/lightoverlay.png" position="3.801 1.907 -8.133" rotation="0 90 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-17" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="1.917 -0.155 -13.77" rotation="0 90 0"></a-entity>
+		<a-entity data-brackets-id="8373" id="no-hmd-intro" position="3.991 0.690 -8.232" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 270 0">
+    	<a-entity data-brackets-id="8374" geometry="primitive:plane;height:0.4;width:2.1" position="0.143 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8375" id="text-17" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-17" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 1.690 0.487"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-17" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 1.292 0.387"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-17" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 0.893 0.287"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-17" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 0.472 0.19"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-17" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 -0.024 0.075"  visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		17 Image and text end-->
+		
+		<!--		18 Image and text-->
+		
+		<a-image mousedrag mouseclick="" id="light-18" src="assets/textures/lightoverlay.png" position="3.801 1.952 -4.293" rotation="0 90 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-18" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" position="1.917 -0.155 -9.969" rotation="0 90 0"></a-entity>
+		<a-entity data-brackets-id="8373" id="no-hmd-intro" position="3.984 0.740 -4.429" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 270 0">
+    	<a-entity data-brackets-id="8374" geometry="primitive:plane;height:0.4;width:2.1" position="0.143 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8375" id="text-18" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-18" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 1.690 0.487"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-18" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 1.292 0.387"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-18" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 0.893 0.287"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-18" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 0.502 0.197"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-18" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.524 0.122 0.109"  visible="false">   
+		</a-entity>
+		</a-entity>
+		<!--		18 Image and text end-->
+		
+		<!--		19 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-19" src="assets/textures/lightoverlay.png" position="2.92 2.063 -1.95" rotation="0 180 0" scale="1.8 1.8 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-19" obj-model="obj: #good_samaritan-obj;" material="src: #defaultgallery" rotation="0 180 0"></a-entity>
+		<a-entity data-brackets-id="8401" id="no-hmd-intro" position="3.056 0.825 -2.057" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 0 0">
+    	<a-entity data-brackets-id="8402" geometry="primitive:plane;height:0.4;width:1.6" position="-0.128 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8403" id="text-19" text="align:center;width:1.5" position="0 0.003 0.001"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-19" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.994 1.853 0.487"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-19" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 1.453 0.41"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-19" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 1.075 0.336"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-19" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 0.635 0.234"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-19" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="0.981 0.142 0.12"  visible="false">   
+		</a-entity>
+		
+		</a-entity>
+		<!--		19 Image and text end-->
+		
+		<!--		20 Image and text-->
+		<a-image mousedrag mouseclick="" id="light-20" src="assets/textures/lightoverlay.png" position="5.62 2.037 -1.932" rotation="0 180 0" scale="2 1.7 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="gallery-20" obj-model="obj: #moonlight-obj;" material="src: #defaultgallery" material="src:[object HTMLImageElement]" rotation="0 180 0"></a-entity>
+      	<a-entity data-brackets-id="8405" id="no-hmd-intro" position="5.799 0.873 -2.055" geometry="primitive:plane;height:0.46;width:1.8" material="opacity:0.5;transparent:true;color:#FFFFFF" rotation="-13 0 0">
+    	<a-entity data-brackets-id="8406" geometry="primitive:plane;height:0.4;width:2.1" position="-0.108 0.051 0.22" material="color:#000000">   
+			<a-text data-brackets-id="8407" id="text-20" text="align:center;width:2"></a-text>
+		</a-entity>
+		<a-entity id="button-1-frame-20" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.388 1.714 0.455"  visible="false">   
+		</a-entity>
+		<a-entity id="button-2-frame-20" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.388 1.254 0.353"  visible="false">   
+		</a-entity>
+		<a-entity id="button-3-frame-20" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.356 0.776 0.287"  visible="false">   
+		</a-entity>
+		<a-entity id="button-4-frame-20" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.356 0.295 0.176"  visible="false">   
+		</a-entity>
+		<a-entity id="button-5-frame-20" geometry="primitive:plane;height:0.3;width:0.3" rotation="13 0 0" position="1.356 -0.134 0.077"  visible="false">   
+		</a-entity>
+
+		</a-entity>
+		<!--		20 Image and text end-->
+		
+		<a-entity material="src: #bg-texture" position="-7.313 0.173 5.674" rotation="0 270 0"></a-entity>
+		
+		<a-image mousedrag mouseclick id="light-North-wall" src="assets/textures/lightoverlay.png" position="-9.433 1.999 -0.028" rotation="0 90.01166961505233 0" scale="2 1.754 1" material="opacity:0.5"></a-image>
+		<a-entity mousedrag mouseclick id="image-North-wall" obj-model="obj: #north-obj;" material="src:#north-texture"  position="-7.513 -0.009 5.672" rotation="0 270 0"></a-entity>
+		
+		<a-image mousedrag mouseclick id="light-Sorth-wall" src="assets/textures/lightoverlay.png" position="9.327 1.961 -0.034" rotation="0 270 0" scale="2.5 1.7 1" material="opacity:0.5"></a-image>		 
+		<a-entity mousedrag mouseclick id="image-South-wall" obj-model="obj: #south-obj;" material="src: #south-texture" position="7.436 -0.02 -5.707" rotation="0 90 0"></a-entity>
+		
+		<a-entity obj-model="obj: #podiums-obj;" material="src: #podiums-texture"></a-entity>
+		
+		
+		<a-entity obj-model="obj: #castle_lake-obj;" material="src: #castle_lake-texture" rotation="180 0 180"></a-entity>
+		
+<!--		//Four Light Combo-->
+		<a-entity obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;"></a-entity>
+	  <a-entity obj-model="obj: #lamps-obj;" material="src: #lamps-texture; side: double;" rotation="180 0 180"></a-entity>
+<!--		//Four light combo end-->
+		
+<!--		//single lights-->
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-15 90 0" position="5.29 3.584 1.431"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-15 90 0" position="5.189 3.525 5.054"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-15 90 0" position="5.313 3.645 8.985"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-15 90 0" position="5.448 3.707 -7.043" ></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-15 90 0" position="5.44 3.621 -10.916"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-15 90 0" position="5.433 3.609 -14.541"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-10 -90 0" position="-5.469 3.415 -1.328"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-10 -90 0" position="-5.414 3.419 -5.246"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-10 -90 0" position="-5.414 3.419 -8.974"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-10 -90 0" position="-5.451 3.402 6.906"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-10 -90 0" position="-5.451 3.402 10.747"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-10 -90 0" position="-5.451 3.402 14.534"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-10 -90 0" position="-10.785 3.515 2.761"></a-entity>
+		
+		<a-entity obj-model="obj: #lamps-obj1;" material="src: #lamps-texture1; side: double;" rotation="-15 90 0" position="10.657 3.588 -2.773"></a-entity>
+				 
+    </a-scene>
+
+					</div>
+					<div id="toast-container" class="toast-top-center">
+          </div>
+					<!-- <div class="sidebar-transparent sidebar-right">
+							<div class="button-divider tour-button">View</div>
+							<div id="freezeView" onmouseenter="mouseEnter('Launch View: If you wish the current view to be the ‘Starting View’ of your Experience, then hit this button.');" onmouseleave="mouseLeave()" onclick="setEntryView()" class="custom-button1 graph-button place-color hidden-label">
+								<img class="img image-fluid" src="assets/images/Freeze_View.png" width="30">
+								<div>Launch View</div>
+								<span class="tooltiptext">Launch View</span> 
+							</div>
+							</div> -->
+        </div>
+      </div>
+
+      <div>
+
+      </div>
+	  </div>
+	</div>
+	<script src="assets/js/app.js"></script>
+	<script>
+
+
+$('#summernote2').summernote({
+      placeholder: 'Instructions For Desktop/PC/Laptop',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+    $('#summernote3').summernote({
+      placeholder: 'Instructions For Mobile/VR',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+  
+
+		</script>
+		<script type="text/javascript">
+			
+			// Default Configuration
+				$(document).ready(function() {
+					toastr.options = {
+						'closeButton': false,
+						// 'debug': false,
+						// 'newestOnTop': false,
+						// 'progressBar': false,
+						'positionClass': 'toast-top-center',
+						// 'preventDuplicates': false,
+						// 'showDuration': '1000',
+						// 'hideDuration': '1000',
+						'timeOut': '2000',
+						'extendedTimeOut': '2000',
+						'showEasing': 'swing',
+						'hideEasing': 'linear',
+						'showMethod': 'fadeIn',
+						'hideMethod': 'fadeOut',
+					}
+				});
+				</script>
+		
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!--  /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */ -->
+ <div>
+  <!-- header part -->
+  <div class="row row-m">
+    <div class="col-12 bg-header">
+      <div class="row  p-2">
+        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  header-font">
+          <span class="back-arrow" (click)= "backToDashboard()"><i class="fa fa-angle-left"></i></span>
+          <span>Report</span>
+          <span> - {{roomName}}</span>
+        </span>
+        <span class="subheader col-12" style="margin-bottom: 25px;"></span>
+      </div>
+
+    </div>
+  </div>
+  <!-- body part -->
+
+  <div id="experience-div" class="row margin-LR-0 mt-5">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="dashboard-tabset">
+       <span class="tabset-header tab1 active" (click)="onTabClicked(1)">Experience Report</span>
+       <span class="tabset-header tab2" (click)="onTabClicked(2)">Room Activity</span>
+
+     </div>
+     <div class="dashboard-tabset-content">
+      <div id="tab1" class="tab-content active">
+              <div class="row padding-R-20" >
+                <div class="col-lg-12 col-md-12 col-sm-12 graph-height margin-bottom-30"  *ngIf="noDataDisplayFlag == true">
+                    <canvas baseChart
+                      [datasets]="barChartDataUserGraph"
+                      [labels]="barChartLabels"
+                      [options]="barChartOptionsUser"
+                      [legend]="barChartLegend"
+                      [chartType]="barChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+                </div>
+              </div>
+              <div class="row padding-R-20" *ngIf="viewedObjectFlag == true">
+                <!-- <div class="col-lg-3 col-md-3 col-sm-3"></div>   -->
+                <div class="col-lg-12 col-md-12 col-sm-12 graph-height margin-bottom-30" >
+                  <canvas baseChart
+                      [datasets]="barChartDataViewedObject"
+                      [labels]="barChartLabels"
+                      [options]="barChartOptionsObject"
+                      [legend]="barChartLegend"
+                      [chartType]="barChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+                </div>
+                <!-- <div class="col-lg-3 col-md-3 col-sm-3"></div>   -->
+              </div>
+              <div class="row padding-LR-20" *ngIf="noDataDisplayFlag == true">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 list-header">Patron Report</div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="row my-experiences-table header-col-experience-table">
+                    <div class="col-lg-3 col-md-4 col-sm-4">Date</div>  
+                    <div class="col-lg-2 col-md-4 col-sm-4">Name</div>
+                    <div class="col-lg-2 col-md-4 col-sm-4">Experience Name</div>
+                    <div class="col-lg-2 col-md-4 col-sm-4">Time Spent</div>
+                    <div class="col-lg-1 col-md-4 col-sm-4">Score</div>
+                    <div class="col-lg-2 col-md-4 col-sm-4">Result</div> 
+                  </div>
+
+                  <div class="row my-experiences-table" *ngFor="let tableData of responseTableData | paginate: { id: 'listing_pagination_room',
+                    itemsPerPage: 10,
+                    currentPage: page,
+                    totalItems: totalRec }; let i = index ">
+                      <div class="col-lg-3 col-md-4 col-sm-4">{{tableData.Date | date: 'medium'}}</div>
+                      <div class="col-lg-2 col-md-4 col-sm-4" *ngIf="tableData.Name.length < 30">{{tableData.Name}}</div>
+                      <div class="col-lg-2 col-md-4 col-sm-4  three-dots-lenght" *ngIf="tableData.Name.length >= 30">{{tableData.Name}}</div> 
+                      <div class="col-lg-2 col-md-4 col-sm-4" *ngIf="tableData.ExperienceName.length < 30">{{tableData.ExperienceName}}</div> 
+                      <div class="col-lg-2 col-md-4 col-sm-4 three-dots-lenght" *ngIf="tableData.ExperienceName.length >= 30">{{tableData.ExperienceName}}</div> 
+                      <div class="col-lg-2 col-md-4 col-sm-4">{{tableData.TimeSpent}}</div>
+                      <div class="col-lg-1 col-md-4 col-sm-4">{{tableData.Score}}</div>
+                      <div class="col-lg-1 col-md-4 col-sm-4" *ngIf="tableData.IsScore == 0">N/A</div>
+                      <div class="col-lg-2 col-md-4 col-sm-4"  *ngIf="tableData.IsScore == 1">{{tableData.Result}}</div>
+
+                  </div>
+                </div>
+                <div class="col-12 pagination-page-center">
+                  <pagination-controls  id="listing_pagination_room" [maxSize]="5" [directionLinks]="true" (pageChange)="page = $event"></pagination-controls>
+                </div>  
+              </div>
+            <div class="row padding-R-20" *ngIf="(noDataDisplayFlag == false) && (viewedObjectFlag == false) && (viewPatronFlag == false)">
+              <div class="col-lg-12 col-md-12 col-sm-12 text-center top-padding-no-data" >
+                  <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="first-experience-top">Your room report will be awesome.</div>
+                        <hr>
+                        <div class="first-experience-mail">Write to us at <a href="mailto:care@experizer.com">care@experizer.com</a> If you have an issue with your Experizer account.</div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <img src="assets/images/dashboard/cat_withenvelope2.png" alt="pop-header" class="create-first-exp-image">
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+
+          <div id="tab2" class="tab-content">
+            
+           <div class="row pt-4  margin-LR-0" *ngIf="userTableDataFlag == true">
+            <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 filter-padding-left "></div>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 filter-padding-left ">
+              <div class="card patron-filter-shadow" >
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 list-header-room-activity-card">Published Experience </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 ">
+                        <select id="experinceList" name="experinceList" class="form-control" [(ngModel)]="experinceId" (change)="onChangeExperince($event)">
+                          <option *ngFor="let item of responseUserData" [value]="item.Id" [selected]="item.Id == experinceId">
+                                    {{item.ExperienceName | titlecase}} </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row pt-4  margin-LR-0" *ngIf="userTableDataFlag == true">
+            <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="publishExperinceDataFlag == true">
+              <div class="row list-header">
+                <div class="col-lg-12 col-md-12 col-sm-12 list-header">Patron Activity</div>
+              </div>
+              <div class="row my-experiences-table header-col-experience-table">
+                <div class="col-lg-3 col-md-3 col-sm-3">Patron Name</div>  
+                <div class="col-lg-6 col-md-6 col-sm-6">User Action</div>
+                <div class="col-lg-3 col-md-3 col-sm-3">Activity Time</div> 
+              </div>
+
+              <div class="row my-experiences-table" *ngFor="let tableData of responsePublishExperinceData  | paginate: { id: 'listing_pagination_exp',
+                    itemsPerPage: 10,
+                    currentPage: p,
+                    totalItems: totalRecExperince }; let i = index ">
+                  <div class="col-lg-3 col-md-3 col-sm-3">{{tableData.Actor}}</div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">{{tableData.Sentence}}</div>  
+                  <div class="col-lg-3 col-md-3 col-sm-3">{{tableData.createdAt | date: 'medium'}}</div>
+
+                </div>
+                <div class="col-12 pagination-page-center">
+                  <pagination-controls  id="listing_pagination_exp"  [directionLinks]="true" (pageChange)="p = $event"></pagination-controls>
+                </div>
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 text-center top-padding-no-data" *ngIf="publishExperinceDataFlag == false">
+                  <div class="row ">
+                    <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="first-experience-top">Your room report will be awesome.</div>
+                      <hr>
+                      <div class="first-experience-mail">Write to us at <a href="mailto:care@experizer.com">care@experizer.com</a> If you have an issue with your Experizer account.</div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3">
+                      <img src="assets/images/dashboard/cat_withenvelope2.png" alt="pop-header" class="create-first-exp-image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="row padding-R-20" *ngIf="userTableDataFlag == false">
+            <div class="col-lg-12 col-md-12 col-sm-12 text-center top-padding-no-data" >
+                <div class="row">
+                  <div class="col-lg-2 col-md-2 col-sm-2"></div>
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="first-experience-top">Your room report will be awesome.</div>
+                      <hr>
+                      <div class="first-experience-mail">Write to us at <a href="mailto:care@experizer.com">care@experizer.com</a> If you have an issue with your Experizer account.</div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4">
+                      <img src="assets/images/dashboard/cat_withenvelope2.png" alt="pop-header" class="create-first-exp-image">
+                  </div>
+                </div>
+              </div>
+          </div>
+
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+  </div>
+

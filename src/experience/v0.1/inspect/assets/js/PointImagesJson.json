@@ -1,0 +1,16 @@
+{ 
+    "PointImages": [
+{"iconId":"i0","iconName":"Assembly Point","iconPath":"/act/v0.1/storypoint/assets/images/icons/Assembly-Point.png"},
+{"iconId":"i1","iconName":"Gift","iconPath":"/act/v0.1/storypoint/assets/images/icons/gift.png"},
+{"iconId":"i2","iconName":"Hand Pointer","iconPath":"/act/v0.1/storypoint/assets/images/icons/Hand-Pointer.png"},
+{"iconId":"i3","iconName":"Info","iconPath":"/act/v0.1/storypoint/assets/images/icons/Info.png"},
+{"iconId":"i4","iconName":"Location","iconPath":"/act/v0.1/storypoint/assets/images/icons/Location-Marker.png"},
+{"iconId":"i5","iconName":"Money","iconPath":"/act/v0.1/storypoint/assets/images/icons/money.png"},
+{"iconId":"i6","iconName":"Question","iconPath":"/act/v0.1/storypoint/assets/images/icons/Question.png"},
+{"iconId":"i7","iconName":"Right","iconPath":"/act/v0.1/storypoint/assets/images/icons/right.png"},
+{"iconId":"i8","iconName":"Smiley","iconPath":"/act/v0.1/storypoint/assets/images/icons/smily.png"},
+{"iconId":"i9","iconName":"Star","iconPath":"/act/v0.1/storypoint/assets/images/icons/star.png"},
+{"iconId":"i10","iconName":"Warning","iconPath":"/act/v0.1/storypoint/assets/images/icons/Warning.png"},
+{"iconId":"i11","iconName":"Wrong","iconPath":"/act/v0.1/storypoint/assets/images/icons/wrong.png"}
+]
+    }

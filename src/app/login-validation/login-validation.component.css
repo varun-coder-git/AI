@@ -1,0 +1,136 @@
+/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ 
+.validation-box{
+  width: 30%;
+}
+
+
+.form-background {
+ padding: 10%;
+ z-index: 10;
+ background-color: #fff;
+ text-align: center;
+ border-radius: 10px;
+ left: 50%;
+ font-size: 14px;
+ font-weight: 400;
+ font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+ -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.login-background-img {
+  background-image: url(/assets/images/login/background-main.jpg);
+  width: 100%;
+  position: absolute;
+  height: 100%;
+}
+
+
+.login-form-input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #000;
+  outline: none;
+
+}
+
+.mycontainer {
+  border: 1px solid gray;
+  background-color: #cccccc45;
+  border-radius: 23px;
+  text-align: center;
+  font-size: 20px;
+  padding: 20px;
+  margin-top: 30%
+}
+
+
+.form-signup-btn-signup {
+  width: 80%;
+
+}
+
+.form-signup-input-filed{
+
+  width: 80%;
+  border-bottom: 1px solid #2723239c !important;
+}
+
+
+.login-forgot-password{
+  cursor: pointer;
+}
+
+
+.alert-danger {
+  border: 1px solid #c0392b;
+  border-radius: 3px;
+  box-shadow: 0 8px 10px #888;
+  /* left: 17px; */
+  font-size: 14px;
+  padding: 4px 9px;
+  z-index: 1;
+  color: #fff;
+  background-color: #c0392b;
+  display: block;
+}
+
+.formErrArrow {
+  background: url(/assets/images/login/errorArrow.png) no-repeat 0px 0px;
+  display: inline-block;
+  left: 13px;
+  position: absolute;
+  top: -7px;
+  width: 14px;
+  padding-top: 27px
+}
+
+
+.error-msg-align{
+  text-align: left;
+  padding-left: 10%;
+  width: 90%
+}
+
+.form-logo{
+  content: url('/assets/images/login/logo.png');
+}
+
+.error-msg-align-forgot {
+  padding-top: 1.5%;
+}
+
+input::placeholder{
+  color: #000
+}
+
+.login-sign-up-link{
+  text-align: center;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.error-msg-align-signin-margin{
+  margin-top: 5px;
+}

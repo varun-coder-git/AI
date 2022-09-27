@@ -1,0 +1,761 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Experizer Experience</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!--     <link rel="stylesheet" href="assets/css/style.css"> -->
+  <link rel="stylesheet" href="assets/css/sidebarinner.css">
+  <link rel="stylesheet" href="assets/css/customization.css">
+  <link rel="stylesheet" href="assets/css/snackbar.css">
+    <link rel="stylesheet" href="../verbose/css/common.css">
+    <link rel="stylesheet" href="../verbose/css/summernote-bs4.css">
+    <link rel="stylesheet" href="../verbose/css/summernote.css">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  
+  <script src="../verbose/summernotejs/popper.min.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote-bs4.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote.js">
+  </script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/aframe-v1.0.4.min.js"></script>
+  <script src="assets/js/aframe-look-at-billboard-component.min.js"></script>
+  <script src="assets/js/aframe-click-drag-component.js"></script>
+  <script src="../verbose/jscolor.js"></script>
+<!-- Toastr -->
+<link rel="stylesheet" href="../verbose/css/toastr.min.css">
+<script src="../verbose/toastr.min.js">
+</script>
+ <!-- Toastr -->
+  <script type="text/javascript" src="assets/js/popper.min.js"></script>
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body style="overflow-y: hidden">
+    <div id="snackbar">Snackbar default text</div>
+  <div class="wrapper">
+  
+    <!-- Page Content -->
+    <div id="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-1 sidebar-fixed">
+            <button type="button" onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');" onmouseleave="mouseLeave()" id="launchSidebar" class="btn btn-info btn-vertical-right button-align-first"
+              onclick="toggleSideNav('launchSidenav')">Splash Screen</button>
+            <button type="button" id="placeSidebar" onmouseenter="mouseEnter('Place is the 360 view that your Patron sees. You can customize this place with a compatible image and a few other options.');" onmouseleave="mouseLeave()" class="btn btn-first btn-vertical-right button-align-second"
+              onclick="toggleSideNav('placeSidenav')">Place</button>
+            <button type="button" id="scoreSidebar" onmouseenter="mouseEnter('When the Patron answers all the Questions succesfully, a score card is shown to him. Use this option to customize the text on this score card.');" onmouseleave="mouseLeave()" class="btn btn-second btn-vertical-right button-align-third"
+              onclick="toggleSideNav('scoreSidenav')">Score Card</button>
+            <button type="button" id="questionSidebar" onmouseenter="mouseEnter('Use this Tab to customize the Questions that you want to ask to the Learner inside the Experience. You can also do the Score board settings using this option.');" onmouseleave="mouseLeave()" class="btn btn-third btn-vertical-right button-align-third"
+              onclick="toggleSideNav('questionSidenav');scrollSideNav('questionSidenav')">Questions</button>
+          </div>
+          <div class="col-12 vr-editor">
+            <div id="launchSidenav" class="sidenav margin-left-60">
+              <div id="launchAccordionOne">
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h3 class="mb-0">
+                      <button id="wallBtn1" class="btn btn-link south padding-0" data-toggle="collapse" data-target="#collapseThree"
+                        aria-expanded="true" aria-controls="collapseThree"> <i class="fa" aria-hidden="true"></i>
+                        Splash Screen
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionOne">
+                    <div class="card-body">
+                        <div class="form-group margin-top-15">
+                            <h6 style="color:#fff;width: 100%"><i>Check preview mode to preview Splash Screen</i></h6>
+                          </div>
+                          <div class="form-group margin-top-15">
+                            <label for="splashBackground" style="color:#fff;width: 100%">Background Color:</label>
+                            <div id="bgcolorSelector" class="colorSelector">
+                              <input class="jscolor {closable:true,closeText:'Close'} pointer splashBg"
+                                id="splashBackground" value="">
+                              <div></div>
+                            </div>
+                          </div>
+    
+                          <div class="form-group margin-top-15">
+                              <div class="row">
+                                  <div class="col-10">
+                                        <label style="color:#fff;width: 100%" for="fixOpacity">Background Opacity (Drag to
+                                                change):</label>
+                                  </div>
+                                  <div class="col-2" style="padding:0px;">
+                                        <label id="rangeValue"></label>
+                                  </div>
+                              </div>
+                            <div class="slidecontainer">
+                              <input type="range" min="0.1" max="1" step="0.001" value="0.1" class="slider"
+                                id="fixOpacity" />
+                            </div>
+                          </div>
+                          <div class="form-group margin-top-15">
+                              <label for="splashHeaderColor">Header Font Color:</label>
+                              <div id="colorSelector" class="colorSelector">
+                                <input class="jscolor {closable:true,closeText:'Close'} pointer headerfont" id="splashHeaderColor"
+                                  value=""style="width: 100%">
+                                <div></div>
+                              </div>
+                            </div>
+                      <div class="form-group margin-top-15">
+                          <div class="row">
+                              <div class="col-8"> 
+                        <label for="frameDescription">Splash Screen Text:</label></div>
+                        <div class="col-4"  style=" padding-left: 50px; color:#fff">
+                            <span id="maxCount">0</span>
+                            <span >/ 350</span> 
+                         </div>
+                        </div>
+                        <textarea Id="summernote" class="form-control custom-input lunchScreenText maxContentPost" rows="3" placeholder="Launch Text" onblur="addLaunchScreenText();"
+                          name="Text" value=""></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote2">Instructions For Desktop/PC/Laptop:</label>
+                        <textarea Id="summernote2" class="form-control instructionSetForDesktop" rows="5"
+                          placeholder="Instruction Set" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote3">Instructions For Mobile/VR:</label>
+                        <textarea Id="summernote3" class="form-control instructionSetForAndroid" rows="5"
+                          placeholder="Instructions For Mobile/VR" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+                      <div class="form-group custom-file" style="margin-bottom: 9%;">
+                        <label class="inline-block-display" for="">Splash Image:</label>
+                        <input type="button" onmouseenter="mouseEnter('Splash screen has a provision to change the image that appears on it. Use this option to change this image by selecting a new image from your Library.');" onmouseleave="mouseLeave()" class="form-control custom-file-input input_box_trasparent handPointer" onclick="openAssetsPopup('Image','splashImage');"
+                          id="splashImage">
+                        <label class="custom-file-label text-overflow single-line-text input_box_trasparent" id="splashImageLable" for="splashImage" style="top:30px; width: 100% !important">Choose
+                          Image</label>
+                        <!-- <label class="aspect-ratio-style" id="frameImageTitle" for="splashImage"></label> -->
+                      </div>
+                      <!-- <div class="form-group">
+                                                <button type="button" id="addTeleport" onclick="" class="btn btn-primary pull-right mb-3">Save</button>
+                                            </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div id="placeSidenav" class="sidenav margin-left-60">
+              <div id="placeAccordion">
+                <div class="card">
+                  <div class="card-header" id="placeDiv">
+                    <h3 class="mb-0">
+                      <button id="placeBtn" class="btn btn-link add_question" data-toggle="collapse" data-target="#placeAccordionCollapse"
+                        aria-expanded="true" aria-controls="placeAccordionCollapse"> <i class="fa" aria-hidden="true"></i>
+                        Select Place
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="placeAccordionCollapse" class="collapse show" aria-labelledby="placeDiv" data-parent="#placeAccordion">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-12" id='skyImagePreview'>
+                          <div class=''><span>Place</span><br><img id="placeSky" src="" style="width:100%;" /></div>
+                        </div>
+                        <div class="col-12" style="margin-top: 2%">
+                          <label><input type="radio" name="backgroungType" id="imageRadio"  onclick="changeSkyType('Image')">&nbsp;Image
+                            Background</label><br>
+                          <label><input type="radio" name="backgroungType" id="videoRadio" onclick="changeSkyType('Video')">&nbsp;Video
+                            Background</label>
+                        </div>
+                        <div class="col-12" id='imageFilePopup'>
+                          <div class="custom-file">
+                            <input type="button" class="custom-file-input handPointer" id="skyImageFile" onmouseenter="mouseEnter('Place is the 360 view that your Patron sees. You can customize this place with a compatible image through this option. In case if you don\'t have a 360 image, you can try uploading a Panoroma OR use the \'My image is not spherical\' checkbox while uploading the image.');" onmouseleave="mouseLeave()" onclick="openAssetsPopup('360Image', 'sky')">
+                            <label class="custom-file-label form-control input_box_trasparent" id="skyImageLable" for="skyImageFile">Choose
+                              Image</label>
+                          </div>
+                          <label class='aspect-ratio-style mx-3 ' for='startquizbtn' style='font-size: 12px'>Note: Recommended aspect ratio 2:1</label>
+                        </div>
+                        <div class="col-12" id='videoFilePopup'>
+                          <div class="custom-file">
+                            <input type="button" class="custom-file-input handPointer" id="skyVideoFile" onmouseenter="mouseEnter('Place is the 360 view that your Patron sees. You can customize this place with a compatible video through this option. For the best results please use a 360/spherical video.');" onmouseleave="mouseLeave()" onclick="openAssetsPopup('360Video', 'skyVideo')">
+                            <label class="custom-file-label form-control input_box_trasparent" id="skyVideoLable" for="skyVideoFile">Choose
+                              Video</label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="scoreSidenav" class="sidenav margin-left-60">
+              <div id="scoreCardAccordion">
+                <div class="card">
+                  <div class="card-header" id="scoreCardDiv">
+                    <h3 class="mb-0">
+                      <button id="scoreCardBtn" class="btn btn-link add_question" data-toggle="collapse" data-target="#scoreCardAccordionCollapse"
+                        aria-expanded="true" aria-controls="scoreCardAccordionCollapse"> <i class="fa" aria-hidden="true"></i>
+                        Score card customization
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="scoreCardAccordionCollapse" class="collapse show" aria-labelledby="scoreCardDiv" data-parent="#scoreCardAccordion">
+                    <div class="card-body">
+
+                      <div class="form-group">
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Heading:</label>
+                        <textarea id="Heading" class="form-control custom-input input_box_trasparent" maxlength="40" rows="1" onblur="Heading()"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Description:</label>
+                        <textarea id="Description" class="form-control custom-input input_box_trasparent" maxlength="60" rows="2" onblur="Description()"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="message">Point Scored Message:</label>
+                        <textarea id="messagePoint" class="form-control custom-input input_box_trasparent" maxlength="12" rows="1" onblur="messagePoint()"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="passingPercentage">Passing Percentage:</label>
+                        
+                        <input id="passingPercentage" type="text" class="form-control custom-input input_box_trasparent"
+                            maxlength="3"
+                            onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" onpaste="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                      </div>
+                      <div class="form-group">
+                        <label for="SuccessMessage">Successful Completion Message:</label>
+                        <textarea class="form-control custom-input input_box_trasparent" rows="3" id="SuccessMessage" onblur="SuccessMessage()" maxlength="85"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="failuerMessage">Unsuccessful Completion Message:</label>
+                        <textarea class="form-control custom-input input_box_trasparent" rows="3" id="failuerMessage" onblur="failuerMessage()" maxlength="85"></textarea>
+                      </div>
+                      <!-- <div class="form-group actionDiv ">
+                                                <input type="button" class="btn btn-primary" onclick="saveScore();closeSideNav()" value="SAVE">
+                                            </div> -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="questionSidenav" class="sidenav margin-left-60">
+              <div id="accordion2">
+                <div class="card">
+                  <div class="card-header" id="addQuestionDiv">
+                    <h3 class="mb-0">
+                      <button id="addQuestion1" class="btn btn-link add_question" data-toggle="collapse" data-target="#addQuestionDivCollapse"
+                        aria-expanded="true" aria-controls="addQuestionDivCollapse"> <i class="fa" aria-hidden="true"></i>
+                        <span id='displayquestiontitle'>Add Question</span>
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="addQuestionDivCollapse" class="collapse show" aria-labelledby="addQuestionDiv" data-parent="#accordion2">
+                    <div class="card-body">
+                      <div class="questionDiv">
+                        <div class="form-group">
+                          <label for="questionIcon">Question Icon:</label>
+                          <br />
+                          <div class="custom-file">
+                            <input type="button" class="custom-file-input input_box_trasparent handPointer" onmouseenter="mouseEnter('Change the Icon for the question\'s marker by browsing a new one OR you can select one of the existing icons.');" onmouseleave="mouseLeave()" id="questionIconImage" onclick="openAssetsPopup('Image', 'question')">
+                            <label class="custom-file-label form-control input_box_trasparent" id="questionIconImageLable" for="questionIconImage">Choose
+                              Image</label>
+                              <label class='aspect-ratio-style mx-3 ' for='startquizbtn' style='font-size: 12px'>Note: Recommended aspect ratio 1:1</label>
+                          </div>
+                        </div>
+                        <div class="form-group" id="SelectedIconID-1">
+                          <div class="row" style="display:none" id="customIcon-1">
+                            <div class="col-3 icon-padding">
+                              <img src="" style="width:100%" id="customIconImage-1">
+                            </div>
+                          </div>
+                          <div class="row" id="ptIconDivID-1">
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/Assembly-Point.png" alt="/act/v0.1/pointandanswer/assets/images/icons/Assembly-Point.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i0-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/gift.png" alt="/act/v0.1/pointandanswer/assets/images/icons/gift.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i1-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/Hand-Pointer.png" alt="/act/v0.1/pointandanswer/assets/images/icons/Hand-Pointer.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i2-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/Info.png" alt="/act/v0.1/pointandanswer/assets/images/icons/Info.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i3-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/Location-Marker.png" alt="/act/v0.1/pointandanswer/assets/images/icons/Location-Marker.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i4-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/money.png" alt="/act/v0.1/pointandanswer/assets/images/icons/money.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i5-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/images.png" alt="/act/v0.1/pointandanswer/assets/images/icons/images.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive icon-selected"
+                                id="i6-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/right.png" alt="/act/v0.1/pointandanswer/assets/images/icons/right.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i7-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/smily.png" alt="/act/v0.1/pointandanswer/assets/images/icons/smily.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i8-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/star.png" alt="/act/v0.1/pointandanswer/assets/images/icons/star.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i9-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/Warning.png" alt="/act/v0.1/pointandanswer/assets/images/icons/Warning.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i10-1">
+                            </div>
+                            <div class="col-3 icon-padding">
+                              <img src="/act/v0.1/pointandanswer/assets/images/icons/wrong.png" alt="/act/v0.1/pointandanswer/assets/images/icons/wrong.png"
+                                onclick="changepointandanswerIcon(this)" alt="location" class="image_size img-responsive"
+                                id="i11-1">
+                            </div>
+                          </div>
+                          <input id="animateIconSelect" type="checkbox" name="Animate"> Animate Icon
+                        </div>
+
+                        <div class="form-group">
+                            <label for="questionPanelSelect" >Question Panel:</label>
+                          <div class="row">
+                            <div class="col-3 icon-padding">
+                              <div  id="i0-Panelcss" class="p-1 icon-selected" >
+                              <img src="/act/v0.1/pointandanswer/assets/images/Panel/default_t.jpg" alt="default_t.jpg"
+                              onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive "
+                                 id="i0-Panel"></div>
+                            </div>
+                            <div class="col-3 icon-padding">
+                                <div  id="i1-Panelcss" class="p-1">
+                              <img src="/act/v0.1/pointandanswer/assets/images/Panel/gold_t.jpg" alt="gold_t.jpg"
+                              onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                 id="i1-Panel"></div>
+                            </div>
+                            <div class="col-3 icon-padding">
+                                <div  id="i2-Panelcss" class="p-1">
+                              <img src="/act/v0.1/pointandanswer/assets/images/Panel/gray_t.jpg" alt="gray_t.jpg"
+                              onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                 id="i2-Panel" ></div>
+                            </div>
+                            <div class="col-3 icon-padding">
+                                <div id="i3-Panelcss" class="p-1">
+                                <img src="/act/v0.1/pointandanswer/assets/images/Panel/green_t.jpg" alt="green_t.jpg"
+                                onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                   id="i3-Panel"></div>
+                            </div>
+                            <div class="col-3 icon-padding">
+                                <div  id="i4-Panelcss" class="p-1">
+                              <img src="/act/v0.1/pointandanswer/assets/images/Panel/lemon_t.jpg" alt="lemon_t.jpg"
+                              onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                id="i4-Panel"  ></div>
+                            </div>
+                             <div class="col-3 icon-padding">
+                                <div id="i5-Panelcss" class="p-1">
+                                <img src="/act/v0.1/pointandanswer/assets/images/Panel/lightgreen_t.jpg" alt="lightgreen_t.jpg"
+                                onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                       id="i5-Panel" ></div>
+                             </div>
+                             <div class="col-3 icon-padding">
+                                <div  id="i6-Panelcss" class="p-1">
+                                 <img src="/act/v0.1/pointandanswer/assets/images/Panel/pink_t.jpg" alt="pink_t.jpg"
+                                 onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                         id="i6-Panel"></div>
+                             </div>
+                             <div class="col-3 icon-padding">
+                                <div  id="i7-Panelcss"  class="p-1">
+                               <img src="/act/v0.1/pointandanswer/assets/images/Panel/purple_t.jpg" alt="purple_t.jpg"
+                               onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                           id="i7-Panel"   ></div>
+                              </div>
+                              <div class="col-3 icon-padding">
+                                  <div  id="i8-Panelcss"  class="p-1">
+                                 <img src="/act/v0.1/pointandanswer/assets/images/Panel/red_t.jpg" alt="red_t.jpg"
+                                 onclick="changepointandanswerPanel(this)" alt="location" class="image_size img-responsive"
+                                   id="i8-Panel"    ></div>
+                                </div>
+                               <div class="col-3 icon-padding">
+                                  <div id="i9-Panelcss" class="p-1">
+                                   <img src="/act/v0.1/pointandanswer/assets/images/Panel/royalblue_t.jpg" alt="royalblue_t.jpg"
+                                   onclick="changepointandanswerPanel(this)"  alt="location" class="image_size img-responsive"
+                                        id="i9-Panel" ></div>
+                               </div>
+                               <div class="col-3 icon-padding">
+                                  <div id="i10-Panelcss" class="p-1">
+                                  <img src="/act/v0.1/pointandanswer/assets/images/Panel/neavyblue_t.jpg" alt="neavyblue_t.jpg"
+                                  onclick="changepointandanswerPanel(this)"  alt="location" class="image_size img-responsive"
+                                       id="i10-Panel" ></div>
+                              </div>
+                              <div class="col-3 icon-padding">
+                                  <div  id="i11-Panelcss" class="p-1">
+                                  <img src="/act/v0.1/pointandanswer/assets/images/Panel/orange_t.jpg" alt="orange_t.jpg"
+                                  onclick="changepointandanswerPanel(this)"  alt="location" class="image_size img-responsive"
+                                       id="i11-Panel" ></div>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="questionIconSelect" class="margin-bottom-1rem ">Question Icon Size:</label>
+                          <select id="questionIconSelect" class="form-control input_box_trasparent" onchange="getval(this);">
+                            <option value="Small" selected>Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <hr style=" border: 1px solid silver; ">
+                          <label for="questionIconSelectText" >Question Customization: </label>
+                            <label for="questionIconSelectText" class="margin-bottom-1rem ">Press the Save button after you are done customising the below changes. </label>
+                          <label for="comment" class="margin-bottom-1rem ">Question Text:</label>
+                          <textarea id="questionTextarea" class="form-control custom-input input_box_trasparent" maxlength="160" rows="3" id="comment"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="accOption1" class="margin-bottom-1rem ">Option 1:</label>
+                          <input id="accOption1" type="text" maxlength="50" class="form-control custom-input input_box_trasparent">
+                        </div>
+                        <div class="form-group">
+                          <label for="accOption2" class="margin-bottom-1rem ">Option 2:</label>
+                          <input id="accOption2" type="text" maxlength="50" class="form-control custom-input input_box_trasparent">
+                        </div>
+                        <div class="form-group">
+                          <label for="accOption3" class="margin-bottom-1rem ">Option 3:</label>
+                          <input id="accOption3" type="text" maxlength="50" class="form-control custom-input input_box_trasparent">
+                        </div>
+                        <div class="form-group">
+                          <label for="accOption4" class="margin-bottom-1rem ">Option 4:</label>
+                          <input id="accOption4" type="text" maxlength="50" class="form-control custom-input input_box_trasparent">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleSelect1" class="margin-bottom-1rem ">Answer</label>
+                          <select class="form-control input_box_trasparent" id="answerSelect">
+                            <option value="0">Select Answer</option>
+                            <option value="1">Option 1</option>
+                            <option value="2"> Option 2</option>
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                          </select>
+                        </div>
+                        <input id="hidden-question-id" type="text" class="form-control display-none">
+                        <div class='actionDiv'>
+                          <!-- <button type="button" id="addQuestion" onmouseenter="mouseEnter('Add a new question. Note that this question is visible only when the Patron looks at the Question Marker.');" onmouseleave="mouseLeave()" class="btn btn-primary">Add Question</button> -->
+                          <button type="button" id="saveQuestion" class="btn btn-primary btn-width-acc "
+                            onclick="saveQuestion()">Save</button>
+                          <button type="button" id="cancelQuestion" class="btn btn-primary btn-width-acc "
+                            onclick="cancelQuestion('cancel')">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id='questionSet'>
+                <div id="accordion">
+                </div>
+              </div>
+            </div>
+            <div id="overlay"></div>
+            <div id="scene-div">
+              <a-scene mousedrag embedded id="scene" vr-mode-ui="enabled: false" light="defaultLightsEnabled: false" loading-screen="enabled:false">
+                <a-assets>
+                  <a-mixin id="checkpoint"></a-mixin>
+                  <a-mixin id="checkpoint-hovered" color="#6CEEB5"></a-mixin>
+                  <a-mixin id="questions" text="align: center; width:3" scale="0.4 0.4 0.4"></a-mixin>
+                  <audio id="sound" src=""></audio>
+                </a-assets>
+                <a-entity id="CamEntity">
+                  <a-entity id="cameraId" camera look-controls="reverseTouchDrag:true">
+                    <a-entity id="marker" position="0 0 -50"></a-entity>
+                  </a-entity>
+                </a-entity>
+                <a-entity id="cursor"  cursor="rayOrigin: mouse;fuse: false; " position="0 0 -1"  raycaster="objects: .clickable" ></a-entity>
+                <a-entity id="audio1" sound="src: #sound" position="0 10 0"></a-entity>
+              </a-scene>
+            </div>
+          </div>
+          
+          <div id="toast-container" class="toast-top-center">
+          </div>
+       
+          <div class="col-1 sidebar-transparent sidebar-right">
+              <div class="button-divider tour-button"> View </div>
+              <div id="freezeView" onmouseenter="mouseEnter('Launch View: If you wish the current view to be the ‘Starting View’ of your Experience, then hit this button.');" onmouseleave="mouseLeave()" onclick="setEntryView()" class="custom-button1 graph-button place-color ">
+                  <img class="img image-fluid" src="assets/images/Freeze_View.png" width="30">
+                  <div>Launch View </div>
+                  <span class="tooltiptext">Set the current view as the Launch View of the experience</span> 
+              </div>
+            <div class="button-divider tour-button">Question</div>
+            <div id="addTeleport" onclick="addNewQuestion('Small', 'teleport');" onmouseenter="mouseEnter('Place a small question marker on the screen. You can customize it by clicking on it or opening the Markers tab on the left.');" onmouseleave="mouseLeave()" class="custom-button graph-button place-color ">
+              <img class="img image-fluid" src="assets/images/addwhite.png" width="40">
+              <div>Small</div>
+              <span class="tooltiptext">Add a question with small icon</span>
+            </div>
+            <div id="mediumAddTeleport" onclick="addNewQuestion('Medium', 'teleport');" onmouseenter="mouseEnter('Place a medium size question marker on the screen. You can customize it by clicking on it or opening the Markers tab on the left.');" onmouseleave="mouseLeave()" class="custom-button graph-button place-color">
+              <img class="img image-fluid" src="assets/images/addwhite.png" width="40">
+              <div>Medium</div>
+              <span class="tooltiptext">Add a question with medium icon</span>
+            </div>
+            <div id="largeAddTeleport" onclick="addNewQuestion('Large', 'teleport');" onmouseenter="mouseEnter('Place a large question marker on the screen. You can customize it by clicking on it or opening the Markers tab on the left.');" onmouseleave="mouseLeave()" class="custom-button graph-button place-color">
+              <img class="img image-fluid" src="assets/images/addwhite.png" width="40">
+              <div>Large</div>
+              <span class="tooltiptext">Add a question with large icon</span>
+            </div>
+            <div id="removeTeleport" onclick="deleteQuestionModel();deleteTeleportID = editQuestionId;" onmouseenter="mouseEnter('Remove the selected question.');" onmouseleave="mouseLeave()" class="custom-button disabled graph-button place-color ">
+              <img class="img image-fluid" src="assets/images/deletewhite.png" width="40">
+              <div>Delete</div>
+              <span class="tooltiptext">Delete selected question</span>
+            </div>
+            <div id="editTeleport" onclick="editQuestion(editQuestionId);" onmouseenter="mouseEnter('Edit the selected question.');" onmouseleave="mouseLeave()" class="custom-button disabled graph-button place-color">
+              <img class="img image-fluid" src="assets/images/editwhite.png" width="40">
+              <div>Edit</div>
+              <span class="tooltiptext">Edit selected question</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div>Are you sure you want to delete this question?</div>
+          <div class="actionDiv">
+            <button type="button" class="btn btn-color-green" onclick="deleteQuestion(deleteTeleportID);">Yes</button>
+            <button type="button" class="btn btn-color-blue" data-dismiss="modal">No</button>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <img class="modal-footer-image" src="assets/images/HeaderPopup.png">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/customization.js"></script>
+  
+ <script>
+   /* Summernote MAxlength, maxcount and popsnacker */
+
+
+   $('.maxContentPost').summernote({
+  placeholder: 'Splash Screen Text',
+  tabsize: 2,
+  height: 100,
+  toolbar: [
+
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['fontname', ['fontname']],
+    ['font', ['bold', 'italic', 'underline', 'clear']]
+
+
+  ],
+  callbacks: {
+    onKeydown: function (e) {
+      var sel = window.getSelection();
+      if (sel.rangeCount) {
+      var container = document.createElement("div");
+        for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+          container.appendChild(sel.getRangeAt(i).cloneContents());
+        }
+      }
+      var selectedText = container.innerText.trim();
+      var selectedTextLength=selectedText.length;
+      var t = e.currentTarget.innerText;
+      var cntolleKey = e.originalEvent.ctrlKey;
+      $('#maxCount').text(t.length);
+      if (t.length > 350 && selectedTextLength <= 0) {
+        if (cntolleKey) {
+          
+          if (e.keyCode != 8) {
+          if (e.keyCode != 65) {
+            if (e.keyCode != 67) {
+              if (e.keyCode != 90) {
+                if (e.keyCode != 88) {
+                  if (e.keyCode != 86) {
+                    if (e.keyCode != 46) {
+                      if (e.keyCode != 17) {
+
+                        popSnackbar("warning", "Limit exceed.");
+                        e.preventDefault();
+                      }
+                      // popSnackbar("warning", "Limit exceed.");
+                      // e.preventDefault();
+                    }
+                  }
+                }
+                }
+              }
+            }
+          }
+        } else {
+          if (e.keyCode != 8) {
+              if (e.keyCode != 46) {
+                popSnackbar("warning", "Limit exceed.");
+                e.preventDefault();
+              }
+          }
+        }
+      }
+    },
+    onKeyup: function (e) {
+      var t = e.currentTarget.innerText;
+      // $('.maxContentPost').text(350 - t.trim().length);
+      $('#maxCount').text(t.length);
+    },
+    onPaste: function (e) {
+      var container;
+      var sel = window.getSelection();
+      if (sel.rangeCount) {
+        container = document.createElement("div");
+        for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+            container.appendChild(sel.getRangeAt(i).cloneContents());
+        }
+    }
+    var selectedTextLength=container.innerText.length;
+      var t = e.currentTarget.innerText;
+
+      if (t.length > 350 && selectedTextLength <= 0) {
+        popSnackbar("warning", "Limit exceed.");
+        e.preventDefault();
+      }
+      $("#maxCount").text(t.length);
+      var bufferText = (
+        (e.originalEvent || e).clipboardData || window.clipboardData
+      ).getData("Text");
+      e.preventDefault();
+      for(var k=0;k<bufferText.length;k++){
+    
+    
+      }
+      var maxPaste = bufferText.length;
+      var maxLength=(t.length-selectedTextLength) + bufferText.length;
+      if ((t.length-selectedTextLength + bufferText.length) > 350) {
+        popSnackbar("warning", "Limit exceed.");
+        maxPaste = 350 - (t.length+-selectedTextLength);
+      }
+      if (maxPaste > 0) {
+        document.execCommand(
+          "insertText",
+          false,
+          bufferText.substring(0, maxPaste)
+        );
+      }
+      var t = e.currentTarget.innerText;
+      $("#maxCount").text(t.length);
+    }
+  }
+});
+    
+    /* Summernote MAxlength, maxcount and popsnacker */
+    $('#summernote2').summernote({
+      placeholder: 'Instructions For Desktop/PC/Laptop',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+    $('#summernote3').summernote({
+      placeholder: 'Instructions For Mobile/VR',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+</script>
+
+<script type="text/javascript">
+	// Default Configuration
+		$(document).ready(function() {
+			toastr.options = {
+				'closeButton': false,
+				// 'debug': false,
+				// 'newestOnTop': false,
+				// 'progressBar': false,
+        'positionClass': 'toast-top-center',
+      	// 'preventDuplicates': false,
+				// 'showDuration': '1000',
+				// 'hideDuration': '1000',
+				'timeOut': '2000',
+				'extendedTimeOut': '2000',
+				'showEasing': 'swing',
+				'hideEasing': 'linear',
+				'showMethod': 'fadeIn',
+				'hideMethod': 'fadeOut',
+			}
+		});
+
+	// Toast Type
+		// $('#freezeView').click(function(event) {
+		// 	toastr.success('Presto! This view is now the Starting View of this Experience.');
+    // });
+    </script>
+
+
+</body>
+
+</html>

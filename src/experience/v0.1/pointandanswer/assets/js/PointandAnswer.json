@@ -1,0 +1,77 @@
+{
+  "experienceName": "Point and Answer",
+  "experienceData": [
+    {
+		"totalPoints":"Total Points",
+		 "congratulations":"Congratulations",
+  "thankYouMsg":"You have successfully completed.",
+  "thankYou":"Thank You!",
+  "endMessageByUser":"End by user",
+  "points":"10",
+      "placeSky": "assets/images/360spaceLivingRoom2.jpg",
+      "totalTeleports": 4,
+		 "correctImage": "assets/images/correct.png",
+		"wrongImage": "assets/images/wrong.png",
+      "teleports": [
+        {
+          "teleportPosition": "13.996323082762377 2.1992902020452596 -47.95066279802732",
+		  "teleportToPlaceImage": "assets/images/images.png",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0",
+          "Question":"Who was known as “Lokmanya Tilak?",
+            "Options": [{
+                "option":"Bal Gangadhar Tilak"},
+                {"option":"Rabindranath Nath Tagore"}  
+            ],
+        "Answer":"0",
+         "points":"10"
+        },
+        {
+         "teleportPosition": "-43.020 -2.403 -7.014",
+		 "teleportToPlaceImage": "assets/images/images.png",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-1",
+            "Question":"When was the Indian National Congress formed?",
+            "Options": [{
+                "option":"1885"},
+                {"option":"1887"},
+                {"option":"1889"}   
+            ],
+        "Answer":"0",
+         "points":"10"
+        },
+		{
+         "teleportPosition": "-43.020 -6.561 38.916",
+		 "teleportToPlaceImage": "assets/images/images.png",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-2",
+            "Question":"KADAM KADAM BADHAYE JA, KHUSHI KE GEET GAAYE JA, YE ZINDAGI HAI KAUM KI, TU KAUM PE LOOTYE JA written by whom",
+            "Options": [{
+                "option":"Subhash Chandra Bose"},
+                {"option":"Bankim Chandra Chaterjee"},
+                {"option":"Rabindra Nath Tagore"},
+                {"option":"Lal Bal Pal"}   
+            ],
+        "Answer":"0",
+         "points":"10"
+        },
+		{
+         "teleportPosition": "61.629 -0.912 -8.829",
+		 "teleportToPlaceImage": "assets/images/images.png",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-3",
+            "Question":"During independence which group in the central government was being taken care of by Mrs.Gandhi",
+            "Options": [{
+                "option":"Agriculture"},
+                {"option":"IT"},
+                {"option":"Music"},
+                {"option":"None"}   
+            ],
+        "Answer":"0",
+         "points":"10"
+        }
+      ]
+     
+    }
+  ]
+}

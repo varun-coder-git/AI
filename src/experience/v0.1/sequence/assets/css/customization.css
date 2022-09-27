@@ -1,0 +1,41 @@
+.text-align-center{
+    text-align: center;
+}
+
+.margin-bottom-1rem{
+    margin-bottom: 1rem !important;
+}
+.card {
+    border: 1px solid #6CA0B6;
+    background: transparent;
+    margin-bottom: 5px;
+}
+.sidenav div {
+    transition: 0.7s;
+}
+.card-header {
+    padding: 0px;
+    background: #6CA0B6;
+}
+
+.card-header > h3 > .btn:hover, .card-header > h3 > .btn:focus {
+    text-decoration: none;
+    color: #fff;
+}
+
+.card-header > h3 > .btn {
+    color: #fff;
+    width: 100%;
+    text-align: left;
+}
+
+.card-body > label
+{
+    color:#fff;
+}
+.card-body {
+	padding: 1rem !important;
+}
+.pull-right{
+float:right;	
+}

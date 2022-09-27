@@ -1,0 +1,294 @@
+<!-- /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */--> <div>
+  <!-- header part -->
+  <div class="row row-m">
+    <div class="col-12 bg-header">
+      <div class="row  p-2">
+        <span class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12  header-font">
+            <span class="back-arrow" (click)= "backToDashboard()"><i class="fa fa-angle-left"></i></span><span>{{this.publishedTempExperienceName}}</span> - {{this.JsonLang['english']['publishAnalytics']['MainHeaderExperience']}}</span>
+        <span class="subheader col-12">{{publishedExperienceName}}</span>
+      </div>
+      <div class="row pt-4 pb-4">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 pb-2">
+          <div class="card card-bg1">
+            <div class="card-body spacing-all pb-0">
+              <div class="card-text card-inner-header pt-1 pb-0">Last {{this.JsonLang['english']['publishAnalytics']['Published']}}</div>
+              <div class="card-text card-inner-count text-right">{{publishedAgo}}<p class="card-inner-footer" *ngIf= "publishedAgo <= 1">{{this.JsonLang['english']['publishAnalytics']['DayAgo']}}</p>
+              <p class="card-inner-footer" *ngIf= "publishedAgo > 1">{{this.JsonLang['english']['publishAnalytics']['DaysAgo']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  pb-2">
+          <div class="card card-bg2">
+            <div class="card-body spacing-all pb-0">
+              <div class="card-text card-inner-header  pt-1 pb-0">{{this.JsonLang['english']['publishAnalytics']['PatronsInvited']}}</div>
+              <div class="card-text card-inner-count text-right">{{invitedCount}}<p class="card-inner-footer">{{this.JsonLang['english']['publishAnalytics']['Patrons']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  pb-2">
+          <div class="card card-bg3">
+            <div class="card-body spacing-all pb-0">
+              <div class="card-text card-inner-header  pt-1 pb-0">{{this.JsonLang['english']['publishAnalytics']['PatronsReg']}}</div>
+              <div class="card-text card-inner-count text-right">{{registeredCount}}<p class="card-inner-footer">{{this.JsonLang['english']['publishAnalytics']['Patrons']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  pb-2 ">
+          <div class="card card-bg4">
+            <div class="card-body spacing-all pb-0">
+              <div class="card-text card-inner-header  pt-1 pb-0">{{this.JsonLang['english']['publishAnalytics']['Views']}}</div>
+              <div class="card-text card-inner-count text-right">{{viewCount}}<p class="card-inner-footer">{{this.JsonLang['english']['publishAnalytics']['views']}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- body part -->
+
+  <div class="row pt-3 pb-3 row-m padding-LR-20">
+    <!-- filter -->
+    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 ">
+        <div class="row">
+           </div>
+      <div class="card row pt-1 card-shadow card-filter-css ">
+          <div class="col-12 filter-label">Search
+          <hr class="search-m mb-0">
+          </div>
+          <form class="form-style" (ngSubmit)="analyticsFilterDisplayData(analyticsFilterData)" #analyticsFilterData="ngForm">
+<!-- Date Picker -->
+        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 form-group">
+            <div class=""><i class="fa fa-calendar pr-2 pt-3" aria-hidden="true"></i><label for="datePickerID" id="datePickerLabelID" >{{this.JsonLang['english']['publishAnalytics']['SelectDate']}}</label></div>
+          <input placeholder="Select date range" id="datePickerID" name="datePick" type="text" bsDaterangepicker   class="form-control cursor-icon" [bsConfig]="datePickerConfig" [(ngModel)]='AnalyticsFilterDetail.RangeDate' autocomplete="off" >
+        </div>
+<!-- Time dropdown -->
+        <div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="row">
+            <div class="col-6 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+              <label for="TimeSpentID" id="TimeSpentLabelID">{{this.JsonLang['english']['publishAnalytics']['TimeSpent']}}</label>
+              <span class="selectedValueClass">&nbsp;{{AnalyticsFilterDetail.Comparison}}</span>
+            </div>
+            <div class="col-6 col-sm-3 col-md-3 col-lg-3 col-xl-3 cursor-icon">
+              <div class="btn-group float-right" dropdown>
+                <i class="fa fa-angle-down drop-toggle" aria-hidden="true" id="timeDropdown" dropdownToggle aria-controls="drop-basic"></i>
+                <ul id="dropdown-timeDropdown" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="timeDropdown" name="dropdowncomp" #dropdowncomp >
+                  <li *ngFor="let menu of this.JsonLang['english']['publishAnalytics']['menuItemsFiterGreaterLesser']" class="dropdown-item" (click)="selectedDropdownTimeValue($event)">{{menu.Menu}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <input type="text" class="form-control" id="timespentFilter" placeholder="Minutes (For e.g. 10)" name="timespentFilter" [(ngModel)]="AnalyticsFilterDetail.TimeSpent"  #timespentFilter="ngModel" number autocomplete="off" >
+          <span *ngIf="timespentFilter?.errors?.['number']" class="alert alert-danger">
+            <span class="formErrArrow"> </span>Enter Number</span>
+          <!-- <timepicker [(ngModel)]="AnalyticsFilterDetail.TimeSpent" name="timespentFilter"></timepicker> -->
+        </div>     
+<!-- Score dropdown -->
+<div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" >
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 form-group">
+        <label for="ScoreID" id="ScoreIDLabelID" class="form-control-label">Room Name</label>
+        <input type="text" class="form-control" id="name" placeholder="What is room name?" name="name" [(ngModel)]='AnalyticsFilterDetail.RoomName' autocomplete="off">
+      </div>
+    
+    </div>
+  </div>
+<!--buttons -->
+<div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+    <button type="submit" id="applyFilterID" class="btn btn-primary apply-button mr-2" tooltip="Apply" >{{this.JsonLang['english']['publishAnalytics']['Apply']}}</button>
+    <button type="button" id="clearFilterID" class="btn btn-primary clear-button" tooltip="Clear" (click)="formReseFiltert(analyticsFilterData)">{{this.JsonLang['english']['publishAnalytics']['Clear']}}</button>
+</div>
+<div class="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 filter-img-div">
+  <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="footer img" class="filter-img">
+</div>
+</form>
+      </div>
+    </div>
+        <!-- list view -->
+    <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 ">
+<!-- list header -->
+<div class="row pl-3">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 list-header">{{this.JsonLang['english']['publishAnalytics']['ViewLog']}}</div></div>
+  <!-- list cards analytics -->
+  <div class="row pl-3 pt-3">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  pb-2">
+          <div class="card card-bg1">
+              <div class="card-body spacing-all pb-0">
+                <div class="card-text card-inner-header-list small-card-height ">{{this.JsonLang['english']['publishAnalytics']['TimeSpent']}}</div>
+                <div class="card-text card-inner-count text-right">{{totalTimeSpenMinute}}<p class="card-inner-footer">{{this.JsonLang['english']['publishAnalytics']['mins']}}</p>
+                </div>
+                </div>
+            </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  pb-2">
+          <div class="card card-bg5">
+              <div class="card-body spacing-all pb-0">
+                <div class="card-text card-inner-header-list small-card-height ">{{this.JsonLang['english']['publishAnalytics']['AverageTimeSpent']}}</div>
+                <div class="card-text card-inner-count text-right">{{avgTimeSpenMinute}}<p class="card-inner-footer">{{this.JsonLang['english']['publishAnalytics']['mins']}}</p>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  pb-2">
+          <div class="card card-bg3">
+              <div class="card-body spacing-all pb-0">
+                <div class="card-text card-inner-header-list small-card-height ">{{this.JsonLang['english']['publishAnalytics']['MaxTimeSpent']}}</div>
+                <div class="card-text card-inner-count text-right">{{MaxTimeSpent}}<p class="card-inner-footer">{{this.JsonLang['english']['publishAnalytics']['mins']}}</p>
+                </div>
+              </div>
+            </div>
+      </div>
+        <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-xl-3  pb-2">
+            <div class="card card-bg4">
+                <div class="card-body spacing-all pb-0">
+                  <div class="card-text card-inner-header-list small-card-height ">{{this.JsonLang['english']['publishAnalytics']['AverageScore']}}</div>
+                  <div class="card-text card-inner-count text-right" *ngIf= "AverageScore === 0 && IsScore === 0">N/A<p class="card-inner-footer">&nbsp;</p></div>
+                  <div class="card-text card-inner-count text-right" *ngIf= "IsScore != 0">{{AverageScore}}<p class="card-inner-footer">{{this.JsonLang['english']['publishAnalytics']['score']}}</p></div>
+                </div>
+              </div>
+        </div>
+</div>
+
+<div class="row pl-3 pt-3" *ngIf= "tableDataFlag === 0 && tableDataFlagFilter === 0">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 " >
+        <table class="table">
+            <thead>
+              <tr class="tabel-header">
+                <th>Room Name</th>
+                <th>From Date</th>
+                <th>To Date</th>
+                <th class="text-center">View Count</th>
+                <th>Time Spent</th>
+                <th  class="text-center">{{this.JsonLang['english']['publishAnalytics']['Report']}}</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr *ngFor=" let tData of tableData | orderBy: 'UpdatedOn' : true" #elem [id]="tData.Id">
+                <td>{{tData.RoomName}}</td>
+                <td>{{tData.CreatedOn |date:'MMMM d, y' }} </td>
+                <td>{{tData.UpdatedOn |date:'MMMM d, y'}} </td>
+                <td  class="text-center">{{tData.PatronsCount}} </td>
+                <td *ngIf= "tData.TimeSpent == null">00:00:00</td>
+                <td *ngIf= "tData.TimeSpent != null">{{tData.TimeSpent}}</td>
+                <td  class="text-center">
+                <span class="cursor-icon" (click)="goToReport(downloadReport, tData.RoomId, tData.RoomName, tData.PatronsCount, tData.PublishedExperienceRoomMappingId)" ><i class="fa fa-download  patron-table-icon-size patron-table-downlad-icon-color hand-pointer adjust-tooltip" aria-hidden="true" ngbTooltip="Download" placement="top"></i></span>
+              </td>
+              </tr>
+
+            </tbody>
+          </table>
+    </div></div>
+<!-- no data for table -->
+    <div class="row pl-3 pt-3" *ngIf= "tableDataFlag === 1">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12">
+                 <div class="row">
+                   <div class="col-lg-8 col-md-8 col-sm-8">
+                       <div class="first-experience-top">Your Patrons are going to love your Experiences
+                        </div>
+                       <hr>
+                       <div class="first-experience-description">Currently none of your Patrons have seen your created Virtual Reality Experience. This list can help you analyse the activity of a Patron inside one of the rooms that you have created or his overall progress. 
+                        </div>
+                       
+                       <div class="first-experience-mail">Write to us at <a href="mailto:care@experizer.com">care@experizer.com</a> if you face any problem with your Experizer account.</div>
+                   </div>
+                   <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                       <img src="assets/images/publishAnalytics/cat_withpaperfill.png" alt="pop-header" class="create-first-exp-image">
+                   </div>
+                 </div>
+               </div>
+               <!-- <div class="col-lg-1 col-md-1 col-sm-1"></div> -->
+         </div>
+         
+       </div>  </div> 
+       <!-- no data for filter  -->
+       <div class="row pl-3 pt-3" *ngIf= "tableDataFlagFilter === 1">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="row">
+                 <div class="col-lg-12 col-md-12 col-sm-12">
+                   <div class="row">
+                     <div class="col-lg-8 col-md-8 col-sm-8">
+                         <div class="first-experience-top">Your Patrons are going to love your Experiences
+                          </div>
+                         <hr>
+                         <div class="first-experience-description">Could not find any record with that search query. You might want to try changing the search parameters. 
+                          </div>
+                         
+                         <div class="first-experience-mail">Write to us at <a href="mailto:care@experizer.com">care@experizer.com</a> if you face any problem with your Experizer account.</div>
+                     </div>
+                     <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                         <img src="assets/images/publishAnalytics/cat_withpaperfill.png" alt="pop-header" class="create-first-exp-image">
+                     </div>
+                   </div>
+                 </div>
+                 <!-- <div class="col-lg-1 col-md-1 col-sm-1"></div> -->
+           </div>
+           
+         </div>  </div> 
+<!-- list tabel -->
+  </div>
+</div>
+
+<ng-template #downloadReport>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Download Report</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+   <div class="modal-body"> 
+      <div class="row">
+        <div class="col-12">
+          <input type="radio" name="report" value="PDF" [checked] = "true" (change)="handleChange('PDF')"> PDF<br>
+          <input type="radio" name="report" value="CSV" (change)="handleChange('CSV')"> CSV<br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <hr>
+          <div class="experience-template-action" style="text-align:right;">
+        <button type="button" class="btn btn-color-green" (click)= "getReportDownload()" style="margin-right:10px;">OK</button>
+        <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()" data-dismiss="modal">Cancel </button>
+        </div>
+        </div>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">            
+</div> 
+    
+</ng-template>
+<ng4-loading-spinner></ng4-loading-spinner>
+        <!-- <toaster-container [toasterconfig]="config1"></toaster-container> -->
+        <canvas #canvas style="display: none;"></canvas>

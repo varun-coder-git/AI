@@ -1,0 +1,281 @@
+data = {
+   "Id": "5",
+   "Background_audio": "https://alpha-dev.experizer.com/api/images/assets/1536300787/Soft-piano-music-piano-zen.mp3",
+   "Background_theme": "assets/images/decor/creative.jpg",
+   "branding_south_wall": {
+      "Logo": "https://alpha-dev.experizer.com/api/images/assets/1536300787/Lean Startup Trivia/Eric Ries.jpg",
+      "image1": "/act/v0.1/quiz/assets/images/default.jpg",
+      "image2": "https://alpha-dev.experizer.com/api/images/assets/1536300787/Lean Startup Trivia/The-Lean-Startup.png"
+   },
+   "branding_east_wall": {
+      "image": "/act/v0.1/quiz/assets/images/default.jpg"
+   },
+   "branding_west_wall": {
+      "image": "/act/v0.1/quiz/assets/images/default.jpg"
+   },
+   "Points": "10",
+   "Show_right_answer": "Yes",
+   "Show_score_at_end": "Yes",
+   "End_Message": "Thank you for the Quiz",
+   "Heading_Message": "Congratulations!",
+   "Subheading_Message": "You have completed this Quiz.",
+   "questionData": [
+      {
+         "Id": "2",
+         "Question": "What are the lean startup key principles?",
+         "Options": [
+            {
+               "option": "Business plan, stealth mode development, waterfall development"
+            },
+            {
+               "option": "Business model canvas, customer development, agile development"
+            },
+            {
+               "option": "All the above"
+            },
+            {
+               "option": "None of the above"
+            }
+         ],
+         "Answer": [
+            "2"
+         ],
+         "Reenforcement_feedback": "",
+         "Corrective_feedback": "",
+         "Background_audio": "/assets/Music/question1.mp3",
+         "Background_video1": "/assets/videos/Clownfishes.mp4",
+         "Background_video2": "/assets/videos/Clownfishes.mp4",
+         "branding_south_wall": {
+            "Logo": "/assets/images/TriviaAnswers/agile-development.jpg",
+            "image1": "/assets/images/TriviaAnswers/agile-development.jpg",
+            "image2": "/assets/images/TriviaAnswers/agile-development.jpg"
+         },
+         "branding_east_wall": {
+            "image": "/assets/images/TriviaAnswers/agile2.jpg"
+         },
+         "branding_west_wall": {
+            "image": "/assets/images/TriviaAnswers/agile3.jpg"
+         }
+      },
+      {
+         "Id": "3",
+         "Question": "What is the lean startup? ",
+         "Options": [
+            {
+               "option": "Lean start-up is smaller version of big corporations. "
+            },
+            {
+               "option": "Organization that is designed to execute a scalable, repeatable and profitable business model "
+            },
+            {
+               "option": "Temporary Organization designed to search for a scalable, repeatable and profitable Business Model"
+            },
+            {
+               "option": "None of the above"
+            }
+         ],
+         "Answer": [
+            "3"
+         ],
+         "Reenforcement_feedback": "",
+         "Corrective_feedback": "",
+         "Background_audio": "/assets/Music/question2.mp3",
+         "Background_video1": "/assets/videos/PromotionalVideos.mp4",
+         "Background_video2": "/assets/videos/PromotionalVideos.mp4",
+         "branding_south_wall": {
+            "Logo": "/assets/images/TriviaAnswers/BusinessModel1.jpg",
+            "image1": "/assets/images/TriviaAnswers/BusinessModel1.jpg",
+            "image2": "/assets/images/TriviaAnswers/BusinessModel1.jpg"
+         },
+         "branding_east_wall": {
+            "image": "/assets/images/TriviaAnswers/BusinessModel2.jpg"
+         },
+         "branding_west_wall": {
+            "image": "/assets/images/TriviaAnswers/BusinessModel3.jpg"
+         }
+      },
+      {
+         "Id": "4",
+         "Question": "How a lean startup reacts to invalidated hypotheses?",
+         "Options": [
+            {
+               "option": "Fire the CEO (chef executive officer)"
+            },
+            {
+               "option": "Fire the CFO (chef financial officer)"
+            },
+            {
+               "option": "Pivot to a new set of hypotheses "
+            },
+            {
+               "option": "Ramp up marketing and hire more sales professionals "
+            }
+         ],
+         "Answer": [
+            "3"
+         ],
+         "Reenforcement_feedback": "",
+         "Corrective_feedback": "",
+         "Background_audio": "",
+         "Background_video1": "",
+         "Background_video2": "",
+         "branding_south_wall": {
+            "Logo": "/assets/images/TriviaAnswers/SetUpHypothesis1.jpg",
+            "image1": "/assets/images/TriviaAnswers/SetUpHypothesis1.jpg",
+            "image2": "/assets/images/TriviaAnswers/SetUpHypothesis1.jpg"
+         },
+         "branding_east_wall": {
+            "image": "/assets/images/TriviaAnswers/SetUpHypothesis2.jpg"
+         },
+         "branding_west_wall": {
+            "image": ""
+         }
+      },
+      {
+         "Id": "5",
+         "Question": "What is the lean startup customer development sequence? A. Customer Creation B. Customer Discovery C. Company Building D. Customer Validation ",
+         "Options": [
+            {
+               "option": "A -> B -> C -> D "
+            },
+            {
+               "option": "D -> C -> B -> A "
+            },
+            {
+               "option": "B -> D -> A -> C "
+            },
+            {
+               "option": "C -> A -> D -> B"
+            }
+         ],
+         "Answer": [
+            "3"
+         ],
+         "Reenforcement_feedback": "",
+         "Corrective_feedback": "",
+         "Background_audio": "/assets/Music/question4.mp3",
+         "Background_video1": "/assets/videos/Dolphin.mp4",
+         "Background_video2": "/assets/videos/Dolphin.mp4",
+         "branding_south_wall": {
+            "Logo": "/assets/images/TriviaAnswers/LeanStratUp.jpg",
+            "image1": "/assets/images/TriviaAnswers/LeanStratUp.jpg",
+            "image2": "/assets/images/TriviaAnswers/LeanStratUp.jpg"
+         },
+         "branding_east_wall": {
+            "image": "/assets/images/TriviaAnswers/LeanSup2.jpg"
+         },
+         "branding_west_wall": {
+            "image": "/assets/images/TriviaAnswers/LeanSup3.jpg"
+         }
+      },
+      {
+         "Id": "6",
+         "Question": "How can the lean startup change the entrepreneurial economy? ",
+         "Options": [
+            {
+               "option": "Lean startup increases the risk appetite of VCs (venture capitalists) "
+            },
+            {
+               "option": "Lean startup reduces the cost of failure "
+            },
+            {
+               "option": "Lean startup shorten the technology development cycles "
+            },
+            {
+               "option": "Lean startup democratizes the venture capital industry"
+            }
+         ],
+         "Answer": [
+            "2",
+            "3"
+         ],
+         "Reenforcement_feedback": "",
+         "Corrective_feedback": "",
+         "Background_audio": "/assets/Music/question1.mp3",
+         "Background_video1": "/assets/videos/CustomerTestimonial.mp4",
+         "Background_video2": "/assets/videos/CustomerTestimonial.mp4",
+         "branding_south_wall": {
+            "Logo": "/assets/images/TriviaAnswers/TecnologyLifeCycle1.png",
+            "image1": "/assets/images/TriviaAnswers/TecnologyLifeCycle1.png",
+            "image2": "/assets/images/TriviaAnswers/TecnologyLifeCycle1.png"
+         },
+         "branding_east_wall": {
+            "image": "/assets/images/TriviaAnswers/TecnologyLifeCycle2.png"
+         },
+         "branding_west_wall": {
+            "image": "/assets/images/TriviaAnswers/TecnologyLifeCycle3.png"
+         }
+      },
+      {
+         "Id": "7",
+         "Question": "The primary purpose of the Lean Startup is to be able to produce a new product by spending less on development.",
+         "Options": [
+            {
+               "option": "True"
+            },
+            {
+               "option": "False"
+            }
+         ],
+         "Answer": [
+            "2"
+         ],
+         "Reenforcement_feedback": "The emphasis is on fast iterations and gaining customer insights to produce products that customers want. It may or may not be a cheaper way to do develop products.",
+         "Corrective_feedback": "Wrong! The emphasis is on fast iterations and gaining customer insights to produce products that customers want. It may or may not be a cheaper way to do develop products.",
+         "Background_audio": "/assets/Music/question4.mp3",
+         "Background_video1": "/assets/videos/Bruneel'sTestimonial.mp4",
+         "Background_video2": "/assets/videos/Bruneel'sTestimonial.mp4",
+         "branding_south_wall": {
+            "Logo": "/assets/images/TriviaAnswers/LeanSup2.jpg",
+            "image1": "/assets/images/TriviaAnswers/LeanSup2.jpg",
+            "image2": "/assets/images/TriviaAnswers/LeanSup2.jpg"
+         },
+         "branding_east_wall": {
+            "image": "/assets/images/TriviaAnswers/LeanSup2.jpg"
+         },
+         "branding_west_wall": {
+            "image": "/assets/images/TriviaAnswers/LeanSup2.jpg"
+         }
+      },
+      {
+         "Id": "8",
+         "Question": "The fundamental unit of progress in the Lean Startup (LS) is this. It is a rigorous method for demonstrating that a team has discovered valuable truths.",
+         "Options": [
+            {
+               "option": "Pivot"
+            },
+            {
+               "option": "Validated Learning"
+            },
+            {
+               "option": "Minimum Viable Product"
+            },
+            {
+               "option": "Value Hypothesis"
+            }
+         ],
+         "Answer": [
+            "2"
+         ],
+         "Reenforcement_feedback": "Correct. The fundamental unit of progress in the Lean Startup (LS) is Validated Learning. It is a rigorous method for demonstrating that a team has discovered valuable truths.",
+         "Corrective_feedback": "Wrong. The fundamental unit of progress in the Lean Startup (LS) is Validated Learning. It is a rigorous method for demonstrating that a team has discovered valuable truths.",
+         "Background_audio": "/assets/Music/question2.mp3",
+         "Background_video1": "/assets/videos/Clownfishes.mp4",
+         "Background_video2": "/assets/videos/Clownfishes.mp4",
+         "branding_south_wall": {
+            "Logo": "/assets/images/TriviaAnswers/Validated-learning1.png",
+            "image1": "/assets/images/TriviaAnswers/Validated-learning1.png",
+            "image2": "/assets/images/TriviaAnswers/Validated-learning1.png"
+         },
+         "branding_east_wall": {
+            "image": "/assets/images/TriviaAnswers/Validated-learning2.png"
+         },
+         "branding_west_wall": {
+            "image": "/assets/images/TriviaAnswers/Validated-learning3.png"
+         }
+      }
+   ],
+   "launch_text": "The Lean Startup trivia is based on Eric Ries book over how today's entrepreneurs use Continuous Innovation to Create Radically Successful Businesses.",
+   "splash_image": "/act/v0.1/quiz/assets/images/logo1.png",
+   "splash_instruction": "Instructions for using this Experience: \nDesktop: Drag image to change view angle. Use the Circle on the centre of the screen for selection. \nMobile: Pan mobile OR Drag Image to change the view angle. Use the Circle on the centre of the screen for selection. \nVR Goggles: Look around. Use the Circle on the centre of the screen for selection. "
+}

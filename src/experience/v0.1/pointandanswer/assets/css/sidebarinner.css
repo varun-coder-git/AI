@@ -1,0 +1,578 @@
+ /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */
+ .btn-vertical-right {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  margin-top: 65px;
+  margin-left: 0px;
+  border-radius: 0;
+  width: 140px;
+  font-size: 16px;
+}
+
+.btn-vertical-right:first-of-type {
+  margin-top: 30px;
+}
+
+.btn-first{background: #6CA0B6; color: white;}
+.btn-second{background: #E9785B; color: white;}
+.btn-third{background: #328475; color: white;}
+
+.btn-first:hover{background: #55899b; color: white;}
+.btn-second:hover{background: #ca6947; color: white;}
+.btn-third:hover{background: #2a7260; color: white;}
+.btn-info {
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+.btn.focus, .btn:focus{outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(183, 183, 183,0.25);}
+/* ---------------------------------------------------
+SIDEBAR STYLE
+----------------------------------------------------- */
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  overflow-x: hidden;
+  transition: 0.15s;
+  padding-top: 5px;
+}
+
+.vr-editor {
+  padding: 0px;
+}
+
+.sidenav>div {
+  padding: 0px 10px 0px 10px;
+  color: rgba(255, 255, 255, 1);
+  transition: 0.7s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav.active {
+  width: 35%;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.sidebar-text-first{color:  #6CA0B6 !important; font-size:20px;}
+.sidebar-text-second{color:  #E9785B !important; font-size:20px;}
+.sidebar-text-third{color:  #328475 !important; font-size:20px;}
+.border-style{    border-color: #868686;border-width: 2px; margin-left: -9px; margin-right: -9px;}
+.bottom-sidenav{    position: absolute; bottom: 0; width: 100%;}
+.button-OK{background-color: #328475; color: white; width: 70px;  }
+.button-Cancel{background-color: #6CA0B6; color: white;}
+.bgThemeDiv{cursor: pointer;}
+.bgThemeDiv > img:hover { 
+  border: 6px solid #000000;
+}
+
+.selected-theme{border: 6px solid greenyellow;}
+.questionDiv{
+  padding: 0;
+  margin: 10px;
+  padding-bottom: 10px !important;
+  border-radius: 7px;}
+
+.questionSetttingDiv{border: 2px solid;
+  padding: 0;
+  margin: 10px;
+  padding-bottom: 10px !important;
+  border-radius: 7px;}
+.actionDiv{
+margin-top: 5%; 
+text-align: right;
+}
+.actionDiv > .btn{
+padding: 3px 0px;
+  font-size: 14px;
+  margin-right: 5px;
+}
+.panel-title .glyphicon{
+      font-size: 14px;
+  }
+#wallSidenav > div > .custom-file{margin-bottom: 10px;}
+
+
+.panel-group .panel-heading {
+  border-bottom: 0;
+}
+.panel-heading {
+  padding: 8px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel-group .panel {
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+.panel-default {
+  border-color: #ddd;
+}
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel-group {
+  margin-bottom: 20px;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+  border-top-color: #ddd;
+}
+.panel-group .panel-heading+.panel-collapse>.list-group, .panel-group .panel-heading+.panel-collapse>.panel-body {
+  border-top: 1px solid #ddd;
+}
+.panel-body {
+  padding: 15px !important;
+  padding-bottom: 0px !important;
+  color:#000000 !important;
+}
+.panel-title .glyphicon {
+  font-weight: bold;
+  font-size: 22px;
+  margin-right: 15px;
+}
+
+.panel-body > .row >div
+{
+font-size: 14px;
+  line-height: 18px;
+}
+
+.panel-body > .row 
+{
+padding-bottom: 8px;
+}
+
+.panel-body > .row > .col-12
+{
+padding-bottom: 8px;
+}
+
+
+.collapse > .card-body{display:none;}
+.collapse.show > .card-body{display:block;}
+.collapse.show {
+  transition: height 0.5s;
+}
+.card{margin-bottom:5px;}
+.card-header{padding:0px;}
+.card-body div{color:#fff;}
+.card-body {color: #000;}
+.card-body h3 {color:#fff;}
+
+
+.glyphicon {
+  position: relative;
+  top: 0px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-minus:before {
+  content: "\2212";
+}
+.glyphicon-plus:before {
+  content: "\002b";
+}
+
+.panel-title{margin-bottom: 0px;}
+.panel-title > a{
+color:#000000 !important;
+}
+
+.custom-file{margin-bottom: 5px;}
+.panel-title > a:hover{text-decoration:none;}
+
+.display-none{display: none;}
+.background-color-forestgreen{background-color: forestgreen !important;}
+/* file upload */
+/* .custom-file{width: 86%;} */
+.custom-file-label{ background-color: white; color: #0F0E0E;margin-top: 10px; left: initial; width:100%;}
+
+
+/*===============Personal Theatre=========================*/
+
+#auditoriumSidebar
+{
+
+}
+#movieFramesSidebar
+{
+  left: -15px;
+  margin-top: 90px;
+  position: relative;
+  width: 125px;
+}
+#movieSidebar
+{
+  margin-top: 90px;
+}
+
+/*===============Personal Theatre=========================*/
+
+/*side bar UI changes*/
+.sidebar-fixed{
+  position: fixed;
+    z-index: 1;
+    background: #0e0e0e87;
+    background-color: rgba(14, 14, 14, 0.52);
+    height: 100%;
+    width: 60px;
+  }
+  .a-canvas{
+    width: 100% !important;
+  }
+  .button-align-first{
+    margin-left: -55px;
+      margin-top: 55px !important;
+  }
+  .button-align-second{
+    margin-left: -55px;
+    margin-top: 106px;
+  }
+  .button-align-third{
+      margin-left: -55px;
+      margin-top: 106px;
+  }
+  .margin-left-60{
+    margin-left: 60px;
+  }
+
+  .container{
+      max-width: 100%;
+  }
+
+.sidenav
+{
+  -ms-overflow-style:none;
+}
+
+.sidenav.active
+{
+  -ms-overflow-style:auto;
+}
+.icon-padding{
+  padding: 15px;
+}
+.image_size{width: 100%; height: 100%;}
+.image-icon_size{width: 100px; height: 100px;}
+.icon-selected{border: 2px solid #999;}
+/* Scrollbar css start */
+
+  /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #999999; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #c3c3c3; 
+}
+
+/* Scrollbar css end*/
+.sidebar-right{ padding: 10px;position: fixed;
+  height: 100%;
+  right: 0;
+z-index: 3;}
+.pull-right{
+  float: right;
+}
+.save-btn-color{
+  background-color: #17a2b8;
+}
+
+.button-divider {
+text-align: center;
+margin: 10px -10px;
+border-top: 1px solid #9f9f9f;
+border-bottom: 1px solid #9f9f9f;
+font-size: 14px;
+color: white;
+background-color: rgba(108,160,182,0.4);
+}
+.tour-button {
+margin-top: 0px !important;
+}
+.custom-button{
+  text-align: center;
+  border-radius: 2px;
+  color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  font-size: 12px;
+  position: relative;
+}
+.custom-button.place-color {
+  background-color: #4285f499;
+  background-color: rgba(66, 133, 244, 0.6);
+}
+.custom-button.disabled {
+  color: rgba(255,255,255,0.5);
+  border-color: rgba(159,159,159,0.5);
+  cursor: not-allowed !important;
+} 
+.custom-button .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 110%;
+}
+.custom-button .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+.custom-button:hover .tooltiptext {
+  visibility: visible;
+}
+.btn-width-acc{
+  width: 15%;
+}
+/*model*/
+.modal-footer-image {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: 0px;
+}
+
+.modal-content{
+ border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px; 
+}
+.btn-color-green {
+  background: #31A38D;
+  color: #fff;
+  width: 16.5%;
+}
+
+.btn-color-blue {
+  background: #6CA0B6;
+  color: #fff;
+  width: 16.5%;
+}
+/*model*/
+
+.sidebar-transparent{
+  background: #0e0e0e87;
+  background-color: rgba(14, 14, 14, 0.52);
+}
+.text-overflow{
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 80%;
+  white-space: nowrap;
+}
+
+.jscolor
+{
+width: 100%;
+position: relative;
+top: 2px;
+text-decoration: none!important;
+color: transparent !important;
+}
+
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #fff;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+/*Sidebar*/
+.sidebar-transparent {
+background: #0e0e0e87;
+background-color: rgba(14, 14, 14, 0.52);
+}
+
+.sidebar-right {
+padding: 10px;
+position: fixed;
+height: 100%;
+right: 0;
+z-index: 3;
+}
+
+.button-divider {
+text-align: center;
+margin: 10px -10px;
+border-top: 1px solid #9f9f9f;
+border-bottom: 1px solid #9f9f9f;
+font-size: 14px;
+color: white;
+background-color: rgba(108, 160, 182, 0.4);
+}
+
+.tour-button {
+margin-top: 0px !important;
+}
+/* custom-button for freeze start point */
+.custom-button1{
+  text-align: center;
+  border-radius: 2px;
+  color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+  height: 71px;
+  width: 65px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  font-size: 12px;
+  position: relative;
+}
+.custom-button1.place-color {
+background-color: #4285f499;
+background-color: rgba(66, 133, 244, 0.6);
+}
+.custom-button1.disabled {
+color: rgba(255, 255, 255, 0.5);
+border-color: rgba(159, 159, 159, 0.5);
+cursor: not-allowed !important;
+}
+.custom-button1 .tooltiptext {
+visibility: hidden;
+width: 120px;
+background-color: black;
+color: #fff;
+text-align: center;
+border-radius: 4px;
+padding: 5px;
+position: absolute;
+z-index: 1;
+top: 20px;
+right: 110%;
+}
+.custom-button1 .tooltiptext::after {
+content: "";
+position: absolute;
+top: 50%;
+left: 100%;
+margin-top: -5px;
+border-width: 5px;
+border-style: solid;
+border-color: transparent transparent transparent black;
+}
+.custom-button1:hover .tooltiptext {
+visibility: visible;
+}
+.custom-button1.disabled > img{opacity: 0.5}
+/* custom-button for freeze start point */
+
+.handPointer{
+  cursor: pointer;
+}

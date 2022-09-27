@@ -1,0 +1,131 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Experizer Experience</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- For Google -->
+<meta name="description" content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+<meta name="keywords" content="" />
+
+<meta name="author" content="Augmented 2D" />
+<meta name="copyright" content="studio.experizer.com" />
+<meta name="application-name" content="Experizer" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Augmented 2D" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/grandTheatreThumbnail.jpg?0.4243993684303231" />
+<meta property="og:url" content="studio.experizer.com" />
+<meta property="og:description" content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Augmented 2D" />
+<meta name="twitter:description" content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+<meta name="twitter:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/grandTheatreThumbnail.jpg?0.4243993684303231" />
+<!-- <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"> -->
+  
+<script src="assets/js/aframe-v1.0.4.js"></script>
+<script src="assets/js/aframe-ar.js"></script>
+<script src="assets/js/jquery.min.js"></script> 
+<script src="../verbose/commonpreview.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/css/splash.css">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<script src="assets/js/preview.js"></script>
+<script src="assets/js/genrator.js"></script>
+<script src="assets/js/threex-arpatternfile.js"></script>
+</head>
+
+<body style='margin : 0px; overflow: hidden !important;'>
+  <div id="snackbar"></div>
+  <div id="loaderq" class="lds-roller lds-roller-pos-assets-popup" style="position: absolute; z-index: 9999"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  <div id="container" class="container">
+    <div class="info" id="info">
+      <div class="inner-overloy hidden-login" style="overflow-y: auto" id="innerInfo">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label id="titleText" class="titleheader">Loading..</label>
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label id="titleDescription"></label>
+                   </div>
+                </div>
+                <hr>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <div class="row">
+                  <div class="col instruction-scroll">
+                  
+                  <label id="instruction"></label>
+                    
+                 </div>
+              </div>
+             
+          </div>
+         
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 border-left">
+                 <div class="row text-align-center logo-center-top" id="logoTop">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-2">
+                    <img src="/act/experizerlogo_black.png" id="splashLogo" class="logo ">
+                   </div>
+                </div> 
+                 <div class="row text-align-center button-center-top mt-2" id="buttonTop">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+                        <label id="loading" ><b>Loading...</b></label>  
+                    <button class="button disabled " id="start_experience"  >Enter</button>
+                   
+                </div>
+                
+            </div>
+        </div>
+      </div>
+        <div class="row text-align-center">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      
+                </div>
+          </div>
+        </div>
+  </div>
+</div>
+    <a-scene id="sceneid" embedded arjs=' sourceType: webcam;debugUIEnabled: false; ' renderer="precision: mediump" sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; >
+      <a-assets id="assetId"> 
+        <img id="img" src="">
+      </a-assets> 
+      <a-entity  camera ></a-entity>
+    </a-scene>
+    <div id='imageContainer' class="disabled"></div>
+</body>
+
+</html>

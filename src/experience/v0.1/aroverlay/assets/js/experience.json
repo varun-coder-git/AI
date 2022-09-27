@@ -1,0 +1,27 @@
+   { 
+      "launch_text":"<p><i style=\"font-size: 1rem;\"><span style=\"font-size: 14px;\">AirAsia dominates the Asian skies with a fleet of some of the most advanced instruments and a super powerful management.&nbsp;</span><span style=\"font-family: &quot;Helvetica Neue&quot;; font-size: 14px;\">It has been named as the world's best low-cost airline and a pioneer of low-cost travel in Asia.</span><sup style=\"font-family: &quot;Helvetica Neue&quot;;\"><span style=\"font-size: 14px;\"> </span></sup><span style=\"font-family: &quot;Helvetica Neue&quot;; font-size: 14px;\">AirAsia group operates domestic and international flights to 100 destinations in 22 countries. Its main hub is the Kuala Lumpur International Airport (KLIA).</span><span style=\"font-size: 14px;\">&nbsp;Discover AirAsia with this hall.</span></i><br></p>",
+      "marker_data":[ 
+         { 
+            "image_path":"https://10.0.0.69:8111/aframe/assets/markerImages/Gandhi.jpg",
+            "image_name":"./assets/markers/kanji.patt",
+            "object_type":"obj",
+            "obj_scale":"0.5",
+            "model":"./assets/models/fish-2.obj",
+            "mtl":"./assets/models/fish-2.mtl"
+
+         },{ 
+            "image_path":"https://10.0.0.69:8111/aframe/assets/markerImages/download.jpg",
+            "image_name":"./assets/markers/hiro.patt",
+            "object_type":"gltf",
+            "obj_scale":"0.1 0.1 0.1",
+            "model":"https://cdn.glitch.com/0d1945ac-ed6f-44be-9903-e1c1626575a4%2Fcar.glb?1548349423434",
+            "mtl":""
+         }
+      ],
+      "splash_image":"/images/assets/era73679/Grand Theatre Assets/Air-Asia-Branding.gif",
+      "splash_instruction":"<p><b><span style=\"font-size: 14px;\">Instructions to use this Experizer experience:</span></b></p><p><b><span style=\"font-size: 14px;\">1. VR Goggles:</span></b><span style=\"font-size: 14px;\"> Look around. Use the center screen dot to focus on yellow plates on the floor to navigate.</span></p><p><b><span style=\"font-size: 14px;\">2. Mobile: </span></b><span style=\"font-size: 14px;\">Look around or use thumb to move camera.Use the view finder to focus on yellow plates on the floor to navigate.</span></p><p><b><span style=\"font-size: 14px;\">3.Desktop:</span></b><span style=\"font-size: 14px;\"> Use key board to navigate and drag mouse to look around</span><span style=\"font-size: 14px;\">?</span></p>",
+      "default_image":"assets/textures/defaultgallery.jpg",
+      "splashHeaderColor":"#FFFFFF",
+      "splashBackgroundColor":"#FF2432",
+      "Opacity":0.2
+   }

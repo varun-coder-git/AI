@@ -1,0 +1,33 @@
+{
+    "imageSkyPath": "assets/images/DefaultNightSky.jpg",
+    "actionPoints": [
+    {
+    "image_path": "http://10.0.0.71:3000/images/assets/ppaeol08/Ashy prinia.jpg",
+    "image_name": "Ashy prinia.jpg",
+    "object_type": "gltf",
+    "obj_scale": "3",
+    "model": "http://10.0.0.71:3000/images/assets/ppaeol08/scene.gltf",
+    "mtl": "",
+    "actionId": 0,
+    "type": "gltf file",
+    "markarTitle": "Marker 1"
+    },
+    {
+    "image_path": "http://10.0.0.71:3000/images/assets/ppaeol08/fantasyland.jpg",
+    "image_name": "fantasyland.jpg",
+    "object_type": "obj",
+    "obj_scale": "-2",
+    "model": "http://10.0.0.71:3000/images/assets/ppaeol08/mustang.obj",
+    "mtl": "http://10.0.0.71:3000/images/assets/ppaeol08/mustang.mtl",
+    "actionId": 1,
+    "type": "obj file",
+    "markarTitle": "Marker 2"
+    }
+    ],
+    "splash_image": "assets/images/logo.png",
+    "splash_instruction": "1.VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate.2.Mobile: Look around or use thumb to move camera.Use the center screen dot to focus on yellow plates on the floor to navigate.3.Desktop: Use key board to navigate and drag mouse to look around",
+    "launch_text": "Welcome",
+    "splashHeaderColor": "#FFFFFF",
+    "splashBackgroundColor": "#8F8F8F",
+    "Opacity": 0.2
+    }

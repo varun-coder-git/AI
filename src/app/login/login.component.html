@@ -1,0 +1,376 @@
+<!-- /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */-->
+<!--<img  class="background-img " src="//assets/images/background-main.jpg">-->
+<!-- <link rel="stylesheet" href="/assets/css/styles.css"> -->
+<div class="login-background-img ">
+  <!-- <div class=" row margin-LR-0">
+    <div id="sticker" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 header-area">
+      <div class="row navbar navbar-default">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 navbar-header">
+          <img src="assets/images/login/logo.png" alt="" title="">
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 ">
+          <form class="pull-right" (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+            <input type="text" placeholder="Username" name="uname" class="login-form-input login-margin-right" [(ngModel)]='LoginFormDataComponent.login_details.UserName'
+              #uname="ngModel" id="uname" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+
+            <input type="password" placeholder="Password" name="pswd" class="login-form-input login-margin-right" [(ngModel)]='LoginFormDataComponent.login_details.Password'
+              #pswd="ngModel" required>
+
+            <button type="submit" class="btn btn-success">Login</button>
+            <br>
+            <span class="login-forgot-password " (click)="openModal(forgotPopUp)">Forgot Password</span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <toaster-container [toasterconfig]="config1"></toaster-container>
+
+  <div class="row px-5 py-2 margin-LR-0 vh-100 align-items-center">
+    <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 col-7 login-container mx-auto  p-4">
+      <div class="row text-center">
+        <img src="assets/images/login/experizerlogo.png" alt="" title="" class="mx-auto branding-logo">
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="form-signup-title-font">Sign in</div>
+            </div>
+          </div>
+          <!--<div class="row mt-4 ">
+            <button type="button" class="btn btn-linkedin-color mx-auto signin-google-facebook-button" (click)="socialSignIn('linkedin')">
+              <i class="fa fa-linkedin" aria-hidden="true"></i> Login with LinkedIn</button>
+          </div>-->
+
+          <div class="row mt-4 pt-3">
+            <button type="button" class="btn btn-google-color mx-auto signin-google-facebook-button" (click)="socialSignIn('google')">
+              <i class="fa fa-google" aria-hidden="true"></i> Login with Google</button>
+          </div>
+
+          <div class="row mt-4 text-center">
+            <button type="button" class="btn btn-facebook-color mx-auto signin-google-facebook-button" (click)="socialSignIn('facebook')">
+              <i class="fa fa-facebook" aria-hidden="true"></i> Login with Facebook</button>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="form-signup-title">or</div>
+            </div>
+          </div>
+
+          <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+            <div class="row mt-4">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="text" placeholder="Email" name="uname" class="login-form-input form-signup-input-field" [(ngModel)]='LoginFormDataComponent.login_details.UserName'
+                  #uname="ngModel" id="uname" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$" required>
+                  <div [hidden]="uname.valid || uname.untouched && loginSubmitted">
+                      <div class="error-msg-align error-msg-align-signin" *ngIf="uname.errors && uname.errors['required']">
+                        <span class="alert alert-danger">
+                          <span class="formErrArrow"> </span>Email Address is required
+                        </span>
+                      </div>
+                      <div class=" error-msg-align error-msg-align-signin" *ngIf="uname.errors && uname.errors?.['pattern']">
+                          <span class="alert alert-danger">
+                              <span class="formErrArrow"> </span>Enter correct email
+                            </span>  
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="password" placeholder="Password" name="pswd" class="login-form-input form-signup-input-field" [(ngModel)]='LoginFormDataComponent.login_details.Password'
+                  #pswd="ngModel" required>
+                  <div [hidden]="pswd.valid || pswd.untouched && loginSubmitted">
+                      <div class="error-msg-align error-msg-align-signin" *ngIf="pswd?.errors?.['required']">
+                        <span class="alert alert-danger">
+                          <span class="formErrArrow"> </span>Password is required
+                        </span>
+                      </div>
+                      <div class="error-msg-align error-msg-align-signin" *ngIf="pswd?.errors?.['pattern']">
+                        <span class="alert alert-danger">
+                          <span class="formErrArrow"> </span>Minimun 8 chars            
+                        </span>
+                      </div>
+                    </div>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="login-forgot-password" (click)="openModal(forgotPopUp)">Help! I forgot my password!</div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
+                <button type="submit" class="btn btn-success form-signup-btn-signup">Sign in</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="form-signup-title-font">Sign up</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="form-signup-title">Connect quickly using</div>
+            </div>
+          </div>
+          <div class="row mt-3" >
+            <!--<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 btn-center">
+              <button type="button" class="btn btn-linkedin-color signup-google-facebook-button" (click)="socialSignIn('linkedin')" >
+                <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn</button>
+            </div>            -->
+            <div class="col-xl-6 col-lg-6 col-md-6col-sm-12 col-12 btn-center">
+              <button type="button" class="btn btn-google-color signup-google-facebook-button" (click)="socialSignIn('google')" >
+                <i class="fa fa-google" aria-hidden="true"></i> Google</button>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 btn-center">
+              <button type="button" class="btn btn-facebook-color signup-google-facebook-button" (click)="socialSignIn('facebook')">
+                <i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="form-signup-title">Or use your email</div>
+            </div>
+          </div>
+          <form (ngSubmit)="signup(signupForm)" #signupForm="ngForm">
+            <div class="row mt-4">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="text" placeholder="Name" name="username" id="username" class="login-form-input form-signup-input-field" autocomplete="off"
+                  [(ngModel)]='FormDataComponent.user.UserDetail.Name' #username="ngModel" [disabled]="disabledValue" required
+                />
+
+                <div [hidden]="username.valid || username.untouched && submitted">
+                  <div class="error-msg-align-signup" *ngIf="username?.errors?.['required']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>What's your name?
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="email" placeholder="Email" name="emailaddress" class="login-form-input form-signup-input-field" [(ngModel)]='FormDataComponent.user.UserName'
+                  #emailaddress="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$" [disabled]="disabledValue"
+                  required />
+                <div [hidden]="emailaddress.valid || emailaddress.untouched && submitted">
+                  <div class="error-msg-align-signup" *ngIf="emailaddress.errors && emailaddress.errors['required']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>What's your email?
+                    </span>
+                  </div>
+                  <div class=" error-msg-align-signup" *ngIf="emailaddress.errors && emailaddress.errors['pattern']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>Enter correct email
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="password" placeholder="Password" class="login-form-input form-signup-input-field" id="password" name="password"
+                  autocomplete="off" [(ngModel)]='FormDataComponent.user.Password' #password="ngModel" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                  [disabled]="disabledValue" required />
+                <div [hidden]="password.valid || password.untouched && submitted">
+                  <div class="error-msg-align-signup" *ngIf="password?.errors?.['required']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>Choose a password
+                    </span>
+                  </div>
+                  <div class="error-msg-align-signup" *ngIf="password?.errors?.['pattern']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>Passwords must contain at least eight characters, including uppercase, lowercase letters and numbers or special characters.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="text" placeholder="Organisation Name" name="organizationname" id="organizationname" class="login-form-input form-signup-input-field" autocomplete="off"
+                  [(ngModel)]='FormDataComponent.user.UserDetail.OrganizationName' #organizationname="ngModel" [disabled]="disabledValue" required
+                />
+
+                <div [hidden]="organizationname.valid || organizationname.untouched && submitted">
+                  <div class="error-msg-align-signup" *ngIf="organizationname?.errors?.['required']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>What's your Organisation name?
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="text" placeholder="Contact Number" name="contactnumber" id="contactnumber" class="login-form-input form-signup-input-field" autocomplete="off"
+                  [(ngModel)]='FormDataComponent.user.UserDetail.ContactNumber' #contactnumber="ngModel" [disabled]="disabledValue" pattern=".{10,10}" number required
+                />
+
+                <div [hidden]="contactnumber.valid || contactnumber.untouched && submitted">
+                  <div class="error-msg-align-signup" *ngIf="contactnumber?.errors?.['required']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>What's your contact number?
+                    </span>
+                  </div>
+                  <div class="error-msg-align-signup" *ngIf="contactnumber?.errors?.['number'] || contactnumber?.errors?.['pattern']">
+                    <span class="alert alert-danger">
+                      <span class="formErrArrow"> </span>Enter correct contact number
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <input type="text" id="myCode" placeholder="Enter code" name="code" class="login-form-input form-signup-input-field" style="display:none"
+                  required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <button type="submit" [disabled]="disabledValue" class="btn btn-success form-signup-btn-signup">Sign up free</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-2 mb-2">
+          <p class="form-signup-term-codition-contents"> By clicking on Sign up, you agree to our
+            <!-- <a [routerLink]="['/term']" class="form-signup-contents-link">Terms & Data Policy </a>. You may receive Email notifications from us and can opt out at any time.</p> -->
+            <a [routerLink]="['/term']" class="form-signup-contents-link" target="_blank">Terms & Data Policy</a>. You may receive an email notifications from us and can opt out at any time.</p>
+        </div>
+        <!-- 
+  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-9 login-page-image  mt-4">
+      <img  src="assets/images/login/login-front.png">
+  </div> -->
+      </div>
+      <div class="row mb-2 experizer-line text-center">
+        <div class="col-lg-12 experizer-line-title">
+          Experizer helps you build and share engaging, immersive and trackable XR experiences.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<ng-template #forgotPopUp>
+  <form (ngSubmit)="forgotPassword(forgotForm)" #forgotForm="ngForm">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left popup-title mt-0">Find Your Account</h4>
+      <button type="button" class="close pull-right pl-0 mr-0" aria-label="Close" (click)="closeForgotModel(forgotForm)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-12">
+          <span *ngIf="showOTP == false">Forgot your password? No problem! We can help you set a new password using this form. Just enter your registered email address below and we will create a temporary(OTP) password for you.</span>
+          <span *ngIf="showOTP == true">Thats it! We have sent a One Time Password to your registered email address. Enter the same on this form and set a new password. Do remember to check your Junk folder just in case if you don't see the OTP email in your inbox.</span><br/>
+          <input type="text" placeholder="Enter email-address" name="useremail" class="login-form-input" [(ngModel)]='ForgotPasswordDetail.UserName'
+            #useremail="ngModel" id="useremail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$" required>
+          <div [hidden]="useremail.valid || useremail.untouched && forgotSubmitted">
+            <div class="error-msg-align-forgot" *ngIf="useremail.errors && useremail.errors['required']">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Enter an email
+              </span>
+            </div>
+            <div class=" error-msg-align-forgot" *ngIf="useremail.errors && useremail.errors['pattern']">
+              <span class="alert alert-danger">
+                <span class="formErrArrow"> </span>Enter correct email
+              </span>
+            </div>
+          </div>
+        <!-- </div> -->
+      <!-- </div> -->
+      <div *ngIf="showOTP == true">
+        <div class="row">
+          <div class="col-12">
+            <input type="text" placeholder="OTP" name="otp" id="otp" class="login-form-input" autocomplete="off" [(ngModel)]='ForgotPasswordDetail.OTP'
+              #otp="ngModel" required />
+            <div [hidden]="otp.valid || otp.untouched && forgotSubmitted">
+              <div class="error-msg-align-forgot" *ngIf="otp?.errors?.['required']">
+                <span class="alert alert-danger">
+                  <span class="formErrArrow"> </span>Enter OTP
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <input type="password" placeholder="Password" class="login-form-input" id="newpassword" name="newpassword" autocomplete="off"
+              [(ngModel)]='ForgotPasswordDetail.Password' #newpassword="ngModel" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+              required />
+            <div [hidden]="newpassword.valid || newpassword.untouched && forgotSubmitted">
+              <div class="error-msg-align-forgot" *ngIf="newpassword?.errors?.['required']">
+                <span class="alert alert-danger">
+                  <span class="formErrArrow"> </span>Enter Password
+                </span>
+              </div>
+              <div class="error-msg-align-forgot" *ngIf="newpassword?.errors?.['pattern']">
+                <span class="alert alert-danger">
+                  <span class="formErrArrow"> </span>UpperCase, LowerCase, Number/SpecialChar and min 8 Chars
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="experience-template-action">
+          <button type="submit" *ngIf="showOTP != true"class="btn btn-default forgot-share-button">Search</button>
+          <button type="submit" *ngIf="showOTP == true"class="btn btn-default forgot-share-button">Send</button>
+          <button type="button" class="btn btn-default forgot-cancel-button" (click)="closeForgotModel(forgotForm)">Cancel</button>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <!-- <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-default">Search</button>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-default" (click)="closeForgotModel(forgotForm)">Cancel</button>
+        </div>
+      </div> -->
+      <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+  </form>
+</ng-template>

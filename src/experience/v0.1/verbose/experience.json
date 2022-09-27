@@ -1,0 +1,143 @@
+{
+  "walkaround": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Grab your camera, snap multiple Panorama/Spherical images and link them together to create a virtual tour. Create info points on these images to highlight objects."
+  },
+  "wallofframe": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Host an Art Gallery with your images where the patron can walk around reading the descriptions. A great way to show history/ capability of a company/ product"
+  },
+  "showandtell": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Line-up a surreal experience having images on the orbit of the Patron. Each Image can have a banner text and audio that starts when the user looks at it."
+  },
+  "quiz": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Put together a quick trivia in an immersive experience room. Customize the theme and the walls as per the topic of your Trivia. Get score for the logged-in Patron."
+  },
+  "grandtheatre": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Create an impactful Video presentation using a immersive Theater experience. Customize the look and feel of the grand theater by setting the seat colors as well as the light settings."
+  },
+  "walkaroundtimed": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Create a gamified Virtual Tour where the Patron has to virtually get to the 'Finish Point' in a predefined time window. Create info points on these images to highlight objects."
+  },
+  "storypoint": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Virtually guide a Patron for making an Area familiar to him through Self Exploration. Upload Image and highlight objects from the Area with Video, Audio and Images"
+  },
+  "pointandanswer": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Check the familiarity of a Patron in an Area through an interactive quiz on the objects from the Image. Upload Image and set questions for the objects from the Area."
+  },
+  "walkandanswer": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Collect relevant info from the Patron while he teleports from one room to the other. You can also create info points on these images to highlight objects."
+  },
+  "personaltheater": {
+    "points": [
+      {
+        "point": "VR Goggles: Look around. Use the center screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Mobile: Look around or use thumb to move camera.Use thecenter screen dot to focus on yellow plates on the floor to navigate."
+      },
+      {
+        "point": "Desktop: Use key board to navigate and drag mouse to look around"
+      }
+    ],
+    "sample_text": "Pamper the patron with the comfort of a personal theater experience where he can have the liberty of choosing what he wants to watch. Works similar to any other Web TV application."
+  }
+  
+}

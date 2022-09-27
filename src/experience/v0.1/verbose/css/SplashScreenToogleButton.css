@@ -1,0 +1,125 @@
+
+.onoffswitch1 {
+    position: relative;
+    width: 70px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+.onoffswitch1-checkbox {
+    display: none;
+}
+
+.onoffswitch1-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #282830;
+    border: 1px solid #8a8383;
+    border-radius: 5px;
+    padding: 1px;
+}
+
+.onoffswitch1-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch1-inner:before, .onoffswitch1-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    border-radius: 30px;
+    box-shadow: 0px 15px 0px rgba(0,0,0,0.08) inset;
+}
+
+.onoffswitch1-innerHD:before {
+    content: "SD";
+    padding: 7px;
+    background-color: #282830;; color: #FFFFFF;
+   
+}
+.onoffswitch1-innerSD:before {
+    content: "HD";
+    padding: 7px;
+    padding-top: -4px;
+    background-color: #282830;
+    color: #FFFFFF;
+  
+}
+
+.onoffswitch1-innerHD:after {
+    content: "HD";
+    padding: 7px;
+    background-color: #282830; color: #ffffff;
+    text-align: center;
+   
+}
+.onoffswitch1-innerSD:after {
+    content: "SD";
+    padding: 7px;
+    background-color: #282830;
+    color: white;
+    text-align: center;
+   
+}
+
+.onoffswitch1-switch {
+    display: block;
+    width: 33px;
+    margin: 0px;
+    background: #dad5d5;
+    border: 2px solid #999999;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* right: 56px; */
+    -moz-transition: all 0.3s ease-in 0s;
+    -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s;
+    transition: all 0.3s ease-in 0s;
+    background-image: -moz-linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%);
+    background-image: -webkit-linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%);
+    background-image: -o-linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%);
+    background-image: linear-gradient(center top, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 80%);
+    box-shadow: 0 1px 1px white inset;
+}
+.onoffswitch1-checkbox:checked + .onoffswitch1-label .onoffswitch1-inner {
+    margin-left: 0;
+}
+
+.onoffswitch1-checkbox:checked + .onoffswitch1-label .onoffswitch1-switch {
+    right: 0px; 
+}
+#qrcode {
+    display:block;
+    width: 100px;
+    height: 100px;
+ text-align: right;
+    padding: 4px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+
+    @media (max-width:1000px)  { 
+        /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+       /* #qrcode {
+            display:none;
+         } */
+         #divOnOff{
+             text-align: center;
+         }
+     }
+     @media screen and (min-device-width:320px) and (max-device-width: 600px) { 
+        #toogleButtonStyle{
+            padding-left: 36%;
+        }
+        #mode{
+            margin-left:10%;
+        }
+        .display_element{display: none}
+    }
+   

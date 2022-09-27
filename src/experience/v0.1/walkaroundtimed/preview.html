@@ -1,0 +1,187 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Experizer Experience</title>
+  <!-- For Google -->
+<meta name="description" content="A real life timed evacuation drill where learner has to find his way to the Finish point. Enables learner to react/respond to threats/hazards quickly, calmly and safely with the 6 degrees of freedom." />
+<meta name="keywords" content="" />
+
+<meta name="author" content="Sprint" />
+<meta name="copyright" content="studio.experizer.com" />
+<meta name="application-name" content="Experizer" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Sprint" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Sprint.jpg?0.24339993535219584" />
+<meta property="og:url" content="studio.experizer.com" />
+<meta property="og:description" content="A real life timed evacuation drill where learner has to find his way to the Finish point. Enables learner to react/respond to threats/hazards quickly, calmly and safely with the 6 degrees of freedom." />
+
+<!-- For Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Sprint" />
+<meta name="twitter:description" content="A real life timed evacuation drill where learner has to find his way to the Finish point. Enables learner to react/respond to threats/hazards quickly, calmly and safely with the 6 degrees of freedom." />
+<meta name="twitter:image" content="https://alpha-dev.experizer.com/assets/images/dashboard/Sprint.jpg?0.24339993535219584" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../verbose/splash.css">
+  <link rel="stylesheet" href="assets/css/flipclock.css">
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/flipclock.min.js"></script>
+  <!-- <script src="assets/js/aframe-v0.8.2.min.js"></script>-->
+  <script src="assets/js/aframe-v1.0.4.js"></script> 
+  <script src="assets/js/aframe-look-at-component.min.js"></script>
+  <script src="../verbose/commonpreview.js"></script>
+  <script src="assets/js/preview.js"></script>
+  <script src="../verbose/aframe-svgfile-component.js"></script>
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loaderq" class="lds-roller lds-roller-pos-assets-popup" style="position: absolute; z-index: 9999">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div id="container" class="container">
+    <div class="info" id="info">
+      <div class="inner-overloy hidden-login" style="overflow-y: auto" id="innerInfo">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label id="titleText" class="titleheader">Loading.. </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label id="titleDescription"></label>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="row">
+              <div class="col instruction-scroll">
+
+                <label id="instruction"></label>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 border-left">
+            <div class="row text-align-center logo-center-top" id="logoTop">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pb-2">
+                <img src="assets/images/experizerlogo_black.png" id="splashLogo" class="logo ">
+              </div>
+            </div>
+            <div class="row text-align-center button-center-top mt-2" id="buttonTop">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3">
+                <label id="loading"><b>Loading...</b></label>
+                <button class="button disabled " id="start_experience">Enter</button>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row text-align-center">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wrapper">
+    <div id="content">
+
+      <a-scene id="scene">
+        <a-assets>
+            <a-sound id="audio-1"
+            loop="true"
+            position="1 1 0"></a-sound>
+          <a-sound id="audio-2"
+            loop="true"
+            position="1 1 10"></a-sound>
+        </a-assets>
+        <!-- <a-sound id="background-audio" src="" autoplay="true" position="0 0 0"></a-sound> -->
+        <a-sky id="skyImage" scale="-1 1 1" rotation="0 0 0">
+        </a-sky>
+        <a-sky id="skyImage1" scale="-1.7 1.7 1.7" rotation="0 0 0">
+        </a-sky>
+        <a-entity id="rotation" animation="property: rotation; to: 0 -360 0; dur: 100000;easing:linear;fill:forwards;loop:0;repeat:;"
+        animation__one="property: rotation;to: 0 360 0; dur: 2000;easing:easeInOutCirc;fill:forwards;repeat:0.5;loop:0;enabled:false" >
+      
+            <a-entity id="CamEntity">
+                <a-entity id="cameraId"  camera look-controls="reverseTouchDrag:true" raycaster="objects: .clickable" wasd-controls-enabled="false">
+                 
+                    <a-entity id="cursorImage" cursor="fuse: true; fuseTimeout: 1200"  raycaster="objects: .clickable" position="0 0 -1" sky geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: red; shader: flat" visible='false'>
+                    </a-entity>	
+          
+                    <a-entity id="walkOutTimer" visible="false" obj-model="obj:assets/images/moonlight.obj" rotation="0 0 0"
+                      material="src:assets/images/timebarbg.png;side:double" position="-0.172 -0.2 -0.384" scale="0.0015 0.0015 0.0015"
+     
+                      animation__skayroation="property: position;from:0 0 0;to:-0.172 -0.2 -0.384; dur: 3000;fill:forwards;enabled:false"
+                      animation__skayroation1="property: scale;from:0.0030 0.0030 0.0030;to:0.0015 0.0015 0.0015; dur: 1000;fill:forwards;enabled:false">
+                      <a-text id="walkOutTimerText" text="align:center;width:75;color:red;shader: msdf; font:assets/fonts/digitalnumbers/DigitalNumbers-Regular.json;"
+                        position="0 -8.306 0.2" scale="6 6 6" ></a-text>
+                    </a-entity>
+                      <a-entity id="startActivity" data-brackets-id="6449" obj-model="obj:/act/v0.1/walkaroundtimed/assets/images/moonlight.obj" material="src:assets/images/bg3.jpg;side:double" scale="0.1 0.1 0.1" position="0 0 -2" look-at="src:#cameraId" visible="">
+                        <a-text id="startCountDown" data-brackets-id="6450" text="width:80;align:center;shader:msdf;font:assets/fonts/righteous/Righteous-Regular.json" position="0 -2 0" value="10">
+                        </a-text>
+                      </a-entity>
+                    <a-entity id="endInfoBox" visible="false" data-brackets-id="6449" obj-model="obj:assets/images/moonlight.obj"
+                      material="src:assets/images/tvscreenplane.jpg;side:double" position="0 0 -70" look-at="src: #cameraId">
+                      <a-text id="endInfoTextBox" text="align:center;width:75;lineHeight:40"   scale="1 0.8 1" position="0 0 0.2"></a-text>
+                    </a-entity>
+                  </a-entity>
+            </a-entity> 
+        </a-entity>
+        <!-- <a-entity id="infoBox" visible="false" data-brackets-id="6449" obj-model="obj:assets/images/moonlight.obj" material="src:assets/images/tvscreenplane.jpg;side:double" position="-48.159 28.899 -82.059" look-at="src: #cameraId">   
+					<a-text id="textBox" data-brackets-id="6450" text="align:center;width:75;" value="" position="0 0 0.2"></a-text>
+			</a-entity> -->
+      </a-scene>
+    </div>
+  </div>
+</body>
+
+</html>

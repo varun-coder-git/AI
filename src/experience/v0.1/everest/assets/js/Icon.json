@@ -1,0 +1,14 @@
+[
+{"iconId":"i0","iconName":"Assembly Point","iconPath":"assets/images/icons/Assembly-Point.png"},
+{"iconId":"i1","iconName":"Gift","iconPath":"assets/images/icons/gift.png"},
+{"iconId":"i2","iconName":"Hand Pointer","iconPath":"assets/images/icons/Hand-Pointer.png"},
+{"iconId":"i3","iconName":"Info","iconPath":"assets/images/icons/Info.png"},
+{"iconId":"i4","iconName":"Location","iconPath":"assets/images/icons/Location-Marker.png"},
+{"iconId":"i5","iconName":"Money","iconPath":"assets/images/icons/money.png"},
+{"iconId":"i6","iconName":"Question","iconPath":"assets/images/icons/Question.png"},
+{"iconId":"i7","iconName":"Right","iconPath":"assets/images/icons/right.png"},
+{"iconId":"i8","iconName":"Smiley","iconPath":"assets/images/icons/smily.png"},
+{"iconId":"i9","iconName":"Star","iconPath":"assets/images/icons/star.png"},
+{"iconId":"i10","iconName":"Warning","iconPath":"assets/images/icons/Warning.png"},
+{"iconId":"i11","iconName":"Wrong","iconPath":"assets/images/icons/wrong.png"}
+]

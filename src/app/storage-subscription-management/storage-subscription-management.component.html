@@ -1,0 +1,319 @@
+<!--  /*************************************************************************
+ * 
+ * EQUATIONS WORK CONFIDENTIAL
+ * __________________
+ * 
+ *  [2018] - [2020] Equations Work IT Services Private Limited, India
+ *  All Rights Reserved.
+ * 
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Equations Work IT Services Private Limited and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Equations Work IT Services Private Limited
+ * and may be covered by U.S. and Foreign Patents,
+ * patents in process, and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Equations Work IT Services Private Limited.
+*
+ * Copyright (C) Equations Work IT Services Pvt. Ltd.
+ * NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ * Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+ */-->
+<!-- <toaster-container [toasterconfig]="config"></toaster-container> -->
+
+<div>
+    <div class="row storage-bg margin-LR-0">
+        <div class="col-lg-12 col-md-12 col-sm-6 ">
+            <div class="row" style="padding-left: 0px;">
+                <div class="header-titile-padding text-white heade-text ">
+                    <p>
+                        <span>
+                            <!--  <i class="fa fa-angle-left" aria-hidden="true"></i> --> {{this.json['english']['usageAndSubcription']['headerTitle']}}</span>
+                    </p>
+
+                </div>
+            </div>
+            <!-- Display Analytics -->
+            <div class="row padding-24px-15px" style="padding-top: 5px;">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 pb-2 ">
+                    <div class="card card-bg1 text-white">
+                        <div class="storage-card-body ">
+                            <div class="card-text card-inner-header pt-1 ">{{this.json['english']['usageAndSubcription']['firstCardTitle']}}</div>
+                            <div class="card-text card-inner-count text-align-right">{{this.totalExperiences| number}}
+                                <p class="card-inner-footer ">{{this.json['english']['usageAndSubcription']['firstCardFooter']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 pb-2">
+                    <div class="card card-bg2 text-white">
+                        <div class="storage-card-body ">
+                            <div class="card-text card-inner-header pt-1 ">{{this.json['english']['usageAndSubcription']['secondCardTitle']}}</div>
+                            <div class="card-text card-inner-count text-align-right">{{this.publishedExperiences | number}}
+                                <p class="card-inner-footer">{{this.json['english']['usageAndSubcription']['secondCardFooter']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 pb-2">
+                    <div class="card card-bg3 text-white">
+                        <div class="storage-card-body ">
+                            <div class="card-text card-inner-header pt-1">{{this.json['english']['usageAndSubcription']['thirdCardTitle']}}</div>
+                            <div class="card-text card-inner-count text-align-right">{{this.totalPatrons | number}}
+                                <p class="card-inner-footer">{{this.json['english']['usageAndSubcription']['thirdCardFooter']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 pb-2">
+                    <div class="card card-bg4 text-white">
+                        <div class="storage-card-body ">
+                            <div class="card-text card-inner-header pt-1">{{this.json['english']['usageAndSubcription']['fourthCardTitle']}}</div>
+                            <div class="card-text card-inner-count text-align-right">{{ this.totalViews | number}}
+                                <p class="card-inner-footer">{{this.json['english']['usageAndSubcription']['fourthCardFooter']}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row margin-LR-0 margin-T-20">
+        <div class="col-lg-12 col-md-12">
+            <div class="progress-title pb-1 pl-3">My Plans</div>
+        </div>
+    </div>
+    <!-- New Plan Change Starts-->
+
+    <div class="row  margin-LR-0 padding-LRT-20 margin-T-20">
+        <div class="col-lg-12 col-md-12 padding-LR-0 card">
+            <nav>
+                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active nav-border-bottom" id="nav-individual-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Individual</a>
+                    <a class="nav-item nav-link nav-border-bottom" id="nav-educational-tab" data-toggle="tab" href="#nav-education" role="tab" aria-controls="nav-education" aria-selected="false">School and Education</a>
+                    <!-- <a class="nav-item nav-link nav-border-bottom" id="nav-enterprise-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Enterprise</a> -->
+
+                </div>
+            </nav>
+            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent" style="font-weight: bold;">
+
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-individual-tab">
+                    <div class="container mt-5">
+                        <div class="pricing card-deck flex-column flex-md-row ">
+                            <div class="card card-pricing text-center px-3 mb-3"  *ngFor="let planRecord of individualPlans" >
+                                <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-blue text-white shadow-sm" *ngIf="planRecord.Price == 0">{{planRecord.PlanName}}</span>
+                                <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-blue text-white shadow-sm" *ngIf="planRecord.Price != 0">${{planRecord.Price}}</span>
+                                <div class="bg-transparent card-header pt-4 border-0">
+                                    <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15" *ngIf="planRecord.Price == 0"><span class="price">{{planRecord.PlanName}}</span></h1>
+                                    <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15" *ngIf="planRecord.Price != 0">$<span class="price">{{planRecord.Price}}</span><span class="h6 text-muted ml-2">/ year</span></h1>
+                                </div>
+                                <div class="card-body p-0">
+                                    <ul class="list-unstyled mb-4">
+                                        <li *ngIf="planRecord.AllowedExperience == -1"> <b>Unlimited</b> Experiences</li>
+                                        <li *ngIf="planRecord.AllowedExperience != -1">{{planRecord.AllowedExperience}}</li>
+                                        <li>{{planRecord.StorageAllowedInMB}} Space</li>
+                                        <li *ngIf="planRecord.PatronLimit == -1">Unlimited Patrons</li>
+                                        <li *ngIf="planRecord.PatronLimit != -1">{{planRecord.PatronLimit}} Patrons</li>
+                                        <li *ngIf="planRecord.PrivateRooms == -1">Unlimited Private Rooms</li>
+                                        <li *ngIf="planRecord.PrivateRooms != -1">{{planRecord.PrivateRooms}} Private Rooms</li>
+                                        <li >Unlimited Public Rooms</li>
+                                        <li >All Template Access</li>
+                                        
+                                    </ul>
+                                    <button type="button" class="btn btn-outline-secondary mb-3" *ngIf="UserPlanId !== planRecord.Id" > Subscribe now </button>
+                                    <button type="button" class="btn btn-outline-secondary mb-3 bg-blue" *ngIf="UserPlanId == planRecord.Id" > Your Current Plan </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+                <div class="tab-pane fade" id="nav-education" role="tabpanel" aria-labelledby="nav-educational-tab">
+                   <div class="container mt-5">
+                        <div class="pricing card-deck flex-column flex-md-row">
+                            <div class="card card-pricing text-center px-3 mb-3"  *ngFor="let planRecord of educationalPlans" >
+                                <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-blue text-white shadow-sm" *ngIf="planRecord.Price == 0">{{planRecord.PlanName}}</span>
+                                <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-blue text-white shadow-sm" *ngIf="planRecord.Price != 0">${{planRecord.Price}}</span>
+                                <div class="bg-transparent card-header pt-4 border-0">
+                                    <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15" *ngIf="planRecord.Price == 0"><span class="price">{{planRecord.PlanName}}</span></h1>
+                                    <h1 class="h1 font-weight-normal text-primary text-center mb-0" data-pricing-value="15" *ngIf="planRecord.Price != 0">$<span class="price">{{planRecord.Price}}</span><span class="h6 text-muted ml-2">/ year</span></h1>
+                                </div>
+                                <div class="card-body p-0">
+                                    <ul class="list-unstyled mb-4">
+                                        <li *ngIf="planRecord.AllowedExperience == -1"> <b>Unlimited</b> Experiences</li>
+                                        <li *ngIf="planRecord.AllowedExperience != -1">{{planRecord.AllowedExperience}}</li>
+                                        <li>{{planRecord.StorageAllowedInMB}} Space</li>
+                                        <li *ngIf="planRecord.PatronLimit == -1">Unlimited Patrons</li>
+                                        <li *ngIf="planRecord.PatronLimit != -1">{{planRecord.PatronLimit}} Patrons</li>
+                                        <li *ngIf="planRecord.PrivateRooms == -1">Unlimited Private Rooms</li>
+                                        <li *ngIf="planRecord.PrivateRooms != -1">{{planRecord.PrivateRooms}} Private Rooms</li>
+                                        <li >Unlimited Public Rooms</li>
+                                        <li >All Template Access</li>
+                                        
+                                    </ul>
+                                    <button type="button" class="btn btn-outline-secondary mb-3" *ngIf="UserPlanId !== planRecord.Id" > Subscribe now </button>
+                                    <button type="button" class="btn btn-outline-secondary mb-3 bg-blue" *ngIf="UserPlanId == planRecord.Id" > Your Current Plan </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New Plan Change Ends-->
+  
+    
+    <!-- Storage Views Days  -->
+    <div class="row mb-5 margin-LR-0">
+        <div class="col-lg-12 col-md-12 col-sm-12 pt-2 storage-padding-left">
+
+            <div class="row margin-LR-0" style="margin-top:60px;">
+                <div class="col-lg-6 col-md-6 col-sm-6" style="border-right:2px solid rgba(0,0,0,.125);
+        ">
+                    <span class="progress-title pb-2" style="float:right;">Storage <i class="fa fa pl-3 hand-cursor" aria-hidden="true" (click)="callStorage();" ngbTooltip="Assets Library"><img src="assets/images/dashboard/booksicon.png" width="20" style="margin-left:-15px"></i> </span>
+                    <div style="width:500px;" *ngIf="isStorage">
+                        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [options]="pieChartLegend" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas></div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div style="height:150px;;text-align:center;">
+                        <span class="progress-title pb-2" style="float:right;">Days Left</span>
+                        <span style="font-size:70px;color:forestgreen;;font-weight:bold;">{{daysSpend}}</span><span style="font-size:18px;font-weight:bold;">days left</span>
+                    </div>
+                    <!-- <div style="display: block;">
+                        <canvas baseChart 
+                          [data]="pieChartData" 
+                          [labels]="pieChartLabels" 
+                          [chartType]="pieChartType"
+                          [options]="pieChartOptions"
+                          [plugins]="pieChartPlugins"
+                          [legend]="pieChartLegend">
+                        </canvas>
+                      </div> -->
+                </div>
+            </div>
+
+        </div>
+        <!-- Upgrade -->
+
+    </div>
+    <!-- <div *ngIf="UserPlanId != 1 "> -->
+    <div>
+      </div>
+
+</div>
+
+
+<!-- Model PopUP -->
+<!-- <ng-template #subscriptionModel>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Confirmation</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <span>Do you want to subscribe this plan?</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-6 padding-right-0px ">
+        <button type="button" class="btn btn-color-green btn-width btn-shadow" (click)="getSubscription()">Yes</button>
+      </div>
+      <div class="col-6 padding-left-10px">
+        <button type="button" class="btn btn-color-blue btn-shadow btn-width" (click)="modalRef.hide()">No</button>
+      </div>
+    </div>
+
+  </div>
+</ng-template> -->
+
+<ng-template #subscriptionModel>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Confirmation</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-12">
+                <span>Do you want to subscribe this plan?</span>
+
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-color-green btn-width btn-shadow delete-button-mr" (click)="getSubscription()">Yes</button>
+                    <button type="button" class="btn btn-color-blue btn-shadow btn-width " (click)="modalRef.hide()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" (click)="deletePatron(); modalRef.hide()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">No</button> -->
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<!-- <ng-template #addOnModel>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Confirmation</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12">
+        <span>Do you want to buy this plan?</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-6 padding-right-0px ">
+        <button type="button" class="btn btn-color-green btn-width btn-shadow" (click)="getSubscription()">Yes</button>
+      </div>
+      <div class="col-6 padding-left-10px">
+        <button type="button" class="btn btn-color-blue btn-shadow btn-width" (click)="modalRef.hide()">No</button>
+      </div>
+    </div>
+
+  </div>
+</ng-template> -->
+
+<ng-template #addOnModel>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Confirmation</div><br>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-12">
+                <span>Do you want to buy this plan?</span>
+
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-color-green btn-width btn-shadow delete-button-mr" (click)="getSubscription()">Yes</button>
+                    <button type="button" class="btn btn-color-blue btn-shadow btn-width" (click)="modalRef.hide()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-default" (click)="deletePatron(); modalRef.hide()">Yes</button>
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">No</button> -->
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>

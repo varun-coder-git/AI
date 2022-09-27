@@ -1,0 +1,1113 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Experizer Experience</title>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/SideBarInner.css">
+  <link rel="stylesheet" href="assets/css/GrandTheater.css">
+  <link rel="stylesheet" href="assets/css/snackbar.css">
+  <link rel="stylesheet" href="../verbose/css/common.css">
+  <link rel="stylesheet" href="../verbose/css/summernote-bs4.css">
+  <link rel="stylesheet" href="../verbose/css/summernote.css">
+
+  <script src="assets/js/aframe-v1.0.4.min.js"></script>
+  <script src="assets/js/arrow-key-rotation.js"></script>
+  <script src="assets/js/play-on-window-click.js"></script>
+  <script src="assets/js/play-with-delay.js"></script>
+  <script src="assets/js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+  <script src="assets/js/hide-once-playing.js"></script>
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../verbose/summernotejs/popper.min.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote-bs4.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote.js">
+  </script>
+
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/customScript.js"></script>
+  <script src="../verbose/jscolor.js"></script>
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../verbose/css/toastr.min.css">
+  <script src="../verbose/toastr.min.js">
+  </script>
+  <!-- Toastr -->
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loaderq" style="position: absolute; top:35%; left: 50%; z-index: 4" class="sk-fading-circle">
+    <div class="sk-circle1 sk-circle"></div>
+    <div class="sk-circle2 sk-circle"></div>
+    <div class="sk-circle3 sk-circle"></div>
+    <div class="sk-circle4 sk-circle"></div>
+    <div class="sk-circle5 sk-circle"></div>
+    <div class="sk-circle6 sk-circle"></div>
+    <div class="sk-circle7 sk-circle"></div>
+    <div class="sk-circle8 sk-circle"></div>
+    <div class="sk-circle9 sk-circle"></div>
+    <div class="sk-circle10 sk-circle"></div>
+    <div class="sk-circle11 sk-circle"></div>
+    <div class="sk-circle12 sk-circle"></div>
+  </div>
+  <div class="overlay" id='loaderoverlay'></div>
+  <div id="snackbar">Snackbar default text</div>
+  <div class="wrapper">
+    <!-- Page Content -->
+    <div id="content">
+      <div>
+        <div class="row margin-LR-0">
+          <div class="col-1 sidebar-fixed">
+            <button type="button" id="brandingSidebar" class="btn btn-vertical-right button-align-first btn-first"
+              onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('launchSidenav')">Splash Screen</button>
+            <button type="button" id="placeSidebar" class="btn btn-second btn-vertical-right button-align-second"
+              onmouseenter="mouseEnter('Place is the 360 view that your Patron sees. You can customize this place from a range of predefined themes.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('placeSidenav')">Place</button>
+            <button type="button" id="wallSidebar" class="btn btn-third btn-vertical-right button-align-third"
+              onmouseenter="mouseEnter('Use this Tab to customize the Walls in your Trivia Room.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('wallSidenav')">Wall</button>
+            <button type="button" id="movieFrameSidebar"
+              class="btn btn-vertical-right btn-first movieFrameSideBar button-align-fourth"
+              onmouseenter="mouseEnter('Customize the movie frames present in this Experience. You can set the entire Movie Projection related settings through this tab.');"
+              onmouseleave="mouseLeave()" onclick="toggleSideNav('movieFrameSidenav')">Movies Frame</button>
+            <button type="button" id="movieSidebar"
+              class="btn btn-third btn-vertical-right movieSideBar button-align-fifth"
+              onmouseenter="mouseEnter('Customize the settings of the video.');" onmouseleave="mouseLeave()"
+              onclick="toggleSideNav('movieSidenav')">Video Settings</button>
+          </div>
+          <div class="col-12 vr-editor" id="mainBlock">
+            <div id="launchSidenav" class="sidenav margin-left-60">
+
+              <div id="accordion1">
+                <div class="card">
+                  <div class="card-header" id="heading1One">
+                    <h3 class="mb-0">
+                      <button id="wallBtn1" class="btn btn-link south" data-toggle="collapse"
+                        data-target="#collapse1One" aria-expanded="true" aria-controls="collapse1One"> <i class="fa"
+                          aria-hidden="true"></i>
+                        Splash Screen
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapse1One" class="collapse show" aria-labelledby="heading1One" data-parent="#accordion1">
+                    <div class="card-body">
+                      <div class="form-group margin-top-15">
+                        <h6 style="color:#fff;width: 100%"><i>Check preview mode to preview Splash Screen</i></h6>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="splashBackground" style="color:#fff;width: 100%">Background Color:</label>
+                        <div id="bgcolorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer splashBg splashbg"
+                            id="splashBackground" value="" >
+                          <div></div>
+                        </div>
+                      </div>
+
+                      <div class="form-group margin-top-15">
+                        <div class="row">
+                          <div class="col-10">
+                            <label style="color:#fff;width: 100%" for="fixOpacity">Background Opacity (Drag to
+                              change):</label>
+                          </div>
+                          <div class="col-2" style="padding:0px;">
+                            <label id="rangeValue" style="color:#fff"></label>
+                          </div>
+                        </div>
+                        <div class="slidecontainer">
+                          <input type="range" min="0.1" max="1" step="0.001" value="0.1" class="slider"
+                            id="fixOpacity" />
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="splashHeaderColor" style="color:#fff;width: 100%">Header Font Color:</label>
+                        <div id="headercolorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer splashBg headerfont"
+                            id="splashHeaderColor" value="">
+                          <div></div>
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <div class="row">
+                          <div class="col-8">
+                            <label for="frameDescription" style="color:#fff;width: 100%;"><span>Splash Screen
+                                Text:</span></label></div>
+                          <div class="col-4" style=" padding-left: 50px; color:#fff">
+                            <span id="maxCount">0</span>
+                            <span>/ 350</span>
+                          </div>
+                        </div>
+                        <textarea Id="summernote" class="form-control lunchScreenText maxContentPost" rows="3"
+                          placeholder="Launch Text" name="Text" value="" maxlength="150"
+                          style="background-color:transparent;color:#fff;"></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote2"  style="color:#fff;width: 100%;">Instructions For Desktop/PC/Laptop:</label>
+                        <textarea Id="summernote2" class="form-control instructionSetForDesktop" rows="5"
+                          placeholder="Instructions For Desktop/PC/Laptop" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="summernote3"  style="color:#fff;width: 100%;">Instructions For Mobile/VR:</label>
+                        <textarea Id="summernote3" class="form-control instructionSetForAndroid" rows="5"
+                          placeholder="Instructions For Mobile/VR" name="Text" value="" maxlength="350"></textarea>
+                      </div>
+                      <div class="row">
+                        <label class="col-12" style="color:#fff">Splash Image:</label>
+                        <br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer" id="splashImage"
+                            onmouseenter="mouseEnter('Splash screen has a provision to change the image that appears on it. Use this option to change this image by selecting a new image from your Library.');"
+                            onmouseleave="mouseLeave()" onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="splashImageLable" for="splashImage"><span>Choose
+                              Image</span></label>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+            <div id="placeSidenav" class="sidenav margin-left-60">
+              <div class="sidebar-text-first">Background Theme: <span id="place-name"></span></div>
+              <div class="row bgThemes">
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">natural</div><img id="natural" src="assets/images/decor/natural.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">sci-fi blue</div><img id="sifi" src="assets/images/decor/sifi.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">playful</div><img id="creative" src="assets/images/decor/creative.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">garden</div><img id="garden" src="assets/images/decor/garden.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4  mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">brick</div><img id="brick" src="assets/images/decor/brick.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4  mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">sci-fi green</div><img id="sci-fi-green"
+                      src="assets/images/decor/sci-fi-green.jpg" style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">executive</div><img id="executive" src="assets/images/decor/executive.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv'>
+                    <div class="themeLabel">star gaze</div><img id="star" src="assets/images/decor/star.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">patroit</div><img id="american" src="assets/images/decor/american.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">artistic</div><img id="artistic" src="assets/images/decor/artistic.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">granite</div><img id="granite" src="assets/images/decor/granite.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">green granite</div><img id="green_grana"
+                      src="assets/images/decor/green_grana.jpg" style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">red granite</div><img id="red_grana" src="assets/images/decor/red_grana.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">grass</div><img id="grass" src="assets/images/decor/grass.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">sky</div><img id="cloud" src="assets/images/decor/cloud.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">gray</div><img id="gray" src="assets/images/decor/gray.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">green</div><img id="green" src="assets/images/decor/green.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">cream</div><img id="lemon" src="assets/images/decor/lemon.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">light green</div><img id="lightgreen"
+                      src="assets/images/decor/lightgreen.jpg" style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">pink</div><img id="pink" src="assets/images/decor/pink.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">purple</div><img id="purple" src="assets/images/decor/purple.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">red</div><img id="red" src="assets/images/decor/red.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">royal blue</div><img id="royalblue" src="assets/images/decor/royalblue.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">light gray</div><img id="silver" src="assets/images/decor/silver.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">white</div><img id="white" src="assets/images/decor/white.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+
+                <div class="col-4 mt-4">
+                  <div class='bgThemeDiv '>
+                    <div class="themeLabel">women</div><img id="women" src="assets/images/decor/women.jpg"
+                      style="width:100%;height:100%;" />
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="wallSidenav" class="sidenav margin-left-60">
+              <div id="accordionWall">
+                <div class="card">
+                  <div class="card-header" id="heading-One">
+                    <h3 class="mb-0">
+                      <button id="wallBtn1" class="btn btn-link south"
+                        onmouseenter="mouseEnter('The Wall on the South side of the Learner in the Experience can be customized using this option. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                        onmouseleave="mouseLeave()" data-toggle="collapse" data-target="#collapse-One"
+                        aria-expanded="true" aria-controls="collapse-One"> <i class="fa" aria-hidden="true"></i>
+                        South Wall
+                      </button>
+                    </h3>
+                  </div>
+                  
+                  <div id="collapse-One" class="collapse show" aria-labelledby="heading-One"
+                    data-parent="#accordionWall">
+                     <div class="card-body" style="margin-bottom: 20px;">
+                      <div>
+                        <label style="color: white;">Select the Frame Images for the two frames on this wall. Did
+                          you know you can also click on the actual frame to bring up this customization
+                          window? </label>
+                      </div>
+                      <div class="row">
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer" id="south-wall-logo"
+                            onmouseenter="mouseEnter('Upload/Change the image on the South Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                            onmouseleave="mouseLeave()" accept="image/png, image/jpeg"
+                            onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="south-wall-logoLabel" for="south-wall-logo"><span>Choose
+                              Wall Logo Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 4:3</label>
+                        </div>
+                      </div>
+
+                      <div class="row" style="margin-top:30px;">
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer" id="south-wall-image2"
+                            onmouseenter="mouseEnter('Upload/Change the image on the South Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                            onmouseleave="mouseLeave()" accept="image/png, image/jpeg"
+                            onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="south-wall-image2Label"
+                            for="south-wall-image2"><span>Choose Wall Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 4:3</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="heading-Two">
+                    <h3 class="mb-0">
+                      <button id="wallBtn2" class="btn btn-link west"
+                        onmouseenter="mouseEnter('The Wall on the West side of the Learner in the Experience can be customized using this option. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                        onmouseleave="mouseLeave()" data-toggle="collapse" data-target="#collapse-Two"
+                        aria-expanded="true" aria-controls="collapse-Two"> <i class="fa" aria-hidden="true"></i>
+                        West Wall
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapse-Two" class="collapse" aria-labelledby="heading-Two" data-parent="#accordionWall">
+                    <div class="card-body" style="margin-bottom: 20px;">
+                      <div>
+                        <label style="color: white;">Select the Default Image for this wall. This is shown if you
+                          do not select an image for this wall. Try using this place for branding or for showcasing the
+                          topic. </label>
+                      </div>
+                      <div class="row" style="margin-top:10px;">
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer" id="west-wall-logo"
+                            onmouseenter="mouseEnter('Upload/Change the image on the West Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                            onmouseleave="mouseLeave()" accept="image/png, image/jpeg"
+                            onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="west-wall-logoLabel" for="west-wall-logo"><span>Choose
+                              Wall Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 4:3</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="heading-Three">
+                    <h3 class="mb-0">
+                      <button id="wallBtn3" class="btn btn-link east"
+                        onmouseenter="mouseEnter('The Wall on the East side of the Learner in the Experience can be customized using this option. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                        onmouseleave="mouseLeave()" data-toggle="collapse" data-target="#collapse-Three"
+                        aria-expanded="true" aria-controls="collapse-Three"> <i class="fa" aria-hidden="true"></i>
+                        East Wall
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapse-Three" class="collapse" aria-labelledby="heading-Three"
+                    data-parent="#accordionWall">
+                    <div class="card-body" style="margin-bottom: 20px;">
+                      <div>
+                        <label style="color: white;">Select the Default Image for this wall. This is shown if you
+                          do not select an image for this wall. Try using this place for branding or for showcasing the
+                          topic. </label>
+                      </div>
+                      <div class="row" style="margin-top:10px;">
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer"
+                            onmouseenter="mouseEnter('Upload/Change the image on the East Side of the learner in the Experience. TIP: Though you can use any image on the wall, try using a Infographic.');"
+                            onmouseleave="mouseLeave()" id="east-wall-logo" accept="image/png, image/jpeg"
+                            onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="east-wall-logoLabel" for="east-wall-logo"><span>Choose
+                              Wall Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 4:3</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div id="movieFrameSidenav" class="sidenav margin-left-60">
+              <div class="sidebar-text-first"> Movie Frames</div>
+
+              <div class="row" style="margin-top:10px; margin-bottom:30px;">
+                <lable class="col-12" style="color:#fff">Main Frame:</lable><br>
+                <div class="custom-file col-12">
+                  <button type="button" class="custom-file-input handPointer"
+                    onmouseenter="mouseEnter('Main frame is the initial frame that is visible on the screen. This is the biggest image on the screen and has a sub title too.');"
+                    onmouseleave="mouseLeave()" id="movieframe-0-Thumbnail" onclick="onFrameImageChange(this)"></button>
+                  <label class="custom-file-label" id="movieframe-0-ThumbnailLabel"
+                    for="movieframe-0-Thumbnail"><span>Choose Image</span></label>
+                  <label class="aspect-ratio-style">Note: Recommended aspect ratio 16:9</label>
+                </div>
+              </div>
+
+              <div id="accordion">
+                <div class="card">
+                  <div class="card-header" id="heading-1">
+                    <h3 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-1" aria-expanded="true"
+                        aria-controls="collapse-1"> <i class="fa" aria-hidden="true"></i>
+                        Movie 1
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="row">
+                        <lable class="col-12" style="color:#fff">Movie Thumbnail:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer"
+                            onmouseenter="mouseEnter('The thumbnail of the  movie.');" onmouseleave="mouseLeave()"
+                            id="movieframe-1-Thumbnail" onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-1-ThumbnailLabel"
+                            for="movieframe-1-Thumbnail"><span>Choose Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 16:9</label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:30px;">
+                        <lable class="col-12" style="color:#fff">Movie File:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" placeholder="Movie Header" onmouseenter="mouseEnter('The movie file.');"
+                            onmouseleave="mouseLeave()" class="custom-file-input handPointer" id="movieframe-1-Video"
+                            onclick="onFrameVideoChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-1-VideoLabel"
+                            for="movieframe-1-Video"><span>Choose Video</span></label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Header:</lable><br>
+                          <input placeholder="Movie Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-1-headerInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="15">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Sub-Header:</lable><br>
+                          <input placeholder="Movie Sub-Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-1-subheaderInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="215">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Sub-Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="heading-2">
+                    <h3 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-2" aria-expanded="true"
+                        aria-controls="collapse-2"> <i class="fa" aria-hidden="true"></i>
+                        Movie 2
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="row">
+                        <lable class="col-12" style="color:#fff">Movie Thumbnail:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer"
+                            onmouseenter="mouseEnter('The thumbnail of the  movie.');" onmouseleave="mouseLeave()"
+                            id="movieframe-2-Thumbnail" onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-2-ThumbnailLabel"
+                            for="movieframe-2-Thumbnail"><span>Choose Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 16:9</label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:30px;">
+                        <lable class="col-12" style="color:#fff">Movie File:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer" onmouseenter="mouseEnter('The movie file.');"
+                            onmouseleave="mouseLeave()" id="movieframe-2-Video"
+                            onclick="onFrameVideoChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-2-VideoLabel"
+                            for="movieframe-2-Video"><span>Choose Video</span></label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Header:</lable><br>
+                          <input placeholder="Movie Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-2-headerInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="15">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Sub-Header:</lable><br>
+                          <input placeholder="Movie Sub-Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-2-subheaderInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="215">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Sub-Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="heading-3">
+                    <h3 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-3" aria-expanded="true"
+                        aria-controls="collapse-3"> <i class="fa" aria-hidden="true"></i>
+                        Movie 3
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="row">
+                        <lable class="col-12" style="color:#fff">Movie Thumbnail:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer"
+                            onmouseenter="mouseEnter('The thumbnail of the  movie.');" onmouseleave="mouseLeave()"
+                            id="movieframe-3-Thumbnail" onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-3-ThumbnailLabel"
+                            for="movieframe-3-Thumbnail"><span>Choose Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 16:9</label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:30px;">
+                        <lable class="col-12" style="color:#fff">Movie File:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer" onmouseenter="mouseEnter('The movie file.');"
+                            onmouseleave="mouseLeave()" id="movieframe-3-Video"
+                            onclick="onFrameVideoChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-3-VideoLabel"
+                            for="movieframe-3-Video"><span>Choose Video</span></label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Header:</lable><br>
+                          <input placeholder="Movie Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-3-headerInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="15">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Sub-Header:</lable><br>
+                          <input placeholder="Movie Sub-Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-3-subheaderInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="215">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Sub-Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="heading-4">
+                    <h3 class="mb-0">
+                      <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-4" aria-expanded="true"
+                        aria-controls="collapse-4"> <i class="fa" aria-hidden="true"></i>
+                        Movie 4
+                      </button>
+                    </h3>
+                  </div>
+
+                  <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="row">
+                        <lable class="col-12" style="color:#fff">Movie Thumbnail:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer"
+                            onmouseenter="mouseEnter('The thumbnail of the  movie.');" onmouseleave="mouseLeave()"
+                            id="movieframe-4-Thumbnail" onclick="onFrameImageChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-4-ThumbnailLabel"
+                            for="movieframe-4-Thumbnail"><span>Choose Image</span></label>
+                          <label class="aspect-ratio-style">Note: Recommended aspect ratio 16:9</label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:30px;">
+                        <lable class="col-12" style="color:#fff">Movie File:</lable><br>
+                        <div class="custom-file col-12">
+                          <button type="button" class="custom-file-input handPointer" onmouseenter="mouseEnter('The movie file.');"
+                            onmouseleave="mouseLeave()" id="movieframe-4-Video"
+                            onclick="onFrameVideoChange(this)"></button>
+                          <label class="custom-file-label" id="movieframe-4-VideoLabel"
+                            for="movieframe-4-Video"><span>Choose Video</span></label>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Header:</lable><br>
+                          <input placeholder="Movie Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-4-headerInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="15">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row" style="margin-top:20px;">
+                        <div class="col-12">
+                          <lable style="color:#fff">Movie Sub-Header:</lable><br>
+                          <input placeholder="Movie Sub-Header" class="form-control customHeaderInput" type="text"
+                            id="movieframe-4-subheaderInput"
+                            style="background-color:#000;width:98%;color:#fff;margin-top: 5px;" maxlength="215">
+                          <div id="colorSelector" class="colorSelector">
+                            <input class="jscolor {closable:true,closeText:'Close'} pointer moviecolor" value="" title="Select Sub-Header color">
+                            <div></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+            <div id="movieSidenav" class="sidenav margin-left-60">
+              <div class="sidebar-text-third">Customize: Movie</div>
+              <div class="row" style="margin-top:35px;">
+                <lable class="col-12" style="color:#fff;">Loop:</lable>
+                <select name="loop" id="loopDropDownID" class="form-control select-dropdown" onchange="SaveData(this)">
+                  <option value="None" selected="Selected">None</option>
+                  <option value="Indefinite">Indefinite</option>
+                </select>
+              </div>
+
+              <div class="row" style="margin-top:20px;">
+                <lable class="col-12" style="color:#fff">Logo:</lable><br>
+                <div class="custom-file col-12">
+                  <button type="button" class="custom-file-input handPointer" id="settings-logo-Thumbnail"
+                    onclick="onFrameImageChange(this)"></button>
+                  <label class="custom-file-label" id="settings-logo-ThumbnailLabel"
+                    for="settings-logo-Thumbnail"><span>Choose Image</span></label>
+                  <label class="aspect-ratio-style">Note: Recommended aspect ratio 4:3</label>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="overlay"></div>
+            <div class="row">
+              <div class="col-12" id="imageDiv">
+                <a-scene mousedrag vr-mode-ui="enabled: false" loading-screen="enabled:false">
+                  <a-assets>
+
+                    <img id="office">
+                    <img id="splashImg">
+
+                    <video id="vid" crossorigin="anonymous" playsinline webkit-playsinline type="video/mp4"
+                      src=""></video>
+                  </a-assets>
+
+                  <a-sky id="sky" src="#office" rotation="0 90 0"></a-sky>
+                  <a-entity obj-model="obj:/act/v0.1/quiz/assets/images/CubeRoom.obj"
+                    material="metalness:0.6;src:/act/v0.1/quiz/assets/images/decor/brick.jpg"
+                    position="-3.078 -2.073 0.035" rotation="0 90 0" scale="1.5 1.43 2.04" id="cuberoom"></a-entity>
+                  <a-entity id="Chair" obj-model="obj:assets/images/ChairBlend.obj;mtl:assets/images/ChairBlend.mtl"
+                    scale="0.003 0.003 0.003" rotation="-90 -90 0" position="-1.643 -2.3500000000000005 0"
+                    visible=""></a-entity>
+                  <a-entity id="Table_lamp"
+                    obj-model="mtl:assets/images/obj/table_lamp.mtl;obj:assets/images/obj/table_lamp.obj"
+                    position="-12.02718639154422 -0.02891118556281952 -1.9055311551374998" rotation="0 -90 0"
+                    scale="0.3 0.3 0.3"></a-entity>
+                  <!-- Decor Objects-->
+                  <a-entity id="oldJug" obj-model="mtl:assets/images/obj/old_jar.mtl;obj:assets/images/obj/old_jar.obj"
+                    position="-11.623654743453805 0.2538698847168046 1.2087902251478397" rotation="0 -90 0"
+                    scale="0.76 0.76 0.76"></a-entity>
+                  <a-entity id="table_2" obj-model="mtl:assets/images/obj/tvStand.mtl;obj:assets/images/obj/tvStand.obj"
+                    position="-11.387165672288463 -2.073 -0.109" rotation="0 90 0" scale="0.04 0.04 0.04"></a-entity>
+
+
+                  <!-- Camera Light-->
+                  <a-entity light="type: hemisphere; color: #FFF; intensity: 1.2" position="2 20 0" light-shadow>
+                  </a-entity>
+                  <a-entity id="cameraId" animation=""
+          animation__one="property: rotation;to: 0 360 0; dur: 2000;easing:easeInOutCirc;enabled:false">
+          <a-entity id="CamEntity">
+            <a-entity id="firstrotation" camera look-controls="reverseTouchDrag:true" wasd-controls-enabled="false" position="-0.85 0.303 0">
+              <a-entity id="cursor" cursor="rayOrigin:mouse" raycaster="objects: .clickable" position="0 0 -1"
+                scale="0 0 0" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"	material="color: red; shader: flat" sky>
+                <!-- <a-entity id="cursorImage" svgfile="svgFile:assets/images/viewfinder.svg; width:0.012;opacity:1; "position="-0.054 0.044 -0.014" material="shader: flat;" scale="1 1 1"></a-entity> -->
+                <!-- <a-image id="cursorImage"  width="0.12" height="0.12" src="assets/images/viewfinnder.png" material="shader: standard; depthTest: false"  ></a-image> -->
+              </a-entity>
+            </a-entity>
+          </a-entity>
+        </a-entity>
+                  <!-- Camera Light End-->
+
+                  <!-- TV Screen -->
+                  <a-entity obj-model="obj:assets/images/moonlight.obj"
+                    material="opacity:0.9;src:assets/images/tvscreenPlane.jpg ;side:double"
+                    position="4.568037928244551 -5.69 -26.19207604761051" rotation="0 90 0" scale="4.6 3.75 1">
+                  </a-entity>
+                  <a-entity id='customVideo' material="shader: flat; src: #vid;" width='16' height='9'
+                    position='8.335 200 2.165' rotation='0 -90 0' geometry='primitive:plane;width:215;height:125'
+                    scale='0.048 0.048 1'></a-entity>
+                  <a-image mouseclick class="clickable" id="screenshot1" src="" width="16" height="9"
+                    position="6.458 2.54 0.019" rotation="0 -90 0" geometry="width:215;height:125" material=""
+                    visible="" scale="0.048 0.035 1">
+                    <a-text id="header1" visible="false" value=""
+                      text="font:/act/v0.1/verbose/fonts/anton/Anton-Regular.json;anchor:center;width:220;tabSize:1;height:5;color:#89FF85;wrapCount:20;whiteSpace:pre;lineHeight:60;shader:msdf;baseline:top"
+                      position="8 30 0.50" rotation="" sky="" scale=""> </a-text>
+                    <a-text id="subheader1" visible="false" value=""
+                      text="anchor:center;width:190;tabSize:1;height:5;color:#FF622B;wrapCount:30;wrapPixels:1100;whiteSpace:pre;lineHeight:60;font:/act/v0.1/verbose/fonts/robotomono/RobotoMono-Light.json;shader:msdf;baseline:top"
+                      position="-5 20 0.030" rotation="0 0 4.881063327991453e-15" sky="" scale=""> </a-text>
+                  </a-image>
+                  <a-image mouseclick class="clickable" visible="" playvideo="" id="frame1" src="" width="16" height="9"
+                    position="6.450649384492285 -0.446 -3.84" set-sky="" rotation="0 -90 0"
+                    geometry="width:1.53;height:1.95" material="src:" scale="1.67 0.79 1">
+                    <a-text id="header2" visible="" value=""
+                      text="anchor:center;width:1.5;value:;font:/act/v0.1/verbose/fonts/anton/Anton-Regular.json;shader:msdf;tabSize:1;height:5;color:#42FF2B;wrapCount:16;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="0.0014985262661884949 0.6263283348257931 0.030" rotation="" sky="" scale=""> </a-text>
+                    <a-text id="subheader2" visible="false" value="false"
+                      text="anchor:center;width:1.3;value:;tabSize:1;height:5;color:#FF6630;wrapCount:18;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="-0.0753856173538594 0.5009946382158781 0.030" rotation="" sky="" scale=""> </a-text>
+
+                  </a-image>
+                  <a-image mouseclick class="clickable" visible="" playvideo="" id="frame2" src="" width="16" height="9"
+                    position="6.451 -0.44647484258134396 -1.2651183491856703" set-sky="" rotation="0 -90 0"
+                    geometry="width:1.53;height:1.95" material="src:" scale="1.67 0.79 1">
+                    <a-text id="header3" visible="" value=""
+                      text="anchor:center;width:1.5;value:;font:/act/v0.1/verbose/fonts/anton/Anton-Regular.json;shader:msdf;tabSize:1;height:5;color:#42FF2B;wrapCount:16;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="0.0014985262661884949 0.6263283348257931 0.030" rotation="" sky="" scale=""> </a-text>
+                    <a-text id="subheader3" visible="false" value="false"
+                      text="anchor:center;width:1.3;value:;tabSize:1;height:5;color:#FF6630;wrapCount:18;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="-0.09047927021554683 0.5009946382158781 0.030" rotation="" sky="" scale=""> </a-text>
+
+                  </a-image>
+
+                  <a-image mouseclick class="clickable" visible="" playvideo="" id="frame3" src="" width="16" height="9"
+                    position="6.451 -0.44647484258134396 1.301823465933687" set-sky="" rotation="0 -90 0"
+                    geometry="width:1.53;height:1.95" material="src:" scale="1.67 0.79 1">
+                    <a-text id="header4" visible="" value=""
+                      text="anchor:center;width:1.5;value:;font:/act/v0.1/verbose/fonts/anton/Anton-Regular.json;shader:msdf;tabSize:1;height:5;color:#42FF2B;wrapCount:16;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="0.0014985262661884949 0.6263283348257931 0.030" rotation="" sky="" scale=""> </a-text>
+                    <a-text id="subheader4" visible="false" value=""
+                      text="anchor:center;width:1.3;value:;tabSize:1;height:5;color:#FF6630;wrapCount:18;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="-0.0753856173538594 0.5009946382158781 0.030" rotation="" sky="" scale=""> </a-text>
+
+                  </a-image>
+
+                  <a-image mouseclick class="clickable" visible="" playvideo="" id="frame4" src="" width="16" height="9"
+                    position="6.451 -0.446 3.869020815444363" set-sky="" rotation="0 -90 0"
+                    geometry="width:1.53;height:1.95" material="src:" scale="1.67 0.79 1">
+                    <a-text id="header5" visible="" value=""
+                      text="anchor:center;width:1.5;value:;font:/act/v0.1/verbose/fonts/anton/Anton-Regular.json;shader:msdf;tabSize:1;height:5;color:#42FF2B;wrapCount:16;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="0.0014985262661884949 0.6263283348257931 0.030" rotation="" sky="" scale=""> </a-text>
+                    <a-text id="subheader5" visible="false" value=""
+                      text="anchor:center;width:1.3;value:;tabSize:1;height:5;color:#FF6630;wrapCount:18;whiteSpace:pre;lineHeight:60;baseline:top"
+                      position="-0.0753856173538594 0.5009946382158781 0.030" rotation="" sky="" scale=""> </a-text>
+
+                  </a-image>
+
+                  <!-- <a-entity id="playbutton" class="clickable" playvideo=""
+                    geometry="primitive:plane;width:2;height:0.61" rotation="0 -90 0"
+                    material="src:assets/images/play.png;opacity:0.99" sky=""
+                    position="6.442 0.8989068531861296 -3.576626458099867"></a-entity> -->
+                  <a-entity id="back" class="clickable" playvideo="" geometry="primitive:plane;width:0.7;height:0.7"
+                    rotation="0 -90 0" material="src:assets/images/back.png;opacity:0.99" sky
+                    position="8.260 200 2.165"></a-entity>
+
+
+                  <a-image mouseclick class="clickable" id="logo" src="" width="16" height="9"
+                    position="6.427 4.420496872282168 4.379434917630172" rotation="0 -90 0" geometry="width:4;height:2"
+                    material="src:assets\images\eqw.png;opacity:0.9" visible="" scale="0.32999999999999996 0.18 1">
+                  </a-image>
+
+                  <a-image id="south-wall-entity-1" mouseclick="" class="clickable" crossorigin="anonymous"
+                    src="assets/images/default.jpg" width="4" height="3" material="height:0;width:0" rotation="0 90 0"
+                    position="-13.271 4.686 -3.726" scale="1 1 0"></a-image>
+                  <a-image id="south-wall-entity-2" mouseclick="" class="clickable" crossorigin="anonymous"
+                    src="assets/images/default.jpg" width="4" height="3" material="height:0;width:0"
+                    position="-13.134 3.432 1.278" rotation="0 90 0" scale="1 1 0.00001"></a-image>
+                  <!--East Wall Branding Start-->
+                  <a-image id="east-wall-entity" mouseclick="" class="clickable" crossorigin="anonymous"
+                    src="assets/images/default.jpg" width="4" height="3" geometry="height:161;width:215"
+                    material="height:0;width:0" position="-2.595 2.19 -7.358" scale="0.06 0.057 0.00001"></a-image>
+                  <a-image id="west-wall-entity" mouseclick="" class="clickable" crossorigin="anonymous"
+                    src="assets/images/default.jpg" width="4" height="3" geometry="height:161;width:215"
+                    rotation="0 180 0" material="height:0;width:0" position="-2.576 2.207 7.513"
+                    scale="0.06 0.057 0.00001"></a-image>
+                </a-scene>
+
+              </div>
+            </div>
+          </div>
+          <div id="toast-container" class="toast-top-center">
+          </div>
+          <div class="sidebar-transparent sidebar-right">
+            <div class="button-divider tour-button">View</div>
+            <div id="freezeView"
+              onmouseenter="mouseEnter('Launch View: If you wish the current view to be the ‘Starting View’ of your Experience, then hit this button.');"
+              onmouseleave="mouseLeave()" onclick="setEntryView()"
+              class="custom-button1 graph-button place-color hidden-label">
+              <img class="img image-fluid" src="assets/images/Freeze_View.png" width="30">
+              <div>Launch View </div>
+              <span class="tooltiptext">Set the current view as the Launch View of the experience</span>
+            </div>
+          </div>
+          <div class="col-1">
+          </div>
+        </div>
+      </div>
+
+      <div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    /* Summernote MAxlength, maxcount and popsnacker */
+
+    $('.maxContentPost').summernote({
+  placeholder: 'Splash Screen Text',
+  tabsize: 2,
+  height: 100,
+  toolbar: [
+
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['fontname', ['fontname']],
+    ['font', ['bold', 'italic', 'underline', 'clear']]
+
+
+  ],
+  callbacks: {
+    onKeydown: function (e) {
+      var sel = window.getSelection();
+      if (sel.rangeCount) {
+      var container = document.createElement("div");
+        for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+          container.appendChild(sel.getRangeAt(i).cloneContents());
+        }
+      }
+      var selectedTextLength = container.innerText.length;
+      var t = e.currentTarget.innerText;
+      var cntolleKey = e.originalEvent.ctrlKey;
+      $('#maxCount').text(t.length);
+      if (t.length >= 350 && selectedTextLength <= 0) {
+        if (cntolleKey) {
+          
+          if (e.keyCode != 8) {
+          if (e.keyCode != 65) {
+            if (e.keyCode != 67) {
+              if (e.keyCode != 90) {
+                if (e.keyCode != 88) {
+                  if (e.keyCode != 86) {
+                    if (e.keyCode != 46) {
+                      if (e.keyCode != 17) {
+
+                        popSnackbar("warning", "Limit exceed.");
+                        e.preventDefault();
+                      }
+                      // popSnackbar("warning", "Limit exceed.");
+                      // e.preventDefault();
+                    }
+                  }
+                }
+                }
+              }
+            }
+          }
+        } else {
+          if (e.keyCode != 8) {
+              if (e.keyCode != 46) {
+                popSnackbar("warning", "Limit exceed.");
+                e.preventDefault();
+              }
+          }
+        }
+      }
+    },
+    onKeyup: function (e) {
+      var t = e.currentTarget.innerText;
+      // $('.maxContentPost').text(350 - t.trim().length);
+      $('#maxCount').text(t.length);
+    },
+    onPaste: function (e) {
+      var container;
+      var sel = window.getSelection();
+      if (sel.rangeCount) {
+        container = document.createElement("div");
+        for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+            container.appendChild(sel.getRangeAt(i).cloneContents());
+        }
+    }
+    var selectedTextLength=container.innerText.length;
+      var t = e.currentTarget.innerText;
+
+      if (t.length >= 350 && selectedTextLength <= 0) {
+        popSnackbar("warning", "Limit exceed.");
+        e.preventDefault();
+      }
+      $("#maxCount").text(t.length);
+      var bufferText = (
+        (e.originalEvent || e).clipboardData || window.clipboardData
+      ).getData("Text");
+      e.preventDefault();
+      for(var k=0;k<bufferText.length;k++){
+    
+    
+      }
+      var maxPaste = bufferText.length;
+      var maxLength=(t.length-selectedTextLength) + bufferText.length;
+      if ((t.length-selectedTextLength + bufferText.length) > 350) {
+        popSnackbar("warning", "Limit exceed.");
+        maxPaste = 350 - (t.length+-selectedTextLength);
+      }
+      if (maxPaste > 0) {
+        document.execCommand(
+          "insertText",
+          false,
+          bufferText.substring(0, maxPaste)
+        );
+      }
+      var t = e.currentTarget.innerText;
+      $("#maxCount").text(t.length);
+    }
+  }
+});
+
+    /* Summernote MAxlength, maxcount and popsnacker */
+
+    $('#summernote2').summernote({
+      placeholder: 'Instructions For Desktop/PC/Laptop',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+    $('#summernote3').summernote({
+      placeholder: 'Instructions For Mobile/VR',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+
+  </script>
+
+  <script type="text/javascript">
+    // Default Configuration
+    $(document).ready(function () {
+      toastr.options = {
+        'closeButton': false,
+        'positionClass': 'toast-top-center',
+        'timeOut': '2000',
+        'extendedTimeOut': '2000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut',
+      }
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,231 @@
+{
+  "experienceName": "Walk through",
+  "experienceData": [
+    {
+      "id": 1,
+      "nodeIndex": 1,
+      "placeName": "Hall",
+      "placeIndex": 1,
+      "placeSky": "/assets/images/puydesancy.jpg",
+      "placeImageName": "puydesancy.jpg",
+      "teleports": [
+        {
+          "teleportIndex": 0,
+          "name": "Teleport to Kitchen",
+          "focusText": "this is direct entrance to the kitchen for easy access.",
+          "teleportToPlace": "Kitchen",
+          "teleportToPlaceImage": "/assets/images/pano360.jpg",
+          "teleportToPlaceIndex": 2,
+          "isEndNode": false,
+          "endMessage": "",
+          "teleportPosition": "12.9251723732872 -15.82322005268621 -45.635135874511015",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        },
+        {
+          "teleportIndex": 1,
+          "name": "Teleport to Gallery",
+          "focusText": "This is direct entrance to the east facing gallery for easy access.",
+          "teleportToPlace": "Gallery",
+          "teleportToPlaceImage": "/assets/images/pano360.jpg",
+          "teleportToPlaceIndex": 3,
+          "isEndNode": false,
+          "endMessage": "",
+          "teleportPosition": "23.843108408793636 4.792630596640849 43.68680433918982",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-1"
+        },
+        {
+          "teleportIndex": 2,
+          "name": "Teleport to Master Bedroom",
+          "focusText": "This is entrance to the master bedroom for easy access.",
+          "teleportToPlace": "Master Bedroom",
+          "teleportToPlaceImage": "/assets/images/pano360.jpg",
+          "teleportToPlaceIndex": 4,
+          "isEndNode": false,
+          "endMessage": "",
+          "teleportPosition": "-3.1115529601269194 3.29760472175112 49.79401611916244",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-3"
+        },
+        {
+          "teleportIndex": 3,
+          "name": "Teleport to Bedroom",
+          "focusText": "This is entrance to the Bedroom for easy access.",
+          "teleportToPlace": "bedroom",
+          "teleportToPlaceImage": "/assets/images/pano360.jpg",
+          "teleportToPlaceIndex": 5,
+          "isEndNode": true,
+          "endMessage": "",
+          "teleportPosition": "-11.907898481323478 -8.853076464650595 47.747512928628474",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-4"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from window 1",
+          "infoboxIndex": 0,
+          "infoboxType": "Text",
+          "text": "This window is west facing and has view of natural green landscape",
+          "imagePath": "",
+          "imageName": "",
+          "video": "video path if type is video",
+          "infoboxPosition": "-31.65847107410864 6.382538044307425 38.170727231253984",
+          "infoboxRotation": "10 10 10",
+          "infoboxID": "infobox-0"
+        },
+        {
+          "infoboxName": "View from window 2",
+          "infoboxIndex": 1,
+          "infoboxType": "Image",
+          "text": "",
+          "imagePath": "/assets/images/pano360.jpg",
+          "imageName": "pano360.jpg",
+          "video": "video path if type is video",
+          "infoboxPosition": "-43.90828590534348 -22.644314268953426 -7.7004844096645435",
+          "infoboxRotation": "10 10 10",
+          "infoboxID": "infobox-1"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nodeIndex": 2,
+      "placeName": "Kitchen",
+      "placeIndex": 2,
+      "placeSky": "/assets/images/pano360.jpg",
+      "placeImageName": "pano360.jpg",
+      "teleports": [
+        {
+          "teleportIndex": 0,
+          "name": "Teleport to hall",
+          "focusText": "this is direct entrance to the hall for easy access.",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "/assets/images/puydesancy.jpg",
+          "teleportToPlaceIndex": 1,
+          "isEndNode": false,
+          "endMessage": "",
+          "teleportPosition": "-46.179119536788384 1.4997750101247802 19.111242600260535",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from window 1",
+          "infoboxIndex": 0,
+          "infoboxType": "Text",
+          "text": "This window is west facing and has view of natural green landscape",
+          "imagePath": "",
+          "imageName": "",
+          "video": "video path if type is video",
+          "infoboxPosition": "-20.249066868907942 -1.5997269473140094 -45.68824974358869",
+          "infoboxRotation": "10 10 10",
+          "infoboxID": "infobox-0"
+        },
+        {
+          "infoboxName": "Kitchen table top",
+          "infoboxIndex": 1,
+          "infoboxType": "Text",
+          "text": "This window is north facing and has view of natural green landscape",
+          "imagePath": "",
+          "imageName": "",
+          "video": "video path if type is video",
+          "infoboxPosition": "48.13857231444419 -12.467064399915392 5.220168653921986",
+          "infoboxRotation": "10 10 10",
+          "infoboxID": "infobox-1"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nodeIndex": 3,
+      "placeName": "Gallery",
+      "placeIndex": 3,
+      "placeSky": "/assets/images/pano360.jpg",
+      "placeImageName": "gallery.png",
+      "teleports": [
+        {
+          "teleportIndex": 0,
+          "name": "Teleport to hall",
+          "focusText": "this is direct entrance to the hall for easy access.",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "/assets/images/puydesancy.jpg",
+          "teleportToPlaceIndex": 1,
+          "isEndNode": false,
+          "endMessage": "",
+          "teleportPosition": "10 10 10",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from gallery",
+          "infoboxIndex": 0,
+          "infoboxType": "Text",
+          "text": "This gallery is west facing and has view of natural green landscape",
+          "imagePath": "",
+          "imageName": "",
+          "video": "video path if type is video",
+          "infoboxPosition": "60 10 10",
+          "infoboxRotation": "10 10 10",
+          "infoboxID": "infobox-0"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nodeIndex": 4,
+      "placeName": "Master Bedroom",
+      "placeIndex": 4,
+      "placeSky": "/assets/images/pano360.jpg",
+      "placeImageName": "Master Bedroom.png",
+      "teleports": [
+        {
+          "teleportIndex": 0,
+          "name": "Teleport to Hall",
+          "focusText": "this is direct entrance to the hall for easy access.",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "/assets/images/puydesancy.jpg",
+          "teleportToPlaceIndex": 1,
+          "isEndNode": false,
+          "endMessage": "",
+          "teleportPosition": "10 10 10",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        }
+      ],
+      "infoboxes": [
+        
+      ]
+    },
+    {
+      "id": 5,
+      "nodeIndex": 5,
+      "placeName": "Bedroom",
+      "placeIndex": 5,
+      "placeSky": "/assets/images/pano360.jpg",
+      "placeImageName": "Bedroom.png",
+      "teleports": [
+        {
+          "teleportIndex": 0,
+          "name": "Teleport to Hall",
+          "focusText": "this is direct entrance to the hall for easy access.",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "/assets/images/puydesancy.jpg",
+          "teleportToPlaceIndex": 1,
+          "isEndNode": false,
+          "endMessage": "",
+          "teleportPosition": "10 10 10",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        }
+      ],
+      "infoboxes": [
+        
+      ]
+    }
+  ]
+}

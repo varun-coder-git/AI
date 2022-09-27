@@ -1,0 +1,290 @@
+{
+  "experienceName": "Walk through",
+  "experienceData": [
+    {
+      "placeName": "Hall",
+      "placeIndex": 1,
+      "placeSky": "assets/images/1.jpg",
+      "totalTeleports": 4,
+      "totalInfoboxes": 2,
+      "teleports": [
+        {
+          "name": "Teleport1",
+          "focusText": "this is direct entrance to the kitchen for easy access.",
+          "teleportToPlace": "Kitchen",
+          "teleportToPlaceImage": "assets/images/2.jpg",
+          "teleportToPlaceIndex": "2",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "12.9251723732872 -15.82322005268621 -45.635135874511015",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        },
+        {
+          "name": "Teleport to Gallery",
+          "focusText": "This is direct entrance to the east facing gallery for easy access.",
+          "teleportToPlace": "Gallery",
+          "teleportToPlaceImage": "assets/images/3.jpg",
+          "teleportToPlaceIndex": "3",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "23.843108408793636 4.792630596640849 43.68680433918982",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-1"
+        },
+        {
+          "name": "Teleport to Master Bedroom",
+          "focusText": "This is entrance to the master bedroom for easy access.",
+          "teleportToPlace": "Master Bedroom",
+          "teleportToPlaceImage": "assets/images/4.jpg",
+          "teleportToPlaceIndex": "4",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-3.1115529601269194 3.29760472175112 49.79401611916244",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-3"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from window 1",
+          "infoboxIndex": 1,
+          "infoboxType": "text | image | video",
+          "text": "This window is west facing and has view of natural green landscape",
+          "image": "image path if type is image",
+          "video": "video path if type is video",
+          "infoboxPosition": "-11.907898481323478 -8.853076464650595 47.747512928628474",
+          "infoboxRotation": "10 10 10"
+        }
+      ]
+    },
+    {
+      "placeName": "Kitchen",
+      "placeIndex": 2,
+      "placeSky": "assets/images/2.jpg",
+      "totalTeleports": 2,
+      "totalInfoboxes": 4,
+      "teleports": [
+        {
+          "name": "Teleport to Hall",
+          "focusText": "Way towards hall",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "assets/images/1.jpg",
+          "teleportToPlaceIndex": "1",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-31.65847107410864 6.382538044307425 38.170727231253984",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        },
+        {
+          "name": "Teleport to small gallery",
+          "focusText": "Towards gallery.",
+          "teleportToPlace": "Small Gallery",
+          "teleportToPlaceImage": "assets/images/3.jpg",
+          "teleportToPlaceIndex": "3",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-43.90828590534348 -22.644314268953426 -7.7004844096645435",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-1"
+        },
+        {
+          "name": "Teleport to Master Bedroom",
+          "focusText": "This is entrance to the master bedroom for easy access.",
+          "teleportToPlace": "Master Bedroom",
+          "teleportToPlaceImage": "assets/images/5.jpg",
+          "teleportToPlaceIndex": "5",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-46.179119536788384 1.4997750101247802 19.111242600260535",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-3"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from window 1",
+          "infoboxIndex": 1,
+          "infoboxType": "text | image | video",
+          "text": "This window is west facing and has view of natural green landscape",
+          "image": "image path if type is image",
+          "video": "video path if type is video",
+          "infoboxPosition": "-20.249066868907942 -1.5997269473140094 -45.68824974358869",
+          "infoboxRotation": "10 10 10"
+        }
+      ]
+    },
+    {
+      "placeName": "Kitchen",
+      "placeIndex": 3,
+      "placeSky": "assets/images/3.jpg",
+      "totalTeleports": 2,
+      "totalInfoboxes": 4,
+      "teleports": [
+        {
+          "name": "Teleport to Hall",
+          "focusText": "Way towards hall",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "assets/images/3.jpg",
+          "teleportToPlaceIndex": "3",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": " 48.13857231444419 -12.467064399915392 5.220168653921986",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        },
+        {
+          "name": "Teleport to small gallery",
+          "focusText": "Towards gallery.",
+          "teleportToPlace": "Small Gallery",
+          "teleportToPlaceImage": "assets/images/1.jpg",
+          "teleportToPlaceIndex": "1",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "12.9251723732872 -15.82322005268621 -45.635135874511015",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-1"
+        },
+        {
+          "name": "Teleport to Master Bedroom",
+          "focusText": "This is entrance to the master bedroom for easy access.",
+          "teleportToPlace": "Master Bedroom",
+          "teleportToPlaceImage": "assets/images/5.jpg",
+          "teleportToPlaceIndex": "5",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "23.843108408793636 4.792630596640849 43.68680433918982",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-3"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from window 1",
+          "infoboxIndex": 1,
+          "infoboxType": "text | image | video",
+          "text": "This window is west facing and has view of natural green landscape",
+          "image": "image path if type is image",
+          "video": "video path if type is video",
+          "infoboxPosition": "-3.1115529601269194 3.29760472175112 49.79401611916244",
+          "infoboxRotation": "10 10 10"
+        }
+      ]
+    },
+    {
+      "placeName": "Kitchen",
+      "placeIndex": 4,
+      "placeSky": "assets/images/4.jpg",
+      "totalTeleports": 2,
+      "totalInfoboxes": 4,
+      "teleports": [
+        {
+          "name": "Teleport to Hall",
+          "focusText": "Way towards hall",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "assets/images/3.jpg",
+          "teleportToPlaceIndex": "3",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-11.907898481323478 -8.853076464650595 47.747512928628474",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        },
+        {
+          "name": "Teleport to small gallery",
+          "focusText": "Towards gallery.",
+          "teleportToPlace": "Small Gallery",
+          "teleportToPlaceImage": "assets/images/1.jpg",
+          "teleportToPlaceIndex": "1",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-31.65847107410864 6.382538044307425 38.170727231253984",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-1"
+        },
+        {
+          "name": "Teleport to Master Bedroom",
+          "focusText": "This is entrance to the master bedroom for easy access.",
+          "teleportToPlace": "Master Bedroom",
+          "teleportToPlaceImage": "assets/images/5.jpg",
+          "teleportToPlaceIndex": "5",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-43.90828590534348 -22.644314268953426 -7.7004844096645435",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-3"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from window 1",
+          "infoboxIndex": 1,
+          "infoboxType": "text | image | video",
+          "text": "This window is west facing and has view of natural green landscape",
+          "image": "image path if type is image",
+          "video": "video path if type is video",
+          "infoboxPosition": "-46.179119536788384 1.4997750101247802 19.111242600260535",
+          "infoboxRotation": "10 10 10"
+        }
+      ]
+    },
+    {
+      "placeName": "Kitchen",
+      "placeIndex": 5,
+      "placeSky": "assets/images/5.jpg",
+      "totalTeleports": 2,
+      "totalInfoboxes": 4,
+      "teleports": [
+        {
+          "name": "Teleport to Hall",
+          "focusText": "Way towards hall",
+          "teleportToPlace": "Hall",
+          "teleportToPlaceImage": "assets/images/2.jpg",
+          "teleportToPlaceIndex": "2",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "-20.249066868907942 -1.5997269473140094 -45.68824974358869",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-0"
+        },
+        {
+          "name": "Teleport to small gallery",
+          "focusText": "Towards gallery.",
+          "teleportToPlace": "Small Gallery",
+          "teleportToPlaceImage": "assets/images/4.jpg",
+          "teleportToPlaceIndex": "4",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "48.13857231444419 -12.467064399915392 5.220168653921986",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-1"
+        },
+        {
+          "name": "Teleport to Master Bedroom",
+          "focusText": "This is entrance to the master bedroom for easy access.",
+          "teleportToPlace": "Master Bedroom",
+          "teleportToPlaceImage": "assets/images/1.jpg",
+          "teleportToPlaceIndex": "1",
+          "isEndNode": false,
+          "endMessage": null,
+          "teleportPosition": "12.9251723732872 -15.82322005268621 -45.635135874511015",
+          "teleportRotation": "10 10 10",
+          "teleportID": "teleport-3"
+        }
+      ],
+      "infoboxes": [
+        {
+          "infoboxName": "View from window 1",
+          "infoboxIndex": 1,
+          "infoboxType": "text | image | video",
+          "text": "This window is west facing and has view of natural green landscape",
+          "image": "image path if type is image",
+          "video": "video path if type is video",
+          "infoboxPosition": "23.843108408793636 4.792630596640849 43.68680433918982",
+          "infoboxRotation": "10 10 10"
+        }
+      ]
+    }
+  ]
+}

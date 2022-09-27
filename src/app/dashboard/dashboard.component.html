@@ -1,0 +1,1540 @@
+<!-- /*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<div (click)="clearExperienceInputFields()" class="row margin-LR-0 dashboard-header">
+    <div class="col-lg-12 col-md-12 col-sm-12 dashboard-header-subtitle" id="target">
+        Select a VR/AR Template <span *ngIf="experienceTemplate.selectedCategory!='All'"> :
+            {{experienceTemplate.selectedCategory}}</span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 20px;">
+
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12 ng-star-inserted"
+                *ngFor="let templateData of experienceTemplate.experienceTemplateMetaData | slice:0:4">
+                <div class="experience-template mx-auto"
+                    (click)="openExperienceTemplate(openExperienceTemplateModal,templateData.ExperienceTemplateId,templateData.ExperienceName)">
+                    <div class="background"
+                        [ngStyle]="{'background-image': 'url('+templateData.ThumbnailImagePath+')'}">
+                    </div>
+                    <div class="layer">
+                        <div>
+                            <p class="mb-0 mt-1"
+                                style="font-size: 18px; font-weight: 700; color: white;padding-left:12px;">
+                                {{templateData.ExperienceName}}</p>
+                        </div>
+
+                        <div class="template-desc">
+                            <p class="template-content" innerHTML="{{templateData.Description}}" style="
+                            max-height: 0px;
+                        "></p>
+                        </div>
+                        <div class="activity-icons">
+                            <span *ngIf="templateData.Is360"><img src="./assets/images/dashboard/360images.png"
+                                    ngbTooltip="You can customize this with your own 360 degree images" placement="bottom"></span>
+                            <!-- <span *ngIf="templateData.IsImage"><img src="./assets/images/dashboard/image.png" -->
+                                    <!-- ngbTooltip="Images" placement="bottom"></span> -->
+                            <!-- <span *ngIf="templateData.IsInfoBox"><img src="./assets/images/dashboard/info.png" -->
+                                    <!-- ngbTooltip="Information" placement="bottom"></span> -->
+                            <span *ngIf="templateData.IsxAPI"><img src="./assets/images/dashboard/XAPI.png"
+                                    ngbTooltip="This Experizer template supports xAPI integration" placement="bottom"></span>
+                            <span *ngIf="templateData.IsVideo"><img src="./assets/images/dashboard/video.png"
+                                    ngbTooltip="You can customize this with your own videos files" placement="bottom"></span>
+                            <span *ngIf="templateData.IsQuestions"><img src="./assets/images/dashboard/question.png"
+                                    ngbTooltip="You can use this Experizer template as an assessment " placement="bottom"></span>
+                            <span *ngIf="templateData.IsScore"><img src="./assets/images/dashboard/score.png"
+                                    ngbTooltip="This Experizer template returns the score of the viewer/patron to the author" placement="bottom"></span>
+                            <span *ngIf="templateData.IsAudio"><img src="./assets/images/dashboard/audio.png"
+                                    ngbTooltip="You can customize this with your own audio files" placement="bottom"></span>
+                            <span *ngIf="templateData.Is360Video"><img src="./assets/images/dashboard/video360.png"
+                                    ngbTooltip="You can customize this with your own 360 degree videos" placement="bottom"></span>
+                            <span *ngIf="templateData.IsAR"><img src="./assets/images/dashboard/isAr.png"
+                                    ngbTooltip="This is an Augmented Reality experience " placement="bottom"></span>
+                            <span *ngIf="templateData.IsObject"><img src="./assets/images/dashboard/isObj.png"
+                                    ngbTooltip="You can customize this with 3D Models" placement="bottom"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div *ngIf="experienceTemplate.experienceTemplateDataCount > 4"
+        class="mx-auto slide-down-icon col-lg-12 col-md-12 col-sm-12 hidden"
+        [ngClass]="{'hidden' : experienceTemplate.upArrowHide}">
+        <div class="mouse">
+            <div class="mouse-icon  cursor-pointer" (click)="slideDownSecondHeader()"
+                style="background-image: url(assets/images/dashboard/down-bg.png);">
+                <div class="mouse-wheel arrow-up"><i class="fa fa-angle-double-down" aria-hidden="true"></i></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- <div *ngIf="experienceTemplate.experienceTemplateDataCount > 4 && showArrow==true"
+        class="mx-auto slide-down-icon col-lg-12 col-md-12 col-sm-12 ">
+        <img src="./assets/images/dashboard/arrow250.png" class="imgAnimate" alt="" style="transform: scaleY(-1);height:21px;margin-top: -3%;margin-left: 11%;
+    ">
+        <span>Click Here</span>
+    </div> -->
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 dashboard-second-header slideup" style="display:none;">
+        <div *ngIf="experienceTemplate.experienceTemplateDataCount > 4" class="row margin-LR-0 ">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-12" style="padding-bottom: 30px;"
+                *ngFor="let templateData of experienceTemplate.experienceTemplateMetaData | slice:4">
+                <!--| slice:16:18-->
+                <div class="experience-template mx-auto"
+                    (click)="openExperienceTemplate(openExperienceTemplateModal,templateData.ExperienceTemplateId,templateData.ExperienceName)">
+                    <div class="background"
+                        [ngStyle]="{'background-image': 'url('+templateData.ThumbnailImagePath+')'}">
+                    </div>
+                    <div class="layer">
+                        <div>
+                            <p class="mb-0 mt-1"
+                                style="font-size: 18px; font-weight: 700; color: white;padding-left:12px;">
+                                {{templateData.ExperienceName}}</p>
+                        </div>
+
+                        <div class="template-desc">
+                            <p class="template-content" innerHTML="{{templateData.Description}}" style="
+                            max-height: 0px;
+                        "></p>
+                        </div>
+                        <div class="activity-icons">
+                            <span *ngIf="templateData.Is360"><img src="./assets/images/dashboard/360images.png"
+                                    ngbTooltip="You can customize this with your own 360 degree images" placement="bottom"></span>
+                            <!-- <span *ngIf="templateData.IsImage"><img src="./assets/images/dashboard/image.png"
+                                    ngbTooltip="Images" placement="bottom"></span>
+                            <span *ngIf="templateData.IsInfoBox"><img src="./assets/images/dashboard/info.png"
+                                    ngbTooltip="Information" placement="bottom"></span> -->
+                            <span *ngIf="templateData.IsxAPI"><img src="./assets/images/dashboard/XAPI.png"
+                                    ngbTooltip="This Experizer template supports xAPI integration" placement="bottom"></span>
+                            <span *ngIf="templateData.IsVideo"><img src="./assets/images/dashboard/video.png"
+                                    ngbTooltip="You can customize this with your own videos files" placement="bottom"></span>
+                            <span *ngIf="templateData.IsQuestions"><img src="./assets/images/dashboard/question.png"
+                                    ngbTooltip="You can use this Experizer template as an assessment " placement="bottom"></span>
+                            <span *ngIf="templateData.IsScore"><img src="./assets/images/dashboard/score.png"
+                                    ngbTooltip="This Experizer template returns the score of the viewer/patron to the author" placement="bottom"></span>
+                            <span *ngIf="templateData.IsAudio"><img src="./assets/images/dashboard/audio.png"
+                                    ngbTooltip="You can customize this with your own audio files" placement="bottom"></span>
+                            <span *ngIf="templateData.Is360Video"><img src="./assets/images/dashboard/video360.png"
+                                    ngbTooltip="You can customize this with your own 360 degree videos" placement="bottom"></span>
+                            <span *ngIf="templateData.IsAR"><img src="./assets/images/dashboard/isAr.png"
+                                    ngbTooltip="This is an Augmented Reality experience" placement="bottom"></span>
+                            <span *ngIf="templateData.IsObject"><img src="./assets/images/dashboard/isObj.png"
+                                    ngbTooltip="You can customize this with 3D Models" placement="bottom"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div *ngIf="experienceTemplate.experienceTemplateDataCount > 4" class="col-lg-3 col-md-3 col-sm-3">
+                <div class="experience-template mx-auto" (click)="extraTemplate()">
+                    <div class="background" style="background-image:url('./assets/images/dashboard/thinking.jpg')">
+                    </div>
+                    <div class="layer">
+                        <div>
+                            <p class="mb-0 mt-1" style="font-size: 18px; font-weight: 700; color: white;padding-left:12px;">I have an
+                                idea!</p>
+                        </div>
+                        <div class="template-desc">
+                            <p class="template-content">Not found what you are looking out for? No problem, just email us your
+                                requirement at <a href="mailto:care@experizer.com">care@experizer.com</a> and we’ll get in touch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="mx-auto slide-up-icon col-lg-12 col-md-12 col-sm-12" style="margin-top: -2%;">
+                <!-- <i class="fa fa-chevron-up color-white" aria-hidden="true"></i> -->
+                <div class="mouse">
+                    <div class="mouse-icon  cursor-pointer" (click)="slideDownSecondHeader()"
+                    style="background-image: url(assets/images/dashboard/up-bg.png);">
+                        <div class="mouse-wheel arrow-down"><i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="experience-div" class="row margin-LR-0 mt-5">
+    <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 40px;">
+
+        <div class="dashboard-tabset">
+            <span class="tabset-header tab1 active" (mouseleave)="mouseLeave()"
+                (mouseenter)="mouseEnter('When you create a Virtual Reality Experience, the project gets saved in this \'My Experiences\' page. This page also helps you manage all your \'Virtual Experience\' projects. You can edit your existing projects too through this page.')"
+                ngbTooltip="My Experiences" (click)="onTabClicked(1)" style="left:17px;">My Experiences</span>
+            <span class="tabset-header tab2" (mouseleave)="mouseLeave()"
+                (mouseenter)="mouseEnter('When you want to make your Project available to your Patrons you have to first Publish it. The Published Experiences page helps you manage these Published Experiences. You can view the analytics of your published projects from this page.')"
+                ngbTooltip="Published Experiences" (click)="onTabClicked(2)" style="left:60px;">Published
+                Experiences</span>
+            <span class="tabset-header tab3" (mouseleave)="mouseLeave()"
+                (mouseenter)="mouseEnter('A Room is like a dedicated link that your Patrons access to view your published Experizer Projects. Rooms page shows you all the Rooms that you have created. You can view the analytics as well as manage Patrons access through this page.')"
+                ngbTooltip="Rooms" (click)="onTabClicked(3)" style="left:100px;">Rooms</span>
+
+        </div>
+
+        <div class="dashboard-tabset-content">
+            <div id="tab1" class="tab-content1 active">
+                <div class="row" *ngIf="myExperiencesMetaCount != 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row my-experiences-table header-col-experience-table">
+                            <div class="col-lg-1 col-md-1 col-sm-1"><img
+                                    src="assets/images/dashboard/templatethumbneil.png"></div>
+                            <div class="col-lg-3 col-md-3 col-sm-3" style="max-width:20%;">Name</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Template</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Last accessed</div>
+                            <div class="col-lg-3 col-md-3 col-sm-3">Action</div>
+                        </div>
+
+                        <div class="row my-experiences-table" *ngFor="let myExperiencesData of myExperiencesMeta | orderBy: 'UpdatedOn' : true | paginate: { id: 'my_experiences_pagination',
+                    itemsPerPage: 20,
+                    currentPage: page,
+                    totalItems: totalRec }; let i = index ">
+                            <div class="col-lg-1 col-md-1 col-sm-1"><img
+                                    src='{{myExperiencesData.ThumbnailPath +"?"+random}}'
+                                    style="width:25px;height:25px;"></div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 hand-pointer" style="max-width:20%;"
+                                *ngIf="myExperiencesData.ExperienceName.length < 20"
+                                (click)="goToEdit(myExperiencesData.Id,myExperiencesData.TemplateName, myExperiencesData.ExperienceName)">
+                                {{myExperiencesData.ExperienceName}}</div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 three-dots-lenght hand-pointer"
+                                style="max-width:20%;" *ngIf="myExperiencesData.ExperienceName.length >=20"
+                                ngbTooltip={{myExperiencesData.ExperienceName}} placement="top" container="body"
+                                (click)="goToEdit(myExperiencesData.Id,myExperiencesData.TemplateName, myExperiencesData.ExperienceName)">
+                                {{myExperiencesData.ExperienceName}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 text-left">{{myExperiencesData.TemplateName}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">{{myExperiencesData.UpdatedOn|dateAgo }}</div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 action-col">
+                                <span
+                                    (click)="goToEdit(myExperiencesData.Id,myExperiencesData.TemplateName, myExperiencesData.ExperienceName)"><i
+                                        class="fa fa-pencil" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Edit this project to make changes. Note that you have to publish your project each time you make changes in your project.')"
+                                        ngbTooltip="Edit" placement="top"></i></span>
+                                <span
+                                    (click)="goToCloneExperience(openCloneExperienceTemplateModal,myExperiencesData.Id)"><i
+                                        class="fa fa-clone" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Clone this project in case if you wish to create an alternate copy of this project.')"
+                                        ngbTooltip="Clone" placement="top"></i></span>
+                                <span (click)="goTopublish(publishExperiencePopUp,myExperiencesData.Id)"><i
+                                        class="fa fa-cloud-upload" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Publish this project to make it available to your Patrons. Note that you have to publish your projects each time you make changes in your project.')"
+                                        ngbTooltip="Publish" placement="top"></i></span>
+                                <span
+                                    (click)="goToEditName(changeExperienceNameModel,myExperiencesData.Id,myExperiencesData.TemplateName, myExperiencesData.ExperienceName,myExperiencesData.ExperienceTemplateId)"><img
+                                        src="assets/images/dashboard/rename.png" alt="Save" aria-hidden="true"
+                                        (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Edit this Experience Name.')" ngbTooltip="Rename"
+                                        placement="top" /></span>
+                                <span (click)="goTodeleteMyExperience(deleteMyExperiencePopUp,myExperiencesData)"><i
+                                        class="fa fa-times patron-table-icon-size patron-table-delete-icon-color"
+                                        aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Remove this project from your account forever. Note that your Published Experiences for this project will also be removed when you Delete it.')"
+                                        ngbTooltip="Delete" placement="top"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-3 text-center">
+                        <pagination-controls id="my_experiences_pagination" [maxSize]="5" [directionLinks]="true"
+                            (pageChange)="page = $event;scrollToTop();"></pagination-controls>
+                    </div>
+                </div>
+
+
+                <div class="row mt-5" *ngIf="myExperiencesMetaCount == 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                            <div class="col-lg-7 col-md-7 col-sm-7">
+                                <div class="row">
+
+                                    <div class="col-lg-8 col-md-8 col-sm-8 padding-right-0">
+                                        <div class="first-experience-top">Your first Virtual Reality Experience is going
+                                            to be awesome!
+                                        </div>
+                                        <hr>
+                                        <div class="first-experience-description">This page will show you the
+                                            Experiences you've created
+                                            once you begin. Begin by choosing an Experience template from above or <a
+                                                routerLink="/needhelp" routerLinkActive="active" target="_blank">check
+                                                out this help section</a> to discover how easy
+                                            it is to get started.</div>
+                                        <div class="first-experience-mail">Write to us at <a
+                                                href="mailto:care@experizer.com">care@experizer.com</a> If you have an
+                                            issue with your Experizer
+                                            account.</div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-sm-4 padding-left-0">
+                                        <img src="assets/images/dashboard/cat_withcolorpalette.png" alt="pop-header"
+                                            class="create-first-exp-image">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="tab2" class="tab-content2">
+
+                <div class="row" *ngIf="publishedExperienceMetaCount != 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row my-experiences-table published-experience-table header-col-experience-table">
+                            <div class="col-lg-1 col-md-1 col-sm-1"><img
+                                    src="assets/images/dashboard/templatethumbneil.png"></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Name</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Template</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Last Published</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Last Viewed</div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">Viewed</div>
+                            <div class="col-lg-2col-md-2 col-sm-2">Action</div>
+                        </div>
+
+                        <div class="row my-experiences-table published-data" *ngFor="let publishedExperienceData of publishedExperienceMeta | orderBy: 'LastPublishedDate' : true | paginate: { id: 'published_experiences_pagination',
+                    itemsPerPage: 20,
+                    currentPage: pagePublishedExperince,
+                    totalItems: totalRecPublishedExperince }; let i = index ">
+                            <div class="col-lg-1 col-md-1 col-sm-1"><img
+                                    src='{{publishedExperienceData.ThumbnailPath +"?"+random}}'
+                                    style="width:25px;height:25px;"></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 "
+                                *ngIf="publishedExperienceData.ExperienceName.length < 20">
+                                {{publishedExperienceData.ExperienceName}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 three-dots-lenght"
+                                *ngIf="publishedExperienceData.ExperienceName.length >= 20"
+                                ngbTooltip={{publishedExperienceData.ExperienceName}} placement="top" container="body">
+                                {{publishedExperienceData.ExperienceName}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2  text-left">{{publishedExperienceData.TemplateName}}
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2"
+                                *ngIf="publishedExperienceData.LastPublishedDate != null">
+                                {{publishedExperienceData.LastPublishedDate |dateAgo }}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" *ngIf="publishedExperienceData.LastView != null">
+                                {{publishedExperienceData.LastView |dateAgo}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2" style="text-align:center;"
+                                *ngIf="publishedExperienceData.LastView == null">N/A</div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">{{publishedExperienceData.ViewCount}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 published-action-col">
+                                <span
+                                    (click)="goToPreview(publishedExperienceData.ExperienceId,publishedExperienceData.ExperienceFolderPath)"><i
+                                        class="fa fa-eye" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('How does your published experience look like? Take a quick preview with this option.')"
+                                        ngbTooltip="Preview" placement="top"></i></span>
+
+                                <span
+                                    (click)="goToAnalytics(publishedExperienceData.Id,publishedExperienceData.TemplateName,publishedExperienceData.ExperienceName)"><i
+                                        class="fa fa-line-chart" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('How many Patrons have viewed this Experience and for how long? Check out the essential analytics for this Published Experience through this option.')"
+                                        ngbTooltip="Analytics" placement="top"></i></span>
+                                <span (click)="goToRoomMapping(addRoomMappingPopUp, publishedExperienceData.Id)"><i
+                                        class="fa fa-plus-square" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Push this Publish Experience in a Room to make it available to your Patrons. You can configure the room settings to assign it to specific Patrons or to keep it publically open.')"
+                                        ngbTooltip="Add Room" placement="top"></i></span>
+                                <span
+                                    (click)="goTodeletePublishedExperience(deletePublishedExperiencePopUp,publishedExperienceData)"><i
+                                        class="fa fa-times patron-delete" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Remove this Published Experience from your account forever. Note that your Experience Project is not removed and you can still publish it again.')"
+                                        ngbTooltip="Delete" placement="top"></i></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12 mt-3 text-center">
+                        <pagination-controls id="published_experiences_pagination" [maxSize]="5" [directionLinks]="true"
+                            (pageChange)="pagePublishedExperince = $event;scrollToTop();"></pagination-controls>
+                    </div>
+                </div>
+
+                <div class="row mt-5" *ngIf="publishedExperienceMetaCount == 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                            <div class="col-lg-7 col-md-7 col-sm-7">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 padding-right-0">
+                                        <div class="first-experience-top">Your first Virtual Reality Experience is going
+                                            to be awesome!
+                                        </div>
+                                        <hr>
+                                        <div class="first-experience-description">This page will show you the
+                                            Experiences that you have
+                                            published once you begin. If you have already created your first Virtual
+                                            Reality project, remember
+                                            to hit the Publish button or <a routerLink="/needhelp"
+                                                routerLinkActive="active" target="_blank">check out this help
+                                                section</a> to discover how easy it is to go live.</div>
+                                        <div class="first-experience-mail">Write to us at <a
+                                                href="mailto:care@experizer.com">care@experizer.com</a> If you have an
+                                            issue with your Experizer
+                                            account.</div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 padding-left-0">
+                                        <img src="assets/images/dashboard/creatingfirst-experience_img_blue.png"
+                                            alt="pop-header" class="create-first-exp-image">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div id="tab3" class="tab-content3">
+                <div class="row add-new-room-row">
+                    <div class="col-12">
+                        <button class="btn btn-color-orange float-right" ngbTooltip="Add New Room" placement="top"
+                            (click)="addNewRoom(roomPopUp,'Room')">Add New Room</button>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="RoomInfoCount != 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row my-experiences-table room-data header-col-experience-table">
+                            <div class="col-lg-1 col-md-1 col-sm-1"><img
+                                    src="assets/images/dashboard/templatethumbneil.png"></div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Name</div>
+                            <div class="col-lg-2 col-md-2col-sm-2">Experience</div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">Viewed</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">Last active</div>
+                            <!--<div class="col-lg-1 col-md-1 col-sm-1">Status</div> -->
+                            <div class="col-lg-4 col-md-4 col-sm-4" style="text-align:center;
+                        ">Action</div>
+                        </div>
+
+                        <div class="row my-experiences-table room-data" *ngFor="let roomInfoData of RoomInfo | orderBy: 'UpdatedOn' : true | paginate: { id: 'room_count_pagination',
+                    itemsPerPage: 20,
+                    currentPage: pageRoomCount,
+                    totalItems: totalRecRoomCount }; let i = index">
+                            <div class="col-lg-1 col-md-1 col-sm-1">
+                                <img src="assets/images/dashboard/room_icon.png"
+                                    *ngIf="roomInfoData.ThumbnailPath == null" style="width:25px;height:25px;">
+                                <img src="{{roomInfoData.ThumbnailPath +'?'+random}}"
+                                    *ngIf="roomInfoData.ThumbnailPath != null" style="width:25px;height:25px;">
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 " *ngIf="roomInfoData.RoomName.length < 20">
+                                {{roomInfoData.RoomName}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 three-dots-lenght"
+                                *ngIf="roomInfoData.RoomName.length >= 20" ngbTooltip={{roomInfoData.RoomName}} container="body"
+                                placement="top">{{roomInfoData.RoomName}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2"
+                                *ngIf="roomInfoData.roomExpStatus == 2 || roomInfoData.roomExpStatus == null">N/A</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2  text-left" *ngIf="roomInfoData.roomExpStatus == 1">
+                                <div *ngIf="roomInfoData.ExperienceName.length < 20">{{roomInfoData.ExperienceName}}
+                                </div>
+                                <div *ngIf="roomInfoData.ExperienceName.length >= 20"
+                                    ngbTooltip={{roomInfoData.ExperienceName}} placement="top" container="body"
+                                    class="three-dots-lenght">{{roomInfoData.ExperienceName}}</div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1">{{roomInfoData.views}}</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2">{{roomInfoData.UpdatedOn|dateAgo }}</div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 rooms-actions">
+                                <span class="greenCircle" *ngIf="roomInfoData.StatusId == 1"
+                                    (click)="changeRoomStatus(roomInfoData.Id,2)"><i
+                                        class="fa fa-circle remove-icon-shadow" aria-hidden="true"
+                                        (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Shut down this Room! Once you shut down this Room your Patrons will no longer be able to access it.')"
+                                        ngbTooltip="Offline" placement="top"></i></span>
+                                <span class="redCircle" *ngIf="roomInfoData.StatusId == 2"
+                                    (click)="changeRoomStatus(roomInfoData.Id,1)"><i
+                                        class="fa fa-circle remove-icon-shadow" aria-hidden="true"
+                                        (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Make this Room LIVE! Once you make the Room LIVE your Patrons can start using it.')"
+                                        ngbTooltip="Online" placement="top"></i></span>
+
+                                <span class="enableManage"
+                                    *ngIf="roomInfoData.StatusId == 1 && roomInfoData.roomExpStatus == 1"
+                                    (click)="goToManagePatrons(managePatronPopUp, roomInfoData.RoomName, roomInfoData.Id, roomInfoData.PublishCode, roomInfoData.publishedExperienceRoomMappingId, roomInfoData.PublishCode, roomInfoData.ExperienceFolderPath, roomInfoData.ExperienceName)"><i
+                                        class="fa fa-users" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Patrons are the viewers of this room. You can configure the settings to make this room accessible for specific patrons through this setting. Note that this setting is disabled if no Experience is assigned to it. To assign an Experience go to the Published Experience Tab.')"
+                                        ngbTooltip="Manage Patrons" placement="top"></i></span>
+                                <span class="disableManage"
+                                    *ngIf="roomInfoData.StatusId == 2 || roomInfoData.roomExpStatus == 2 || roomInfoData.roomExpStatus == null"><i
+                                        class="fa fa-users" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Patrons are the viewers of this room. You can configure the settings to make this room accessible for specific patrons through this setting. Note that this setting is disabled if no Experience is assigned to it. To assign an Experience go to the Published Experience Tab.')"
+                                        ngbTooltip="Manage Patrons" placement="top"
+                                        ngbTooltip="Add experience in the room" placement="top"></i></span>
+                                <span class="enableInvitation"
+                                    *ngIf="roomInfoData.StatusId == 1 && roomInfoData.roomExpStatus == 1"
+                                    (click)="openInvitaionPopup(invitationPopUp, roomInfoData.Id, roomInfoData.PublishCode)"><i
+                                        class="fa fa-envelope" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('You can send an email invitation to existing Patrons using this option. To assign new Patrons use the Patrons option on the left bar. Note that this setting is disabled if no Experience is assigned to it.')"
+                                        ngbTooltip="Send Invitation" placement="top"></i></span>
+                                <span class="disableInvitation"
+                                    *ngIf="roomInfoData.StatusId == 2 || roomInfoData.roomExpStatus == 2 || roomInfoData.roomExpStatus == null"><i
+                                        class="fa fa-envelope" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('You can send an email invitation to existing Patrons using this option. To assign new Patrons use the Patrons option on the left bar. Note that this setting is disabled if no Experience is assigned to it.')"
+                                        ngbTooltip="Send Invitation" placement="top"
+                                        ngbTooltip="Add experience in the room" placement="top"></i></span>
+                                <span class="enableShare"
+                                    *ngIf="roomInfoData.StatusId == 1 && roomInfoData.roomExpStatus == 1"
+                                    (click)="goToShare(openShareModal, roomInfoData.publishedExperienceRoomMappingId, roomInfoData.PublishCode, roomInfoData.ExperienceFolderPath, roomInfoData.ExperienceName)"><i
+                                        class="fa fa-share-alt" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Manually share this Room with your Patrons. You can get a URL to this room OR an Embed tag to use this Room in your HTML page OR even a simple QR code.')"
+                                        ngbTooltip="Share" placement="top"></i></span>
+                                <span class="disableShare"
+                                    *ngIf="roomInfoData.StatusId == 2 || roomInfoData.roomExpStatus == 2 || roomInfoData.roomExpStatus == null"><i
+                                        class="fa fa-share-alt" aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Manually share this Room with your Patrons. You can get a URL to this room OR an Embed tag to use this Room in your HTML page OR even a simple QR code.')"
+                                        ngbTooltip="Share" placement="top" ngbTooltip="Add experience in the room"
+                                        placement="top"></i></span>
+                                <span class="enablePublic"
+                                    *ngIf="roomInfoData.StatusId == 1 && roomInfoData.IsPublic==1 && roomInfoData.roomExpStatus == 1"
+                                    (click)="goToPublicRoomPopup(publicRoomPopUp,roomInfoData,true)">
+                                    <i *ngIf="roomInfoData.IsPublic==1" class="fa fa-unlock-alt" aria-hidden="true"
+                                        (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Make this Room accessible exclusively for your designated/configured Patrons.')"
+                                        ngbTooltip="Private" placement="top"></i>
+                                </span>
+                                <span class="enablePublic"
+                                    *ngIf="roomInfoData.StatusId == 1 && roomInfoData.IsPublic!=1 && roomInfoData.roomExpStatus == 1"
+                                    (click)="goToPublicRoomPopup(publicRoomPopUp,roomInfoData,false)">
+                                    <i *ngIf="roomInfoData.IsPublic!=1" class="fa fa-lock" aria-hidden="true"
+                                        (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Make this Room accessible to General Public without access credentials. Note that your Patrons have no way of logging into the Room once you do this.')"
+                                        ngbTooltip="Public" placement="top"></i>
+                                </span>
+
+                                <span class="disablePublic"
+                                    *ngIf="roomInfoData.StatusId == 2 || roomInfoData.roomExpStatus == 2 || roomInfoData.roomExpStatus == null">
+                                    <i *ngIf="roomInfoData.IsPublic==1" class="fa fa-unlock-alt" aria-hidden="true"
+                                        (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Make this Room accessible exclusively for your designated/configured Patrons.')"
+                                        ngbTooltip="Private" placement="top" ngbTooltip="Add experience in the room"
+                                        placement="top"></i>
+                                    <i *ngIf="roomInfoData.IsPublic!=1" class="fa fa-lock" aria-hidden="true"
+                                        (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Make this Room accessible to General Public without access credentials. Note that your Patrons have no way of logging into the Room once you do this.')"
+                                        ngbTooltip="Public" placement="top" ngbTooltip="Add experience in the room"
+                                        placement="top"></i></span>
+                                <span (click)="openRoomSettings(roomPopUp,roomInfoData)"><i class="fa fa-cog"
+                                        aria-hidden="true" (mouseleave)="mouseLeave()"
+                                        (mouseenter)="mouseEnter('Configure this Room by setting up details like name, xAPI settings as well as Publish')"
+                                        ngbTooltip="Settings" placement="top"></i></span>
+                                <span (click)="goToRoomReport(roomInfoData)" (mouseleave)="mouseLeave()"
+                                    (mouseenter)="mouseEnter('Check out the report of the current Published Experience as well as the past activity in this room.')"
+                                    ngbTooltip="Report" placement="top"><i class="fa fa-line-chart"
+                                        aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3 text-center">
+                            <pagination-controls id="room_count_pagination" [maxSize]="5" [directionLinks]="true"
+                                (pageChange)="pageRoomCount = $event;scrollToTop();"></pagination-controls>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5" *ngIf="RoomInfoCount == 0">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3"></div>
+                            <div class="col-lg-7 col-md-7 col-sm-7">
+                                <div class="row">
+                                    <div class="col-lg-8 col-md-8 col-sm-8 padding-right-0">
+                                        <div class="first-experience-top">Your first Virtual Reality Experience is going
+                                            to be Awesome</div>
+                                        <hr>
+                                        <div class="first-experience-description">This page will show you the Rooms that
+                                            you have created
+                                            once you begin. Rooms help you manage your published Experiences. You can
+                                            hit the <span class="underline add-room-link"
+                                                (click)="addNewRoom(roomPopUp,'Room')">Add Room</span> button
+                                            and set access permissions to your Patrons. Use the Patrons button on the
+                                            left-hand menu bar to
+                                            add new Patrons to your account.</div>
+                                        <div class="first-experience-mail">Write to us at <a
+                                                href="mailto:care@experizer.com">care@experizer.com</a> If you have an
+                                            issue with your Experizer
+                                            account.</div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 padding-left-0">
+                                        <img src="assets/images/dashboard/cat_withflag.png" alt="pop-header"
+                                            class="room-no-data-img">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #openShareModal>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Share your Experizer XR Experience room</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+            (click)="closeShareModelpopup(openShareModal)">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body pt-1">
+        <div class="row">
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-2">Share your Experizer XR experience room
+                with your
+                registered Patrons. Either use the following information to send it to your patrons or simply follow the
+                wizard
+                to email the invite to your patrons for accessing this Experience.</div>
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-2">
+                <div>
+                    <div>Universal Web URL (Share it freely with all devices)</div>
+                    <div class="code-border"> <span id="embeddedId"><a [href]="embedURL" target="_blank"
+                                class="word-break">{{embedURL}}</a></span></div>
+                                <span class="copyclipboard" (click)="copy(DisplayIFrameTag,'Embed')">Copy Embed tag</span>
+                    <span class="copyclipboard" (click)="copy(embedURL,'URL')">Copy URL | </span>
+                  
+                </div>
+                
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-2">
+                <div>
+                    <div>High-Performance Web URL (For viewing on High Performance devices)</div>
+                    <div class="code-border"> <span id="embeddedId"><a [href]="embedHighDefURL" target="_blank"
+                                class="word-break">{{embedHighDefURL}}</a></span></div>
+                                <span class="copyclipboard" (click)="copy(DisplayHDIFrameTag,'Embed')">Copy Embed tag</span>
+                                <span class="copyclipboard" (click)="copy(embedHighDefURL,'URL')">Copy URL | </span>
+                </div>
+
+            </div>
+            <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-2">
+                <div>
+                    <div>Preview Web URL (or sharing on social media platforms )</div>
+                    <div class="code-border"> <span id="embeddedId"><a [href]="embedPreviewURL" target="_blank"
+                                class="word-break">{{embedPreviewURL}}</a></span></div>
+                    <div class="copyclipboard" (click)="copy(embedPreviewURL)">Copy to clipboard</div>
+                </div>
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="pt-4">
+                    <div>IFrame tag(For embedding experience in your HTML)</div>
+                    <div class="code-border"> <span id="embeddedIFrameId" class="word-break">{{DisplayIFrameTag}}</span>
+                    </div>
+                    <div class="copyclipboard" (click)="copyEmbed(DisplayIFrameTag)">Copy to clipboard</div>
+                </div>
+
+            </div> -->
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="pt-4">
+                    <div>Publish Code(Experizer 360 App)</div>
+                    <div class="code-border"> <span id="embeddedId">{{DisplayPublishCode}}</span></div>
+                    <div class="copyclipboard" (click)="copy(DisplayPublishCode,'Code')">Copy Code</div>
+                </div>
+
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div>QR Code</div>
+                <div>
+                    <ngx-qrcode qrc-element-type="url" [qrc-value]="invitedPublishCode" qrc-version="5"
+                        qrc-errorCorrectionLevel="M">
+                    </ngx-qrcode>
+                    <ngx-qrcode 
+  [elementType]="elementType" 
+  [value]="invitedPublishCode"
+  version="5"
+  cssClass="aclass"
+ 
+ >
+</ngx-qrcode>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+
+    </div>
+</ng-template>
+
+<ng-template #openExperienceTemplateModal>
+    <form (ngSubmit)="createNewExperience(experienceData)" #experienceData="ngForm">
+        <div class="modal-header">
+            <div class="modal-title pull-left  pl-3 popup-title">Create New Experience</div><br>
+            <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+                (click)="closeCreateExperiencePopup(experienceData)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body pt-1">
+            <div class="row">
+                <div class="modal-title pull-left pt-2 pl-3 dashboard-model-title">{{modalExperienceName}}</div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="pt-2">
+                        <span>
+                            <input class="form-control" type="text" placeholder=" Experience Name (required)"
+                                pattern="^[a-zA-Z0-9:_@!&? -]*$" #expname="ngModel" name="expname"
+                                [(ngModel)]="modalTemplateName" required>
+                            <div [hidden]="expname.valid || expname.untouched && createExpFlag">
+                                <div class="error-msg-align-forgot" *ngIf="expname.errors && expname.errors['required']">
+                                    <span class="alert alert-danger">
+                                        <span class="formErrArrow"> </span>Enter experience name
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="error-msg-align-forgot" *ngIf="expname?.errors?.['pattern']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Special characters are not allowed.
+                                </span>
+                            </div>
+                            <div class="error-msg-align-forgot" *ngIf="expname?.errors?.['maxlength']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Name can be max 100 characters long.
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="pt-2">
+                        <select class="form-control" name="selectExp" [(ngModel)]="selectedExperience"
+                            #selectExp="ngModel">
+                            <option *ngFor="let data of templateDataMeta | slice:0:1" value="data.id" selected>Start
+                                off with a
+                                blank experience</option>
+                            <option *ngFor="let data of templateDataMeta | slice:1" value="data.Id">
+                                <!-- {{data.ExperienceName}} -->
+                            Sample Experience Name
+                            </option>
+                        </select>
+                        <div [hidden]="selectExp.valid || selectExp.untouched && createExpFlag">
+                            <div class="error-msg-align-forgot" *ngIf="selectExp.errors && selectExp.errors?.['required']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Select experience
+                                </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="experience-template-action">
+
+                        <button type="submit" class="btn btn-color-green" id="createExp">Create</button>
+                        <button type="button" class="btn btn-color-blue"
+                            (click)="closeCreateExperiencePopup(experienceData)">Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image"></div>
+    </form>
+</ng-template>
+
+<ng-template #openCloneExperienceTemplateModal>
+    <form (ngSubmit)="cloneExperience(cloneExpData)" #cloneExpData="ngForm">
+        <div class="modal-header">
+            <div class="modal-title pull-left  pl-3 popup-title">Clone Experience</div>
+            <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body pt-1">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="pt-2">
+                        <span>
+                            <input class="form-control" type="text" placeholder="Experience Name (required)"
+                                [(ngModel)]="cloneExperienceName" name="cloneExp" #cloneExpName="ngModel"
+                                pattern="^[a-zA-Z0-9:_@!&? -]*$" required>
+                            <div [hidden]="cloneExpName.valid || cloneExpName.untouched && cloneExpFlag">
+                                <div class="error-msg-align-forgot"
+                                    *ngIf="cloneExpName.errors && cloneExpName.errors?.['required']">
+                                    <span class="alert alert-danger">
+                                        <span class="formErrArrow"> </span>Enter experience name
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="error-msg-align-forgot" *ngIf="cloneExpName?.errors?.['pattern']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Special characters are not allowed.
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="experience-template-action">
+                        <button type="submit" class="btn btn-color-green">OK</button>
+                        <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">Cancel </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+        </div>
+    </form>
+</ng-template>
+
+
+<ng-template #managePatronPopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title"> Manage Patrons for <span class="three-dots-lenght"
+                *ngIf="RoomNamePatron.length > 20" ngbTooltip={{RoomNamePatron}} placement="top">{{RoomNamePatron}}
+            </span>
+            <span class="" *ngIf="RoomNamePatron.length < 20">{{RoomNamePatron}} </span></div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <tabset class="patron-tabset">
+                    <tab heading="Existing" (selectTab)="getExistingPatrons()" #existPatronTab>
+                        <div class="row ">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                                <div class="table-wrapper-scroll-y">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th><img src="assets/images/dashboard/templatethumbneil.png"></th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody *ngIf="tableData1Length > 0">
+                                            <tr *ngFor="let tData1 of tableData1;let i = index">
+                                                <td *ngIf="tData1.ProfileImageUrl.length <= 4"><img
+                                                        src="assets/images/avatar.png" style="width:25px;"></td>
+                                                <td *ngIf="tData1.ProfileImageUrl.length > 4"><img style="width:25px;"
+                                                        id="nonFAcebook" *ngIf="tData1.userMode == 0"
+                                                        src="{{imgBaseURL + tData1.ProfileImageUrl}}">
+                                                    <img style="width:25px;" id="facebook" *ngIf="tData1.userMode == 1 "
+                                                        src="{{ tData1.ProfileImageUrl}}"></td>
+
+                                                <td>{{tData1.Name}}</td>
+                                                <td>{{tData1.Email}}</td>
+                                                <td class="">
+                                                    <span class="pr-3 icon-center-patron-existing"
+                                                        *ngIf="!tData1.added"><i
+                                                            class="fa fa-times patron-delete hand-pointer"
+                                                            ngbTooltip="Delete" placement="top"
+                                                            (click)="deleteAddPatron(i)" aria-hidden="true"></i></span>
+                                                    <span class="pr-3 icon-center-patron-existing"
+                                                        *ngIf="tData1.added"><i
+                                                            class="fa fa-check hand-pointer icon-check-color"
+                                                            ngbTooltip="Delete" (click)="deletePatron(i)"
+                                                            aria-hidden="true"></i></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+
+                                        <tbody *ngIf="tableData1Length === 0">
+                                            <tr
+                                                class="p-3 d-flex justify-content-center  table-no-found-center font-weight-bold ">
+
+                                                Looks like there are no Patrons assigned to this Experience yet. You can
+                                                start by clicking on
+                                                the Add Tab on this pop-up.
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+
+                                <button type="submit" class="btn btn-color-green manage-patron-btn-submit"
+                                    (click)="submitDeletePatron()" *ngIf="tableData1Length > 0">Submit</button>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Add" (selectTab)="getNonExistingPatrons()" class="" #addPatronTab>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+                                <p class="pt-3 add-patron-tab-header">Add Patrons to <span>" {{RoomNamePatron}} "</span>
+                                </p>
+                                <div class="table-wrapper-scroll-y">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th><img src="assets/images/dashboard/templatethumbneil.png"></th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Add</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let tData1 of tableData2; let i = index">
+                                                <td *ngIf="tData1.ProfileImageUrl.length <= 4"><img
+                                                        src="assets/images/avatar.png" style="width:25px;"></td>
+                                                <td *ngIf="tData1.ProfileImageUrl.length > 4"><img style="width:25px;"
+                                                        id="nonFAcebook" *ngIf="tData1.userMode == 0"
+                                                        src="{{imgBaseURL + tData1.ProfileImageUrl}}">
+                                                    <img style="width:25px;" id="facebook" *ngIf="tData1.userMode == 1 "
+                                                        src="{{ tData1.ProfileImageUrl}}"></td>
+                                                <td>{{tData1.Name}}</td>
+                                                <td>{{tData1.Email}}</td>
+                                                <td class="icon-center"><i
+                                                        class="fa fa-plus patron-table-icon-size patron-table-inavtive-icon hand-pointer"
+                                                        *ngIf="!tData1.added" (click)="addPatron(i)"
+                                                        aria-hidden="true"></i>
+                                                    <i class="fa fa-check hand-pointer icon-check-color"
+                                                        *ngIf="tData1.added" (click)="removePatron(i)"
+                                                        aria-hidden="true"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <tbody *ngIf="tableData2Length === 0">
+                                            <tr
+                                                class="p-3 d-flex justify-content-center  table-no-found-center font-weight-bold ">
+
+                                                Add a new Patron first by going to the Patron's tab on the Home page.
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+                                <button type="submit" class="btn btn-color-green manage-patron-btn-submit"
+                                    (click)="submitAddPatron()" *ngIf="tableData2Length > 0">Submit</button>
+
+                            </div>
+                        </div>
+                    </tab>
+                </tabset>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<ng-template #publishExperiencePopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Publish</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                Do you want to publish this experience?
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-color-green" (click)="publishExperience()"
+                        id="publishExp">Yes</button>
+                    <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<ng-template #invitationPopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Send Invitation</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-2 pb-5">
+                <div id="share-instructions" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#share-instructions" data-slide-to="0" class="active"></li>
+                        <li data-target="#share-instructions" data-slide-to="1"></li>
+                        <li data-target="#share-instructions" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item step1 active">
+                            <!-- <div>Step 1:</div> -->
+                            <div class="pt-4">Select the room patrons you wish to invite.</div>
+
+                            <div class="row patron-list">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                    <div class="form-group formgroup-border-bottom scroll-class">
+                                        <div *ngIf="sendMailInvite?.length !== 0">
+
+                                            <span *ngFor="let sendMailInviteCheck of sendMailInvite" class="checkbox ">
+                                                <div class="p-2 checkbox-border">
+                                                    <input type="checkbox" #sendMailInviteCheck.Id
+                                                        id="{{sendMailInviteCheck.PatronId}}"
+                                                        value="{{sendMailInviteCheck.Name}}"
+                                                        name="{{sendMailInviteCheck.Name}}" class="checkbox-level"
+                                                        [(ngModel)]="sendMailInviteCheck.selected"
+                                                        (change)="updateSelectedElementMailInvites($event)" />
+                                                    {{sendMailInviteCheck.Name}}
+                                                </div>
+
+                                            </span>
+                                        </div>
+                                        <div *ngIf="sendMailInvite?.length === 0">
+                                            <hr>
+                                            <div class="pb-3 d-flex justify-content-center font-weight-bold ">Looks like
+                                                there are no Patrons
+                                                assigned to this Room yet</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- uncomment when slider needs to unable -->
+                        <!-- <div class="carousel-item step2">
+              <div>Step 2:</div>
+              <div class="pt-4">Select the method of access you want them use. </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" (change)="isWeb = !isWeb" class="form-check-input" value="">Web
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" (change)="isAndroid = !isAndroid" class="form-check-input" value="">Android
+                  Device
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" (change)="isIPhone = !isIPhone" class="form-check-input" value="">IPhone Device
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" (change)="isCardboard = !isCardboard" class="form-check-input" value="">Google
+                  Cardboard
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" (change)="isDayDream = !isDayDream" class="form-check-input" value="">Google
+                  DayDream
+                </label>
+              </div>
+            </div>
+            <div class="carousel-item step3">
+              <div>Step 3:</div>
+              <div class="pt-4">Email Body is created</div>
+
+              <div *ngIf="isWeb">Web Instruction</div>
+              <div *ngIf="isAndroid">Android Device Instruction</div>
+              <div *ngIf="isCardboard">IPhone Device Instruction</div>
+              <div *ngIf="isIPhone">Google Cardboard Instruction</div>
+              <div *ngIf="isDayDream">Google DayDream Instruction</div>
+            </div> -->
+                    </div>
+
+                </div>
+                <!-- uncomment when slider needs to unable -->
+
+                <!-- <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4 slider-btn">
+            <a class="btn slider-btns prev hidden" href="#share-instructions" data-slide="prev" (click)="sildePrev()">
+              ❮
+            </a>
+            <a class="btn slider-btns next hidden" href="#share-instructions" data-slide="next" (click)="sildeNext()">
+              ❯
+            </a>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4 send-invite-popup-buttons">
+            <button *ngIf="sendMailInvite?.length !== 0" class="btn  btn-color-blue float-right "
+              (click)="modalRef.hide()">Cancel</button>
+            <button id="SendInviteID" #SendInviteID
+              class="btn btn-color-green float-right mr-2 hidden send-button-invitation-popup"
+              (click)="SendMailInviteToPatrons()">Send</button>
+          </div>
+        </div> -->
+
+                <!-- comment when slider needs to unable -->
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-4 send-invite-popup-buttons">
+                        <button class="btn  btn-color-blue float-right " (click)="modalRef.hide()">Cancel</button>
+                        <button class="btn btn-color-green float-right mr-2 send-button-invitation-popup"
+                            (click)="SendMailInviteToPatrons()">Send</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<ng-template #publicRoomPopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Confirmation</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12" *ngIf="isPublic == 0">
+                Do you want to make this room public? Please note that once the room is made public it will loose patron
+                setting.
+            </div>
+            <div class="col-12" *ngIf="isPublic == 1">
+                Do you want to make this room private?
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-color-green" (click)=makeRoomPublic()>Yes</button>
+                    <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<ng-template #roomPopUp>
+    <form (ngSubmit)="saveRoomInfo(roomPopUp,roomData)" #roomData="ngForm">
+        <div class="modal-header">
+            <div class="modal-title pull-left  pl-3 popup-title" *ngIf="isEdit == true">Edit Room Settings</div>
+            <div class="modal-title pull-left  pl-3 popup-title" *ngIf="isAdd == true">Add New Room</div>
+            <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+                (click)="closeAddRoomPopup(roomPopUp, roomData)">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="RoomName" placeholder="Room Name (required)"
+                            [(ngModel)]="roomName" name="roomname" #roomname="ngModel" maxlength="100" pattern="^[a-zA-Z0-9:_@!&? -]*$" required>
+                        <div [hidden]="roomname.valid || roomname.untouched && roomNameFlag">
+                            <div class="error-msg-align-forgot" *ngIf="roomname.errors && roomname.errors?.['required']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Enter room name
+                                </span>
+                            </div>
+                            <div class="error-msg-align-forgot" *ngIf="roomname.errors && roomname.errors?.['maxlength']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Name can be max 100 characters long.
+                                </span>
+                            </div>
+                            <div class="error-msg-align-forgot" *ngIf="roomname.errors && roomname.errors?.['pattern']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Special characters are not allowed.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <input type="text" class="form-control" id="NumberofViews" placeholder="Views Limit (The max number of Views this room can have)" [(ngModel)]="numberOfViews" name="NumberofViews" #NumberofViews="ngModel" number required>
+                        <span *ngIf="NumberofViews?.errors?.number" class="alert alert-danger">
+                            <span class="formErrArrow"> </span>Enter Number</span>
+                        <div [hidden]="NumberofViews.valid || NumberofViews.untouched && roomNameFlag">
+                            <div class="error-msg-align-forgot" *ngIf="NumberofViews.errors && NumberofViews.errors.required">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Enter view count
+                                </span>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group">
+                        <select class="form-control downArrow" id="RoomValidity" name="roomvalidity"
+                            [(ngModel)]="selectedRoomValidity" (change)="onChange($event)">
+                            <option value="1">Keep room open forever</option>
+                            <option value="2">Keep room open for a specific period</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group" *ngIf="isDatePickerVisible">
+                        <!--input type="text" id="roomValidityRange" class="form-control" name="daterangeInput" daterangepicker [options]="options" [value] = "dateRangePickerVal" (selected)="selectedDate($event, daterange)" /-->
+
+                        <input placeholder="Select date range" type="text" class="form-control" bsDaterangepicker
+                            #dpr="ngModel" [(ngModel)]="roomRangeValue" name="dpr" [minDate]="minDate" placement="top"
+                            required style="background-color: white !important;" readonly>
+
+                        <!-- <div [hidden]="dpr.invalid || dpr.untouched && (showDateFlag)"> -->
+
+                        <div [hidden]="(dpr.invalid || dpr.untouched) && showDateFlag">
+                            <div class="error-msg-align-forgot" *ngIf="dpr.errors?.['required']">
+                                <span class="alert alert-danger">
+                                    <span class="formErrArrow"> </span>Select date range
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="checkbox ">
+                            <!-- checked="{{isPublicchkboxValue}}" -->
+                            <div class=" ">
+                                <input type="checkbox" #publicChkBoxValue id="publicChkBoxValue" class="checkbox-level"
+                                    [(ngModel)]="isPrivatechkboxValue" value="publicChkBoxValue"
+                                    name="publicChkBoxValue" (click)="chkIsPublic($event)" /> Make Private
+                            </div>
+
+                        </span>
+
+                    </div>
+
+                    <ng-container>
+                        <div class="form-group">
+                            <span class="checkbox ">
+                                <div class="">
+                                    <!-- checked="{{enablexAPI}}" -->
+                                    <input type="checkbox" #XapiInfoCheck="ngModel" id="XapiInfoCheck"
+                                        [(ngModel)]="enablexAPI" value="XapiInfoCheck" name="XapiInfoCheck"
+                                        class="checkbox-level" (change)="xapiListShow($event)" />
+                                    Track using Experience API (xAPI)
+                                </div>
+                            </span>
+                        </div>
+                        <div class="form-group" *ngIf="xapiDropDownListFlag == true">
+                            <select class="form-control" id="xapiProfileList" name="xapiProfileList"
+                                [(ngModel)]="lrsProfileId" #xapiProfileList="ngModel"
+                                (change)="onChangeXapiProfile($event)" required>
+
+                                <!-- <option *ngFor="let item of xapiProfileData" value="{{item.Id}}">
+                                    {{item.ProfileName}} </option> -->
+                                <ng-container *ngIf="(lrsProfileId == 0) || (lrsProfileId == null)">
+                                    <option value="undefined" disabled selected>Select xAPI Profile</option>
+                                </ng-container>
+                                <ng-container *ngIf="lrsProfileId > 0">
+                                    <option value="undefined" disabled>Select xAPI Profile</option>
+                                </ng-container>
+                                <option value="0">Create New xAPI Profile</option>
+                                <option *ngFor="let item of xapiProfileData" [value]="item.Id"
+                                    [selected]="item.Id == lrsProfileId">
+                                    {{item.ProfileName}} </option>
+                            </select>
+                            <div [hidden]="xapiProfileList.valid || xapiProfileList.untouched && roomNameFlag">
+                                <div class="error-msg-align-forgot"
+                                    *ngIf="xapiProfileList.errors && xapiProfileList.errors?.['required']">
+                                    <span class="alert alert-danger">
+                                        <span class="formErrArrow"> </span>Select profile
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="xapiSingleProfileFlag == true">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="ProfileName" placeholder="Profile Name"
+                                    [(ngModel)]="XapiSingleProfileData.ProfileName" name="ProfileName"
+                                    #ProfileName="ngModel" required>
+                                <div [hidden]="ProfileName.valid || ProfileName.untouched && roomNameFlag">
+                                    <div class="error-msg-align-forgot"
+                                        *ngIf="ProfileName.errors && ProfileName.errors?.['required']">
+                                        <span class="alert alert-danger">
+                                            <span class="formErrArrow"> </span>Enter profile name
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="EndPointUrl" placeholder="xAPI End Point"
+                                    [(ngModel)]="XapiSingleProfileData.EndPointUrl" name="EndPointUrl"
+                                    #EndPointUrl="ngModel" required>
+                                <div [hidden]="EndPointUrl.valid || EndPointUrl.untouched && roomNameFlag">
+                                    <div class="error-msg-align-forgot"
+                                        *ngIf="EndPointUrl.errors && EndPointUrl.errors?.['required']">
+                                        <span class="alert alert-danger">
+                                            <span class="formErrArrow"> </span>Enter xAPI end point
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="AuthUserKey" placeholder="Auth User"
+                                    [(ngModel)]="XapiSingleProfileData.AuthUserKey" name="AuthUserKey"
+                                    #AuthUserKey="ngModel" required>
+                                <div [hidden]="AuthUserKey.valid || AuthUserKey.untouched && roomNameFlag">
+                                    <div class="error-msg-align-forgot"
+                                        *ngIf="AuthUserKey.errors && AuthUserKey.errors?.['required']">
+                                        <span class="alert alert-danger">
+                                            <span class="formErrArrow"> </span>Enter Auth User
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="AuthSecretKey" placeholder="Auth Password"
+                                    [(ngModel)]="XapiSingleProfileData.AuthSecretKey" name="AuthSecretKey"
+                                    #AuthSecretKey="ngModel" required>
+                                <div [hidden]="AuthSecretKey.valid || AuthSecretKey.untouched && roomNameFlag">
+                                    <div class="error-msg-align-forgot"
+                                        *ngIf="AuthSecretKey.errors && AuthSecretKey.errors?.['required']">
+                                        <span class="alert alert-danger">
+                                            <span class="formErrArrow"> </span>Enter auth password
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="experience-template-action">
+                        <button type="submit" class="btn btn-color-green" [disabled]="roomname.invalid ">Save</button>
+                        <button type="button" class="btn btn-color-blue"
+                            (click)="closeAddRoomPopup(roomPopUp, roomData)">Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+        </div>
+    </form>
+</ng-template>
+
+<ng-template #addRoomMappingPopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Assign Rooms</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close"
+            (click)="modalReference.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <button class="btn btn-color-orange float-right" title="Add New Room"
+                    (click)="addNewRoom(roomPopUp,'Publish')">Add New Room</button>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="form-group formgroup-border-bottom ">
+                    <div *ngIf="RoomInfo?.length !== 0">
+                        <label for="RoomName">Select Room</label>
+                        <div class="p-2 checkbox-border">
+                            <input type="checkbox" value="selectedRoomsAll" name="selectedRoomsAll"
+                                class="checkbox-level" (change)="updateSelectedAllRooms($event)"
+                                [(ngModel)]="selectedRoomsAll" /> Select All
+                        </div>
+                        <div class="modal-inner-scroll">
+                            <span *ngFor="let RoomInfoCheck of RoomInfo | orderBy: 'UpdatedOn' : true"
+                                class="checkbox ">
+                                <div class="p-2 checkbox-border">
+                                    <input type="checkbox" #RoomInfoCheck.Id id="{{RoomInfoCheck.Id}}"
+                                        value="{{RoomInfoCheck.RoomName}}" name="{{RoomInfoCheck.RoomName}}"
+                                        class="checkbox-level" [(ngModel)]="RoomInfoCheck.selected"
+                                        (change)="updateSelectedElementRoom($event)" />
+                                    {{RoomInfoCheck.RoomName}}
+                                </div>
+
+                            </span>
+                        </div>
+                    </div>
+                    <div *ngIf="RoomInfo?.length === 0">
+                        <hr>
+                        <div class="pb-3 d-flex justify-content-center font-weight-bold ">Looks like you have not
+                            created any rooms
+                            yet. Rooms help you take your Published Experiences to your Patrons. Create one using the
+                            above given
+                            option.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-template-action">
+                    <button class="btn btn-color-green"
+                        (click)="addRoomExperienceMapping(addRoomMappingPopUp, ExpId);">OK</button>
+                    <button class="btn btn-color-blue" (click)="modalReference.hide()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<ng-template #deletePublishedExperiencePopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Delete Published Experience</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                Are you sure you want to delete the '{{deleteExpName}}' published experience?
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-color-green" (click)="deletePublishedExperience()">Yes</button>
+                    <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+
+<ng-template #deleteMyExperiencePopUp>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Delete Experience File</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                Are you sure you want to delete the '{{deleteExpName}}' experience?
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-color-green" (click)="deleteMyExperience()">Yes</button>
+                    <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<ng-template #downloadReport>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Download Report</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-12">
+                <input type="radio" name="report" value="PDF" [checked]="true" (change)="handleChange('PDF')"> PDF<br>
+                <input type="radio" name="report" value="CSV" (change)="handleChange('CSV')"> CSV<br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <hr>
+                <div class="experience-template-action">
+                    <button type="button" class="btn btn-success"
+                        (click)="getRoomNameOnRoomIDReportDownload()">OK</button>
+                    <button type="button" class="btn btn-primary" (click)="modalRef.hide()">Cancel </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+
+</ng-template>
+
+<ng-template #changeExperienceNameModel>
+    <div class="modal-header">
+        <div class="modal-title pull-left  pl-3 popup-title">Edit Experience Name</div>
+        <button type="button" class="close pull-right mt-1 pl-0 mr-0" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="changeNameForm" (ngSubmit)="onSaveNameSubmit()">
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="form-group">
+                        <label>Experience Name</label>
+                        <input type="text" formControlName="ExperienceName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && change['ExperienceName'].errors }" required />
+                        <div *ngIf="submitted && change['ExperienceName'].errors" class="invalid-feedback">
+                            <div *ngIf="change['ExperienceName'].errors?.['required']">Experience Name is required</div>
+                            <div *ngIf="change['ExperienceName'].errors?.['pattern']">No special characters allowed.</div>
+                            <div *ngIf="change['ExperienceName'].errors?.['maxlength']">Name can be max 100 characters long.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="experience-template-action">
+                        <!-- <button type="button" class="btn btn-color-green" (click) = "EditExperienceName()">Yes</button> -->
+                        <button type="submit" class="btn btn-color-green" ng-disabled="changeNameForm.$invalid">Save</button>
+                        <button type="button" class="btn btn-color-blue" (click)="modalRef.hide()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+    </div>
+</ng-template>
+
+<!-- <ng4-loading-spinner></ng4-loading-spinner> -->
+<!-- <toaster-container [toasterconfig]="config1"></toaster-container> -->
+<ngx-spinner type="ball-scale-multiple"  [timeout]="1000000"></ngx-spinner>
+<canvas #canvas style="display: none;"></canvas>

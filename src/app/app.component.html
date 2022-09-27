@@ -1,0 +1,405 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/-->
+<div id="mainBody">
+  <nav id="sidebar" (click)="navClick()" *ngIf="nav.visible">
+      <div class="sidebar-header d-flex align-items-center">
+          <div class="avatar" (click)="openPopover($event)" *ngIf="ProfileImageUrl == null">
+              <img src="assets/images/avatar.png" alt="..." class="img-fluid rounded-circle">
+          </div>
+          <div *ngIf="ProfileImageUrl != null" class="avatar" (click)="openPopover($event)" [ngStyle]="{'background-image': 'url('+ProfileImageUrl+')'}">
+          </div>
+          <div class="title" id="userInfoDiv">
+              <h1 class="h5" id="userName">{{UserName}}</h1>
+              <p *ngIf="PlanName != 'undefined' && PlanName != null" id="planName">{{PlanName}}</p>
+          </div>
+          <ng-template #popTemplate>
+              <div (click)="doNotClick($event)" class="personalInfoPopover">
+                  <div class="row">
+                      <div class="col-lg-4 pr-0">
+                          <ng-container *ngIf="loginModeFlag == true">
+                              <!-- <ng-container> -->
+                              <div class="avatar customise-avatar" *ngIf="ProfileImageUrl == null" placement="bottom">
+                                  <img src="assets/images/avatar.png" alt="..." class="img-fluid rounded-circle ">
+                                  <input type="file" accept="image/*" (change)="uploadNewFile(uploadProfilePicture.files)" id="imgupload" style="display:none" #uploadProfilePicture />
+                              </div>
+                              <div class="avatar customise-avatar" placement="bottom" *ngIf="ProfileImageUrl != null">
+                                  <img src="{{ProfileImageUrl}}" alt="..." class="img-fluid rounded-circle ">
+                                  <input type="file" accept="image/*" (change)="uploadNewFile(uploadProfilePicture.files)" id="imgupload" style="display:none" #uploadProfilePicture />
+                              </div>
+                          </ng-container>
+                          <!-- <ng-container *ngIf="loginModeFlag == false"> -->
+                            <ng-container>
+                              <div class="avatar customise-avatar" (click)="uploadProfilePic()" *ngIf="ProfileImageUrl == null" ngbTooltip="Click here to upload new profile picture" placement="bottom">
+                                  <img src="assets/images/avatar.png" alt="..." class="img-fluid rounded-circle ">
+                                  <input type="file" accept="image/*" (change)="uploadNewFile(uploadProfilePicture.files)" id="imgupload" style="display:none" #uploadProfilePicture />
+                              </div>
+                              <div class="avatar customise-avatar" ngbTooltip="Click here to upload new profile picture" placement="bottom" (click)="uploadProfilePic()" *ngIf="ProfileImageUrl != null" [ngStyle]="{'background-image': 'url('+ProfileImageUrl+')'}">
+                                  <input type="file" accept="image/*" (change)="uploadNewFile(uploadProfilePicture.files)" id="imgupload" style="display:none" #uploadProfilePicture />
+                              </div>
+                          </ng-container>
+                      </div>
+                      <div class="col-lg-8 pl-0">
+
+
+                          <label for="label-1-1" class="title usernameLabel" ngbTooltip="Double click here to edit username" placement="bottom" (click)="labelChange()" style="font-family: 'Open-Sans-Regular' !important;"><b>{{UserName}}</b></label>
+                          <div id="inputs" style="display:none;">
+                              <input id="attribute" class="form-control" type="text" style="padding:5px;display:inline-block;width:75%;" value="" /><button (click)="updateUserName()" class="btn btn-color-green" style="display:inline-block;width:25%;font-size: 12px;padding: 4px;position: relative;top: -2px;left: 4px;">Save</button>
+                          </div>
+                          <div *ngIf="PlanName != 'undefined' && PlanName != null"><i>{{PlanName}}</i> <span style="margin-left:10px;cursor:pointer;text-decoration: underline;color:blue;" (click)="upgradePlan()">Upgrade</span></div>
+                          <div class="userEmail">{{Email}}</div>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <ng-container *ngIf="loginModeFlag == false">
+                           
+                              <a style="margin-bottom:10px;float:right;cursor:pointer;text-decoration: underline;color:blue;" (click)="slideDownChangePwd(Password)">Change password</a>
+                          </ng-container>
+                          <div id="changePwdBlock" style="display:none;" class="mt-5">
+                              <form (ngSubmit)="changePassword(Password)" #Password="ngForm">
+                                  <div class="form-group ">
+                                      <div class="row ">
+                                          <div class="col-12">
+                                              <input type="password" class="form-control" id="currentPwd" placeholder="Current Password" name="cpwd" [(ngModel)]="Passwords.CurrentPassword" #cpwd="ngModel" required>
+                                              <div [hidden]="cpwd.valid || cpwd.untouched && passwordSubmitForm">
+                                                  <div class="error-msg-align-forgot" *ngIf="cpwd.errors && cpwd.errors['required']">
+                                                      <span class="alert alert-danger">
+                                                          <span class="formErrArrow"> </span>Enter current password
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group ">
+                                      <div class="row ">
+                                          <div class="col-12">
+                                              <input type="password" class="form-control" id="newPwd" placeholder="New Password" name="newpwd" [(ngModel)]="Passwords.NewPassword" #newpwd="ngModel" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required>
+                                              <div [hidden]="newpwd.valid || newpwd.untouched && passwordSubmitForm">
+                                                  <div class="error-msg-align-forgot" *ngIf="newpwd.errors && newpwd.errors['required']">
+                                                      <span class="alert alert-danger">
+                                                          <span class="formErrArrow"> </span>Enter new password
+                                                      </span>
+                                                  </div>
+                                                  <div class="error-msg-align-forgot" *ngIf="newpwd?.errors?.['pattern']">
+                                                      <span class="alert alert-danger">
+                                                          <span class="formErrArrow"> </span>UpperCase, LowerCase, Number/SpecialChar and min 8 Chars
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="form-group ">
+                                      <div class="row ">
+                                          <div class="col-12">
+                                              <input type="password" class="form-control" id="confirmPwd" placeholder="Confirm Password" name="cfpwd" [(ngModel)]="Passwords.ConfirmPassword" #cfpwd="ngModel" required>
+                                              <div [hidden]="cfpwd.valid || cfpwd.untouched && passwordSubmitForm">
+                                                  <div class="error-msg-align-forgot" *ngIf="cfpwd.errors && cfpwd.errors">
+                                                      <span class="alert alert-danger">
+                                                          <span class="formErrArrow"> </span>Enter confirm password
+                                                      </span>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="change-password-div">
+                                      <button type="submit" class="btn save-button">Save</button>
+                                      <button type="button" class="btn cancel-button" (click)="slideDownChangePwd(Password)">Cancel</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <label class="call-me-label" (click)="personalQuery()"><i class="fa fa-phone" aria-hidden="true"></i><b>Call Me</b></label>
+                      </div>
+                  </div>
+
+                  <div class="row personal-info-detail slideup" style="display:none;">
+                      <div class="col-lg-12">
+                          <div>Request a callback</div>
+                          <div>
+                              One of our representatives will get in touch with you within the next 48 working hours depending on their availability, please let us know the exact reason for this communication.
+                          </div>
+                          <!--<div class="query-radio-btns">
+                          <div class="radio" *ngFor = "let requestTypeInfo of RequestTypeInfo; let i = index">
+                              <label>
+                                  <input type="radio" [(ngModel)]="requestTypeModal" [value] = "requestTypeInfo.Id" name="query" (change)="handleChange($event)">{{requestTypeInfo.CallRequestType}}
+                              </label>
+                          </div>
+                          <div class="error-msg-align-forgot" *ngIf="!isReasonSelected">
+                              <span class="alert alert-danger">
+                                  Select reason for communication
+                              </span>
+                          </div>
+                      </div>-->
+
+                          <div>
+                              <select placeholder="Select Request Type" id="requestTypeDropdown" class="form-control downArrow" name="selectRequestType" [(ngModel)]="requestTypeModal" #selectRequestType="ngModel" (change)="requestTypeChange()">
+                                  <option value="0" disabled hidden>Select Request Type</option>
+                                  <option *ngFor="let requestTypeInfo of RequestTypeInfo; let i = index" [value]="requestTypeInfo.Id">{{requestTypeInfo.CallRequestType}}</option>
+                              </select>
+                              <div class="error-msg-align-forgot" *ngIf="!isReasonSelected">
+                                  <span class="alert alert-danger">
+                                      <span class="formErrArrow"> </span>Select reason for communication
+                                  </span>
+                              </div>
+                          </div>
+
+
+                          <div>
+
+                              <!--<ng2-timezone-picker
+                              [(ngModel)] = "timezone"
+                              (change)="changeTimezone($event)"
+                              placeholder="Select timezone"
+                              showOffset="true"
+                              guess="true">
+                          </ng2-timezone-picker>-->
+                              <select id="timezoneDropdown" class="form-control downArrow" name="selectZone" [(ngModel)]="selectedTimezone" #selectZone="ngModel" (change)="timezoneChange()">
+                                  <option value="0" disabled hidden>Select Timezone</option>
+                                  <option *ngFor="let timezone of AllTimezones" [value]="timezone.Value">{{timezone.Name}}</option>
+                              </select>
+                              <div class="error-msg-align-forgot" *ngIf="!isTimezoneSelected">
+                                  <span class="alert alert-danger">
+                                      <span class="formErrArrow"> </span>Select timezone for communication
+                                  </span>
+                              </div>
+                          </div>
+                          <div style="margin-bottom:10px;">
+
+                              <input id="contactNumberInput" class="form-control" type="text" [(ngModel)]="requestContactNumberModal" (keydown)="handleChange()" placeholder="Enter Contact Number" minlength="10" maxlength="10" #contactNumberInput="ngModel" number>
+                              <span *ngIf="contactNumberInput?.errors?.['number'] && isContactNumberFilled" class="alert alert-danger">
+                                  <span class="formErrArrow"> </span>Enter Number</span>
+                              <div class="error-msg-align-forgot" *ngIf="!isContactNumberFilled">
+                                  <span class="alert alert-danger">
+                                      <span class="formErrArrow"> </span>Enter contact number in correct format
+                                  </span>
+                              </div>
+                          </div>
+                          <div>
+                              <button class="btn btn-blue mr-2" (click)="setCallback()">Set Callback</button>
+                          </div>
+                      </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="cursor-pointer sign-out" (click)="signOut();">Sign out</div>
+                      </div>
+                  </div>
+              </div>
+          </ng-template>
+          <div class="userProfile"  [ngbPopover]="popTemplate" placement="right-top" (click)="userInfoPopover($event)" [autoClose]="'outside'"  outsideClick="true" (onShown)="onShown()" (onHidden)="onHidden()"><i class="fa fa-caret-down"></i></div>
+      </div>
+      <div class="align-text-center sidebarSection">
+          <a class="button createExpBtn" (click)="createExperience($event)">Create Experience</a>
+      </div>
+      <div  id="scrollable-left-menu"><!--class="div-height-left-menu"-->
+          <ul class="list-unstyled nav-ul dynamicHeight">
+              <li class="active1 active liMenuActive" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('The Studio page is the main page of Experizer. From here,
+                  you can navigate to all possible features and functions of the XR tool.')" (click)="liMenuClick(1,$event,'studio')">
+                  <a data-toggle="collapse" aria-expanded="false" class="">
+                      <i class="fa fa-home" style="color:#6ca0b6;" ngbTooltip="Studio" placement="right"></i><span>Studio</span></a><i class="fa fa-caret-down category-dropdown-caret" (click)="openCategoryShrinkedNavbar($event)"></i>
+                  <!--  -->
+
+                  <div class="category-dropdown-hide" id="shrinked-category-dropdown" style="position: absolute;top: -15%;left: 101%;background-color: rgb(45, 48, 53);width: max-content;">
+                      <ul class="list-unstyled nav-ul dynamicHeight" style="margin-top: 10px;">
+                          <li class="subMenuActive{{i}}" *ngFor="let category of experienceTemplate.allCategoryMeta ; let i = index" (click)="categoryMenuClick($event,category,i)" ngbTooltip="{{category.Name}}">
+                              <a>
+                                      <!-- <img src="assets/images/dashboard/exp2.png"  placement="right"> <span>{{category.Name}}</span></a> -->
+                                      <img src="{{category.ImagePath}}"  placement="right"> <span>{{category.Name}}</span></a>
+                          </li>
+
+
+                      </ul>
+                  </div>
+                  <!-- *ngFor = "let category of allCategoryMeta | async; let i = index" -->
+                  <ul class="collapse list-unstyled " id="studioSubmenu">
+                      <li class="subMenuActive{{i}}" *ngFor="let category of experienceTemplate.allCategoryMeta ; let i = index" (click)="categoryMenuClick($event,category,i)" ngbTooltip="{{category.Name}}">
+                          <a>
+                                  <!-- <img src="assets/images/dashboard/exp2.png"  placement="right">  -->
+                                  <img src="{{category.ImagePath}}"  placement="right"> 
+                              <span>{{category.Name}}</span></a>
+                      </li>
+                  </ul>
+
+                  <!--  -->
+
+              </li>
+
+              <li class="active2" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('Once you create a XR Experience, the project gets saved under the \'My Experiences\' page. In this page, you can manage all your \'XR Experience\' projects and edit them, too. Everything you need before publishing, right in one place.')" (click)="liMenuClick(2,$event,'myexperience')"><a> <img src="assets/images/dashboard/exp2.png" ngbTooltip="My Experiences" placement="right"> <span>My Experiences </span></a></li>
+              <li class="active3" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('When you want to make a XR Experience available to Patrons, you must publish it. The Published Experiences page lets you manage these live projects. On this page you can also view the analytics of published XR projects.')" (click)="liMenuClick(3,$event,'publishexperience')"><a> <img ngbTooltip="Published Experiences" src="assets/images/dashboard/reelicon.png" placement="right"><span>Published Experiences </span></a></li>
+              <li class="active4" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('A Room is similar to a dedicated link. Patrons can access a Room to view your XR Experiences published through Experizer. The Rooms page shows you other Rooms that you have created, provides analytics insight, and lets you manage Patron access.')" (click)="liMenuClick(4,$event,'rooms')"><a> <img ngbTooltip="Rooms" src="assets/images/dashboard/vrbox.png" placement="right"><span>Rooms </span></a></li>
+              <li class="active5" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('Patrons are those that can access and view your Published Experiences. From this page you can manage all Patrons.')" (click)="liMenuClick(5,$event,'patrons')"><a> <i ngbTooltip="Patrons" class="fa fa-users" style="color:#e9785b;" placement="right"></i><span>Patrons </span></a></li>
+              <li class="active6" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('Assets are the media files that are uploaded to your Experiences. The Asset Library page shows you all the files that you have already uploaded onto Experizer. You can access these at any time for use in other XR projects.')" (click)="liMenuClick(6,$event,'uploads')"><a> <img src="assets/images/dashboard/booksicon.png" ngbTooltip="Assets Library" placement="right"><span>Assets Library </span></a></li>
+              <li class="active7" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('All your 3D Files can be systematically managed using this option. You can upload new 3D Asset or search and preview an existing one using this option.')" (click)="liMenuClick(7,$event,'3duploads')"><a> <img src="assets/images/dashboard/3dlibrary.png" ngbTooltip="3D Assets Library" placement="right"><span>3D Assets Library </span></a></li>
+              <li class="active8" (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('View and manage your current subscription plan and additional Add-on\'s through this page.')" (click)="liMenuClick(8,$event,'subscription')"><a> <i ngbTooltip="Usage & Subscription" class="fa fa-credit-card" style="color:#99ff99;" placement="right"></i><span>Usage & Subscription </span></a></li>
+              <li (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter('Need Help')" (click)="redirectToNeedHelp($event);"><a routerLink="/needhelp" routerLinkActive="active" target="_new"> <i ngbTooltip="Need help" class="fa fa-question-circle" style="color:forestgreen;" placement="right"></i><span>Need Help?</span></a></li>
+          </ul>
+      </div>
+
+      <!-- <div class="category-dropdown-hide" id="shrinked-category-dropdown" style="position: absolute;top: 16%;left: 93%;background-color: rgb(45, 48, 53);width: max-content;">
+          <ul class="list-unstyled nav-ul dynamicHeight" style="margin-top: 10px;">
+              <li>
+                  <a><img src="assets/images/dashboard/exp2.png" ngbTooltip="My Experiences" placement="right"> <span>Category 1</span></a>
+              </li>
+              <li>
+                  <a><img src="assets/images/dashboard/exp2.png" ngbTooltip="My Experiences" placement="right"> <span>Category 2</span></a>
+              </li>
+              <li>
+                  <a><img src="assets/images/dashboard/exp2.png" ngbTooltip="My Experiences" placement="right"> <span>Category 3</span></a>
+              </li>
+              <li>
+                  <a><img src="assets/images/dashboard/exp2.png" ngbTooltip="My Experiences" placement="right"> <span>Category 4</span></a>
+              </li>
+              <li>
+                  <a><img src="assets/images/dashboard/exp2.png" ngbTooltip="My Experiences" placement="right"> <span>Category 5</span></a>
+              </li>
+              <li>
+                  <a><img src="assets/images/dashboard/exp2.png" ngbTooltip="My Experiences" placement="right"> <span>Category 6</span></a>
+              </li>
+
+          </ul>
+      </div> -->
+
+      <!--  -->
+      <!-- <div class="tabPointer arrow tabPointerVertical" style="transform:translateY(193px);"></div> -->
+
+      <div class="experizer-logo">
+          <img src="assets/images/experizerlogo_white.png" />
+      </div>
+  </nav>
+  <div class="page-content unshrinked-body">
+      <router-outlet (activate)="isLoggedIn();">
+
+      </router-outlet>
+      <div id="helpContainer" style="display:none;" class="drag-block" cdkDrag cdkDragRootElement=".cdk-overlay-pane" 
+      cdkDragBoundary=".cdk-overlay-container" [cdkDragFreeDragPosition]="dragPosition" >
+          <div class="box-header">Guide me! <span (click)="slideDownHelpBox()"><i class="fa fa-times" aria-hidden="true"></i></span></div>
+          <div class="box-body">
+              <div class="row margin-LR-0" style="min-height:148px;max-height:148px;" *ngIf="serviceApi.helpFlag">
+                  <div class="col-lg-12" style="margin-top:auto; margin-bottom:auto;">
+                      {{serviceApi.helpText}}
+                  </div>
+              </div>
+              <div class="row margin-LR-0" style="min-height:148px;max-height:148px;" *ngIf="!serviceApi.helpFlag">
+                  <div class="col-lg-7" style="margin-top:auto; margin-bottom:auto;">
+                      {{serviceApi.helpText}}
+                  </div>
+                  <div class="col-lg-5" style="margin-top:auto; margin-bottom:auto;">
+                      <img style="width:95px;position:relative;top:-5px;left:-10px;" src="assets/images/catques.png" />
+                  </div>
+              </div>
+
+          </div>
+      </div>
+      <!--(click) = "needHelp(); <a>Help?</a>"-->
+      <div *ngIf="needHelpFlag == false;" id="needHelpRedirection">
+          <!--<a routerLink="/needhelp" routerLinkActive="active" target="_blank">Need Help?</a>-->
+          <a (click)="needHelp()">Guide me!</a>
+      </div>
+  </div>
+</div>
+
+<toaster-container [toasterconfig]="config1" style="cursor: none !important"></toaster-container>
+
+
+
+<!-- The Modal -->
+<div id="confirmationSaveModalDiv">
+  <div class="modal" id="confirmationSaveModal">
+      <div class="modal-dialog">
+          <div class="modal-content" style="border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                  <h4 class="modal-title">Confirmation</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                  You did not save your changes to experience. Do you want to save them now?
+              </div>
+
+              <div style="text-align:right;margin-right: 20px;">
+                  <button type="button" class="btn save-button" data-dismiss="modal" style="margin-right: 10px;" (click)="confirmationSubmit('save')">Yes</button>
+                  <button type="button" class="btn cancel-button" data-dismiss="modal" (click)="confirmationSubmit('cancel')">No</button>
+              </div>
+
+              <!-- Modal footer -->
+              <div class="mt-4">
+
+                  <div class="modal-footer">
+                      <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal" id="smallDevice" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+      <div class="modal-content" style="border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+              <h4 class="modal-title">Device not supported</h4>
+              <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              Experizer output is compatible across all platforms however the authoring environment is accessible only via Desktops. We are currently not supporting smaller screens as this software requires a specific screen real estate for customisation. Please access this same URL from a Desktop.
+          </div>
+
+          <div style="text-align:right;margin-right: 20px;">
+              <!-- <button type="button" class="btn save-button" data-dismiss="modal" style="ma
+              rgin-right: 10px;" (click)="confirmationSubmit('save')">Yes</button> -->
+              <button type="button" class="btn cancel-button" data-dismiss="modal" (click)="redirect();">Ok</button>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="mt-4">
+
+              <div class="modal-footer">
+                  <img src="assets/images/publishAnalytics/HeaderPopup.png" alt="pop-header" class="modal-footer-image">
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+<!-- <ng4-loading-spinner [timeout]="1000000"> </ng4-loading-spinner> -->
+<ngx-spinner type="ball-scale-multiple"  [timeout]="1000000"></ngx-spinner>

@@ -1,0 +1,25 @@
+{
+  "english": {
+    "usageAndSubcription": {
+      "headerTitle": "Usage & Subscription",
+      "firstCardTitle": "Experiences",
+      "secondCardTitle": "Published",
+      "thirdCardTitle": "Patrons",
+      "fourthCardTitle": "Views",
+      "firstCardFooter": "Experiences",
+      "secondCardFooter": "Experiences",
+      "thirdCardFooter": "Patrons",
+      "fourthCardFooter": "Views",
+      "addonPlanTitle": "Add-on",
+      "firstProgressbarTitle": "Storage",
+      "secondProgressbarTitle": "Views",
+      "thirdProgressbarTitle": "Days Left",
+      "subscriptionPlanTitle": "Subscription Plan",
+      "upgradeTitle": "Upgrade",
+      "upgradeText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id posuere quam. Morbi fermentum vestibulum felis, ac dictum magna posuere mattis. Duis suscipit tempus arcu, nec cursus turpis pretium eu. Sed tristique lectus eget semper egestas. Ut vitae congue magna, at molestie est. Sed porttitor magna et nulla feugiat pellentesque et eget tellus. Nullam lobortis interdum nisi. Etiam id ullamcorper orci. Mauris ac mauris purus.Nunc velit tellus, euismod et dictum in, sodales dapibus ligula. Ut blandit mattis leo a lobortis. Aenean quis dui sit amet magna hendrerit aliquet quis et lacus. Maecenas eu turpis in ex aliquam finibus. Donec scelerisque quis ante tincidunt commodo. Integer pellentesque eros at nibh placerat, dignissim luctus ligula finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam euismod, mi et elementum bibendum, justo elit facilisis purus, nec elementum sapien nulla sit amet enim. Pellentesque sed erat ultricies, laoreet est at, tincidunt enim. Fusce ac erat vulputate, sodales orci vel, tincidunt velit. Morbi dignissim arcu in erat tempor, a sollicitudin lectus consectetur. Aliquam erat volutpat. In mattis augue in massa tristique porttitor.Ut pretium mollis augue",
+      "modelConfirmMessage":"Do",
+      "planSuccessMessage":"",
+      "planFailMessage":""
+    }
+  }
+}

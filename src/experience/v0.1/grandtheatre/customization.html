@@ -1,0 +1,602 @@
+<!--/*************************************************************************
+* 
+* EQUATIONS WORK CONFIDENTIAL
+* __________________
+* 
+*  [2018] - [2020] Equations Work IT Services Private Limited, India
+*  All Rights Reserved.
+* 
+* NOTICE:  All information contained herein is, and remains
+* the property of Equations Work IT Services Private Limited and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Equations Work IT Services Private Limited
+* and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Equations Work IT Services Private Limited.
+*
+* Copyright (C) Equations Work IT Services Pvt. Ltd.
+* NOTE: Unauthorized copying of this file, via any medium is strictly prohibited
+* Proprietary and confidential
+* Owned and written by the proprietors of Equations Work IT Private Limited, India, August 2018
+*/ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Grand Theater</title>
+  <!-- For Google -->
+  <meta name="description"
+    content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+  <meta name="keywords" content="" />
+
+  <meta name="author" content="Video Theater" />
+  <meta name="copyright" content="studio.experizer.com" />
+  <meta name="application-name" content="Experizer" />
+
+  <!-- For Facebook -->
+  <meta property="og:title" content="Video Theater" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image"
+    content="https://alpha-dev.experizer.com/assets/images/dashboard/grandTheatreThumbnail.jpg?0.4243993684303231" />
+  <meta property="og:url" content="studio.experizer.com" />
+  <meta property="og:description"
+    content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+
+  <!-- For Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Video Theater" />
+  <meta name="twitter:description"
+    content="Immersive Movie Theatre Experience for playing your video. This encourages focused attention through the tranquility of a Cinema Hall for learning a topic with a video with the 6 Degrees of Freedom." />
+  <meta name="twitter:image"
+    content="https://alpha-dev.experizer.com/assets/images/dashboard/grandTheatreThumbnail.jpg?0.4243993684303231" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/SideBarInner.css">
+  <link rel="stylesheet" href="assets/css/GrandTheater.css">
+  <link rel="stylesheet" href="../verbose/css/common.css">
+  <link rel="stylesheet" href="../verbose/css/summernote-bs4.css">
+  <link rel="stylesheet" href="../verbose/css/summernote.css">
+  <link rel="stylesheet" href="assets/css/snackbar.css">
+
+
+  <script src="assets/js/aframe-v1.0.4.min.js"></script>
+  <!-- <script src="assets/js/aframe-v0.8.2.min.js.map"></script> -->
+  <script src="assets/js/arrow-key-rotation.js"></script>
+  <script src="assets/js/play-on-window-click.js"></script>
+  <script src="assets/js/play-with-delay.js"></script>
+  <script src="assets/js/play-on-vrdisplayactivate-or-enter-vr.js"></script>
+  <script src="assets/js/hide-once-playing.js"></script>
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../verbose/summernotejs/popper.min.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote-bs4.js">
+  </script>
+  <script src="../verbose/summernotejs/summernote.js">
+  </script>
+
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/GrandThearter.js"></script>
+  <script src="assets/js/customScript.js"></script>
+  <script src="../verbose/jscolor.js"></script>
+  <!-- Toastr -->
+  <link rel="stylesheet" href="../verbose/css/toastr.min.css">
+  <script src="../verbose/toastr.min.js">
+  </script>
+  <!-- Toastr -->
+
+  <style>
+    a-scene {
+      height: 100vh;
+      width: 100%;
+    }
+
+    .clickable {}
+  </style>
+</head>
+
+<body onload="populateCustomizationData(populationData)">
+  <div id="snackbar">Snackbar default text</div>
+  <div class="wrapper">
+    <!-- Page Content -->
+    <div id="content">
+      <div class="">
+        <div class="row margin-LR-0">
+          <div class="col-1 sidebar-fixed">
+            <button type="button"
+              onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');"
+              onmouseleave="mouseLeave()" id="brandingSidebar"
+              class="btn btn-first button-align-first btn-vertical-right"
+              onclick="toggleSideNav('launchSidenav')">Splash Screen</button>
+            <button type="button"
+              onmouseenter="mouseEnter('You can access the Light Settings, Theme & Branding using this tab.');"
+              onmouseleave="mouseLeave()" id="auditoriumSidebar"
+              class="btn btn-vertical-right btn-second button-align-second auditorium-button-color"
+              onclick="toggleSideNav('auditoriumSidenav')">Auditorium</button>
+            <button type="button"
+              onmouseenter="mouseEnter('Change the Video and choose if you wish to loop the video or just play it for 1 single time.');"
+              onmouseleave="mouseLeave()" id="movieSidebar" class="btn btn-third btn-vertical-right button-align-next"
+              onclick="toggleSideNav('movieSidenav')">Movie</button>
+          </div>
+          <div class="col-12 vr-editor" id="mainBlock">
+            <div id="launchSidenav" class="sidenav margin-left-60">
+              <div id="accordionThree">
+                <div class="card">
+                  <div class="card-header" id="headingSeven">
+                    <h3 class="mb-0">
+                      <button id="wallBtn1"
+                        onmouseenter="mouseEnter('Splash screen is the information banner that gets loaded before your Experience starts. You can use this to briefly describe what the Experience is all about OR you can also give instructions to use it.');"
+                        onmouseleave="mouseLeave()" class="btn btn-link customize-button south padding-0"
+                        data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true"
+                        aria-controls="collapseSeven"> <i class="fa" aria-hidden="true"></i>
+                        Splash Screen
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven"
+                    data-parent="#accordionOne">
+                    <div class="card-body">
+                      <div class="form-group margin-top-15">
+                        <h6><i>Check preview mode to preview Splash Screen</i></h6>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="splashBackground">Background Color:</label>
+                        <div id="colorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer splashBg "
+                            id="splashBackground" style="width:100%">
+                          <div></div>
+                        </div>
+                      </div>
+
+                      <div class="form-group margin-top-15">
+                        <div class="row">
+                          <div class="col-10">
+                            <label style="color:#fff;width: 100%" for="fixOpacity">Background Opacity (Drag to
+                              change):</label>
+                          </div>
+                          <div class="col-2" style=" padding: 0px">
+                            <label id="rangeValue" style="color:#fff"></label>
+                          </div>
+                        </div>
+                        <div class="slidecontainer">
+                          <input type="range" min="0.1" max="1" step="0.001" value="0.1" class="slider" id="fixOpacity"
+                            style="width: 100%" />
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="splashHeaderColor">Header Font Color:</label>
+                        <div id="colorSelector" class="colorSelector">
+                          <input class="jscolor {closable:true,closeText:'Close'} pointer headerfont"
+                            id="splashHeaderColor" style="width: 100%">
+                          <div></div>
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <div class="row">
+                          <div class="col-8"> <label for="frameDescription">Splash Screen Text:</label></div>
+                          <div class="col-4" style=" padding-left: 50px;">
+                            <span id="maxCount">0</span>
+                            <span>/ 350</span>
+                          </div>
+                        </div>
+                        <textarea Id="summernote" class="form-control lunchScreenText text-overflow maxContentPost"
+                          rows="3" placeholder="Launch Text" name="Text" value="" style="color:#000"></textarea>
+                      </div>
+
+                      <div class="form-group margin-top-15">
+                        <label for="summernote2">Instructions For Desktop/PC/Laptop:</label>
+                        <textarea Id="summernote2" class="form-control instructionSetForDesktop" rows="5"
+                            placeholder="Instruction Set" name="Text" value=""
+                            maxlength="350"></textarea>
+                    </div>
+                    <div class="form-group margin-top-15">
+                        <label for="summernote3">Instructions For Mobile/VR:</label>
+                        <textarea Id="summernote3" class="form-control instructionSetForAndroid" rows="5"
+                            placeholder="Instructions For Mobile/VR" name="Text" value=""
+                            maxlength="350"></textarea>
+                    </div>
+
+
+                      <div class="form-group margin-top-15">
+                        <label for="">Splash Image:</label>
+                        <div class="form-group custom-file">
+                          <label class="form-control custom-file-label" id="splashImageLable" for="splashImage">Choose
+                            Image</label>
+                          <input
+                            onmouseenter="mouseEnter('Splash screen has a provision to change the image that appears on it. Use this option to change this image by selecting a new image from your Library.');"
+                            onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+                            id="splashImage" accept="image/png, image/jpeg  "
+                            onclick="openAssetPopup('Image','SplashImage')">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div id="auditoriumSidenav" class="sidenav margin-left-60">
+              <!-- <div class="sidebar-text-first">Customize: Auditorium</div> -->
+              <div id="accordion">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h3 class="mb-0">
+                      <button
+                        onmouseenter="mouseEnter('You can access the Light Settings, Theme & Branding using this tab.');"
+                        onmouseleave="mouseLeave()" id="wallBtn1" class="btn btn-link  customize-button south"
+                        data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+                        aria-controls="collapseOne"><i class="fa" aria-hidden="true"></i>
+                        Auditorium Settings
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                      <div class="form-group margin-top-15">
+                        <label for="lightsDropDown">Light Settings:</label>
+                        <div class="form-group custom-file">
+                          <select name="lights" id="lightsDropDown"
+                            class="col-12 select-dropdown custom-file-label input_box_trasparent"
+                            onchange="OnChangeOption()">
+                            <option value="None" selected="Selected">Select Lights</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="colorDropDown">Theme Settings:</label>
+                        <div class="form-group custom-file">
+                          <select name="colours" Id="colorDropDown"
+                            class="col-12 select-dropdown custom-file-label input_box_trasparent"
+                            onchange="OnChangeOption()">
+                            <option value="None" selected="Selected">Select Color</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="colorDropDown">Screen Placeholder Image:</label>
+                        <div class="form-group custom-file">
+                          <label class="form-control custom-file-label" id="customLabelImage"
+                            for="customFileImage">Choose Image</label>
+                          <input
+                            onmouseenter="mouseEnter('Screen Placeholder is shown on the Theater Screen before the Movie starts to play. A great way to advertise your brand.');"
+                            onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+                            id="customFileImage" accept="image/png, image/jpeg  "
+                            onclick="openAssetPopup('Image','Splash')">
+                          <label class="aspect-ratio-style mb-0" id="frameImageTitle">Note: Recommended aspect ratio
+                            4:3</label>
+                        </div>
+                      </div>
+                      <div class="form-group margin-top-15">
+                        <label for="customLogoImage">Branding Side Logo:</label>
+                        <div class="form-group custom-file">
+                          <label class="form-control custom-file-label" id="customLogoImage"
+                            for="customLogoImage">Choose Image</label>
+                          <input
+                            onmouseenter="mouseEnter('The Branding on the Left and Right walls of the theater can be changed using this option.');"
+                            onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+                            id="customLogoImage" accept="image/png, image/jpeg  "
+                            onclick="openAssetPopup('Image','Logo')">
+                          <label class="aspect-ratio-style mb-0" id="frameImageTitle">Note: Recommended aspect ratio
+                            4:3</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+            </div>
+            <div id="movieSidenav" class="sidenav margin-left-60">
+              <div id="accordionOne">
+                <div class="card">
+                  <div class="card-header" id="headingFour">
+                    <h3 class="mb-0">
+                      <button
+                        onmouseenter="mouseEnter('Change the Video and choose if you wish to loop the video or just play it for 1 single time.');"
+                        onmouseleave="mouseLeave()" id="wallBtn1" class="btn btn-link customize-button south"
+                        data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+                        aria-controls="collapseFour"> <i class="fa" aria-hidden="true"></i>
+                        Video Settings
+                      </button>
+                    </h3>
+                  </div>
+                  <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
+                    data-parent="#accordionOne">
+                    <div class="card-body">
+                      <div class="form-group margin-top-15">
+                        <label for=""> Video</label>
+                        <div class="form-group custom-file">
+
+                          <input onmouseenter="mouseEnter('Change the Video  using this option.');"
+                            onmouseleave="mouseLeave()" type="button" class="form-control custom-file-input"
+                            onclick="openAssetPopup('Video',null)" id="customFileVideo">
+                          <label class="custom-file-label form-control" id="customLabelVideo"
+                            for="customFileVideo">Choose Video</label>
+
+                        </div>
+                      </div>
+                      <!-- <div class="form-group margin-top-15">
+                                      <label for="lightsDropDown"> Delay to Start the Movie</label>
+                                      <div class="form-group custom-file">
+                                          <select name="delayMovie" id="movieDelayDrownDownID" class="col-12 select-dropdown custom-file-label" onchange="OnChangeOption()">
+                                              <option value="None" selected="Selected">Select Delay</option>
+                                            </select>
+                                </div>
+                              </div> -->
+                      <div class="form-group margin-top-15">
+                        <label for="loopDropDownID"> Loop</label>
+                        <div class="form-group custom-file">
+                          <select name="loop" id="loopDropDownID"
+                            class="col-12 select-dropdown custom-file-label input_box_trasparent"
+                            onchange="OnChangeOption()">
+                            <option value="None" selected="Selected">Select Loop</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div id="overlay"></div>
+            <div class="row imageDiv-row-margin">
+              <div class="col-12 imageDiv-col-padding" id="imageDiv">
+                <!-- <img alt="Grand Theater" src="assets/images/red_on.jpg" class="img-size" id="outerImage" /> -->
+                <a-scene mousedrag embedded vr-mode-ui="enabled: false" loading-screen="enabled:false">
+                  <img id="office" crossorigin="anonymous" src="">
+                  <img id="splashImg" crossorigin="anonymous" src="">
+                  <video id="customVideo" autoplay crossorigin="anonymous" playsinline webkit-playsinline src="">
+                    <source type="video/mp4" />
+                  </video>
+                  <!-- <a-assets >
+                       
+                      </a-assets> -->
+                  <!--  <a-video src="#video" log="Hello WORLD" autoplay play-on-vrdisplayactivate-or-enter-vr width="16" height="9" position="3.344 27.257 225" rotation="1 180 0" geometry="width:214;height:108"></a-video>-->
+                  <a-image id="screenshot1" src="#splashImg" width="16" height="9" position="-0.779 28.357 -249.905"
+                    rotation="-0.286 0.745 0.000" geometry="width:214;height:108"></a-image>
+                  <a-entity id="blankScreen" position="-1.493 32.181 -257.647" rotation="-1.203 2.235 0.057"
+                    geometry="height:125;width:248" material="opacity:0;transparent:true" set-sky class="clickable">
+                  </a-entity>
+                  <a-entity id="msg" position="3.344 27.257 225" text="align:center; 
+                  width:3;
+                  wrapCount:100;
+                  color:red;
+                  value:Click window to make the video play, if needed." hide-once-playing="#video">
+                  </a-entity>
+                  <a-image id="logo1" src="" width="4" height="2" set-sky class="clickable"
+                    position="91.387 25.405 -17.220" rotation="5.042 -90.585 -0.115" geometry="width:5;height:2"
+                    material="src:assets\images\newImages\eqw.png;opacity:0.9" visible="" scale="8 5.669 8"></a-image>
+                  <a-image id="logo2" src="" width="4" height="2" set-sky class="clickable"
+                    position="-91.387 25.405 -17.220" rotation="-5.042 90.585 0.115" geometry="width:5;height:2"
+                    material="src:assets/images/newImages/eqw.png;opacity:0.9" visible="" scale="7.79 5.35 8"></a-image>
+
+                  <!--                  <a-sky id="sky" src="#office" rotation="0 90 0"></a-sky>-->
+                  <!-- <a-entity id="mainCam" rotation="0 -111.699 0" camera keyboard-controls wasd-controls>
+                    <a-camera id="cameraMain" look-controls wasd-controls-enabled="false"></a-camera>
+                  </a-entity> -->
+                  <a-entity id="CamEntity" rotation="0 0 0">
+                    <a-entity id="mainCam" camera look-controls="reverseTouchDrag:true" wasd-controls-enabled="false">
+                      <a-animation begin="camRotate" id="mainCamAni" attribute="rotation" dur="1000" to="0 0 0">
+                      </a-animation>
+                      <a-entity cursor="fuse: false; fuseTimeout: 1150; rayOrigin: mouse;"
+                        raycaster="objects: .clickable">
+                        <!--
+                             <a-animation begin="cursor-fusing" attribute="geometry.thetaLength" dur="1200" from="0" to="360" fill="none"></a-animation> 
+                            <a-animation begin="click" easing="ease-in" attribute="scale" fill="forwards" from="0.01 0.01 0.01" to="0.1 0.1 0.1"></a-animation>
+                            <a-animation begin="mouseleave" easing="ease-in" attribute="scale" fill="forwards" to="0.1 0.1 0.1"></a-animation>
+                            <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale" fill="forwards" to="0.01 0.01 0.01" from="0.1 0.1 0.1"></a-animation>
+    -->
+                      </a-entity>
+                    </a-entity>
+                  </a-entity>
+                </a-scene>
+              </div>
+            </div>
+          </div>
+          <div id="toast-container" class="toast-top-center">
+          </div>
+          <div class="sidebar-transparent sidebar-right">
+            <div class="button-divider tour-button">View</div>
+            <div id="freezeView"
+              onmouseenter="mouseEnter('Launch View: If you wish the current view to be the ‘Starting View’ of your Experience, then hit this button.');"
+              onmouseleave="mouseLeave()" onclick="setEntryView()"
+              class="custom-button1 graph-button place-color hidden-label">
+              <img class="img image-fluid" src="assets/images/Freeze_View.png" width="30">
+              <div>Launch View </div>
+              <span class="tooltiptext">Set the current view as the Launch View of the experience</span>
+            </div>
+          </div>
+          <!-- <div>
+            <button type="button" id="SaveID" class="btn btn-default " onclick="SaveData();">Save</button>
+          </div> -->
+        </div>
+      </div>
+
+      <div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+
+$('.maxContentPost').summernote({
+  placeholder: 'Splash Screen Text',
+  tabsize: 2,
+  height: 100,
+  toolbar: [
+
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['fontname', ['fontname']],
+    ['font', ['bold', 'italic', 'underline', 'clear']]
+
+
+  ],
+  callbacks: {
+    onKeydown: function (e) {
+      var sel = window.getSelection();
+      if (sel.rangeCount) {
+      var container = document.createElement("div");
+        for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+          container.appendChild(sel.getRangeAt(i).cloneContents());
+        }
+      }
+      var selectedTextLength = container.innerText.length;
+      var t = e.currentTarget.innerText;
+      var cntolleKey = e.originalEvent.ctrlKey;
+      $('#maxCount').text(t.length);
+      if (t.length >= 350 && selectedTextLength <= 0) {
+        if (cntolleKey) {
+          
+          if (e.keyCode != 8) {
+          if (e.keyCode != 65) {
+            if (e.keyCode != 67) {
+              if (e.keyCode != 90) {
+                if (e.keyCode != 88) {
+                  if (e.keyCode != 86) {
+                    if (e.keyCode != 46) {
+                      if (e.keyCode != 17) {
+
+                        popSnackbar("warning", "Limit exceed.");
+                        e.preventDefault();
+                      }
+                      // popSnackbar("warning", "Limit exceed.");
+                      // e.preventDefault();
+                    }
+                  }
+                }
+                }
+              }
+            }
+          }
+        } else {
+          if (e.keyCode != 8) {
+              if (e.keyCode != 46) {
+                popSnackbar("warning", "Limit exceed.");
+                e.preventDefault();
+              }
+          }
+        }
+      }
+    },
+    onKeyup: function (e) {
+      var t = e.currentTarget.innerText;
+      // $('.maxContentPost').text(350 - t.trim().length);
+      $('#maxCount').text(t.length);
+    },
+    onPaste: function (e) {
+      var container;
+      var sel = window.getSelection();
+      if (sel.rangeCount) {
+        container = document.createElement("div");
+        for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+            container.appendChild(sel.getRangeAt(i).cloneContents());
+        }
+    }
+    var selectedTextLength=container.innerText.length;
+      var t = e.currentTarget.innerText;
+
+      if (t.length >= 350 && selectedTextLength <= 0) {
+        popSnackbar("warning", "Limit exceed.");
+        e.preventDefault();
+      }
+      $("#maxCount").text(t.length);
+      var bufferText = (
+        (e.originalEvent || e).clipboardData || window.clipboardData
+      ).getData("Text");
+      e.preventDefault();
+      for(var k=0;k<bufferText.length;k++){
+    
+    
+      }
+      var maxPaste = bufferText.length;
+      var maxLength=(t.length-selectedTextLength) + bufferText.length;
+      if ((t.length-selectedTextLength + bufferText.length) > 350) {
+        popSnackbar("warning", "Limit exceed.");
+        maxPaste = 350 - (t.length+-selectedTextLength);
+      }
+      if (maxPaste > 0) {
+        document.execCommand(
+          "insertText",
+          false,
+          bufferText.substring(0, maxPaste)
+        );
+      }
+      var t = e.currentTarget.innerText;
+      $("#maxCount").text(t.length);
+    }
+  }
+});
+
+
+    $('#summernote2').summernote({
+      placeholder: 'Instructions For Desktop/PC/Laptop',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+    $('#summernote3').summernote({
+      placeholder: 'Instructions For Mobile/VR',
+      tabsize: 2,
+      height: 100,
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['fontname', ['fontname']],
+        ['font', ['bold', 'italic', 'underline', 'clear']]
+
+      ],
+    });
+
+
+  </script>
+
+  <script type="text/javascript">
+    // Default Configuration
+    $(document).ready(function () {
+      toastr.options = {
+        'closeButton': false,
+        // 'debug': false,
+        // 'newestOnTop': false,
+        // 'progressBar': false,
+        'positionClass': 'toast-top-center',
+        // 'preventDuplicates': false,
+        // 'showDuration': '1000',
+        // 'hideDuration': '1000',
+        'timeOut': '2000',
+        'extendedTimeOut': '2000',
+        'showEasing': 'swing',
+        'hideEasing': 'linear',
+        'showMethod': 'fadeIn',
+        'hideMethod': 'fadeOut',
+      }
+    });
+
+	// Toast Type
+		// $('#freezeView').click(function(event) {
+		// 	toastr.success('Presto! This view is now the Starting View of this Experience.');
+    // });
+  </script>
+
+</body>
+
+</html>
